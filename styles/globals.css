@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 2rem;
+  /* setting for all */
+  /* scroll-padding-top: 4rem; */
+  /* setting for specific target */
+  /* <section id='section-books' className='scroll-mt-20 scroll-pt-20'> */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.scrollbar-track-rounded::-webkit-scrollbar-track {
+  border-radius: 999px;
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+}
+
+.banner {
+  background: linear-gradient(
+      145deg,
+      rgba(4, 116, 120, 0.5) 34%,
+      transparent 34%,
+      transparent 64%,
+      rgba(5, 128, 150, 0.5) 64%,
+      rgba(5, 140, 150, 0.5) 100%
+    ),
+    linear-gradient(
+      40deg,
+      rgb(4, 103, 120) 0%,
+      /* rgb(4, 120, 87) 62%, */ rgb(16, 174, 185) 62%,
+      rgb(16, 174, 185) 100%
+    );
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.6);
+  font-size: 16px !important;
+}
+
+/* REACT MULTI SELECT  */
+html[class='dark'] {
+  --bg-react-select-control: #171717;
+  --bg-react-select-menu: #1f1f1f;
+  --bg-react-select-option-hover: #262626;
+  --text-react-select-option: white;
+  --react-select-indicator: #d4d4d4;
+  --react-select-border: #404040;
+}
+
+html {
+  --bg-react-select-control: white;
+  --bg-react-select-menu: white;
+  --bg-react-select-option-hover: #f3f4f6;
+  --text-react-select-option: #171717;
+  --react-select-indicator: #737373;
+  --react-select-border: #e5e7eb;
+}
+
+.react-select__input:focus {
+  box-shadow: none !important;
+  color: var(--text-react-select-option) !important;
+}
+
+.react-select__control {
+  background-color: var(--bg-react-select-control) !important;
+  border-color: var(--react-select-border) !important ;
+  cursor: pointer !important;
+  height: 42px;
+}
+
+.react-select__control--is-focused {
+  @apply !outline-none !ring-2 !ring-sky-500;
+}
+
+.react-select__multi-value {
+  background-color: #0ea5e9 !important;
+  border-radius: 4px !important;
+  margin-right: 4px !important;
+  color: white !important;
+}
+
+.react-select__multi-value__label {
+  color: white !important;
+}
+
+.react-select__indicator {
+  color: var(--react-select-indicator) !important;
+}
+
+.react-select__menu {
+  background-color: var(--bg-react-select-menu) !important;
+  cursor: pointer !important;
+  color: var(--text-react-select-option);
+  border: none;
+}
+
+.react-select__option:hover {
+  color: white;
+}
+
+.react-select__option--is-focused {
+  color: white !important;
+}
+
+.react-select__indicator-separator {
+  @apply !bg-neutral-200 dark:!bg-neutral-600;
+}
+
+/* NProgress */
+/* Progress Bar on Top of Page  */
+html[class='light'] {
+  --nprogress-color: #0ea5e9;
+}
+
+html[class='dark'] {
+  --nprogress-color: #0ea5e9;
+}
+
+#nprogress .bar {
+  /* background: var(--nprogress-color) !important; */
+  @apply !bg-sky-500 !shadow-sky-500/50 dark:!bg-sky-400 dark:!shadow-sky-400/50;
+}
+
+#nprogress .spinner-icon {
+  display: none;
+}
+
+/* Footer Link Hover Animation */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+  @apply bg-neutral-500 dark:bg-neutral-300;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}

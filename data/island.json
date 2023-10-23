@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Jawa",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/Java.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "jawa"
+  },
+  {
+    "id": 2,
+    "name": "Bali",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/Bali.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "bali"
+  },
+  {
+    "id": 3,
+    "name": "Maluku",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/Maluku.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "maluku"
+  },
+  {
+    "id": 4,
+    "name": "Kalimantan",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/Kalimantan.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "kalimantan"
+  },
+  {
+    "id": 5,
+    "name": "Sulawesi",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/Sulawesi.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "sulawesi"
+  },
+  {
+    "id": 6,
+    "name": "Sumatera",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/Sumatera.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "sumatera"
+  },
+  {
+    "id": 7,
+    "name": "Nusa Tenggara",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revisi-2020/destinations-thumbnail/Labuan-Bajo-Thumbnail.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "nusa-tenggara"
+  },
+  {
+    "id": 8,
+    "name": "Papua",
+    "image_url": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revision-2019/all-revision-destination/maluku/Sorong.jpg",
+    "created_at": "2023-10-23T11:57:08.13947+00:00",
+    "slug": "papua"
+  }
+]

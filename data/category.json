@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Architecture",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500",
+    "slug": "architecture"
+  },
+  {
+    "id": 2,
+    "name": "Beach",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&q=80&w=500",
+    "slug": "beach"
+  },
+  {
+    "id": 3,
+    "name": "Lake",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?auto=format&fit=crop&q=80&w=500",
+    "slug": "lake"
+  },
+  {
+    "id": 4,
+    "name": "Mountain",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&q=80&w=500",
+    "slug": "mountain"
+  },
+  {
+    "id": 5,
+    "name": "Forest",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&q=80&w=500",
+    "slug": "forest"
+  },
+  {
+    "id": 6,
+    "name": "Park",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1561283890-5d858c23b2ea?auto=format&fit=crop&q=80&w=500",
+    "slug": "park"
+  },
+  {
+    "id": 7,
+    "name": "Island",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1516091877740-fde016699f2c?auto=format&fit=crop&q=80&w=500",
+    "slug": "island"
+  },
+  {
+    "id": 8,
+    "name": "Ocean",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&q=80&w=500",
+    "slug": "ocean"
+  },
+  {
+    "id": 9,
+    "name": "Underwater",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&q=80&w=500",
+    "slug": "underwater"
+  },
+  {
+    "id": 10,
+    "name": "Coral",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&q=80&w=500",
+    "slug": "coral"
+  },
+  {
+    "id": 11,
+    "name": "Camping",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1601134917279-ef70a0a90f18?auto=format&fit=crop&q=80&w=500",
+    "slug": "camping"
+  },
+  {
+    "id": 12,
+    "name": "Rafting",
+    "created_at": "2023-10-22T08:38:55.639635+00:00",
+    "image_url": "https://images.unsplash.com/photo-1508166466920-f65aa51f727c?auto=format&fit=crop&q=80&w=500",
+    "slug": "rafting"
+  }
+]
