@@ -1,13 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import slug from 'slug';
 
-
-
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
-
-
-
-
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body, query } = req;
