@@ -1,0 +1,258 @@
+[
+  {
+    "id": 1,
+    "name": "Aceh",
+    "image_url": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTq1-lW7jiqnw0ZB2UJcXaqjQnQf0BPh4LfEgKSd4UpMfBi5xqTu7ZdCkt1D_HdSbMWAdPendbEnplUcFq9spP2cvSaAr6O",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "aceh"
+  },
+  {
+    "id": 2,
+    "name": "Sumatera Utara",
+    "image_url": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRdiazUG7cOjE3ZQGJ0UArUaXOze5KbHJzeEtO-rpumbV7dxZxatAnpD_PwtaD0GCELuOyu_6MU_uJZuFlW6UjyLnVjMcQC",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "sumatera-utara"
+  },
+  {
+    "id": 3,
+    "name": "Sumatera Barat",
+    "image_url": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQVTFFsbQEwq-8YbCKStOqgRAET1yV_HMseg2acUbqwu9SghHSSpLcFcOCWCEZVrxp5VZA8Vkcugo6tNG5lWlPyyC5gXwMq",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "sumatera-barat"
+  },
+  {
+    "id": 4,
+    "name": "Riau",
+    "image_url": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSvDiHNa18auymeADh_78PDr3YVee8L5WghjNLXjaRGG1VJZ8uCFoaJDCJXI-VSCMzBV26mprzJXqxRvWCBDa0-QrLIzP9w",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "riau"
+  },
+  {
+    "id": 5,
+    "name": "Sumatera Selatan",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipMSwZUSZHNkwZRt-SMxOPlPPAoN1wRXgtjUNVV7=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "sumatera-selatan"
+  },
+  {
+    "id": 6,
+    "name": "Lampung",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipM_zsIbqHLjt_bUGy6q0O4RksH4qqGBAc3Gf6nL=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "lampung"
+  },
+  {
+    "id": 7,
+    "name": "Bangka Belitung",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipOlY470_25PvWemwNbBDV6vncrsSJ6bgpGDMA_0=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "bangka-belitung"
+  },
+  {
+    "id": 8,
+    "name": "Kepulauan Riau",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipOBK7HZI_NNABbCwtHReC0HLiPExRjKliSRkdfE=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "kepulauan-riau"
+  },
+  {
+    "id": 9,
+    "name": "DKI Jakarta",
+    "image_url": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSigjLsezrDVEkvsiOmd7Fay-2fXYzCgcF_A1dPH9-F6lDv9YNpvObTY90-E72yNAyhgRGtSTiEZfUjhaYmYhCy3Z-hOKRE",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 1,
+    "slug": "dki-jakarta"
+  },
+  {
+    "id": 10,
+    "name": "Jawa Barat",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipNFxyUaCKXIOFerN3M_3dJPSIHs6p13kxU0EweG=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 1,
+    "slug": "jawa-barat"
+  },
+  {
+    "id": 11,
+    "name": "Jawa Tengah",
+    "image_url": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSE48OM7uILxOgZF7PuUjEwgyhcuuASK6eT8vpgKrDrihPTRwHz8cSynsRsgJ6fCSE9LuclS6KHU5O1ashlu2V8Z7yDAVLC",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 1,
+    "slug": "jawa-tengah"
+  },
+  {
+    "id": 12,
+    "name": "DI Yogyakarta",
+    "image_url": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQBYW0UCRXoKVDAGxBI1e-ze0fpmKDWHtf8KAkXI2wO33X1gzWn1uVpu0HFRjbWKk-QasOftwuRPEX2gvtHxgN7fshq0Cgf",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 1,
+    "slug": "di-yogyakarta"
+  },
+  {
+    "id": 13,
+    "name": "Jawa Timur",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipN8RUH71iXvIbld382W0OS7P30BNWhUByqEUNOy=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 1,
+    "slug": "jawa-timur"
+  },
+  {
+    "id": 14,
+    "name": "Banten",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipMe1Mg00_Q1A2HVgqXmQYA11sS2bTYUodSCInvT=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 1,
+    "slug": "banten"
+  },
+  {
+    "id": 15,
+    "name": "Bali",
+    "image_url": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRaUcifh5ereEe6jqZWOXjbZFXogeqCWrf9gpcdsPIe_wlc6Gk2QqN6AV8LKp2P13l0NNzHUWAbO2E_9y0cGWgSJSathgRR",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 2,
+    "slug": "bali"
+  },
+  {
+    "id": 16,
+    "name": "Nusa Tenggara Barat",
+    "image_url": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRd5Riln6qVCEAk4B9Z_fcIiz_rzXv4yUfoBGaSEVyTc-DTIm91sy2bEp7zAYLCa2rZB9M0uL7r9oy6AaNRLUjkknCEobRl",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 7,
+    "slug": "nusa-tenggara-barat"
+  },
+  {
+    "id": 17,
+    "name": "Nusa Tenggara Timur",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipOD4pMz7h99LoifI84qZ1waLmQRu6Z9glp0NADw=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 7,
+    "slug": "nusa-tenggara-timur"
+  },
+  {
+    "id": 18,
+    "name": "Kalimantan Barat",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipPgcdmkq5kTpaScs2UYIFY-7uvj_tiukYTHsX_p=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 4,
+    "slug": "kalimantan-barat"
+  },
+  {
+    "id": 19,
+    "name": "Kalimantan Tengah",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipOsQ9o4qCdrUk_lHCVljIzrsvkGSWr0mC5ntqVG=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 4,
+    "slug": "kalimantan-tengah"
+  },
+  {
+    "id": 20,
+    "name": "Kalimantan Selatan",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipPyvFc9h9u-m5Udd0HQ9-ErFJwy_u5tdS1BxQmr=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 4,
+    "slug": "kalimantan-selatan"
+  },
+  {
+    "id": 21,
+    "name": "Kalimantan Timur",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipNIcil0rao-qGES9I5XVnhGbApoRCfEh0ZdqQiC=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 4,
+    "slug": "kalimantan-timur"
+  },
+  {
+    "id": 22,
+    "name": "Kalimantan Utara",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipNOb5YyVRckMSdUYM7iwJfL-Q1pfx0nuh30fDIX=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 4,
+    "slug": "kalimantan-utara"
+  },
+  {
+    "id": 23,
+    "name": "Sulawesi Utara",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipNhh4l2MauYfEw5PeNcc6GqYJXnybLs_9G8XMJ-=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 5,
+    "slug": "sulawesi-utara"
+  },
+  {
+    "id": 24,
+    "name": "Sulawesi Tengah",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipP322SIhfVp4F7OeZmT9j5q-ytFPNPVnt28firr=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 5,
+    "slug": "sulawesi-tengah"
+  },
+  {
+    "id": 25,
+    "name": "Sulawesi Selatan",
+    "image_url": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTiIXsVR3faC7xm6x-ITaxQUAwvW1VlOiV9tsshy5EvvsIFIaEoSW0lauJ__8FJ-9mjiiSB5qGKQUlO5BVTTlW_tK0-sKIY",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 5,
+    "slug": "sulawesi-selatan"
+  },
+  {
+    "id": 26,
+    "name": "Sulawesi Tenggara",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipMoJezgSYFmqv3s9T34Ynso-y3-nrdRxFXVQOjK=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 5,
+    "slug": "sulawesi-tenggara"
+  },
+  {
+    "id": 27,
+    "name": "Gorontalo",
+    "image_url": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSyjl5nPsWr-vlZw0DhhSCt0NnYKwM_chXlSn97lXQFmPAu14ldovTY-25Mq2ew-PgwNK2sIdzwj83oDPoD_k0gId7VaxBY",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 5,
+    "slug": "gorontalo"
+  },
+  {
+    "id": 28,
+    "name": "Sulawesi Barat",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipPNk4vNJvLOzhnWcrI6AmxqoWtrPQJcGVRvKuNE=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 5,
+    "slug": "sulawesi-barat"
+  },
+  {
+    "id": 29,
+    "name": "Maluku",
+    "image_url": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQlzt2z_kizP5oI8W8fOUkmNifOBCfr-srk0s_zsSsLWTW1nsjnn35LGD-qGl0qh6tXaviAKQ7ku7UMoXzn9UvN1XnThs_8",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 3,
+    "slug": "maluku"
+  },
+  {
+    "id": 30,
+    "name": "Maluku Utara",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipNUwrynhorigATwPAKmngEe7HkrL7HlFQTl95ho=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 3,
+    "slug": "maluku-utara"
+  },
+  {
+    "id": 31,
+    "name": "Papua",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipOZV6PdyvTbrZ-0xxogGwQJEWdhVXHCEiDvxtwl=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 8,
+    "slug": "papua"
+  },
+  {
+    "id": 32,
+    "name": "Papua Barat",
+    "image_url": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSKuH_uX-4DWK8tsA2rMMTQtmGVfba4WbytVaxMpWjjR4TLnt4BCEv4zNyWzBhK5x1fO7w5mgTjYU7PlN13bPdurIM7CdAX",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 8,
+    "slug": "papua-barat"
+  }
+]

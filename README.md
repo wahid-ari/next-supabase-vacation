@@ -4,6 +4,13 @@ Using [drawsql](https://drawsql.app/)
 
 ![Image External](https://raw.githubusercontent.com/wahid-ari/next-supabase-vacation/master/public/database.png)
 
+## Province Data
+
+https://github.com/fityannugroho/idn-area-data/blob/main/data/provinces.csv
+https://github.com/emsifa/api-wilayah-indonesia/blob/master/data/provinces.csv
+https://ibnux.github.io/data-indonesia/provinsi.json
+https://api-pesantren-indonesia.vercel.app/provinsi.json
+
 ## Getting Started
 
 First, run the development server:
