@@ -52,10 +52,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .select(`*`)
             .eq('slug', nameSlug)
             .order('id');
-          // if slug already exist, add category.length + 1 to slug to make it unique
+          // if slug already exist, add island.length + 1 to slug to make it unique
           if (isSlugExist.length > 0) {
-            const { data: category } = await supabase.from('vacation_island').select(`id`, { count: 'exact' });
-            nameSlug = `${nameSlug}-${category.length + 1}`;
+            const { data: island } = await supabase.from('vacation_island').select(`id`, { count: 'exact' });
+            nameSlug = `${nameSlug}-${island.length + 1}`;
           }
           const { error } = await supabase.from('vacation_island').insert([
             {
@@ -69,12 +69,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           // Write logs
-          const errorLogs = await writeLogs(sessionPost.user_id, 'create', 'category');
+          const errorLogs = await writeLogs(sessionPost.user_id, 'create', 'island');
           if (errorLogs) {
             res.status(422).json({ error: error.message });
             return;
           }
-          res.status(200).json({ message: 'Success add category' });
+          res.status(200).json({ message: 'Success add island' });
         }
       }
       break;
@@ -102,12 +102,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           // Write logs
-          const errorLogs = await writeLogs(sessionPut.user_id, 'update', 'category', body.id);
+          const errorLogs = await writeLogs(sessionPut.user_id, 'update', 'island', body.id);
           if (errorLogs) {
             res.status(422).json({ error: error.message });
             return;
           }
-          res.status(201).json({ message: 'Success update category' });
+          res.status(201).json({ message: 'Success update island' });
         }
       }
       break;
@@ -126,12 +126,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           // Write logs
-          const errorLogs = await writeLogs(sessionDelete.user_id, 'delete', 'category', query.id);
+          const errorLogs = await writeLogs(sessionDelete.user_id, 'delete', 'island', query.id);
           if (errorLogs) {
             res.status(422).json({ error: error.message });
             return;
           }
-          res.status(200).json({ message: 'Success delete category' });
+          res.status(200).json({ message: 'Success delete island' });
         }
       }
       break;
