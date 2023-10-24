@@ -1,107 +1,162 @@
 [
   {
+    "id": 1,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "The Heartbeat of Toba",
     "video_url": "https://youtu.be/_IzOqfrLc0o",
-    "island_id": 6
+    "island_id": 6,
+    "province_id": 2
   },
   {
+    "id": 2,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Mandalika - Where the Waves Collide",
     "video_url": "https://youtu.be/xYTzw8mD1tg",
-    "island_id": 7
+    "island_id": 7,
+    "province_id": 18
   },
   {
+    "id": 3,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Borobudur - The Grand Temple",
     "video_url": "https://youtu.be/6w2CQUNkDZM",
-    "island_id": 1
+    "island_id": 1,
+    "province_id": 11
   },
   {
+    "id": 4,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "An exploration of the Wondrous Labuan Bajo",
     "video_url": "https://youtu.be/PUY26b2JfQY",
-    "island_id": 7
+    "island_id": 7,
+    "province_id": 16
   },
   {
+    "id": 5,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Jakarta: Indonesia National and Business Capital",
     "video_url": "https://youtu.be/xKRlchrOWNc",
-    "island_id": 1
+    "island_id": 1,
+    "province_id": 9
   },
   {
+    "id": 6,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "North Sumatra",
     "video_url": "https://youtu.be/dHJMlo43GBg",
-    "island_id": 6
+    "island_id": 6,
+    "province_id": 2
   },
   {
+    "id": 7,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "East Java",
     "video_url": "https://youtu.be/ruKqXQ2KtH4",
-    "island_id": 1
+    "island_id": 1,
+    "province_id": 13
   },
   {
+    "id": 8,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Komodo Labuan Bajo",
     "video_url": "https://youtu.be/RaTWq98hzF0",
-    "island_id": 7
+    "island_id": 7,
+    "province_id": 16
   },
   {
+    "id": 9,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Bali",
     "video_url": "https://youtu.be/qjP4QdZK7tc",
-    "island_id": 2
+    "island_id": 2,
+    "province_id": 15
   },
   {
+    "id": 10,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Tana Toraja, South Sulawesi",
     "video_url": "https://youtu.be/6x46n9viTts",
-    "island_id": 5
+    "island_id": 5,
+    "province_id": 25
   },
   {
+    "id": 11,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Kelimutu Flores",
     "video_url": "https://youtu.be/_r3UWuU6i-c",
-    "island_id": 7
+    "island_id": 7,
+    "province_id": 17
   },
   {
+    "id": 12,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Raja Ampat Papua",
     "video_url": "https://youtu.be/79qjW_1E7s8",
-    "island_id": 8
+    "island_id": 8,
+    "province_id": 32
   },
   {
+    "id": 13,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Borobudur Temple - Where History Lives Forever",
     "video_url": "https://youtu.be/N7-gniIB0Ls",
-    "island_id": 1
+    "island_id": 1,
+    "province_id": 11
   },
   {
+    "id": 14,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Lake Toba, a Majestic Wonder Among Hidden Gems",
     "video_url": "https://youtu.be/ScmgfQRsZV4",
-    "island_id": 6
+    "island_id": 6,
+    "province_id": 2
   },
   {
+    "id": 15,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Labuan Bajo, a Dream-like Harbor Full of Sensations",
     "video_url": "https://youtu.be/s17Smnsm2qA",
-    "island_id": 7
+    "island_id": 7,
+    "province_id": 16
   },
   {
+    "id": 16,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Likupang, a Piece of Heaven on the Edge of Minahasa",
     "video_url": "https://youtu.be/Cbtt4LsssHo",
-    "island_id": 5
+    "island_id": 5,
+    "province_id": 23
   },
   {
+    "id": 17,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Mandalika, Sanctuary of Thousands Wonders",
     "video_url": "https://youtu.be/0CZDLyIdKO8",
-    "island_id": 7
+    "island_id": 7,
+    "province_id": 18
   },
   {
+    "id": 18,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Borobudur Temple, a Colossal Masterpiece of the Past",
     "video_url": "https://youtu.be/ddANUC8nkyY",
-    "island_id": 1
+    "island_id": 1,
+    "province_id": 11
   },
   {
+    "id": 19,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Likupang - Escape to the New World",
     "video_url": "https://youtu.be/EQmc86tishM",
-    "island_id": 5
+    "island_id": 5,
+    "province_id": 23
   },
   {
-    "title": "The Heartbeat of Toba",
-    "video_url": "https://youtu.be/_IzOqfrLc0o",
-    "island_id": 6
-  },
-  {
+    "id": 21,
+    "created_at": "2023-10-23T12:46:34.151601+00:00",
     "title": "Experience Lake Toba: A Glimpse of Its Mesmerizing Beauty and Culture",
     "video_url": "https://youtu.be/AdhtNTpC8KQ",
-    "island_id": 6
+    "island_id": 6,
+    "province_id": 2
   }
 ]
