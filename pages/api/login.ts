@@ -60,7 +60,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
           process.env.NEXTAUTH_SECRET
         );
-        const { error: errorSession } = await supabase.from('vacation_session').insert({ user_id: data.id, token: token });
+        const { error: errorSession } = await supabase
+          .from('vacation_session')
+          .insert({ user_id: data.id, token: token });
         if (errorSession) console.error('error inserting session', errorSession);
         // const decode = jwt.verify(token, process.env.NEXTAUTH_SECRET);
         // console.log(decode)

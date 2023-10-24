@@ -23,7 +23,15 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'www.indonesia.travel', 'encrypted-tbn3.gstatic.com', 'encrypted-tbn0.gstatic.com', 'encrypted-tbn2.gstatic.com', 'encrypted-tbn1.gstatic.com', 'lh5.googleusercontent.com'],
+    domains: [
+      'images.unsplash.com',
+      'www.indonesia.travel',
+      'encrypted-tbn3.gstatic.com',
+      'encrypted-tbn0.gstatic.com',
+      'encrypted-tbn2.gstatic.com',
+      'encrypted-tbn1.gstatic.com',
+      'lh5.googleusercontent.com',
+    ],
     unoptimized: true,
   },
 };

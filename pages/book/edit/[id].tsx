@@ -140,7 +140,10 @@ export default function Book() {
   }
 
   return (
-    <Layout title={`Edit ${data ? data?.title + ' - MyVacation' : 'Book - MyVacation'}`} description='Edit Book - MyVacation'>
+    <Layout
+      title={`Edit ${data ? data?.title + ' - MyVacation' : 'Book - MyVacation'}`}
+      description='Edit Book - MyVacation'
+    >
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>Edit {data?.title}</Title> : <Title>Edit Book</Title>}
       </div>

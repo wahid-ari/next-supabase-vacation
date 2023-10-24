@@ -9,7 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      const { data } = await supabase.from('vacation_session').select(`*, vacation_user (id, username, name, type)`).order('id');
+      const { data } = await supabase
+        .from('vacation_session')
+        .select(`*, vacation_user (id, username, name, type)`)
+        .order('id');
       res.status(200).json(data);
       break;
 

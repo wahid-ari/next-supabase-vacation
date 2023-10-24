@@ -71,7 +71,10 @@ export default function Author() {
   }
 
   return (
-    <Layout title={`Edit ${data ? data?.name + ' - MyVacation' : 'Author - MyVacation'}`} description='Edit Author - MyVacation'>
+    <Layout
+      title={`Edit ${data ? data?.name + ' - MyVacation' : 'Author - MyVacation'}`}
+      description='Edit Author - MyVacation'
+    >
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>Edit {data?.name}</Title> : <Title>Edit Author</Title>}
       </div>
