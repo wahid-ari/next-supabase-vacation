@@ -1,6 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { z } from 'zod';
 
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+const schema = z.object({
+  title: z.string().min(1, { message: 'Title is required' }),
+  video_url: z.string().min(1, { message: 'Video URL is required' }),
+});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body, query } = req;
@@ -18,13 +24,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Check session
       const sessionPost = await getSessionToken(res, header, token);
       if (sessionPost) {
-        if (!body.title) {
-          res.status(422).json({ error: 'Title required' });
+        const isValid = schema.safeParse(body);
+        // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+        if (isValid.success == false) {
+          res.status(422).json({ error: isValid.error.issues });
           return;
-        } else if (!body.video_url) {
-          res.status(422).json({ error: 'Video required' });
-          return;
-        } else {
+        }
+        // if (!body.title) {
+        //   res.status(422).json({ error: 'Title required' });
+        //   return;
+        // } else if (!body.video_url) {
+        //   res.status(422).json({ error: 'Video URL required' });
+        //   return;
+        // }
+        else {
           const { error } = await supabase.from('vacation_video').insert([
             {
               title: body.title,
@@ -52,13 +65,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Check session
       const sessionPut = await getSessionToken(res, header, token);
       if (sessionPut) {
-        if (!body.title) {
-          res.status(422).json({ error: 'Title required' });
+        const isValid = schema.safeParse(body);
+        // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+        if (isValid.success == false) {
+          res.status(422).json({ error: isValid.error.issues });
           return;
-        } else if (!body.video_url) {
-          res.status(422).json({ error: 'Video required' });
-          return;
-        } else {
+        }
+        // if (!body.title) {
+        //   res.status(422).json({ error: 'Title required' });
+        //   return;
+        // } else if (!body.video_url) {
+        //   res.status(422).json({ error: 'Video URL required' });
+        //   return;
+        // }
+        else {
           const { error } = await supabase
             .from('vacation_video')
             .update({

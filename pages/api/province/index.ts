@@ -1,7 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import slug from 'slug';
+import { z } from 'zod';
 
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+const schema = z.object({
+  name: z.string().min(1, { message: 'Name is required' }),
+  image_url: z.string().min(1, { message: 'Image URL is required' }),
+});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body, query } = req;
@@ -39,13 +45,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Check session
       const sessionPost = await getSessionToken(res, header, token);
       if (sessionPost) {
-        if (!body.name) {
-          res.status(422).json({ error: 'Name required' });
+        const isValid = schema.safeParse(body);
+        // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+        if (isValid.success == false) {
+          res.status(422).json({ error: isValid.error.issues });
           return;
-        } else if (!body.image_url) {
-          res.status(422).json({ error: 'Image required' });
-          return;
-        } else {
+        }
+        // if (!body.name) {
+        //   res.status(422).json({ error: 'Name required' });
+        //   return;
+        // } else if (!body.image_url) {
+        //   res.status(422).json({ error: 'Image URL required' });
+        //   return;
+        // }
+        else {
           let nameSlug = slug(body.name);
           const { data: isSlugExist } = await supabase
             .from('vacation_province')
@@ -84,13 +97,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Check session
       const sessionPut = await getSessionToken(res, header, token);
       if (sessionPut) {
-        if (!body.name) {
-          res.status(422).json({ error: 'Name required' });
+        const isValid = schema.safeParse(body);
+        // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+        if (isValid.success == false) {
+          res.status(422).json({ error: isValid.error.issues });
           return;
-        } else if (!body.image_url) {
-          res.status(422).json({ error: 'Image required' });
-          return;
-        } else {
+        }
+        // if (!body.name) {
+        //   res.status(422).json({ error: 'Name required' });
+        //   return;
+        // } else if (!body.image_url) {
+        //   res.status(422).json({ error: 'Image URL required' });
+        //   return;
+        // }
+        else {
           const { error } = await supabase
             .from('vacation_province')
             .update({
