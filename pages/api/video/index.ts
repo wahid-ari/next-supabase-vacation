@@ -5,7 +5,9 @@ import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
 const schema = z.object({
   title: z.string().min(1, { message: 'Title is required' }),
-  video_url: z.string().min(1, { message: 'Video URL is required' }),
+  // video_url: z.string().min(1, { message: 'Video URL is required' }),
+  // TODO Docs https://zod.dev/?id=unions
+  video_url: z.string().url({ message: 'Invalid Video URL' }),
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

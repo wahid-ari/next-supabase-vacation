@@ -6,7 +6,9 @@ import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  image_url: z.string().min(1, { message: 'Image URL is required' }),
+  // image_url: z.string().min(1, { message: 'Image URL is required' }).url({ message: 'Invalid Image URL' }),
+  // TODO Docs https://zod.dev/?id=unions
+  image_url: z.string().url({ message: 'Invalid Image URL' }),
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
