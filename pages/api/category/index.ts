@@ -24,7 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return;
       } else if (query.slug && query.seo) {
         const { data } = await supabase.from('vacation_category').select(`name`).eq('slug', query.slug).single();
-        // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
         return;
