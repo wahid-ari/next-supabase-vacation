@@ -6,6 +6,7 @@ Using [drawsql](https://drawsql.app/)
 
 ## Province Data
 
+https://www.indonesia.travel/gb/en/trip-ideas/38-destinations-in-indonesia
 https://github.com/fityannugroho/idn-area-data/blob/main/data/provinces.csv
 https://github.com/emsifa/api-wilayah-indonesia/blob/master/data/provinces.csv
 https://ibnux.github.io/data-indonesia/provinsi.json
