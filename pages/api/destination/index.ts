@@ -7,8 +7,11 @@ import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
   image_url: z.string().min(1, { message: 'Image URL is required' }),
-  description: z.string().min(80, { message: 'Description is required' }),
-  content: z.string().min(100, { message: 'Content is required' }),
+  description: z.string().min(8, { message: 'Description is required' }),
+  content: z.string().min(8, { message: 'Content is required' }),
+  // FIX remove this
+  // description: z.string().min(80, { message: 'Description is required' }),
+  // content: z.string().min(100, { message: 'Content is required' }),
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -28,10 +31,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else if (query.slug && query.seo) {
         const { data } = await supabase
           .from('vacation_destination')
-          .select(`title, description`)
+          .select(`name, description`)
           .eq('slug', query.slug)
           .single();
-        // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
         return;
@@ -79,7 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           res.status(422).json({ error: isValid.error.issues });
           return;
         } else {
-          let nameSlug = slug(body.title);
+          let nameSlug = slug(body.name);
           const { data: isSlugExist } = await supabase
             .from('vacation_destination')
             .select(`*`)
@@ -117,7 +119,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           if (body.category?.length > 0) {
             // create array of category of a destination
             let category = [];
-            body.category.forEach((item: any) => {
+            body.category?.forEach((item: any) => {
               category.push({
                 destination_id: destinationId,
                 category_id: item.value,
