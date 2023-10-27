@@ -100,6 +100,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 slug: nameSlug,
                 name: body.name,
                 image_url: body.image_url,
+                header_image_url: body.header_image_url,
                 description: body.description,
                 content: body.content,
                 video_url: body.video_url,
@@ -159,6 +160,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .update({
               name: body.name,
               image_url: body.image_url,
+              header_image_url: body.header_image_url,
               description: body.description,
               content: body.content,
               video_url: body.video_url,
