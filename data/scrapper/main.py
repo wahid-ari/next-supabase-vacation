@@ -1,5 +1,5 @@
 # pip install bs4
-# py .\data\scrapper\bali.py
+# py .\data\scrapper\main.py
 import bs4
 import json
 from urllib.request import urlopen as uReq
