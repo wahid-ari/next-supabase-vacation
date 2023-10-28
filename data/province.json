@@ -254,5 +254,21 @@
     "created_at": "2023-10-24T08:41:10.41019+00:00",
     "island_id": 8,
     "slug": "papua-barat"
+  },
+  {
+    "id": 33,
+    "name": "Jambi",
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipOwoUdHZYAt8MD_SRjPhvu7GVp0iOhMpM_XK2aj=w540-h312-n-k-no",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "jambi"
+  },
+  {
+    "id": 34,
+    "name": "Bengkulu",
+    "image_url": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRBmWuQVfgNcvE3igdp7tmQR-7G_dPK_d5HbcPxBHSi1vPvLUF8K7vY1BZDDszHCk4qCIUACZdD810H6YnvoB1k-VmzXjaG",
+    "created_at": "2023-10-24T08:41:10.41019+00:00",
+    "island_id": 6,
+    "slug": "bengkulu"
   }
 ]
