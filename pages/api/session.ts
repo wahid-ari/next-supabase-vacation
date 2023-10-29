@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const sessionDelete = await getSessionToken(res, header, token);
       if (sessionDelete) {
         if (!query.id) {
+          // api/session
           const { data } = await supabase.from('vacation_session').select(`*`).order('id');
           for (const item of data) {
             const { error } = await supabase.from('vacation_session').delete().eq('id', item.id);
@@ -31,6 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           res.status(200).json({ message: 'Success delete all session' });
           return;
         } else {
+          // api/session?id=1
           const { error } = await supabase.from('vacation_session').delete().eq('id', query.id);
           if (error) {
             res.status(422).json({ error: error.message });

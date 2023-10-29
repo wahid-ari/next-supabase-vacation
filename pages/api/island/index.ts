@@ -19,6 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.id && !query.slug) {
+        // api/island
         const { data } = await supabase
           .from('vacation_island')
           .select(`*, vacation_destination (id, name, slug)`)
@@ -26,11 +27,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
+        // api/island?slug=slug&seo=true
         const { data } = await supabase.from('vacation_island').select(`name`).eq('slug', query.slug).single();
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
         return;
       } else {
+        // api/island?slug=slug
+        // api/island?id=1
         let column = query.id ? 'id' : 'slug';
         let param = query.id ? query.id : query.slug;
         const { data: island } = await supabase.from('vacation_island').select(`*`).eq(column, param).order('id');

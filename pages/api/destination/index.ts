@@ -22,6 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.id && !query.slug) {
+        // api/province
         const { data } = await supabase
           .from('vacation_destination')
           .select(
@@ -31,6 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
+        // api/province?slug=slug&seo=true
         const { data } = await supabase
           .from('vacation_destination')
           .select(`name, description`)
@@ -40,6 +42,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(data);
         return;
       } else {
+        // api/province?slug=slug
+        // api/province?id=1
         let column = query.id ? 'id' : 'slug';
         let param = query.id ? query.id : query.slug;
         const { data: categories } = await supabase.from('vacation_category').select(`*`).order('id');

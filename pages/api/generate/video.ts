@@ -8,14 +8,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      // /api/generate/video?generate=true
       if (query.generate == 'true') {
+        // /api/generate/video?generate=true
         const { data } = await supabase.from('vacation_video').insert(video);
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/video
-      else {
+      } else {
+        // /api/generate/video
         const { data } = await supabase.from('vacation_video').select(`*`).order('id');
         res.status(200).send(JSON.stringify(data, null, 2));
       }

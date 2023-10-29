@@ -19,15 +19,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.id && !query.slug) {
+        // api/destination
         const { data } = await supabase.from('vacation_category').select(`*`).order('id');
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
+        // api/destination?slug=slug&seo=true
         const { data } = await supabase.from('vacation_category').select(`name`).eq('slug', query.slug).single();
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
         return;
       } else {
+        // api/destination?slug=slug
+        // api/destination?id=1
         let column = query.id ? 'id' : 'slug';
         let param = query.id ? query.id : query.slug;
         const { data: category } = await supabase.from('vacation_category').select(`*`).eq(column, param).order('id');

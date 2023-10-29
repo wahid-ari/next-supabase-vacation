@@ -8,9 +8,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.q) {
+        // api/search
         res.status(200).json({ message: 'Query Required' });
         return;
       }
+      // api/search?q=keyword
       // TODO Docs https://supabase.com/docs/guides/database/full-text-search#search-multiple-columns
       // create function in supabase > sql editor > new query
       // create function title_isbn(book_books) returns text as $$

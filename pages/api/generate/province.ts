@@ -9,14 +9,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      // /api/generate/province?id=1
       if (query.id) {
+        // /api/generate/province?id=1
         const { data } = await supabase.from('vacation_province').select(`*`).eq('id', query.id).order('id');
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/province?generate=true
-      else if (query.generate == 'true') {
+      } else if (query.generate == 'true') {
+        // /api/generate/province?generate=true
         const province_data = [];
         for (const item of province) {
           let nameSlug = slug(item.name);
@@ -39,9 +38,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data } = await supabase.from('vacation_province').insert(province_data);
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/province
-      else {
+      } else {
+        // /api/generate/province
         const { data } = await supabase.from('vacation_province').select(`*`).order('id');
         res.status(200).send(JSON.stringify(data, null, 2));
       }

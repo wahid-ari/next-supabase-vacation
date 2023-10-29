@@ -7,16 +7,20 @@ import { supabase } from '@/libs/supabase';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, query } = req;
 
+  // Removing url
+  // for (const item of destination) {
+  //   delete item.url;
+  // }
+
   switch (method) {
     case 'GET':
-      // /api/generate/destination?id=1
       if (query.id) {
+        // /api/generate/destination?id=1
         const { data } = await supabase.from('vacation_destination').select(`*`).eq('id', query.id).order('id');
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/destination?generate=true
-      else if (query.generate == 'true') {
+      } else if (query.generate == 'true') {
+        // /api/generate/destination?generate=true
         const destination_data = [];
         for (const item of destination) {
           let nameSlug = slug(item.name);
@@ -39,9 +43,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data } = await supabase.from('vacation_destination').insert(destination_data);
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/destination
-      else {
+      } else {
+        // /api/generate/destination
         const { data } = await supabase.from('vacation_destination').select(`*`).order('id');
         res.status(200).send(JSON.stringify(data, null, 2));
       }

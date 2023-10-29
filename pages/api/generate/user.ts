@@ -29,14 +29,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      // /api/generate/user?id=1
       if (query.id) {
+        // /api/generate/user?id=1
         const { data } = await supabase.from('vacation_user').select(`*`).eq('id', query.id).order('id');
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/user?generate=true
-      else if (query.generate == 'true') {
+      } else if (query.generate == 'true') {
+        // /api/generate/user?generate=true
         const admin_data_hashed = [];
         for (const item of admin_datas) {
           let password_hashed = await hash(item.password, 8);
@@ -56,9 +55,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data } = await supabase.from('vacation_user').insert(admin_data_hashed);
         res.status(200).json(data);
         return;
-      }
-      // /api/generate/user
-      else {
+      } else {
+        // /api/generate/user
         const { data } = await supabase.from('vacation_user').select(`*`).order('id');
         res.status(200).send(JSON.stringify(data, null, 2));
       }
