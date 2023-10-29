@@ -19,7 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.id && !query.slug) {
-        const { data } = await supabase.from('vacation_province').select(`*`).order('id');
+        const { data } = await supabase
+          .from('vacation_province')
+          .select(`*, vacation_island (id, name, slug), vacation_destination (id, name, slug)`)
+          .order('id');
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
@@ -30,10 +33,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else {
         let column = query.id ? 'id' : 'slug';
         let param = query.id ? query.id : query.slug;
-        const { data: province } = await supabase.from('vacation_province').select(`*`).eq(column, param).order('id');
+        const { data: province } = await supabase
+          .from('vacation_province')
+          .select(`*, vacation_island (id, name, slug)`)
+          .eq(column, param)
+          .order('id');
         const { data: destinations } = await supabase
           .from('vacation_destination')
-          .select(`*, vacation_province (*), vacation_province (*)`)
+          .select(
+            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+          )
           .eq('province_id', province[0]?.id)
           .order('id');
         // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
