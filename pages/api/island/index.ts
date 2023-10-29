@@ -2,7 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import slug from 'slug';
 import { z } from 'zod';
 
+
+
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+
+
+
 
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
@@ -19,7 +25,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.id && !query.slug) {
-        const { data } = await supabase.from('vacation_island').select(`*`).order('id');
+        const { data } = await supabase
+          .from('vacation_island')
+          .select(`*, vacation_destination (id, name, slug)`)
+          .order('id');
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
