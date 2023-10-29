@@ -7,24 +7,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      const { data: authors } = await supabase.from('book_authors').select(`id`, { count: 'exact' });
-      const { data: books } = await supabase.from('book_books').select(`id`, { count: 'exact' });
-      const { data: genres } = await supabase.from('book_genres').select(`id`, { count: 'exact' });
+      const { data: destination } = await supabase.from('vacation_destination').select(`id`, { count: 'exact' });
+      const { data: category } = await supabase.from('vacation_category').select(`id`, { count: 'exact' });
+      const { data: island } = await supabase.from('vacation_island').select(`id`, { count: 'exact' });
+      const { data: province } = await supabase.from('vacation_province').select(`id`, { count: 'exact' });
+      const { data: video } = await supabase.from('vacation_video').select(`id`, { count: 'exact' });
 
-      // const { count: authors } = await supabase.from('book_authors').select(`*`, { count: 'exact', head: true });
-      // const { count: books } = await supabase.from('book_books').select(`*`, { count: 'exact', head: true });
-      // const { count: genres } = await supabase.from('book_genres').select(`*`, { count: 'exact', head: true });
+      // const { count: destination } = await supabase.from('vacation_destination').select(`*`, { count: 'exact', head: true });
+      // const { count: category } = await supabase.from('vacation_category').select(`*`, { count: 'exact', head: true });
+      // const { count: island } = await supabase.from('vacation_island').select(`*`, { count: 'exact', head: true });
+      // const { count: province } = await supabase.from('vacation_province').select(`*`, { count: 'exact', head: true });
+      // const { count: video } = await supabase.from('vacation_video').select(`*`, { count: 'exact', head: true });
       // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       // res.status(200).json({
-      //   authors: authors,
-      //   books: books,
-      //   genres: genres
+      //   destination: destination,
+      //   category: category,
+      //   island: island,
+      //   province: province,
+      //   video: video
       // });
       res.status(200).json({
-        authors: authors.length,
-        books: books.length,
-        genres: genres.length,
+        destination: destination.length,
+        category: category.length,
+        island: island.length,
+        province: province.length,
+        video: video.length,
       });
       break;
 
