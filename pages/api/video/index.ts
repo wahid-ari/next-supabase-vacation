@@ -1,7 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
+
+
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+
+
+
 
 const schema = z.object({
   title: z.string().min(1, { message: 'Title is required' }),
@@ -17,7 +23,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      const { data } = await supabase.from('vacation_video').select(`*`).order('id');
+      const { data } = await supabase
+        .from('vacation_video')
+        .select(`*, vacation_island (id, name, slug), vacation_province (id, name, slug)`)
+        .order('id');
       res.status(200).json(data);
       return;
       break;
