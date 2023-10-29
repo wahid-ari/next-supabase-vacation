@@ -2,7 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import slug from 'slug';
 import { z } from 'zod';
 
+
+
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+
+
+
 
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
@@ -24,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (!query.id && !query.slug) {
         const { data } = await supabase
           .from('vacation_destination')
-          .select(`*, vacation_island (*), vacation_province (*)`)
+          .select(`id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`)
           .order('id');
         res.status(200).json(data);
         return;
@@ -43,7 +49,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data: categories } = await supabase.from('vacation_category').select(`*`).order('id');
         const { data: destination } = await supabase
           .from('vacation_destination')
-          .select(`*, vacation_island (*), vacation_province (*)`)
+          .select(
+            `id, name, slug, image_url, description, video_url, location, content, header_image_url, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+          )
           .eq(column, param)
           .order('id');
         let destinationId = destination[0].id;
