@@ -1,13 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
-
-
 import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
-
-
-
-
 
 const schema = z.object({
   title: z.string().min(1, { message: 'Title is required' }),

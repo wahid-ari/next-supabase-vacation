@@ -7,16 +7,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      const { data: books } = await supabase
-        .from('book_books')
-        .select(`title, description, slug, created_at`)
+      const { data: destination } = await supabase
+        .from('vacation_destination')
+        .select(`name, description, slug, created_at`)
         .order('id');
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
-      res.status(200).json({ books });
+      res.status(200).json({ destination });
       break;
 
     default:
-      res.status(200).json('Method required');
-      break;
+      res.setHeader('Allow', ['GET']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
