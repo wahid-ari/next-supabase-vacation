@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import category from '@/data/category.json';
 import slug from 'slug';
 
+import category from '@/data/category.json';
 import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import video from '@/data/video.json';
 
+import video from '@/data/video.json';
 import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

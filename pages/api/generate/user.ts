@@ -1,28 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { compare, hash } from 'bcryptjs';
 
+import user from '@/data/user.json';
 import { supabase } from '@/libs/supabase';
-
-const admin_datas = [
-  {
-    name: 'Admin',
-    username: 'admin',
-    password: '',
-    type: 'admin',
-  },
-  {
-    name: 'Develop',
-    username: 'develop',
-    password: '',
-    type: 'admin',
-  },
-  {
-    name: 'User',
-    username: 'user',
-    password: '',
-    type: 'user',
-  },
-];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, query } = req;
@@ -37,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else if (query.generate == 'true') {
         // /api/generate/user?generate=true
         const admin_data_hashed = [];
-        for (const item of admin_datas) {
+        for (const item of user) {
           let password_hashed = await hash(item.password, 8);
           admin_data_hashed.push({
             ...item,

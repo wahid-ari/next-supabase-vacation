@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import destination from '@/data/destination.json';
 import slug from 'slug';
 
+import destination from '@/data/destination.json';
 import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

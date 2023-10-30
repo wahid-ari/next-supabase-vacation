@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import province from '@/data/province.json';
 import slug from 'slug';
 
+import province from '@/data/province.json';
 import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
