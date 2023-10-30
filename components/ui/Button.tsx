@@ -10,6 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-sky-600 shadow hover:bg-sky-700 text-white focus-visible:ring-sky-400',
+        success: 'bg-emerald-600 shadow hover:bg-emerald-700 text-white focus-visible:ring-emerald-400',
         destructive: 'bg-red-600 text-white shadow-sm hover:bg-red-700 focus-visible:ring-red-400',
         outline:
           'border dark:border-neutral-700 shadow-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:ring-sky-500',
