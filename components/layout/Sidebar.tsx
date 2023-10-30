@@ -112,6 +112,10 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Genre
           </NavLink>
 
+          <NavLink href='/category' icon={<LayoutListIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Category
+          </NavLink>
+
           <NavAccordion
             title='Activity'
             routeName='activity'
