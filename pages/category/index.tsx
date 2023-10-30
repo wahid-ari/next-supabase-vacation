@@ -29,11 +29,9 @@ import Title from '@/components/systems/Title';
 
 export default function Category() {
   const { data, error } = useCategoriesData();
-  console.log(data);
-  const { updateToast, pushToast } = useToast();
+  const { pushToast, updateToast, dismissToast } = useToast();
   const [openDialog, setOpenDialog] = useState({ create: false, edit: false, delete: false });
   const [item, setItem] = useState({ id: null, name: '', image_url: '' });
-  console.log(item);
   const [inputDebounceValue, setInputDebounceValue] = useState('');
 
   const filteredData =
@@ -49,7 +47,10 @@ export default function Category() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`, { name: item.name });
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`, {
+        name: item.name,
+        image_url: item.image_url,
+      });
       if (res.status == 200) {
         setOpenDialog((prev) => ({ ...prev, create: false }));
         setItem({ id: null, name: '', image_url: '' });
@@ -58,7 +59,16 @@ export default function Category() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      const errors = [...error?.response?.data?.error].reverse();
+      // show all error
+      dismissToast();
+      errors.forEach((item: any) => {
+        pushToast({ message: item?.message, isError: true });
+      });
+      // only show one error
+      // errors.map((item: any) => {
+      //   updateToast({ toastId, message: item?.message, isError: true });
+      // })
     }
   }
 
@@ -77,7 +87,16 @@ export default function Category() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      const errors = [...error?.response?.data?.error].reverse();
+      // show all error
+      dismissToast();
+      errors.forEach((item: any) => {
+        pushToast({ message: item?.message, isError: true });
+      });
+      // only show one error
+      // errors.map((item: any) => {
+      //   updateToast({ toastId, message: item?.message, isError: true });
+      // })
     }
   }
 
