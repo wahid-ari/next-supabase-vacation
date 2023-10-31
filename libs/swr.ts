@@ -69,6 +69,11 @@ export function useGenresData() {
   return { data, error, isLoading };
 }
 
+export function useIslandsData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/island`, fetcher, { refreshInterval: 1000 });
+  return { data, error, isLoading };
+}
+
 export function useCategoriesData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/category`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
@@ -86,6 +91,15 @@ export function useGenreData(id: string, slug?: boolean) {
 export function useCategoryData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/category?slug=${slug}` : `${API_URL}/category?id=${id}`,
+    fetcher,
+    { refreshInterval: 1000 }
+  );
+  return { data, error, isLoading };
+}
+
+export function useIslandData(id: string, slug?: boolean) {
+  const { data, error, isLoading } = useSWR(
+    slug ? `${API_URL}/island?slug=${slug}` : `${API_URL}/island?id=${id}`,
     fetcher,
     { refreshInterval: 1000 }
   );
