@@ -15,11 +15,15 @@ import {
   ListTodoIcon,
   ListTreeIcon,
   LogOutIcon,
+  MapPinIcon,
+  MountainSnowIcon,
+  PalmtreeIcon,
   SearchIcon,
   SettingsIcon,
   SheetIcon,
   UsersIcon,
   XIcon,
+  YoutubeIcon,
 } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
@@ -114,6 +118,22 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
           <NavLink href='/category' icon={<LayoutListIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Category
+          </NavLink>
+
+          <NavLink href='/island' icon={<PalmtreeIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Island
+          </NavLink>
+
+          <NavLink href='/province' icon={<MapPinIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Province
+          </NavLink>
+
+          <NavLink href='/destination' icon={<MountainSnowIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Destination
+          </NavLink>
+
+          <NavLink href='/video' icon={<YoutubeIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Video
           </NavLink>
 
           <NavAccordion
