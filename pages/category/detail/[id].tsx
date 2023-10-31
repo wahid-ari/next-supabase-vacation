@@ -5,7 +5,7 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
-import { useGenreData } from '@/libs/swr';
+import { useCategoryData } from '@/libs/swr';
 import { useDebounce } from '@/hooks/use-debounce';
 
 import Layout from '@/components/layout/Layout';
@@ -15,12 +15,12 @@ import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-// Genre.auth = true;
+// Category.auth = true;
 
-export default function Genre() {
+export default function Category() {
   const router = useRouter();
   const id = router.query?.id as string;
-  const { data, error } = useGenreData(id);
+  const { data, error } = useCategoryData(id);
   const [inputDebounce, setInputDebounce] = useState('');
   const debouncedValue = useDebounce(inputDebounce, 500);
 
@@ -97,7 +97,7 @@ export default function Genre() {
 
   if (error) {
     return (
-      <Layout title='Genre Detail - MyVacation'>
+      <Layout title='Category Detail - MyVacation'>
         <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
@@ -105,15 +105,15 @@ export default function Genre() {
 
   return (
     <Layout
-      title={`${data ? data?.name + ' Books - MyVacation' : 'Genre Detail - MyVacation'}`}
-      description='View Detail Genre - MyVacation'
+      title={`${data ? data?.name + ' - MyVacation' : 'Category Detail - MyVacation'}`}
+      description='View Detail Category - MyVacation'
     >
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        {data ? <Title>{data?.name} Books</Title> : <Title>Genre Detail</Title>}
+        {data ? <Title>{data?.name} Destination</Title> : <Title>Category Detail</Title>}
       </div>
 
       {data ? (
-        data?.books_by_genres?.length > 0 ? (
+        data?.destination_by_category?.length > 0 ? (
           <>
             <LabeledInput
               label='Search Data'
@@ -125,11 +125,11 @@ export default function Genre() {
                 setInputDebounce(e.target.value);
               }}
             />
-            <ReactTable columns={column} data={data.books_by_genres} ref={tableInstance} page_size={20} />
+            <ReactTable columns={column} data={data.destination_by_category} ref={tableInstance} page_size={20} />
           </>
         ) : (
           <div className='rounded border border-red-500 p-3'>
-            <p className='text-red-500'>No Book in Genre {data?.name} </p>
+            <p className='text-red-500'>No Destination in Category {data?.name} </p>
           </div>
         )
       ) : (
