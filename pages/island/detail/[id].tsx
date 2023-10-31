@@ -135,7 +135,7 @@ export default function Island() {
           </>
         ) : (
           <div className='rounded border border-red-500 p-3'>
-            <p className='text-red-500'>No Destination in Island {data?.name} </p>
+            <p className='text-red-500'>No Destination in {data?.name} Island</p>
           </div>
         )
       ) : (
@@ -149,12 +149,17 @@ export default function Island() {
                 </TableSimple.th>
                 <TableSimple.th className='text-left'>
                   <div className='flex gap-1 items-center'>
-                    Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                    Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
-                <TableSimple.th className='sm:w-48 md:w-64 lg:w-80'>
+                <TableSimple.th className='sm:w-32 md:w-72 lg:w-80'>
                   <div className='flex gap-1 items-center'>
-                    Author
+                    Location <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  </div>
+                </TableSimple.th>
+                <TableSimple.th className='sm:w-32 md:w-40 lg:w-52'>
+                  <div className='flex gap-1 items-center'>
+                    Province
                     <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
@@ -164,6 +169,9 @@ export default function Island() {
             {[...Array(5).keys()].map((e, index) => (
               <TableSimple.tr key={index}>
                 <TableSimple.td shrink>
+                  <Shimmer className='p-3' />
+                </TableSimple.td>
+                <TableSimple.td>
                   <Shimmer className='p-3' />
                 </TableSimple.td>
                 <TableSimple.td>

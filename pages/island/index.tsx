@@ -291,6 +291,7 @@ export default function Island() {
             <>
               <TableSimple.td shrink>No</TableSimple.td>
               <TableSimple.td>Name</TableSimple.td>
+              <TableSimple.td className='w-32 text-center'>Destination</TableSimple.td>
               <TableSimple.td shrink>Action</TableSimple.td>
             </>
           }
@@ -307,6 +308,7 @@ export default function Island() {
                     {item.name}
                   </Link>
                 </TableSimple.td>
+                <TableSimple.td className='text-center'>{item?.vacation_destination?.length}</TableSimple.td>
                 <TableSimple.td>
                   <Button
                     title={`Edit ${item.name}`}
@@ -336,6 +338,7 @@ export default function Island() {
             <>
               <TableSimple.th shrink>No</TableSimple.th>
               <TableSimple.th className='text-left'>Name</TableSimple.th>
+              <TableSimple.th className='w-32 text-center'>Destination</TableSimple.th>
               <TableSimple.th className='w-24 text-left'>Action</TableSimple.th>
             </>
           }
@@ -347,6 +350,9 @@ export default function Island() {
               </TableSimple.td>
               <TableSimple.td>
                 <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3 w-8 mx-auto' />
               </TableSimple.td>
               <TableSimple.td className='flex justify-end gap-2'>
                 <Shimmer className='p-3 w-8' />
