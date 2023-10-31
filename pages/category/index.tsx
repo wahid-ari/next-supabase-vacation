@@ -17,10 +17,10 @@ import {
   DialogTitle,
 } from '@/components/ui/Dialog';
 import { Input } from '@/components/ui/Input';
+import { InputDebounce } from '@/components/ui/InputDebounce';
 import { Label } from '@/components/ui/Label';
 
 import Layout from '@/components/layout/Layout';
-import InputDebounce from '@/components/systems/InputDebounce';
 import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
@@ -162,13 +162,14 @@ export default function Category() {
         </Button>
       </div>
 
+      <Label htmlFor='inputdebounce'>Search</Label>
       <InputDebounce
-        label='Search'
         id='inputdebounce'
         name='inputdebounce'
         placeholder='Search'
         value={inputDebounceValue}
         onChange={(value) => setInputDebounceValue(value)}
+        className='mt-2 mb-4'
       />
 
       {/* Create Dialog */}
@@ -176,13 +177,11 @@ export default function Category() {
         <DialogContent className='sm:max-w-[425px]'>
           <DialogHeader>
             <DialogTitle>Create New Category</DialogTitle>
-            <DialogDescription>
-              Create new category here. Make changes to your profile here. Click save when you done.
-            </DialogDescription>
+            <DialogDescription>Create new category here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='name' className='text-right'>
+            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='name' className='sm:text-right leading-5'>
                 Name
               </Label>
               <Input
@@ -191,12 +190,12 @@ export default function Category() {
                 name='name'
                 value={item.name}
                 onChange={(e) => setItem((prev) => ({ ...prev, name: e.target.value }))}
-                placeholder='Category Name'
-                className='col-span-3'
+                placeholder='Beach'
+                className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='image-url' className='text-right'>
+            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='image-url' className='sm:text-right leading-5'>
                 Image URL
               </Label>
               <Input
@@ -205,8 +204,8 @@ export default function Category() {
                 name='Image URL'
                 value={item.image_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, image_url: e.target.value }))}
-                placeholder='Image URL'
-                className='col-span-3'
+                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                className='sm:col-span-3'
               />
             </div>
           </div>
@@ -229,8 +228,8 @@ export default function Category() {
             <DialogDescription>Make changes to category here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='name' className='text-right'>
+            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='name' className='sm:text-right leading-5'>
                 Name
               </Label>
               <Input
@@ -239,12 +238,12 @@ export default function Category() {
                 name='Name'
                 value={item.name}
                 onChange={(e) => setItem((prev) => ({ ...prev, name: e.target.value }))}
-                placeholder='Category Name'
-                className='col-span-3'
+                placeholder='Beach'
+                className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='image-url' className='text-right'>
+            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='image-url' className='sm:text-right leading-5'>
                 Image URL
               </Label>
               <Input
@@ -253,8 +252,8 @@ export default function Category() {
                 name='Image URL'
                 value={item.image_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, image_url: e.target.value }))}
-                placeholder='Image URL'
-                className='col-span-3'
+                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                className='sm:col-span-3'
               />
             </div>
           </div>
@@ -274,6 +273,7 @@ export default function Category() {
         <DialogContent className='sm:max-w-[425px]'>
           <DialogHeader>
             <DialogTitle>Delete Category</DialogTitle>
+            <DialogDescription>Delete category here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='py-4 text-center sm:text-left'>
             Are you sure want to delete <span className='font-semibold'>{item.name}</span> ?
