@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     case 'GET':
       const { data } = await supabase
         .from('vacation_video')
-        .select(`*, vacation_island (id, name, slug), vacation_province (id, name, slug)`)
+        .select(`id, title, video_url, vacation_island (id, name, slug), vacation_province (id, name, slug)`)
         .order('id');
       res.status(200).json(data);
       return;

@@ -79,6 +79,11 @@ export function useCategoriesData() {
   return { data, error, isLoading };
 }
 
+export function useProvincesData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/province`, fetcher, { refreshInterval: 1000 });
+  return { data, error, isLoading };
+}
+
 export function useGenreData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/genre?slug=${slug}` : `${API_URL}/genre?id=${id}`,
@@ -100,6 +105,15 @@ export function useCategoryData(id: string, slug?: boolean) {
 export function useIslandData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/island?slug=${slug}` : `${API_URL}/island?id=${id}`,
+    fetcher,
+    { refreshInterval: 1000 }
+  );
+  return { data, error, isLoading };
+}
+
+export function useProvinceData(id: string, slug?: boolean) {
+  const { data, error, isLoading } = useSWR(
+    slug ? `${API_URL}/province?slug=${slug}` : `${API_URL}/province?id=${id}`,
     fetcher,
     { refreshInterval: 1000 }
   );

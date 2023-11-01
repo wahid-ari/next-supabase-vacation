@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // api/province
         const { data } = await supabase
           .from('vacation_province')
-          .select(`*, vacation_island (id, name, slug), vacation_destination (id, name, slug)`)
+          .select(`id, slug, name, image_url, vacation_island (id, name, slug), vacation_destination (id, name, slug)`)
           .order('id');
         res.status(200).json(data);
         return;
@@ -44,9 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .order('id');
         const { data: destinations } = await supabase
           .from('vacation_destination')
-          .select(
-            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`
-          )
+          .select(`id, name, slug, image_url, description, location`)
           .eq('province_id', province[0]?.id)
           .order('id');
         // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
