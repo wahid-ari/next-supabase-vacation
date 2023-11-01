@@ -1,43 +1,29 @@
-import { useEffect, useState } from 'react';
-import {
-  ArcElement,
-  BarElement,
-  CategoryScale,
-  Chart as ChartJS,
-  Filler,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-} from 'chart.js';
-import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
+import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, YoutubeIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 import {
+  Bar,
   BarChart,
-  Bar as BarRecharts,
-  CartesianGrid,
+  // CartesianGrid,
   Cell,
-  Legend as LegendRecharts,
+  Legend,
+  Pie,
   PieChart,
-  Pie as PieRecharts,
   ResponsiveContainer,
-  Tooltip as TooltipRecharts,
+  Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
 
 import {
-  useBookByAuthorData,
-  useBookByGenreData,
-  useCountsData,
-  useTotalAuthorsData,
-  useTotalBooksData,
-  useTotalGenresData,
+  // useCountsData,
+  useDestinationByIslandData,
+  useDestinationByProvinceData,
+  useTotalCategoryData,
+  useTotalDestinationData,
+  useTotalIslandData,
+  useTotalProvinceData,
+  useTotalVideoData,
 } from '@/libs/swr';
-import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chart-setup';
 import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/utils/recharts-setup';
 import useWindowSize from '@/hooks/use-window-size';
 
@@ -47,46 +33,29 @@ import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Titles from '@/components/systems/Title';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  ArcElement,
-  Tooltip,
-  Filler,
-  Legend
-);
-
 // Dashboard.auth = true;
 
 export default function Dashboard() {
   const { theme } = useTheme();
   const windowSize = useWindowSize();
   // const { data, error } = useCountsData();
-  const { data: totalAuthors, error: errorTotalAuthors } = useTotalAuthorsData();
-  const { data: totalBooks, error: errorTotalBooks } = useTotalBooksData();
-  const { data: totalGenres, error: errorTotalGenres } = useTotalGenresData();
-  const { data: bookByGenre, error: errorBookByGenre } = useBookByGenreData();
-  const { data: bookByAuthor, error: errorBookByAuthor } = useBookByAuthorData();
-
-  const [dataBookByGenre, setDataBookByGenre] = useState(null);
-  const [dataBookByAuthor, setDataBookByAuthor] = useState(null);
-
-  useEffect(() => {
-    if (bookByGenre !== undefined) setDataBookByGenre(populateData(bookByGenre, 'book'));
-    if (bookByAuthor !== undefined) setDataBookByAuthor(populateData(bookByAuthor, 'book'));
-  }, [bookByGenre, bookByAuthor]);
+  const { data: totalDestination, error: errorTotalDestination } = useTotalDestinationData();
+  const { data: totalCategory, error: errorTotalCategory } = useTotalCategoryData();
+  const { data: totalIsland, error: errorTotalIsland } = useTotalIslandData();
+  const { data: totalProvince, error: errorTotalProvince } = useTotalProvinceData();
+  const { data: totalVideo, error: errorTotalVideo } = useTotalVideoData();
+  const { data: destinationByIsland, error: errorDestinationByIsland } = useDestinationByIslandData();
+  const { data: destinationByProvince, error: errorDestinationByProvince } = useDestinationByProvinceData();
 
   if (
     // error ||
-    errorTotalAuthors ||
-    errorTotalBooks ||
-    errorTotalGenres ||
-    errorBookByAuthor ||
-    errorBookByGenre
+    errorTotalDestination ||
+    errorTotalCategory ||
+    errorTotalIsland ||
+    errorTotalProvince ||
+    errorTotalVideo ||
+    errorDestinationByIsland ||
+    errorDestinationByProvince
   ) {
     return (
       <Layout title='Dashboard - MyVacation'>
@@ -99,9 +68,11 @@ export default function Dashboard() {
     <Layout
       title='Dashboard - MyVacation'
       prefetch={[
-        '/api/dashboard/total-authors',
-        '/api/dashboard/total-books',
-        '/api/dashboard/total-genres',
+        '/api/dashboard/total-destination',
+        '/api/dashboard/total-category',
+        '/api/dashboard/total-island',
+        '/api/dashboard/total-province',
+        '/api/dashboard/total-video',
         '/api/statistics/book-by-author',
         '/api/statistics/book-by-genre',
       ]}
@@ -109,14 +80,14 @@ export default function Dashboard() {
     >
       <Titles>Dashboard</Titles>
 
-      <div className='mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3'>
-        {totalAuthors ? (
+      <div className='mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-5'>
+        {totalDestination ? (
           <Card
-            title='Author'
-            link='/author'
-            count={totalAuthors.authors}
-            icon={<UsersIcon className='h-12 w-12' />}
-            data-testid='author-count'
+            title='Destination'
+            link='/destination'
+            count={totalDestination.destination}
+            icon={<MountainSnowIcon className='h-12 w-12' />}
+            data-testid='destination-count'
           />
         ) : (
           <Shimmer>
@@ -126,29 +97,61 @@ export default function Dashboard() {
             </div>
           </Shimmer>
         )}
-        {totalBooks ? (
+        {totalCategory ? (
           <Card
-            title='Book'
-            link='/book'
-            count={totalBooks.books}
-            icon={<BookIcon className='h-12 w-12' />}
-            data-testid='book-count'
-          />
-        ) : (
-          <Shimmer>
-            <div className='space-y-3'>
-              <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-            </div>
-          </Shimmer>
-        )}
-        {totalGenres ? (
-          <Card
-            title='Genre'
-            link='/genre'
-            count={totalGenres.genres}
+            title='Category'
+            link='/category'
+            count={totalCategory.category}
             icon={<LayoutListIcon className='h-12 w-12' />}
-            data-testid='genre-count'
+            data-testid='category-count'
+          />
+        ) : (
+          <Shimmer>
+            <div className='space-y-3'>
+              <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </Shimmer>
+        )}
+        {totalIsland ? (
+          <Card
+            title='Island'
+            link='/island'
+            count={totalIsland.island}
+            icon={<PalmtreeIcon className='h-12 w-12' />}
+            data-testid='island-count'
+          />
+        ) : (
+          <Shimmer>
+            <div className='space-y-3'>
+              <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </Shimmer>
+        )}
+        {totalProvince ? (
+          <Card
+            title='Province'
+            link='/province'
+            count={totalProvince.province}
+            icon={<MapPinIcon className='h-12 w-12' />}
+            data-testid='province-count'
+          />
+        ) : (
+          <Shimmer>
+            <div className='space-y-3'>
+              <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </Shimmer>
+        )}
+        {totalVideo ? (
+          <Card
+            title='Video'
+            link='/video'
+            count={totalVideo.video}
+            icon={<YoutubeIcon className='h-12 w-12' />}
+            data-testid='video-count'
           />
         ) : (
           <Shimmer>
@@ -182,15 +185,15 @@ export default function Dashboard() {
       <div className='mt-5 grid grid-cols-1 gap-5'>
         <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
           <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-            <Text.medium>Total Book by Genre (Recharts)</Text.medium>
+            <Text.medium>Total Destination by Province</Text.medium>
           </div>
-          {bookByGenre ? (
+          {destinationByProvince ? (
             <div className='m-auto w-80 py-3'>
               <ResponsiveContainer width='100%' height={350}>
-                <PieChart data={bookByGenre}>
-                  <PieRecharts
+                <PieChart data={destinationByProvince}>
+                  <Pie
                     className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
-                    data={bookByGenre}
+                    data={destinationByProvince}
                     dataKey='total'
                     type='monotone'
                     strokeWidth={2}
@@ -204,12 +207,12 @@ export default function Dashboard() {
                     labelLine={true}
                     paddingAngle={1}
                   >
-                    {bookByGenre?.map((_, index) => (
+                    {destinationByProvince?.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
                     ))}
-                  </PieRecharts>
-                  <TooltipRecharts
-                    content={<CustomTooltip category='Genre' />}
+                  </Pie>
+                  <Tooltip
+                    content={<CustomTooltip category='Province' />}
                     cursor={{
                       stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
                       strokeWidth: 1,
@@ -217,7 +220,7 @@ export default function Dashboard() {
                       strokeDasharray: 10,
                     }}
                   />
-                  <LegendRecharts formatter={renderColorfulLegendText} />
+                  <Legend formatter={renderColorfulLegendText} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -243,13 +246,13 @@ export default function Dashboard() {
 
         <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
           <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-            <Text.medium>Total Book by Author (Recharts)</Text.medium>
+            <Text.medium>Total Destination by Island</Text.medium>
           </div>
           <div className='m-auto p-3'>
-            {bookByAuthor ? (
+            {destinationByIsland ? (
               <ResponsiveContainer width='100%' height={350}>
                 <BarChart
-                  data={bookByAuthor}
+                  data={destinationByIsland}
                   barCategoryGap={
                     windowSize.width > 1200 ? 20 : windowSize.width > 900 ? 15 : windowSize.width > 600 ? 10 : 5
                   }
@@ -272,13 +275,13 @@ export default function Dashboard() {
                     axisLine={false}
                     tickFormatter={(value) => `${value}`}
                   />
-                  <BarRecharts dataKey='total' fill='#adfa1d' radius={[4, 4, 0, 0]}>
-                    {bookByAuthor?.map((_, index) => (
+                  <Bar dataKey='total' fill='#adfa1d' radius={[4, 4, 0, 0]}>
+                    {destinationByIsland?.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
                     ))}
-                  </BarRecharts>
-                  <TooltipRecharts
-                    content={<CustomTooltip category='Author' />}
+                  </Bar>
+                  <Tooltip
+                    content={<CustomTooltip category='Island' />}
                     cursor={{
                       stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
                       strokeWidth: 1,
@@ -307,38 +310,6 @@ export default function Dashboard() {
             )}
           </div>
         </div>
-
-        {dataBookByGenre ? (
-          <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
-            <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-              <Text.medium>Total Book by Genre</Text.medium>
-            </div>
-            <div className='m-auto w-72 sm:w-80 py-3'>
-              <Pie options={options} data={dataBookByGenre} />
-            </div>
-          </div>
-        ) : (
-          <Shimmer className='!h-[400px] w-full' />
-        )}
-
-        {dataBookByAuthor ? (
-          <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
-            <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-              <Text.medium>Total Book by Author</Text.medium>
-            </div>
-            <div className='p-3'>
-              <Bar
-                options={optionsBarChart(theme)}
-                data={dataBookByAuthor}
-                height={
-                  windowSize.width > 800 ? 100 : windowSize.width > 640 ? 150 : windowSize.width > 480 ? 250 : 350
-                }
-              />
-            </div>
-          </div>
-        ) : (
-          <Shimmer className='!h-[400px] w-full' />
-        )}
       </div>
     </Layout>
   );

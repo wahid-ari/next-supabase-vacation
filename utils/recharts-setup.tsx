@@ -33,7 +33,7 @@ export function CustomTooltip({
     return (
       <div className='rounded bg-white/80 p-3 shadow backdrop-blur-sm dark:bg-neutral-900/80'>
         <p className='mb-2 font-medium'>{`${category} : ${label || payload[0].payload.label}`}</p>
-        <p className='font-medium'>{`Total Book : ${payload[0].value}`}</p>
+        <p className='font-medium'>{`Total Destination : ${payload[0].value}`}</p>
       </div>
     );
   }
@@ -48,14 +48,14 @@ export function CustomXAxisTick({ x, y, payload }: any) {
       <text
         x={0}
         y={0}
-        dy={16}
+        dy={10}
         textAnchor='end'
         fill={theme == 'light' ? '#525252' : '#a3a3a3'}
         color={theme == 'light' ? '#525252' : '#a3a3a3'}
         fontSize={windowSize.width > 550 ? 13 : 12}
         transform='rotate(-35)'
       >
-        {payload.value.split(' ')[payload.value.split(' ').length - 1]}
+        {payload.value}
       </text>
     </g>
   );
