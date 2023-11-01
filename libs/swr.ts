@@ -10,21 +10,35 @@ export function useCountsData() {
   return { data, error, isLoading };
 }
 
-// get total books record count for dashboard
-export function useTotalBooksData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-books`, fetcher, { refreshInterval: 1000 });
+// get total destination record count for dashboard
+export function useTotalDestinationData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-destination`, fetcher, {
+    refreshInterval: 1000,
+  });
   return { data, error, isLoading };
 }
 
-// get total authors record count for dashboard
-export function useTotalAuthorsData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-authors`, fetcher, { refreshInterval: 1000 });
+// get total category record count for dashboard
+export function useTotalCategoryData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-category`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
-// get total genres record count for dashboard
-export function useTotalGenresData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-genres`, fetcher, { refreshInterval: 1000 });
+// get total island record count for dashboard
+export function useTotalIslandData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-island`, fetcher, { refreshInterval: 1000 });
+  return { data, error, isLoading };
+}
+
+// get total province record count for dashboard
+export function useTotalProvinceData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-province`, fetcher, { refreshInterval: 1000 });
+  return { data, error, isLoading };
+}
+
+// get total video record count for dashboard
+export function useTotalVideoData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-video`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -44,52 +58,54 @@ export function useBookData(id: string, slug?: string) {
   return { data, error, isLoading };
 }
 
-export function useAuthorsData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/author`, fetcher, { refreshInterval: 1000 });
+// Destination
+export function useDestinationsData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/destination`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
-export function useAuthorData(id: string, slug?: string) {
+export function useDestinationData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
-    slug ? `${API_URL}/author?slug=${slug}` : `${API_URL}/author?id=${id}`,
+    slug ? `${API_URL}/destination?slug=${slug}` : `${API_URL}/destination?id=${id}`,
     fetcher,
     { refreshInterval: 1000 }
   );
   return { data, error, isLoading };
 }
 
-// get total Book and Quote from each Author
-export function useAuthorTotalBookQuoteData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/author/total-book-quote`, fetcher, { refreshInterval: 1000 });
+// Video
+export function useVideosData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/video`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
-export function useGenresData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/genre`, fetcher, { refreshInterval: 1000 });
+export function useVideoData(id: string, slug?: boolean) {
+  const { data, error, isLoading } = useSWR(
+    slug ? `${API_URL}/video?slug=${slug}` : `${API_URL}/video?id=${id}`,
+    fetcher,
+    { refreshInterval: 1000 }
+  );
   return { data, error, isLoading };
 }
 
+// Island
 export function useIslandsData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/island`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
-export function useCategoriesData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/category`, fetcher, { refreshInterval: 1000 });
-  return { data, error, isLoading };
-}
-
-export function useProvincesData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/province`, fetcher, { refreshInterval: 1000 });
-  return { data, error, isLoading };
-}
-
-export function useGenreData(id: string, slug?: boolean) {
+export function useIslandData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
-    slug ? `${API_URL}/genre?slug=${slug}` : `${API_URL}/genre?id=${id}`,
+    slug ? `${API_URL}/island?slug=${slug}` : `${API_URL}/island?id=${id}`,
     fetcher,
     { refreshInterval: 1000 }
   );
+  return { data, error, isLoading };
+}
+
+// Category
+export function useCategoriesData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/category`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -102,12 +118,9 @@ export function useCategoryData(id: string, slug?: boolean) {
   return { data, error, isLoading };
 }
 
-export function useIslandData(id: string, slug?: boolean) {
-  const { data, error, isLoading } = useSWR(
-    slug ? `${API_URL}/island?slug=${slug}` : `${API_URL}/island?id=${id}`,
-    fetcher,
-    { refreshInterval: 1000 }
-  );
+// Province
+export function useProvincesData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/province`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -126,22 +139,35 @@ export function useGenreTotalBookData() {
   return { data, error, isLoading };
 }
 
+// Search
 export function useSearchData(query: string | string[]) {
   const { data, error, isLoading } = useSWR(`${API_URL}/search?q=${query}`, fetcher);
   return { data, error, isLoading };
 }
 
 // Statistic
-export function useBookByAuthorData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/book-by-author`, fetcher, { refreshInterval: 1000 });
+export function useDestinationByCategoryData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/destination-by-category`, fetcher, {
+    refreshInterval: 1000,
+  });
   return { data, error, isLoading };
 }
 
-export function useBookByGenreData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/book-by-genre`, fetcher, { refreshInterval: 1000 });
+export function useDestinationByIslandData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/destination-by-island`, fetcher, {
+    refreshInterval: 1000,
+  });
   return { data, error, isLoading };
 }
 
+export function useDestinationByProvinceData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/destination-by-province`, fetcher, {
+    refreshInterval: 1000,
+  });
+  return { data, error, isLoading };
+}
+
+// Activity
 export function useLogsData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/log`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
