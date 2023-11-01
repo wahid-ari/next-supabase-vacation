@@ -22,7 +22,7 @@ export default function Category() {
   const id = router.query?.id as string;
   const { data, error } = useCategoryData(id);
   const [inputDebounce, setInputDebounce] = useState('');
-  const debouncedValue = useDebounce(inputDebounce, 500);
+  const debouncedValue = useDebounce(inputDebounce);
 
   const column = useMemo(
     () => [

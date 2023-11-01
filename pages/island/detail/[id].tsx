@@ -8,6 +8,9 @@ import { twMerge } from 'tailwind-merge';
 import { useIslandData } from '@/libs/swr';
 import { useDebounce } from '@/hooks/use-debounce';
 
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+
 import Layout from '@/components/layout/Layout';
 import LabeledInput from '@/components/systems/LabeledInput';
 import ReactTable from '@/components/systems/ReactTable';
@@ -21,9 +24,8 @@ export default function Island() {
   const router = useRouter();
   const id = router.query?.id as string;
   const { data, error } = useIslandData(id);
-  console.log(data);
   const [inputDebounce, setInputDebounce] = useState('');
-  const debouncedValue = useDebounce(inputDebounce, 500);
+  const debouncedValue = useDebounce(inputDebounce);
 
   const column = useMemo(
     () => [
@@ -121,16 +123,18 @@ export default function Island() {
       {data ? (
         data?.destinations?.length > 0 ? (
           <>
-            <LabeledInput
-              label='Search Data'
-              id='caridata'
-              name='caridata'
-              placeholder='Keyword'
+            <Label htmlFor='search'>Search</Label>
+            <Input
+              id='search'
+              name='search'
+              placeholder='Search'
               value={inputDebounce}
               onChange={(e) => {
                 setInputDebounce(e.target.value);
               }}
+              className='mt-2 mb-4'
             />
+
             <ReactTable columns={column} data={data?.destinations} ref={tableInstance} page_size={20} />
           </>
         ) : (
@@ -147,17 +151,17 @@ export default function Island() {
                 <TableSimple.th className='flex gap-1 items-center'>
                   No <ChevronUpIcon className='w-4 h-4 opacity-50' />
                 </TableSimple.th>
-                <TableSimple.th className='text-left'>
+                <TableSimple.th className='text-left sm:w-[40%] md:w-[45%]'>
                   <div className='flex gap-1 items-center'>
                     Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
-                <TableSimple.th className='sm:w-32 md:w-72 lg:w-80'>
+                <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
                   <div className='flex gap-1 items-center'>
                     Location <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
-                <TableSimple.th className='sm:w-32 md:w-40 lg:w-52'>
+                <TableSimple.th className='sm:w-[30%] md:w-[20%]'>
                   <div className='flex gap-1 items-center'>
                     Province
                     <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />

@@ -76,7 +76,7 @@ const searchBoxData = [
 export default function Example() {
   const mounted = useMounted();
   const [inputDebounce, setInputDebounce] = useState('');
-  const debouncedValue = useDebounce(inputDebounce, 500);
+  const debouncedValue = useDebounce(inputDebounce);
   const [inputDebounceValue, setInputDebounceValue] = useState();
   const [openDialog, setOpenDialog] = useState(false);
   const [openDangerDialog, setOpenDangerDialog] = useState(false);

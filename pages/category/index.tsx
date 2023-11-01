@@ -162,10 +162,10 @@ export default function Category() {
         </Button>
       </div>
 
-      <Label htmlFor='inputdebounce'>Search</Label>
+      <Label htmlFor='search'>Search</Label>
       <InputDebounce
-        id='inputdebounce'
-        name='inputdebounce'
+        id='search'
+        name='search'
         placeholder='Search'
         value={inputDebounceValue}
         onChange={(value) => setInputDebounceValue(value)}
