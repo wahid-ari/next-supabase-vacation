@@ -70,8 +70,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
 
                 <Popover
                   className='relative'
-                  onMouseEnter={() => setIsShowMore(true)}
-                  onMouseLeave={() => setIsShowMore(false)}
+                  // onMouseEnter={() => setIsShowMore(true)}
+                  // onMouseLeave={() => setIsShowMore(false)}
                 >
                   <Popover.Button
                     className={twMerge(
@@ -91,7 +91,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   </Popover.Button>
                   <Transition
                     as={Fragment}
-                    show={isShowMore}
+                    // show={isShowMore}
                     enter='duration-200 ease-out'
                     enterFrom='opacity-0 scale-95'
                     enterTo='opacity-100 scale-100'
