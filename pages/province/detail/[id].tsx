@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import * as HoverCard from '@radix-ui/react-hover-card';
 import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
-import { useIslandData } from '@/libs/swr';
+import { useProvinceData } from '@/libs/swr';
 import { useDebounce } from '@/hooks/use-debounce';
 
 import { Input } from '@/components/ui/Input';
@@ -18,12 +16,12 @@ import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-// Island.auth = true;
+// Province.auth = true;
 
-export default function Island() {
+export default function Province() {
   const router = useRouter();
   const id = router.query?.id as string;
-  const { data, error } = useIslandData(id);
+  const { data, error } = useProvinceData(id);
   const [inputDebounce, setInputDebounce] = useState('');
   const debouncedValue = useDebounce(inputDebounce);
 
@@ -44,31 +42,13 @@ export default function Island() {
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
-          let length = values.name?.length;
-          let text = length > 50 ? values.name?.slice(0, 60) + ' ...' : values.name;
           return (
-            <HoverCard.Root>
-              <HoverCard.Trigger asChild>
-                <Link
-                  href={`/destination/detail/${values.id}`}
-                  className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                >
-                  {text}
-                </Link>
-              </HoverCard.Trigger>
-              <HoverCard.Portal>
-                <HoverCard.Content
-                  side='top'
-                  className={twMerge(
-                    'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
-                    'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
-                  )}
-                >
-                  {values.name}
-                </HoverCard.Content>
-              </HoverCard.Portal>
-            </HoverCard.Root>
+            <Link
+              href={`/destination/detail/${values?.id}`}
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            >
+              {values?.name}
+            </Link>
           );
         },
       },
@@ -76,22 +56,6 @@ export default function Island() {
         Header: 'Location',
         accessor: 'location',
         width: 300,
-      },
-      {
-        Header: 'Province',
-        accessor: 'vacation_province.name',
-        width: 300,
-        Cell: (row: any) => {
-          const { values, original } = row.cell.row;
-          return (
-            <Link
-              href={`/province/detail/${original.vacation_province?.id}`}
-              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-            >
-              {original.vacation_province?.name}
-            </Link>
-          );
-        },
       },
     ],
     []
@@ -105,7 +69,7 @@ export default function Island() {
 
   if (error) {
     return (
-      <Layout title='Island Detail - MyVacation'>
+      <Layout title='Province Detail - MyVacation'>
         <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
@@ -113,11 +77,11 @@ export default function Island() {
 
   return (
     <Layout
-      title={`${data ? data?.name + ' - MyVacation' : 'Island Detail - MyVacation'}`}
-      description='View Detail Island - MyVacation'
+      title={`${data ? data?.name + ' - MyVacation' : 'Province Detail - MyVacation'}`}
+      description='View Detail Province - MyVacation'
     >
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        {data ? <Title>{data?.name} Destination</Title> : <Title>Island Detail</Title>}
+        {data ? <Title>{data?.name} Destination</Title> : <Title>Province Detail</Title>}
       </div>
 
       {data ? (
@@ -139,7 +103,7 @@ export default function Island() {
           </>
         ) : (
           <div className='rounded border border-red-500 p-3'>
-            <p className='text-red-500'>No Destination in {data?.name} Island</p>
+            <p className='text-red-500'>No Destination in {data?.name} Province</p>
           </div>
         )
       ) : (
@@ -151,20 +115,14 @@ export default function Island() {
                 <TableSimple.th className='flex gap-1 items-center'>
                   No <ChevronUpIcon className='w-4 h-4 opacity-50' />
                 </TableSimple.th>
-                <TableSimple.th className='text-left sm:w-[40%] md:w-[45%]'>
+                <TableSimple.th className='text-left sm:w-[50%]'>
                   <div className='flex gap-1 items-center'>
                     Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
-                <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
+                <TableSimple.th className='sm:w-[50%]'>
                   <div className='flex gap-1 items-center'>
                     Location <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
-                  </div>
-                </TableSimple.th>
-                <TableSimple.th className='sm:w-[30%] md:w-[20%]'>
-                  <div className='flex gap-1 items-center'>
-                    Province
-                    <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
               </>
@@ -173,9 +131,6 @@ export default function Island() {
             {[...Array(5).keys()].map((e, index) => (
               <TableSimple.tr key={index}>
                 <TableSimple.td shrink>
-                  <Shimmer className='p-3' />
-                </TableSimple.td>
-                <TableSimple.td>
                   <Shimmer className='p-3' />
                 </TableSimple.td>
                 <TableSimple.td>
