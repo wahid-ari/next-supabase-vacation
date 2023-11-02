@@ -1,13 +1,26 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import * as HoverCard from '@radix-ui/react-hover-card';
 import axios from 'axios';
-import { ChevronsUpDownIcon, ChevronUpIcon, PencilIcon, PlayIcon, PlusIcon, TrashIcon } from 'lucide-react';
+import {
+  Check,
+  ChevronsUpDown,
+  ChevronsUpDownIcon,
+  ChevronUpIcon,
+  PencilIcon,
+  PlayIcon,
+  PlusIcon,
+  TrashIcon,
+} from 'lucide-react';
 import { mutate } from 'swr';
+import { twMerge } from 'tailwind-merge';
 
-import { useIslandsData, useVideosData } from '@/libs/swr';
+import { useIslandsData, useProvincesData, useVideosData } from '@/libs/swr';
+import { cn, youTubeGetID } from '@/libs/utils';
 import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/Command';
 import {
   Dialog,
   DialogContent,
@@ -19,6 +32,7 @@ import {
 import { Input } from '@/components/ui/Input';
 import { InputDebounce } from '@/components/ui/InputDebounce';
 import { Label } from '@/components/ui/Label';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 
@@ -33,6 +47,7 @@ import Title from '@/components/systems/Title';
 export default function Video() {
   const { data, error } = useVideosData();
   const { data: island, error: errorIsland } = useIslandsData();
+  const { data: province, error: errorProvince } = useProvincesData();
   const { pushToast, updateToast, dismissToast } = useToast();
   const [openDialog, setOpenDialog] = useState({ create: false, edit: false, delete: false, preview: false });
   const [item, setItem] = useState({
@@ -42,16 +57,22 @@ export default function Video() {
     province_id: undefined,
     island_id: undefined,
   });
+  const [openCombobox, setOpenCombobox] = useState(false);
+  const [comboboxValue, setComboboxValue] = useState('');
+  // console.log(item);
+  // console.log(comboboxValue);
+  useEffect(() => {
+    if (comboboxValue) {
+      const findProvinceId = province?.find((prov: any) => prov.slug === comboboxValue)?.id;
+      setItem((prev) => ({ ...prev, province_id: findProvinceId }));
+    }
+  }, [comboboxValue]);
   const [videoPreview, setVideoPreview] = useState({
     title: '',
     video_url: '',
   });
-  // videoPreview.video_url maybe "https://youtu.be/qSqVVswa420" or "https://www.youtube.com/watch?v=2m1drlOZSDw"
-  // if videoPreview.video_url includes "watch" word, then url maybe like "https://www.youtube.com/watch?v=2m1drlOZSDw"
-  const youtube_url = videoPreview?.video_url?.includes('watch')
-    ? videoPreview?.video_url?.split('=')[1]
-    : videoPreview?.video_url?.split('/')[3];
   const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const youtube_url = youTubeGetID(videoPreview?.video_url);
 
   async function handleCreate() {
     const toastId = pushToast({
@@ -62,6 +83,7 @@ export default function Video() {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`, {
         title: item.title,
         video_url: item.video_url,
+        province_id: item.province_id,
         island_id: item.island_id,
       });
       if (res.status == 200) {
@@ -170,12 +192,25 @@ export default function Video() {
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
           return (
-            <Link
-              href={`/video/detail/${values.id}`}
-              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-            >
-              {values.title}
-            </Link>
+            <HoverCard.Root>
+              <HoverCard.Trigger asChild>
+                <p className='break text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-default'>
+                  {values.title}
+                </p>
+              </HoverCard.Trigger>
+              <HoverCard.Portal>
+                <HoverCard.Content
+                  side='top'
+                  className={twMerge(
+                    'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
+                    'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
+                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
+                  )}
+                >
+                  {values.title}
+                </HoverCard.Content>
+              </HoverCard.Portal>
+            </HoverCard.Root>
           );
         },
       },
@@ -265,7 +300,7 @@ export default function Video() {
 
   const tableInstance = useRef(null);
 
-  if (error || errorIsland) {
+  if (error || errorProvince || errorIsland) {
     return (
       <Layout title='Video - MyVacation'>
         <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
@@ -311,19 +346,19 @@ export default function Video() {
               <TableSimple.th className='flex gap-1 items-center'>
                 No <ChevronUpIcon className='w-4 h-4 opacity-50' />
               </TableSimple.th>
-              <TableSimple.th className='text-left sm:w-[40%] md:w-[38%]'>
+              <TableSimple.th className='text-left sm:w-[40%] lg:w-[50%] xl:w-[65%]'>
                 <div className='flex gap-1 items-center'>
-                  Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                 </div>
               </TableSimple.th>
-              <TableSimple.th className='sm:w-[30%] md:w-[28%]'>
+              <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[19%]'>
                 <div className='flex gap-1 items-center'>
-                  Island <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  Province <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                 </div>
               </TableSimple.th>
-              <TableSimple.th className='sm:w-[30%] md:w-[27%]'>
+              <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[15%]'>
                 <div className='flex gap-1 items-center'>
-                  Destination
+                  Island
                   <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                 </div>
               </TableSimple.th>
@@ -346,6 +381,7 @@ export default function Video() {
                 <Shimmer className='p-3' />
               </TableSimple.td>
               <TableSimple.td className='flex justify-end gap-2'>
+                <Shimmer className='p-3 w-8' />
                 <Shimmer className='p-3 w-8' />
                 <Shimmer className='p-3 w-8' />
               </TableSimple.td>
@@ -372,7 +408,7 @@ export default function Video() {
                 name='title'
                 value={item.title}
                 onChange={(e) => setItem((prev) => ({ ...prev, title: e.target.value }))}
-                placeholder='Jawa Timur'
+                placeholder='Our Planet'
                 className='sm:col-span-3'
               />
             </div>
@@ -386,10 +422,95 @@ export default function Video() {
                 name='Video URL'
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
-                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                placeholder='https://youtu.be/GfO-3Oir-qM'
                 className='sm:col-span-3'
               />
             </div>
+            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='select-province' className='sm:text-right leading-5'>
+                Province
+              </Label>
+              {province ? (
+                // TODO Docs https://github.com/shadcn-ui/ui/issues/607#issuecomment-1672111729
+                // FIX this Popover component used by Combobox inside Dialog cant scroll
+                <Popover open={openCombobox} onOpenChange={setOpenCombobox}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant='outline'
+                      role='combobox'
+                      aria-label='combobox'
+                      aria-expanded={openCombobox}
+                      className='sm:col-span-3 h-10 justify-between px-3 font-normal'
+                    >
+                      {comboboxValue
+                        ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
+                        : 'Select Province'}
+                      <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent noPortal className='w-64 p-0'>
+                    <Command loop>
+                      <CommandInput placeholder='Search Province' />
+                      <CommandEmpty>No Province found.</CommandEmpty>
+                      <CommandList>
+                        <CommandGroup>
+                          <ScrollArea className='h-40'>
+                            {province?.map((prov: any) => (
+                              <CommandItem
+                                key={prov.slug}
+                                value={prov.slug}
+                                onSelect={(currentValue) => {
+                                  setComboboxValue(currentValue === comboboxValue ? '' : currentValue);
+                                  setOpenCombobox(false);
+                                }}
+                              >
+                                <Check
+                                  className={cn(
+                                    'mr-2 h-4 w-4 text-emerald-600',
+                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0'
+                                  )}
+                                />
+                                {prov.name}
+                              </CommandItem>
+                            ))}
+                          </ScrollArea>
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+              ) : (
+                <Shimmer className='h-10 sm:col-span-3' />
+              )}
+            </div>
+            {/* <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='select-province' className='sm:text-right leading-5'>
+                Province
+              </Label>
+              {province ? (
+                <Select
+                  value={item.province_id || undefined}
+                  onValueChange={(e) => setItem((prev) => ({ ...prev, province_id: e }))}
+                >
+                  <SelectTrigger className='sm:col-span-3' id='select-province' aria-label='select-province'>
+                    <SelectValue placeholder='Select Province' />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <ScrollArea className='h-40'>
+                        {province?.map((item: any) => (
+                          <SelectItem value={item.id} key={item.id}>
+                            {item.name}
+                          </SelectItem>
+                        ))}
+                      </ScrollArea>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              ) : (
+                <Shimmer className='h-10 sm:col-span-3' />
+              )}
+            </div> */}
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
               <Label htmlFor='select-island' className='sm:text-right leading-5'>
                 Island
@@ -448,7 +569,7 @@ export default function Video() {
                 name='title'
                 value={item.title}
                 onChange={(e) => setItem((prev) => ({ ...prev, title: e.target.value }))}
-                placeholder='Jawa Timur'
+                placeholder='Our Planet'
                 className='sm:col-span-3'
               />
             </div>
@@ -462,9 +583,37 @@ export default function Video() {
                 name='Video URL'
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
-                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                placeholder='https://youtu.be/GfO-3Oir-qM'
                 className='sm:col-span-3'
               />
+            </div>
+            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='select-province' className='sm:text-right leading-5'>
+                Province
+              </Label>
+              {province ? (
+                <Select
+                  value={item.province_id || undefined}
+                  onValueChange={(e) => setItem((prev) => ({ ...prev, province_id: e }))}
+                >
+                  <SelectTrigger className='sm:col-span-3' id='select-province' aria-label='select-province'>
+                    <SelectValue placeholder='Select Province' />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <ScrollArea className='h-40'>
+                        {province?.map((item: any) => (
+                          <SelectItem value={item.id} key={item.id}>
+                            {item.name}
+                          </SelectItem>
+                        ))}
+                      </ScrollArea>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              ) : (
+                <Shimmer className='h-10 sm:col-span-3' />
+              )}
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
               <Label htmlFor='select-island' className='sm:text-right leading-5'>
@@ -535,7 +684,7 @@ export default function Video() {
           </DialogHeader>
           <div className='py-4'>
             <iframe
-              className='h-72 lg:h-80 xl:h-96 w-full rounded'
+              className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
               src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
               title={videoPreview.title}
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
