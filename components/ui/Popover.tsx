@@ -11,9 +11,11 @@ const PopoverTrigger = PopoverPrimitive.Trigger;
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
->(({ className, align = 'center', sideOffset = 4, ...props }, ref) => (
-  <PopoverPrimitive.Portal>
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & {
+    noPortal?: boolean;
+  }
+>(({ className, align = 'center', sideOffset = 4, noPortal, ...props }, ref) => {
+  const content = (
     <PopoverPrimitive.Content
       ref={ref}
       align={align}
@@ -26,8 +28,32 @@ const PopoverContent = React.forwardRef<
       )}
       {...props}
     />
-  </PopoverPrimitive.Portal>
-));
+  );
+  if (noPortal) {
+    return content;
+  }
+  return <PopoverPrimitive.Portal>{content}</PopoverPrimitive.Portal>;
+  // ORIGINAL
+  // return (
+  // TODO Docs https://github.com/shadcn-ui/ui/issues/607#issuecomment-1672111729
+  // TODO Docs https://github.com/shadcn-ui/ui/issues/607#issuecomment-1752033993
+  // FIX this cause Combobox inside Dialog cant scroll
+  //   <PopoverPrimitive.Portal>
+  //     <PopoverPrimitive.Content
+  //       ref={ref}
+  //       align={align}
+  //       sideOffset={sideOffset}
+  //       className={cn(
+  //         'text-popover-foreground z-50 w-72 rounded-md border bg-white p-4 shadow-md outline-none dark:border-neutral-700 dark:bg-neutral-900',
+  //         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+  //         'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+  //         className
+  //       )}
+  //       {...props}
+  //     />
+  //   </PopoverPrimitive.Portal>
+  // );
+});
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
 export { Popover, PopoverTrigger, PopoverContent };

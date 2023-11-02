@@ -826,6 +826,7 @@ export default function Ui() {
                 {frameworks.map((framework) => (
                   <CommandItem
                     key={framework.value}
+                    value={framework.value}
                     onSelect={(currentValue) => {
                       setComboboxValue(currentValue === comboboxValue ? '' : currentValue);
                       setOpenCombobox(false);
