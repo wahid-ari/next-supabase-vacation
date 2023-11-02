@@ -104,20 +104,20 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UsersIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
-            Author
-          </NavLink>
-
           <NavLink href='/book' icon={<BookIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<LayoutListIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
-            Genre
+          <NavLink href='/destination' icon={<MountainSnowIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Destination
           </NavLink>
 
           <NavLink href='/category' icon={<LayoutListIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Category
+          </NavLink>
+
+          <NavLink href='/video' icon={<YoutubeIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Video
           </NavLink>
 
           <NavLink href='/island' icon={<PalmtreeIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
@@ -126,14 +126,6 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
           <NavLink href='/province' icon={<MapPinIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Province
-          </NavLink>
-
-          <NavLink href='/destination' icon={<MountainSnowIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
-            Destination
-          </NavLink>
-
-          <NavLink href='/video' icon={<YoutubeIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
-            Video
           </NavLink>
 
           <NavAccordion
