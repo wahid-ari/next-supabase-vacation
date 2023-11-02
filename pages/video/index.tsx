@@ -45,9 +45,9 @@ import Title from '@/components/systems/Title';
 // Video.auth = true;
 
 export default function Video() {
-  const { data, error } = useVideosData();
-  const { data: island, error: errorIsland } = useIslandsData();
   const { data: province, error: errorProvince } = useProvincesData();
+  const { data: island, error: errorIsland } = useIslandsData();
+  const { data, error } = useVideosData();
   const { pushToast, updateToast, dismissToast } = useToast();
   const [openDialog, setOpenDialog] = useState({ create: false, edit: false, delete: false, preview: false });
   const [item, setItem] = useState({
@@ -59,14 +59,6 @@ export default function Video() {
   });
   const [openCombobox, setOpenCombobox] = useState(false);
   const [comboboxValue, setComboboxValue] = useState('');
-  // console.log(item);
-  // console.log(comboboxValue);
-  useEffect(() => {
-    if (comboboxValue) {
-      const findProvinceId = province?.find((prov: any) => prov.slug === comboboxValue)?.id;
-      setItem((prev) => ({ ...prev, province_id: findProvinceId }));
-    }
-  }, [comboboxValue]);
   const [videoPreview, setVideoPreview] = useState({
     title: '',
     video_url: '',
@@ -160,12 +152,14 @@ export default function Video() {
   }
 
   function handleShowEditDialog(id: any, title: any, video_url: any, province_id: any, island_id: any) {
+    const findProvinceSlug = province?.find((prov: any) => prov.id === province_id)?.slug;
+    setComboboxValue(findProvinceSlug);
     setItem({ id: id, title: title, video_url: video_url, province_id: province_id, island_id: island_id });
     setOpenDialog((prev) => ({ ...prev, edit: true }));
   }
 
-  function handleShowDeleteDialog(id: any, name: any) {
-    setItem((prev) => ({ ...prev, id: id, name: name }));
+  function handleShowDeleteDialog(id: any, title: any) {
+    setItem((prev) => ({ ...prev, id: id, title: title }));
     setOpenDialog((prev) => ({ ...prev, delete: true }));
   }
 
@@ -295,7 +289,8 @@ export default function Video() {
         },
       },
     ],
-    []
+    // FIX error, combobox province not working when directly edit after reloading page
+    [province]
   );
 
   const tableInstance = useRef(null);
@@ -316,6 +311,7 @@ export default function Video() {
           variant='success'
           onClick={() => {
             setItem({ id: null, title: '', video_url: '', province_id: null, island_id: null });
+            setComboboxValue('');
             setOpenDialog((prev) => ({ ...prev, create: true }));
           }}
         >
@@ -431,8 +427,6 @@ export default function Video() {
                 Province
               </Label>
               {province ? (
-                // TODO Docs https://github.com/shadcn-ui/ui/issues/607#issuecomment-1672111729
-                // FIX this Popover component used by Combobox inside Dialog cant scroll
                 <Popover open={openCombobox} onOpenChange={setOpenCombobox}>
                   <PopoverTrigger asChild>
                     <Button
@@ -461,6 +455,8 @@ export default function Video() {
                                 value={prov.slug}
                                 onSelect={(currentValue) => {
                                   setComboboxValue(currentValue === comboboxValue ? '' : currentValue);
+                                  const findProvinceId = province?.find((prov: any) => prov.slug === currentValue)?.id;
+                                  setItem((prev) => ({ ...prev, province_id: findProvinceId }));
                                   setOpenCombobox(false);
                                 }}
                               >
@@ -592,6 +588,63 @@ export default function Video() {
                 Province
               </Label>
               {province ? (
+                <Popover open={openCombobox} onOpenChange={setOpenCombobox}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant='outline'
+                      role='combobox'
+                      aria-label='combobox'
+                      aria-expanded={openCombobox}
+                      className='sm:col-span-3 h-10 justify-between px-3 font-normal'
+                    >
+                      {comboboxValue
+                        ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
+                        : 'Select Province'}
+                      <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent noPortal className='w-64 p-0'>
+                    <Command loop>
+                      <CommandInput placeholder='Search Province' />
+                      <CommandEmpty>No Province found.</CommandEmpty>
+                      <CommandList>
+                        <CommandGroup>
+                          <ScrollArea className='h-40'>
+                            {province?.map((prov: any) => (
+                              <CommandItem
+                                key={prov.slug}
+                                value={prov.slug}
+                                onSelect={(currentValue) => {
+                                  setComboboxValue(currentValue === comboboxValue ? '' : currentValue);
+                                  const findProvinceId = province?.find((prov: any) => prov.slug === currentValue)?.id;
+                                  setItem((prev) => ({ ...prev, province_id: findProvinceId }));
+                                  setOpenCombobox(false);
+                                }}
+                              >
+                                <Check
+                                  className={cn(
+                                    'mr-2 h-4 w-4 text-emerald-600',
+                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0'
+                                  )}
+                                />
+                                {prov.name}
+                              </CommandItem>
+                            ))}
+                          </ScrollArea>
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+              ) : (
+                <Shimmer className='h-10 sm:col-span-3' />
+              )}
+            </div>
+            {/* <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
+              <Label htmlFor='select-province' className='sm:text-right leading-5'>
+                Province
+              </Label>
+              {province ? (
                 <Select
                   value={item.province_id || undefined}
                   onValueChange={(e) => setItem((prev) => ({ ...prev, province_id: e }))}
@@ -614,7 +667,7 @@ export default function Video() {
               ) : (
                 <Shimmer className='h-10 sm:col-span-3' />
               )}
-            </div>
+            </div> */}
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
               <Label htmlFor='select-island' className='sm:text-right leading-5'>
                 Island
