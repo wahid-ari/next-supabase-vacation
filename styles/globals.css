@@ -23,6 +23,14 @@ body {
   border-radius: 999px;
 }
 
+.scrollbar-thinner {
+  scrollbar-width: 4px !important;
+}
+.scrollbar-thinner::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
+
 .banner {
   background: linear-gradient(
       145deg,
