@@ -116,6 +116,7 @@ import {
 import { Heading } from '@/components/ui/Heading';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
+import { InputDebounce } from '@/components/ui/InputDebounce';
 import { Label } from '@/components/ui/Label';
 import {
   Menubar,
@@ -178,6 +179,7 @@ export default function Ui() {
   const router = useRouter();
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
+  const [inputDebounceValue, setInputDebounceValue] = useState();
   const [checkboxValue, setCheckboxValue] = useState(true);
   function handleCheckboxChange() {
     checkboxValue == true ? setCheckboxValue(false) : setCheckboxValue(true);
@@ -405,6 +407,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#input'>
               Input
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-debounce'>
+              InputDebounce
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1202,6 +1209,21 @@ export default function Ui() {
 
       <Wrapper id='input' name='Input' props={['type']} docs='https://ui.shadcn.com/docs/components/input' noChildren>
         <Input type='email' placeholder='Email' />
+      </Wrapper>
+
+      <Wrapper
+        id='input-debounce'
+        name='InputDebounce'
+        props={['value', 'defaultValue', 'className', 'type', 'onChange', 'debounce']}
+        noChildren
+      >
+        <InputDebounce
+          type='text'
+          placeholder='Input Debounce'
+          value={inputDebounceValue}
+          onChange={(value) => setInputDebounceValue(value)}
+        />
+        {inputDebounceValue && <Text size='sm'>{inputDebounceValue}</Text>}
       </Wrapper>
 
       <Wrapper id='label' name='Label' docs='https://ui.shadcn.com/docs/components/label'>
