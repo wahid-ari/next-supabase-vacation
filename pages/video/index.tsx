@@ -188,9 +188,17 @@ export default function Video() {
           return (
             <HoverCard.Root>
               <HoverCard.Trigger asChild>
-                <p className='break text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-default'>
+                <button
+                  onClick={() => handleShowVideoDialog(original.title, original.video_url)}
+                  className={twMerge(
+                    'text-left break text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-pointer rounded-md font-medium',
+                    'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                  )}
+                >
+                  {/* <p className='break text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-default'> */}
                   {values.title}
-                </p>
+                  {/* </p> */}
+                </button>
               </HoverCard.Trigger>
               <HoverCard.Portal>
                 <HoverCard.Content
