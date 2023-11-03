@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import * as HoverCard from '@radix-ui/react-hover-card';
 import axios from 'axios';
 import {
   Check,
@@ -29,6 +28,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/Dialog';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
 import { InputDebounce } from '@/components/ui/InputDebounce';
 import { Label } from '@/components/ui/Label';
@@ -186,12 +186,12 @@ export default function Video() {
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
           return (
-            <HoverCard.Root>
-              <HoverCard.Trigger asChild>
+            <HoverCard>
+              <HoverCardTrigger asChild>
                 <button
                   onClick={() => handleShowVideoDialog(original.title, original.video_url)}
                   className={twMerge(
-                    'text-left break text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-pointer rounded-md font-medium',
+                    'text-left break-all text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-pointer rounded-md font-medium',
                     'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                   )}
                 >
@@ -199,20 +199,11 @@ export default function Video() {
                   {values.title}
                   {/* </p> */}
                 </button>
-              </HoverCard.Trigger>
-              <HoverCard.Portal>
-                <HoverCard.Content
-                  side='top'
-                  className={twMerge(
-                    'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
-                    'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
-                  )}
-                >
-                  {values.title}
-                </HoverCard.Content>
-              </HoverCard.Portal>
-            </HoverCard.Root>
+              </HoverCardTrigger>
+              <HoverCardContent side='top' className='w-auto max-w-xs'>
+                <p className='!text-[15px] font-medium leading-5 text-neutral-700 dark:text-white'>{values.title}</p>
+              </HoverCardContent>
+            </HoverCard>
           );
         },
       },
