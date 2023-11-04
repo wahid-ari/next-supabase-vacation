@@ -414,7 +414,7 @@ export default function Video() {
               <Input
                 id='video-url'
                 type='text'
-                name='Video URL'
+                name='video-url'
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
                 placeholder='https://youtu.be/GfO-3Oir-qM'
