@@ -32,7 +32,7 @@ export default function Tabs({ children, className, items, ...props }: Props) {
                   className={twMerge(
                     'relative w-full border-transparent py-2.5 text-sm font-semibold tracking-wide transition-all',
                     'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200',
-                    'rounded outline-none ring-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600',
+                    'rounded outline-none ring-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                     selected && '!text-sky-600 dark:!text-sky-500'
                   )}
                 >
@@ -67,7 +67,7 @@ Tabs.panel = ({ children, className, ...props }: PanelProps) => {
       <Tab.Panel
         {...props}
         className={twMerge(
-          'rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-0 dark:text-neutral-200',
+          'rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-0 dark:text-neutral-200',
           className
         )}
       >

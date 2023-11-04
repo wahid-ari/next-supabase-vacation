@@ -568,7 +568,7 @@ test.describe('Testing Tabs Component', () => {
     const tabs = page.getByTestId('tabs-panel');
     await expect(tabs).toBeVisible();
     await expect(tabs).toHaveClass(
-      /rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-0 dark:text-neutral-200/
+      /rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-0 dark:text-neutral-200/
     );
     await expect(tabs).toHaveAttribute('role', 'tabpanel');
     await expect(tabs).toContainText('Tabs Panel');

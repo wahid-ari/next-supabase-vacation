@@ -82,7 +82,13 @@ html {
   background-color: var(--bg-react-select-control) !important;
   border-color: var(--react-select-border) !important ;
   cursor: pointer !important;
-  height: 42px;
+  height: auto;
+  min-height: 42px;
+  border-radius: 6px !important;
+}
+
+.react-select__value-container {
+  padding: 4px 6px !important;
 }
 
 .react-select__control--is-focused {
