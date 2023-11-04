@@ -145,7 +145,7 @@ export default function Login() {
                     placeholder='Username'
                     value={form.username}
                     onChange={handleChange}
-                    className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
+                    className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
                   />
@@ -162,7 +162,7 @@ export default function Login() {
                       placeholder='Password'
                       value={form.password}
                       onChange={handleChange}
-                      className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
+                      className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                       autoComplete='off'
                       required
                     />
@@ -170,7 +170,7 @@ export default function Login() {
                       type='button'
                       aria-label='show password'
                       onClick={() => setShowPassword(!showPassword)}
-                      className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
+                      className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
                     >
                       {showPassword ? (
                         <EyeIcon className='h-5 w-5 text-neutral-600' />

@@ -56,7 +56,7 @@ export default function LabeledInput({
           type='button'
           aria-label='show password'
           onClick={() => setShowPassword(!showPassword)}
-          className='absolute right-0.5 z-10 mr-0.5 mt-3 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
+          className='absolute right-0.5 z-10 mr-0.5 mt-3 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
         >
           {showPassword ? (
             <EyeIcon className='h-5 w-5 text-neutral-500' />
