@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import ReactSelect from 'react-select';
 import { mutate } from 'swr';
+
+import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.bubble.css';
 
 import { useCategoriesData, useIslandsData, useProvincesData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
@@ -48,6 +52,25 @@ export default function Destination() {
   const [selectedCategory, setSelectedCategory] = useState();
   const [listOfCategory, setListOfCategory] = useState();
 
+  const ReactQuill = useMemo(
+    () =>
+      dynamic(
+        () => {
+          return import('react-quill');
+        },
+        {
+          ssr: false,
+          loading: () => (
+            <Shimmer>
+              <div className='h-8 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='mt-4 h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </Shimmer>
+          ),
+        }
+      ),
+    []
+  );
+
   // convert category data from db (id, name) to match with react-select requirement (value, label)
   useEffect(() => {
     if (category) {
@@ -87,6 +110,72 @@ export default function Destination() {
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
     }
   }
+
+  const [description, setDescription] = useState(`<h1>What to expect from here on out</h1>
+      <p>What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like <strong>bold text</strong>, unordered lists, ordered lists, code blocks, block quotes, <em>and even italics</em>.</p><h2>What to expect from here on out</h2>
+      <p>What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like <strong>bold text</strong>, unordered lists, ordered lists, code blocks, block quotes, <em>and even italics</em>.</p>
+      <p>It's important to cover all of these use cases for a few reasons:</p>
+      <ol>
+        <li>We want everything to look good out of the box.</li>
+        <li>Really just the first reason, that's the whole point of the plugin.</li>
+        <li>Here's a third pretend reason though a list with three items looks more realistic than a list with two items.</li>
+      </ol>
+      <p>Now we're going to try out another header style.</p>
+      <h3>Typography should be easy</h3>
+      <p>So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.</p>
+      <p>Something a wise person once told me about typography is:</p>
+      <h4>Typography should be easy</h4>
+      <blockquote><p>Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.</p></blockquote>
+      <p>It's probably important that images look okay here by default as well:</p>
+      <h4>Video</h4>
+      <iframe frameborder="0" allowfullscreen="true" src="https://www.youtube.com/embed/GfO-3Oir-qM?showinfo=0"></iframe>
+      <h4>Image</h4>
+      <img src="https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&amp;fit=crop&amp;q=60&amp;w=500">`);
+
+  // TODO Docs https://github.com/quilljs/quill/issues/2044#issuecomment-603630374
+  // TODO Docs https://stackoverflow.com/questions/59602182/quill-add-image-url-instead-of-uploading-it
+  function imageHandler() {
+    const tooltip = this.quill.theme.tooltip;
+    const originalSave = tooltip.save;
+    const originalHide = tooltip.hide;
+    tooltip.save = function () {
+      const range = this.quill.getSelection(true);
+      const value = this.textbox.value;
+      if (value) {
+        this.quill.insertEmbed(range.index, 'image', value, 'user');
+      }
+    };
+    tooltip.hide = function () {
+      tooltip.save = originalSave;
+      tooltip.hide = originalHide;
+      tooltip.hide();
+    };
+    tooltip.edit('image');
+    tooltip.textbox.placeholder = 'Image URL';
+  }
+
+  const modules = useMemo(
+    () => ({
+      toolbar: {
+        container: [
+          [{ header: [1, 2, 3, 4, false] }],
+          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ align: [] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote', 'code-block'],
+          [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+          ['link', 'image', 'video'],
+          [{ script: 'sub' }, { script: 'super' }],
+          [{ color: [] }, { background: [] }],
+          ['clean'],
+        ],
+        handlers: {
+          image: imageHandler,
+        },
+      },
+    }),
+    []
+  );
 
   if (errorIsland || errorProvince || errorCategory) {
     return (
@@ -297,12 +386,29 @@ export default function Destination() {
         </div>
         <div className='space-y-2'>
           <Label htmlFor='content'>Content</Label>
-          <Textarea
-            id='content'
-            name='content'
-            value={createItem.content}
-            onChange={(e) => setCreateItem({ ...createItem, content: e.target.value })}
-            placeholder='Destination Content'
+          <div className='mb-3'>
+            {/* <ReactQuill theme='snow' onChange={handleDescriptionChange} modules={modules} value={description} />*/}
+            <ReactQuill
+              id='content'
+              theme='snow'
+              placeholder='Destination Content'
+              onChange={(e) => setCreateItem({ ...createItem, content: e })}
+              modules={modules}
+              value={createItem.content}
+            />
+          </div>
+
+          <Text size='xl' weight='semibold' className='pb-1 pt-4'>
+            Preview :
+          </Text>
+          <div
+            className={cn(
+              'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
+              'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
+              'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
+              'prose-blockquote:!my-3'
+            )}
+            dangerouslySetInnerHTML={{ __html: createItem.content }}
           />
         </div>
 

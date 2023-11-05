@@ -14,6 +14,7 @@ import { GlobalProvider } from '@/context/GlobalContext';
 
 import '@/styles/globals.css';
 import '@/styles/prism.css';
+import '@/styles/react-quill.css';
 
 import { Toaster as UiToaster } from '@/components/ui/Toaster';
 

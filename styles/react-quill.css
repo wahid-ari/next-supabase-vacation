@@ -1,0 +1,103 @@
+/* REACT QUILL  */
+.ql-container.ql-snow {
+  min-height: 200px;
+}
+.ql-toolbar.ql-snow {
+  @apply rounded-t-md dark:!border-neutral-700;
+}
+.ql-container.ql-snow {
+  @apply rounded-b-md dark:!border-neutral-700;
+}
+.ql-picker-label {
+  @apply dark:!text-white;
+}
+.ql-picker-options {
+  @apply dark:!border-neutral-700 dark:!bg-neutral-900 dark:text-neutral-100;
+}
+span[aria-expanded='true'].ql-picker-label {
+  @apply dark:!border-neutral-700;
+}
+.ql-snow .ql-stroke {
+  @apply dark:stroke-neutral-300;
+}
+.ql-snow .ql-stroke-miter {
+  @apply dark:stroke-neutral-300;
+}
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke.ql-fill {
+  @apply dark:fill-neutral-300;
+}
+.ql-container.ql-snow {
+  @apply dark:!border-neutral-700;
+}
+.ql-editor {
+  @apply text-[15px] dark:!text-neutral-200;
+  /* @apply dark:!text-neutral-200 !prose dark:!prose-invert; */
+}
+.ql-tooltip {
+  @apply dark:!border-neutral-700 dark:!bg-neutral-800 dark:!text-neutral-100 dark:!shadow-none;
+}
+.ql-tooltip.ql-editing {
+  @apply dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:shadow-none;
+}
+.ql-tooltip.ql-editing > input {
+  @apply dark:!border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:shadow-none;
+}
+
+/* TEXT INSIDE EDITOR */
+.ql-editor.ql-blank::before {
+  @apply pt-2 text-neutral-600 dark:text-neutral-400;
+}
+
+.ql-snow .ql-editor h1 {
+  @apply mb-1 mt-4 font-bold text-neutral-950 dark:text-white;
+}
+
+.ql-snow .ql-editor h2 {
+  @apply mb-1 mt-4 font-bold text-neutral-950 dark:text-white;
+}
+
+.ql-snow .ql-editor h3 {
+  @apply mb-1 mt-4 font-semibold text-neutral-950 dark:text-white;
+}
+
+.ql-snow .ql-editor h4 {
+  @apply mb-1 mt-4 font-semibold text-neutral-950 dark:text-white;
+}
+
+.ql-snow .ql-editor p {
+  @apply my-1 leading-6 text-neutral-800 dark:text-neutral-200;
+}
+
+.ql-snow .ql-editor ol {
+  @apply my-2;
+}
+
+.ql-snow .ql-editor ol > li {
+  @apply my-1;
+}
+
+.ql-snow .ql-editor blockquote {
+  @apply !my-2;
+}
+
+.ql-snow .ql-editor img {
+  @apply mx-auto my-4 h-64 w-full !max-w-2xl rounded object-center sm:h-72 md:h-96;
+}
+
+.ql-editor .ql-video {
+  @apply mx-auto my-4 h-64 w-full !max-w-2xl sm:h-72 md:h-96;
+}
+/* 
+.ql-picker-label {
+	@apply dark:!text-white dark:hover:!invert-0;
+}
+.ql-picker-label > svg {
+	@apply dark:invert;
+}
+.ql-picker-options > .ql-picker-item > svg {
+	@apply dark:invert;
+}
+.ql-formats > button {
+	@apply dark:invert;
+} */
