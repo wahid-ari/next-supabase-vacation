@@ -111,27 +111,6 @@ export default function Destination() {
     }
   }
 
-  const [description, setDescription] = useState(`<h1>What to expect from here on out</h1>
-      <p>What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like <strong>bold text</strong>, unordered lists, ordered lists, code blocks, block quotes, <em>and even italics</em>.</p><h2>What to expect from here on out</h2>
-      <p>What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like <strong>bold text</strong>, unordered lists, ordered lists, code blocks, block quotes, <em>and even italics</em>.</p>
-      <p>It's important to cover all of these use cases for a few reasons:</p>
-      <ol>
-        <li>We want everything to look good out of the box.</li>
-        <li>Really just the first reason, that's the whole point of the plugin.</li>
-        <li>Here's a third pretend reason though a list with three items looks more realistic than a list with two items.</li>
-      </ol>
-      <p>Now we're going to try out another header style.</p>
-      <h3>Typography should be easy</h3>
-      <p>So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.</p>
-      <p>Something a wise person once told me about typography is:</p>
-      <h4>Typography should be easy</h4>
-      <blockquote><p>Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.</p></blockquote>
-      <p>It's probably important that images look okay here by default as well:</p>
-      <h4>Video</h4>
-      <iframe frameborder="0" allowfullscreen="true" src="https://www.youtube.com/embed/GfO-3Oir-qM?showinfo=0"></iframe>
-      <h4>Image</h4>
-      <img src="https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&amp;fit=crop&amp;q=60&amp;w=500">`);
-
   // TODO Docs https://github.com/quilljs/quill/issues/2044#issuecomment-603630374
   // TODO Docs https://stackoverflow.com/questions/59602182/quill-add-image-url-instead-of-uploading-it
   function imageHandler() {
@@ -387,7 +366,6 @@ export default function Destination() {
         <div className='space-y-2'>
           <Label htmlFor='content'>Content</Label>
           <div className='mb-3'>
-            {/* <ReactQuill theme='snow' onChange={handleDescriptionChange} modules={modules} value={description} />*/}
             <ReactQuill
               id='content'
               theme='snow'
