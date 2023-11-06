@@ -46,7 +46,7 @@ span[aria-expanded='true'].ql-picker-label {
 
 /* TEXT INSIDE EDITOR */
 .ql-editor.ql-blank::before {
-  @apply pt-2 text-neutral-600 dark:text-neutral-400;
+  @apply pt-2 text-neutral-600 dark:text-neutral-500;
 }
 
 .ql-snow .ql-editor h1 {
