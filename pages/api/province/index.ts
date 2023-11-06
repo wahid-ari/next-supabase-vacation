@@ -44,7 +44,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .order('id');
         const { data: destinations } = await supabase
           .from('vacation_destination')
-          .select(`id, name, slug, image_url, description, location`)
+          .select(
+            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+          )
           .eq('province_id', province[0]?.id)
           .order('id');
         // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control

@@ -42,7 +42,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .order('id');
         const { data: destinations } = await supabase
           .from('vacation_destination')
-          .select(`*, vacation_island (*), vacation_province (*)`)
+          .select(
+            `id, name, slug, location, image_url, description, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+          )
           .order('id');
 
         const destination_by_category = [];
@@ -57,7 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
-        res.status(200).json({ ...category[0], destination_by_category });
+        res.status(200).json({ ...category[0], destinations: destination_by_category });
       }
       break;
 

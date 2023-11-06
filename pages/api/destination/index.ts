@@ -8,7 +8,7 @@ const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
   image_url: z.string().min(1, { message: 'Image URL is required' }),
   description: z.string().min(8, { message: 'Description is required' }),
-  content: z.string().min(8, { message: 'Content is required' }),
+  content: z.string().min(12, { message: 'Content is required' }),
   // FIX remove this
   // description: z.string().min(80, { message: 'Description is required' }),
   // content: z.string().min(100, { message: 'Content is required' }),

@@ -4,7 +4,7 @@ import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
-  // FIX create this
+
   switch (method) {
     case 'GET':
       const { data: vacation_categories } = await supabase
