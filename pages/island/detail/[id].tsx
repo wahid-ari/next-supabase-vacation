@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
+import { ChevronsUpDownIcon, ChevronUpIcon, ImageIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { useIslandData } from '@/libs/swr';
 import { useDebounce } from '@/hooks/use-debounce';
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 
@@ -44,31 +45,51 @@ export default function Island() {
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
-          let length = values.name?.length;
-          let text = length > 50 ? values.name?.slice(0, 60) + ' ...' : values.name;
           return (
-            <HoverCard.Root>
-              <HoverCard.Trigger asChild>
+            <HoverCard>
+              <HoverCardTrigger asChild>
                 <Link
-                  href={`/destination/detail/${values.id}`}
+                  href={`/destination/detail/${original.id}`}
                   className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
-                  {text}
+                  <p className='break-all text-ellipsis overflow-hidden w-40 lg:w-44 xl:w-full'>{original.name}</p>
                 </Link>
-              </HoverCard.Trigger>
-              <HoverCard.Portal>
-                <HoverCard.Content
-                  side='top'
-                  className={twMerge(
-                    'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
-                    'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
-                  )}
-                >
-                  {values.name}
-                </HoverCard.Content>
-              </HoverCard.Portal>
-            </HoverCard.Root>
+              </HoverCardTrigger>
+              <HoverCardContent
+                side='top'
+                style={{
+                  // to keep both padding same when scrollbar showed
+                  scrollbarGutter: 'stable both-edges',
+                }}
+                className={twMerge(
+                  'max-h-64 w-auto max-w-xs overflow-auto',
+                  'scrollbar-thin scrollbar-thinner scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
+                )}
+              >
+                {original.image_url ? (
+                  <div className='relative h-40 w-full'>
+                    <Image
+                      fill
+                      alt={original.name}
+                      src={original.image_url}
+                      unoptimized
+                      quality={50}
+                      priority={false}
+                      loading='lazy'
+                      className='rounded-t'
+                    />
+                  </div>
+                ) : (
+                  <div className='flex h-40 w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-700'>
+                    <ImageIcon className='h-16 w-16 text-neutral-500' />
+                  </div>
+                )}
+                <p className='text-neutral-700 dark:text-white font-semibold leading-6 text-lg mt-3 mb-2'>
+                  {original.name}
+                </p>
+                <p className='text-[15px] dark:text-neutral-200 text-neutral-600'>{original.description}</p>
+              </HoverCardContent>
+            </HoverCard>
           );
         },
       },

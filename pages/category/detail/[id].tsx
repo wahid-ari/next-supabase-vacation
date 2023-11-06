@@ -1,12 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
+import { ChevronsUpDownIcon, ChevronUpIcon, ImageIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { useCategoryData } from '@/libs/swr';
 import { useDebounce } from '@/hooks/use-debounce';
+
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
 
 import Layout from '@/components/layout/Layout';
 import LabeledInput from '@/components/systems/LabeledInput';
@@ -36,51 +40,80 @@ export default function Category() {
         },
       },
       {
-        Header: 'Title',
-        accessor: 'title',
+        Header: 'Name',
+        accessor: 'name',
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
-          let length = values.title.length;
-          let text = length > 50 ? values.title?.slice(0, 60) + ' ...' : values.title;
           return (
-            <HoverCard.Root>
-              <HoverCard.Trigger asChild>
+            <HoverCard>
+              <HoverCardTrigger asChild>
                 <Link
-                  href={`/book/detail/${values.id}`}
+                  href={`/destination/detail/${original.id}`}
                   className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
-                  {text}
+                  <p className='break-all text-ellipsis overflow-hidden w-40 lg:w-44 xl:w-full'>{original.name}</p>
                 </Link>
-              </HoverCard.Trigger>
-              <HoverCard.Portal>
-                <HoverCard.Content
-                  side='top'
-                  className={twMerge(
-                    'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
-                    'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
-                  )}
-                >
-                  {values.title}
-                </HoverCard.Content>
-              </HoverCard.Portal>
-            </HoverCard.Root>
+              </HoverCardTrigger>
+              <HoverCardContent
+                side='top'
+                style={{
+                  // to keep both padding same when scrollbar showed
+                  scrollbarGutter: 'stable both-edges',
+                }}
+                className={twMerge(
+                  'max-h-64 w-auto max-w-xs overflow-auto',
+                  'scrollbar-thin scrollbar-thinner scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
+                )}
+              >
+                {original.image_url ? (
+                  <div className='relative h-40 w-full'>
+                    <Image
+                      fill
+                      alt={original.name}
+                      src={original.image_url}
+                      unoptimized
+                      quality={50}
+                      priority={false}
+                      loading='lazy'
+                      className='rounded-t'
+                    />
+                  </div>
+                ) : (
+                  <div className='flex h-40 w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-700'>
+                    <ImageIcon className='h-16 w-16 text-neutral-500' />
+                  </div>
+                )}
+                <p className='text-neutral-700 dark:text-white font-semibold leading-6 text-lg mt-3 mb-2'>
+                  {original.name}
+                </p>
+                <p className='text-[15px] dark:text-neutral-200 text-neutral-600'>{original.description}</p>
+              </HoverCardContent>
+            </HoverCard>
           );
         },
       },
       {
-        Header: 'Author',
-        accessor: 'book_authors.name',
+        Header: 'Location',
+        accessor: 'location',
+        width: 300,
+        Cell: (row: any) => {
+          const { values, original } = row.cell.row;
+          return values?.location;
+        },
+      },
+      {
+        Header: 'Island',
+        accessor: 'vacation_island.name',
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
           return (
             <Link
-              href={`/author/detail/${original.book_authors?.id}`}
+              href={`/island/detail/${original.vacation_island?.id}`}
               className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
-              {original.book_authors?.name}
+              {original.vacation_island?.name}
             </Link>
           );
         },
@@ -113,19 +146,20 @@ export default function Category() {
       </div>
 
       {data ? (
-        data?.destination_by_category?.length > 0 ? (
+        data?.destinations?.length > 0 ? (
           <>
-            <LabeledInput
-              label='Search Data'
-              id='caridata'
-              name='caridata'
-              placeholder='Keyword'
+            <Label htmlFor='search'>Search</Label>
+            <Input
+              id='search'
+              name='search'
+              placeholder='Search'
               value={inputDebounce}
               onChange={(e) => {
                 setInputDebounce(e.target.value);
               }}
+              className='mt-2 mb-4'
             />
-            <ReactTable columns={column} data={data.destination_by_category} ref={tableInstance} page_size={20} />
+            <ReactTable columns={column} data={data.destinations} ref={tableInstance} page_size={20} />
           </>
         ) : (
           <div className='rounded border border-red-500 p-3'>
@@ -141,14 +175,19 @@ export default function Category() {
                 <TableSimple.th className='flex gap-1 items-center'>
                   No <ChevronUpIcon className='w-4 h-4 opacity-50' />
                 </TableSimple.th>
-                <TableSimple.th className='text-left'>
+                <TableSimple.th className='text-left sm:w-[40%] md:w-[45%]'>
                   <div className='flex gap-1 items-center'>
-                    Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                    Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
-                <TableSimple.th className='sm:w-48 md:w-64 lg:w-80'>
+                <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
                   <div className='flex gap-1 items-center'>
-                    Author
+                    Location <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  </div>
+                </TableSimple.th>
+                <TableSimple.th className='sm:w-[30%] md:w-[20%]'>
+                  <div className='flex gap-1 items-center'>
+                    Province
                     <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
@@ -158,6 +197,9 @@ export default function Category() {
             {[...Array(5).keys()].map((e, index) => (
               <TableSimple.tr key={index}>
                 <TableSimple.td shrink>
+                  <Shimmer className='p-3' />
+                </TableSimple.td>
+                <TableSimple.td>
                   <Shimmer className='p-3' />
                 </TableSimple.td>
                 <TableSimple.td>

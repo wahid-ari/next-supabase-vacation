@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
+import { ChevronsUpDownIcon, ChevronUpIcon, ImageIcon } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 
 import { useProvinceData } from '@/libs/swr';
 import { useDebounce } from '@/hooks/use-debounce';
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 
@@ -43,12 +46,50 @@ export default function Province() {
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
           return (
-            <Link
-              href={`/destination/detail/${values?.id}`}
-              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-            >
-              {values?.name}
-            </Link>
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <Link
+                  href={`/destination/detail/${original.id}`}
+                  className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                >
+                  <p className='break-all text-ellipsis overflow-hidden w-40 lg:w-44 xl:w-full'>{original.name}</p>
+                </Link>
+              </HoverCardTrigger>
+              <HoverCardContent
+                side='top'
+                style={{
+                  // to keep both padding same when scrollbar showed
+                  scrollbarGutter: 'stable both-edges',
+                }}
+                className={twMerge(
+                  'max-h-64 w-auto max-w-xs overflow-auto',
+                  'scrollbar-thin scrollbar-thinner scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
+                )}
+              >
+                {original.image_url ? (
+                  <div className='relative h-40 w-full'>
+                    <Image
+                      fill
+                      alt={original.name}
+                      src={original.image_url}
+                      unoptimized
+                      quality={50}
+                      priority={false}
+                      loading='lazy'
+                      className='rounded-t'
+                    />
+                  </div>
+                ) : (
+                  <div className='flex h-40 w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-700'>
+                    <ImageIcon className='h-16 w-16 text-neutral-500' />
+                  </div>
+                )}
+                <p className='text-neutral-700 dark:text-white font-semibold leading-6 text-lg mt-3 mb-2'>
+                  {original.name}
+                </p>
+                <p className='text-[15px] dark:text-neutral-200 text-neutral-600'>{original.description}</p>
+              </HoverCardContent>
+            </HoverCard>
           );
         },
       },
@@ -56,6 +97,22 @@ export default function Province() {
         Header: 'Location',
         accessor: 'location',
         width: 300,
+      },
+      {
+        Header: 'Island',
+        accessor: 'vacation_island.name',
+        width: 300,
+        Cell: (row: any) => {
+          const { values, original } = row.cell.row;
+          return (
+            <Link
+              href={`/island/detail/${original.vacation_island?.id}`}
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            >
+              {original.vacation_island?.name}
+            </Link>
+          );
+        },
       },
     ],
     []
@@ -115,14 +172,20 @@ export default function Province() {
                 <TableSimple.th className='flex gap-1 items-center'>
                   No <ChevronUpIcon className='w-4 h-4 opacity-50' />
                 </TableSimple.th>
-                <TableSimple.th className='text-left sm:w-[50%]'>
+                <TableSimple.th className='text-left sm:w-[40%] md:w-[45%]'>
                   <div className='flex gap-1 items-center'>
                     Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
-                <TableSimple.th className='sm:w-[50%]'>
+                <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
                   <div className='flex gap-1 items-center'>
                     Location <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  </div>
+                </TableSimple.th>
+                <TableSimple.th className='sm:w-[30%] md:w-[20%]'>
+                  <div className='flex gap-1 items-center'>
+                    Province
+                    <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
                   </div>
                 </TableSimple.th>
               </>
@@ -131,6 +194,9 @@ export default function Province() {
             {[...Array(5).keys()].map((e, index) => (
               <TableSimple.tr key={index}>
                 <TableSimple.td shrink>
+                  <Shimmer className='p-3' />
+                </TableSimple.td>
+                <TableSimple.td>
                   <Shimmer className='p-3' />
                 </TableSimple.td>
                 <TableSimple.td>
