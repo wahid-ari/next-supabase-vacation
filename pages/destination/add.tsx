@@ -39,8 +39,8 @@ export default function Destination() {
     name: 'Destination',
     location: 'Location',
     image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
-    header_image_url: '',
-    video_url: '',
+    header_image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
+    video_url: 'https://youtu.be/GfO-3Oir-qM',
     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s`,
     content: `<h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
     province_id: 1, // undefined
@@ -49,7 +49,11 @@ export default function Destination() {
   console.log(createItem);
   const [openCombobox, setOpenCombobox] = useState(false);
   const [comboboxValue, setComboboxValue] = useState('aceh');
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState([
+    { value: 1, label: 'Architecture' },
+    { value: 2, label: 'Beach' },
+    { value: 3, label: 'Lake' },
+  ]);
   const [listOfCategory, setListOfCategory] = useState();
 
   const ReactQuill = useMemo(
@@ -315,6 +319,7 @@ export default function Destination() {
               <Label htmlFor='select-island'>Island</Label>
               {island ? (
                 <Select
+                  // FIX this Select component
                   // @ts-ignore
                   value={createItem.island_id}
                   onValueChange={(e) => setCreateItem((prev) => ({ ...prev, island_id: Number(e) }))}
