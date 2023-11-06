@@ -15,6 +15,7 @@ import {
 } from 'recharts';
 
 import {
+  useDestinationByCategoryData,
   // useCountsData,
   useDestinationByIslandData,
   useDestinationByProvinceData,
@@ -44,6 +45,7 @@ export default function Dashboard() {
   const { data: totalIsland, error: errorTotalIsland } = useTotalIslandData();
   const { data: totalProvince, error: errorTotalProvince } = useTotalProvinceData();
   const { data: totalVideo, error: errorTotalVideo } = useTotalVideoData();
+  const { data: destinationByCategory, error: errorDestinationByCategory } = useDestinationByCategoryData();
   const { data: destinationByIsland, error: errorDestinationByIsland } = useDestinationByIslandData();
   const { data: destinationByProvince, error: errorDestinationByProvince } = useDestinationByProvinceData();
 
@@ -54,6 +56,7 @@ export default function Dashboard() {
     errorTotalIsland ||
     errorTotalProvince ||
     errorTotalVideo ||
+    errorDestinationByCategory ||
     errorDestinationByIsland ||
     errorDestinationByProvince
   ) {
@@ -73,8 +76,9 @@ export default function Dashboard() {
         '/api/dashboard/total-island',
         '/api/dashboard/total-province',
         '/api/dashboard/total-video',
-        '/api/statistics/book-by-author',
-        '/api/statistics/book-by-genre',
+        '/api/statistics/destination-by-category',
+        '/api/statistics/destination-by-island',
+        '/api/statistics/destination-by-province',
       ]}
       description='View and Manage Data - MyVacation'
     >
@@ -182,66 +186,134 @@ export default function Dashboard() {
         )}
       </div> */}
 
-      <div className='mt-5 grid grid-cols-1 gap-5'>
-        <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
-          <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-            <Text.medium>Total Destination by Province</Text.medium>
-          </div>
-          {destinationByProvince ? (
-            <div className='m-auto w-80 py-3'>
-              <ResponsiveContainer width='100%' height={350}>
-                <PieChart data={destinationByProvince}>
-                  <Pie
-                    className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
-                    data={destinationByProvince}
-                    dataKey='total'
-                    type='monotone'
-                    strokeWidth={2}
-                    stroke={theme == 'dark' ? '#171717' : '#fff'}
-                    fill='#adfa1d'
-                    cx='50%'
-                    cy='50%'
-                    innerRadius={windowSize.width < 450 ? 50 : 60}
-                    outerRadius={windowSize.width < 450 ? 80 : 90}
-                    label={true}
-                    labelLine={true}
-                    paddingAngle={1}
-                  >
-                    {destinationByProvince?.map((_, index) => (
-                      <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    content={<CustomTooltip category='Province' />}
-                    cursor={{
-                      stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
-                      strokeWidth: 1,
-                      fill: 'transparent',
-                      strokeDasharray: 10,
-                    }}
-                  />
-                  <Legend formatter={renderColorfulLegendText} />
-                </PieChart>
-              </ResponsiveContainer>
+      <div className='mt-5 space-y-5'>
+        <div className='grid grid-cols-1 xl:grid-cols-2 gap-5'>
+          <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
+            <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
+              <Text.medium>Total Destination by Category</Text.medium>
             </div>
-          ) : (
-            <div className='py-3 w-80 m-auto'>
-              <Shimmer className='w-64 h-64 m-auto rounded-full'>
-                <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              </Shimmer>
-              <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
-                <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            {destinationByCategory ? (
+              <div className='m-auto w-80 py-3'>
+                {destinationByCategory.length > 0 ? (
+                  <ResponsiveContainer width='100%' height={350}>
+                    <PieChart data={destinationByCategory}>
+                      <Pie
+                        className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
+                        data={destinationByCategory}
+                        dataKey='total'
+                        type='monotone'
+                        strokeWidth={2}
+                        stroke={theme == 'dark' ? '#171717' : '#fff'}
+                        innerRadius={windowSize.width < 450 ? 20 : 30}
+                        outerRadius={windowSize.width < 450 ? 80 : 90}
+                        label={true}
+                      >
+                        {destinationByCategory?.map((_, index) => (
+                          <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index + (1 % RECHARTS_COLORS.length)]} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        content={<CustomTooltip category='Category' />}
+                        cursor={{
+                          stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
+                          strokeWidth: 1,
+                          fill: 'transparent',
+                          strokeDasharray: 10,
+                        }}
+                      />
+                      <Legend formatter={renderColorfulLegendText} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className='h-40 flex items-center justify-center'>
+                    <Text.medium>Total Destination by Category Data Not Found</Text.medium>
+                  </div>
+                )}
               </div>
+            ) : (
+              <div className='py-3 w-80 m-auto'>
+                <Shimmer className='w-64 h-64 m-auto rounded-full'>
+                  <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                </Shimmer>
+                <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
+            <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
+              <Text.medium>Total Destination by Province</Text.medium>
             </div>
-          )}
+            {destinationByProvince ? (
+              <div className='m-auto w-80 py-3'>
+                {destinationByProvince.length > 0 ? (
+                  <ResponsiveContainer width='100%' height={350}>
+                    <PieChart data={destinationByProvince}>
+                      <Pie
+                        className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
+                        data={destinationByProvince}
+                        dataKey='total'
+                        type='monotone'
+                        strokeWidth={2}
+                        stroke={theme == 'dark' ? '#171717' : '#fff'}
+                        fill='#adfa1d'
+                        innerRadius={windowSize.width < 450 ? 50 : 60}
+                        outerRadius={windowSize.width < 450 ? 80 : 90}
+                        label={true}
+                        labelLine={true}
+                        paddingAngle={1}
+                      >
+                        {destinationByProvince?.map((_, index) => (
+                          <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        content={<CustomTooltip category='Province' />}
+                        cursor={{
+                          stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
+                          strokeWidth: 1,
+                          fill: 'transparent',
+                          strokeDasharray: 10,
+                        }}
+                      />
+                      <Legend formatter={renderColorfulLegendText} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className='h-40 flex items-center justify-center'>
+                    <Text.medium>Total Destination by Province Data Not Found</Text.medium>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className='py-3 w-80 m-auto'>
+                <Shimmer className='w-64 h-64 m-auto rounded-full'>
+                  <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                </Shimmer>
+                <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
@@ -250,48 +322,54 @@ export default function Dashboard() {
           </div>
           <div className='m-auto p-3'>
             {destinationByIsland ? (
-              <ResponsiveContainer width='100%' height={350}>
-                <BarChart
-                  data={destinationByIsland}
-                  barCategoryGap={
-                    windowSize.width > 1200 ? 20 : windowSize.width > 900 ? 15 : windowSize.width > 600 ? 10 : 5
-                  }
-                >
-                  <XAxis
-                    dataKey='label'
-                    // label="Height"
-                    stroke={theme == 'dark' ? '#a3a3a3' : '#525252'}
-                    fontSize={12}
-                    tickLine={false}
-                    axisLine={false}
-                    height={65}
-                    interval={0}
-                    tick={<CustomXAxisTick />}
-                  />
-                  <YAxis
-                    stroke={theme == 'dark' ? '#a3a3a3' : '#525252'}
-                    fontSize={12}
-                    tickLine={false}
-                    axisLine={false}
-                    tickFormatter={(value) => `${value}`}
-                  />
-                  <Bar dataKey='total' fill='#adfa1d' radius={[4, 4, 0, 0]}>
-                    {destinationByIsland?.map((_, index) => (
-                      <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
-                    ))}
-                  </Bar>
-                  <Tooltip
-                    content={<CustomTooltip category='Island' />}
-                    cursor={{
-                      stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
-                      strokeWidth: 1,
-                      fill: 'transparent',
-                      strokeDasharray: 10,
-                    }}
-                  />
-                  {/* <CartesianGrid strokeDasharray='4' /> */}
-                </BarChart>
-              </ResponsiveContainer>
+              destinationByIsland.length > 0 ? (
+                <ResponsiveContainer width='100%' height={350}>
+                  <BarChart
+                    data={destinationByIsland}
+                    barCategoryGap={
+                      windowSize.width > 1200 ? 20 : windowSize.width > 900 ? 15 : windowSize.width > 600 ? 10 : 5
+                    }
+                  >
+                    <XAxis
+                      dataKey='label'
+                      // label="Height"
+                      stroke={theme == 'dark' ? '#a3a3a3' : '#525252'}
+                      fontSize={12}
+                      tickLine={false}
+                      axisLine={false}
+                      height={65}
+                      interval={0}
+                      tick={<CustomXAxisTick />}
+                    />
+                    <YAxis
+                      stroke={theme == 'dark' ? '#a3a3a3' : '#525252'}
+                      fontSize={12}
+                      tickLine={false}
+                      axisLine={false}
+                      tickFormatter={(value) => `${value}`}
+                    />
+                    <Bar dataKey='total' fill='#adfa1d' radius={[4, 4, 0, 0]}>
+                      {destinationByIsland?.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
+                      ))}
+                    </Bar>
+                    <Tooltip
+                      content={<CustomTooltip category='Island' />}
+                      cursor={{
+                        stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
+                        strokeWidth: 1,
+                        fill: 'transparent',
+                        strokeDasharray: 10,
+                      }}
+                    />
+                    {/* <CartesianGrid strokeDasharray='4' /> */}
+                  </BarChart>
+                </ResponsiveContainer>
+              ) : (
+                <div className='h-40 flex items-center justify-center'>
+                  <Text.medium>Total Destination by Island Data Not Found</Text.medium>
+                </div>
+              )
             ) : (
               <Shimmer className='rounded-xl px-8'>
                 <div className='flex flex-row items-end gap-2 sm:gap-4 md:gap-8 lg:gap-10'>
