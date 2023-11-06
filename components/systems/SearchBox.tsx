@@ -34,12 +34,13 @@ export default function SearchBox({
         <div className='relative my-2 w-full cursor-default overflow-hidden rounded-md border border-neutral-300 p-[1px] text-left text-sm dark:border-neutral-600'>
           <Combobox.Input
             {...props}
-            className='w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:bg-neutral-900 dark:text-white'
+            className='w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm text-neutral-900 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:bg-neutral-900 dark:text-white'
             displayValue={(data: any) => data?.name}
             placeholder={placeholder}
             onChange={onChangeQuery}
           />
           <Combobox.Button title='Show options' className='absolute inset-y-0 right-0 flex items-center pr-2'>
+            <div className='border-l dark:border-l-neutral-600 h-5 pr-2'></div>
             <ChevronDownIcon className='h-5 w-5 dark:text-neutral-300 text-neutral-500' aria-hidden='true' />
           </Combobox.Button>
         </div>

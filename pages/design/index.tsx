@@ -48,6 +48,7 @@ import ReactTable from '@/components/systems/ReactTable';
 import SearchBox from '@/components/systems/SearchBox';
 import Section from '@/components/systems/Section';
 import Select from '@/components/systems/Select';
+import SelectBox from '@/components/systems/SelectBox';
 import Shimmer from '@/components/systems/Shimmer';
 import ShowMore from '@/components/systems/ShowMore';
 import Table from '@/components/systems/Table';
@@ -286,6 +287,11 @@ export default function Example() {
 
   function onPrev() {}
 
+  const [selectBox, setSelectBox] = useState();
+  function handleSelectBoxChange(e) {
+    setSelectBox(e);
+  }
+
   const [selectedSearchBox, setSelectedSearchBox] = useState();
   const [querySearchBox, setQuerySearchBox] = useState('');
   const filteredSearchBox =
@@ -483,6 +489,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#modal'>
               Modal
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#selectbox'>
+              SelectBox
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -946,6 +957,24 @@ export default function Example() {
         >
           Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.
         </Modal>
+      </Wrapper>
+
+      <Wrapper
+        id='selectbox'
+        name='SelectBox'
+        noClassName
+        noProps
+        noChildren
+        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
+      >
+        <SelectBox
+          data-testid='selectbox'
+          label='Select Box'
+          placeholder='Select Box'
+          value={selectBox}
+          onChange={handleSelectBoxChange}
+          options={searchBoxData}
+        />
       </Wrapper>
 
       <Wrapper
