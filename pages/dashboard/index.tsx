@@ -195,7 +195,7 @@ export default function Dashboard() {
             {destinationByCategory ? (
               <div className='m-auto w-80 py-3'>
                 {destinationByCategory.length > 0 ? (
-                  <ResponsiveContainer width='100%' height={350}>
+                  <ResponsiveContainer width='99%' height={350}>
                     <PieChart data={destinationByCategory}>
                       <Pie
                         className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
@@ -257,7 +257,7 @@ export default function Dashboard() {
             {destinationByProvince ? (
               <div className='m-auto w-80 py-3'>
                 {destinationByProvince.length > 0 ? (
-                  <ResponsiveContainer width='100%' height={350}>
+                  <ResponsiveContainer width='99%' height={350}>
                     <PieChart data={destinationByProvince}>
                       <Pie
                         className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
@@ -323,7 +323,7 @@ export default function Dashboard() {
           <div className='m-auto p-3'>
             {destinationByIsland ? (
               destinationByIsland.length > 0 ? (
-                <ResponsiveContainer width='100%' height={350}>
+                <ResponsiveContainer width='99%' height={350}>
                   <BarChart
                     data={destinationByIsland}
                     barCategoryGap={
