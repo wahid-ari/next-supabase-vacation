@@ -27,28 +27,28 @@ import Layout from '@/components/layout/Layout';
 import Shimmer from '@/components/systems/Shimmer';
 import Title from '@/components/systems/Title';
 
-Destination.auth = true;
+// Destination.auth = true;
 
 export default function Destination() {
   const router = useRouter();
   const { data: category, error: errorCategory } = useCategoriesData();
   const { data: province, error: errorProvince } = useProvincesData();
   const { data: island, error: errorIsland } = useIslandsData();
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
-    name: '',
-    location: '',
-    image_url: '',
+    name: 'Destination',
+    location: 'Location',
+    image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
     header_image_url: '',
     video_url: '',
-    description: '',
-    content: '',
-    province_id: undefined,
-    island_id: undefined,
+    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s`,
+    content: `<h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
+    province_id: 1, // undefined
+    island_id: 1, // undefined
   });
   console.log(createItem);
   const [openCombobox, setOpenCombobox] = useState(false);
-  const [comboboxValue, setComboboxValue] = useState('');
+  const [comboboxValue, setComboboxValue] = useState('aceh');
   const [selectedCategory, setSelectedCategory] = useState();
   const [listOfCategory, setListOfCategory] = useState();
 
@@ -86,28 +86,37 @@ export default function Destination() {
     }
   }, [category]);
 
-  // if user selecting tags, set tags
+  // if user selecting category, set category
   useEffect(() => {
     // @ts-ignore
     setCreateItem({ ...createItem, category: selectedCategory });
   }, [selectedCategory]);
 
-  async function handleSave(e) {
+  async function handleSave(e: any) {
     e.preventDefault();
     const toastId = pushToast({
-      message: 'Creating book',
+      message: 'Creating destination',
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`, createItem);
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
-        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
-        router.push('/book');
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`);
+        router.push('/destination');
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      const errors = [...error?.response?.data?.error].reverse();
+      // show all error
+      dismissToast();
+      errors.forEach((item: any) => {
+        pushToast({ message: item?.message, isError: true });
+      });
+      // only show one error
+      // errors.map((item: any) => {
+      //   updateToast({ toastId, message: item?.message, isError: true });
+      // })
     }
   }
 
@@ -306,6 +315,7 @@ export default function Destination() {
               <Label htmlFor='select-island'>Island</Label>
               {island ? (
                 <Select
+                  // @ts-ignore
                   value={createItem.island_id}
                   onValueChange={(e) => setCreateItem((prev) => ({ ...prev, island_id: Number(e) }))}
                 >
@@ -376,18 +386,22 @@ export default function Destination() {
             />
           </div>
 
-          <Text size='xl' weight='semibold' className='pb-1 pt-4'>
-            Preview :
-          </Text>
-          <div
-            className={cn(
-              'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
-              'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
-              'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
-              'prose-blockquote:!my-3'
-            )}
-            dangerouslySetInnerHTML={{ __html: createItem.content }}
-          />
+          {createItem.content != '' && createItem.content != '<p><br></p>' && (
+            <>
+              <Text size='xl' weight='semibold' className='pb-1 pt-4'>
+                Preview :
+              </Text>
+              <div
+                className={cn(
+                  'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
+                  'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
+                  'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
+                  'prose-blockquote:!my-3'
+                )}
+                dangerouslySetInnerHTML={{ __html: createItem.content }}
+              />
+            </>
+          )}
         </div>
 
         <Button type='submit' variant='success' className='mt-4 w-full'>
