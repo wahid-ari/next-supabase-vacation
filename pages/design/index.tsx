@@ -980,19 +980,8 @@ export default function Example() {
         id='searchbox'
         name='SearchBox'
         noClassName
-        noProps
         noChildren
-        props={[
-          'label',
-          'name',
-          'value',
-          'placeholder',
-          'onChange',
-          'query',
-          'onChangeQuery',
-          'afterLeave',
-          'filtered',
-        ]}
+        props={['label', 'name', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'options']}
       >
         <SearchBox
           data-testid='searchbox'
@@ -1002,7 +991,7 @@ export default function Example() {
           onChange={setSelectedSearchBox}
           onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
           afterLeave={() => setQuerySearchBox('')}
-          filtered={filteredSearchBox}
+          options={filteredSearchBox}
           query={querySearchBox}
         />
       </Wrapper>
@@ -1040,9 +1029,6 @@ export default function Example() {
           onChange={setReactSelect}
           placeholder='Search or Select'
           name='reactselect'
-          classNames={{
-            option: (option) => (option.isSelected ? '!border-red-600' : '!border-grey-300'),
-          }}
           classNamePrefix='react-select'
           theme={(theme) => ({
             ...theme,

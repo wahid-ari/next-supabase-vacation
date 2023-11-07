@@ -5,13 +5,12 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
   label?: string;
   name?: string;
-  value?: string[];
+  value?: { id: number; name: string };
   placeholder?: string;
   onChange?: any;
   query?: string;
   onChangeQuery?: (e: any) => void;
-  afterLeave?: () => void;
-  filtered: any;
+  options: { id: number; name: string }[];
   [props: string]: any;
 };
 
@@ -23,13 +22,11 @@ export default function SearchBox({
   onChange,
   query,
   onChangeQuery,
-  afterLeave,
-  filtered,
+  options,
   ...props
 }: Props) {
   return (
-    // @ts-ignore
-    <Combobox name={name} value={value} by='id' onChange={onChange}>
+    <Combobox name={name} value={value} onChange={onChange}>
       <div className='relative mt-1 pb-1'>
         {label && <Combobox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Combobox.Label>}
         <div
@@ -60,20 +57,19 @@ export default function SearchBox({
           leave='transition duration-75 ease-out'
           leaveFrom='transform scale-100 opacity-100'
           leaveTo='transform scale-95 opacity-0'
-          afterLeave={afterLeave}
         >
           <Combobox.Options className='absolute z-10 max-h-40 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg dark:bg-neutral-800'>
-            {filtered.length === 0 && query !== '' ? (
+            {options.length === 0 && query !== '' ? (
               <div className='relative cursor-default select-none px-4 py-2 text-neutral-700 dark:text-white'>
                 Nothing found.
               </div>
             ) : (
-              filtered.map((item: any) => (
+              options.map((item: any) => (
                 <Combobox.Option
                   key={item.id}
                   className={({ active }) =>
                     twMerge(
-                      'relative cursor-default select-none py-2 pl-10 pr-4',
+                      'relative cursor-pointer py-2 pl-10 pr-4',
                       active ? 'bg-sky-500 text-white' : 'text-neutral-900 dark:text-white'
                     )
                   }

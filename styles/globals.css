@@ -70,7 +70,7 @@ html {
   --bg-react-select-option-hover: #f3f4f6;
   --text-react-select-option: #171717;
   --react-select-indicator: #737373;
-  --react-select-border: #e5e7eb;
+  --react-select-border: #d4d4d4;
 }
 
 .react-select__input:focus {
@@ -83,7 +83,7 @@ html {
   border-color: var(--react-select-border) !important ;
   cursor: pointer !important;
   height: auto;
-  min-height: 42px;
+  min-height: 40px !important;
   border-radius: 6px !important;
 }
 
@@ -119,6 +119,7 @@ html {
 
 .react-select__option:hover {
   color: white;
+  cursor: pointer !important;
 }
 
 .react-select__option--is-focused {
