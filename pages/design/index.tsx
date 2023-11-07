@@ -963,9 +963,8 @@ export default function Example() {
         id='selectbox'
         name='SelectBox'
         noClassName
-        noProps
         noChildren
-        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
+        props={['label', 'name', 'value', 'placeholder', 'onChange', 'options']}
       >
         <SelectBox
           data-testid='selectbox'
@@ -983,7 +982,17 @@ export default function Example() {
         noClassName
         noProps
         noChildren
-        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
+        props={[
+          'label',
+          'name',
+          'value',
+          'placeholder',
+          'onChange',
+          'query',
+          'onChangeQuery',
+          'afterLeave',
+          'filtered',
+        ]}
       >
         <SearchBox
           data-testid='searchbox'

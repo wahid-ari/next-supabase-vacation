@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
   label?: string;
+  name?: string;
   value?: string[];
   placeholder?: string;
   onChange?: any;
@@ -17,6 +17,7 @@ type Props = {
 
 export default function SearchBox({
   label,
+  name,
   value,
   placeholder,
   onChange,
@@ -28,15 +29,23 @@ export default function SearchBox({
 }: Props) {
   return (
     // @ts-ignore
-    <Combobox value={value} by='id' onChange={onChange}>
+    <Combobox name={name} value={value} by='id' onChange={onChange}>
       <div className='relative mt-1 pb-1'>
         {label && <Combobox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Combobox.Label>}
-        <div className='relative my-2 w-full cursor-default overflow-hidden rounded-md border border-neutral-300 p-[1px] text-left text-sm dark:border-neutral-600'>
+        <div
+          className={twMerge(
+            'relative my-2 w-full cursor-default overflow-hidden rounded-md p-[1px] text-left text-sm',
+            'border border-neutral-300 dark:border-neutral-600'
+          )}
+        >
           <Combobox.Input
             {...props}
-            className='w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm text-neutral-900 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:bg-neutral-900 dark:text-white'
+            className={twMerge(
+              'w-full rounded-md py-2 pl-3 pr-10 text-sm text-neutral-900 dark:bg-neutral-900 dark:text-white',
+              'border border-transparent focus:border-sky-500 focus:ring-2 focus:ring-sky-500'
+            )}
             displayValue={(data: any) => data?.name}
-            placeholder={placeholder}
+            placeholder={placeholder || 'Search'}
             onChange={onChangeQuery}
           />
           <Combobox.Button title='Show options' className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -45,10 +54,12 @@ export default function SearchBox({
           </Combobox.Button>
         </div>
         <Transition
-          as={Fragment}
-          leave='transition ease-in duration-100'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
+          enter='transition duration-100 ease-out'
+          enterFrom='transform scale-95 opacity-0'
+          enterTo='transform scale-100 opacity-100'
+          leave='transition duration-75 ease-out'
+          leaveFrom='transform scale-100 opacity-100'
+          leaveTo='transform scale-95 opacity-0'
           afterLeave={afterLeave}
         >
           <Combobox.Options className='absolute z-10 max-h-40 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg dark:bg-neutral-800'>
@@ -77,7 +88,7 @@ export default function SearchBox({
                         <span
                           className={twMerge(
                             'absolute inset-y-0 left-0 flex items-center pl-3',
-                            active ? 'text-white' : 'text-teal-600'
+                            active ? 'text-white' : 'text-emerald-600'
                           )}
                         >
                           <CheckIcon className='h-5 w-5' aria-hidden='true' />
