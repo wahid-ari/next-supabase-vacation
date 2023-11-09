@@ -21,7 +21,6 @@ import {
   SearchIcon,
   SettingsIcon,
   SheetIcon,
-  UsersIcon,
   XIcon,
   YoutubeIcon,
 } from 'lucide-react';
