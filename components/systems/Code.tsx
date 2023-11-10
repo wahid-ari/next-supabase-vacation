@@ -29,7 +29,7 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
         setCopy(false);
       }, 3000);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 

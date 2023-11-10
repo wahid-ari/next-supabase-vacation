@@ -46,7 +46,6 @@ export default function Destination() {
     province_id: 1, // undefined
     island_id: 1, // undefined
   });
-  console.log(createItem);
   const [openCombobox, setOpenCombobox] = useState(false);
   const [comboboxValue, setComboboxValue] = useState('aceh');
   const [selectedCategory, setSelectedCategory] = useState([
