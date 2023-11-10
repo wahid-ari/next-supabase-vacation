@@ -5,6 +5,7 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Allow: /api/og/*
 
 # Sitemap
-Sitemap: https://next-supabase-dashboard.vercel.app/sitemap.xml
+Sitemap: https://next-supabase-vacation.vercel.app/sitemap.xml
