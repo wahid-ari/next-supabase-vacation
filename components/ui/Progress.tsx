@@ -20,7 +20,7 @@ const Progress = React.forwardRef<
       <span
         className={cn(
           'absolute z-[1] -mt-0.5 translate-x-[45%] pl-2 text-[10px] font-medium text-white dark:text-white',
-          value == 0 && 'text-neutral-800'
+          value == 0 && 'text-neutral-800',
         )}
         style={{ width: `${value}%` }}
       >

@@ -40,7 +40,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             className={twMerge(
               'inline-flex items-center rounded text-neutral-700 transition-all hover:text-neutral-900',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-              'dark:text-neutral-300 dark:hover:text-neutral-100'
+              'dark:text-neutral-300 dark:hover:text-neutral-100',
             )}
           >
             Home
@@ -67,7 +67,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
                     className={twMerge(
                       'ml-1 rounded text-neutral-600 transition-all hover:text-neutral-800',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                      'dark:text-neutral-300 dark:hover:text-neutral-200'
+                      'dark:text-neutral-300 dark:hover:text-neutral-200',
                     )}
                   >
                     {capitalizeFirstLetter(path)}

@@ -842,7 +842,7 @@ export default function Ui() {
                     <Check
                       className={cn(
                         'mr-2 h-4 w-4 text-emerald-600',
-                        comboboxValue === framework.value ? 'opacity-100' : 'opacity-0'
+                        comboboxValue === framework.value ? 'opacity-100' : 'opacity-0',
                       )}
                     />
                     {framework.label}

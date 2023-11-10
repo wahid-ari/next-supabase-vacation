@@ -17,7 +17,7 @@ export default function ThemeChanger({ border, ...props }: { border?: boolean; [
       title='Change Theme'
       className={cn(
         'rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 transition-all duration-200',
-        border && 'border p-0.5 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+        border && 'border p-0.5 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800',
       )}
     >
       {theme == 'dark' ? (

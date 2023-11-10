@@ -65,7 +65,7 @@ export default function Dialog({
             className={twMerge(
               'fixed z-50 w-[90%] max-w-lg rounded-lg',
               'left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]',
-              'bg-white dark:bg-neutral-900'
+              'bg-white dark:bg-neutral-900',
             )}
           >
             <DialogRadix.Close

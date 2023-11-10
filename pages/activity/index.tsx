@@ -86,7 +86,7 @@ export default function Log() {
         },
       },
     ],
-    []
+    [],
   );
 
   const tableInstance = useRef(null);

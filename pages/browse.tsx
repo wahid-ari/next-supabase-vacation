@@ -226,7 +226,7 @@ export default function Browse() {
                           className={twMerge(
                             'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
-                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400'
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
                           )}
                         >
                           X
@@ -266,7 +266,7 @@ export default function Browse() {
                           className={twMerge(
                             'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
-                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400'
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
                           )}
                         >
                           X

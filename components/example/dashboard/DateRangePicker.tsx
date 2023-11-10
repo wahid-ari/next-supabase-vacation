@@ -26,7 +26,7 @@ export function DateRangePicker({ className }: React.HTMLAttributes<HTMLDivEleme
             variant={'outline'}
             className={cn(
               'w-[260px] justify-start text-left font-normal',
-              !date && 'text-neutral-600 dark:text-neutral-400'
+              !date && 'text-neutral-600 dark:text-neutral-400',
             )}
           >
             <CalendarIcon className='mr-2 h-4 w-4' />

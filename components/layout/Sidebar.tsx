@@ -68,7 +68,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           'backdrop-blur-md backdrop-filter',
           'lg:h-screen lg:max-h-screen lg:w-60',
           showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex',
-          className
+          className,
         )}
       >
         <div className='flex items-center justify-between gap-2 px-5'>
@@ -92,7 +92,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         <div
           className={twMerge(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 lg:flex-grow',
-            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'
+            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
           )}
         >
           <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-[18px] w-[18px]' />}>
@@ -194,7 +194,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             className={twMerge(
               'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
             )}
           >
             <LogOutIcon className='h-[18px] w-[18px] mr-0.5' />

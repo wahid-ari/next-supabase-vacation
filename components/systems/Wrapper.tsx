@@ -49,7 +49,7 @@ export default function Wrapper({
             href={docs}
             className={twMerge(
               'ml-2 flex items-center justify-center rounded text-sm font-medium transition-all duration-200',
-              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
             target='_blank'
             rel='noreferrer'

@@ -23,7 +23,7 @@ const SheetOverlay = React.forwardRef<
     className={cn(
       'fixed inset-0 z-50 bg-white/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 dark:bg-neutral-900/80',
       'backdrop-blur-sm',
-      className
+      className,
     )}
     {...props}
     ref={ref}
@@ -47,7 +47,7 @@ const sheetVariants = cva(
     defaultVariants: {
       side: 'right',
     },
-  }
+  },
 );
 
 interface SheetContentProps
@@ -66,7 +66,7 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </SheetPortal>
-  )
+  ),
 );
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 

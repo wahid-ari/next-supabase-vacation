@@ -41,14 +41,14 @@ export default function Radio({
           'disabled:bg-neutral-100 dark:disabled:bg-neutral-800',
           'disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500',
           'group-hover:cursor-pointer group-hover:disabled:cursor-not-allowed',
-          className
+          className,
         )}
       />
       <label
         htmlFor={value}
         className={twMerge(
           'ml-2 text-sm text-neutral-800 group-hover:cursor-pointer dark:text-neutral-300',
-          disabled && 'group-hover:cursor-not-allowed'
+          disabled && 'group-hover:cursor-not-allowed',
         )}
       >
         {label}

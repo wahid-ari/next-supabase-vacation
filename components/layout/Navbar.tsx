@@ -19,7 +19,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
         'flex w-full items-center justify-between gap-4 border-b p-3 px-5 dark:border-neutral-800',
         'bg-white/50 dark:bg-neutral-900/30',
         'backdrop-blur-md backdrop-filter',
-        className
+        className,
       )}
     >
       <div className='flex gap-x-3'>
@@ -38,7 +38,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           href='/'
           className={twMerge(
             'rounded text-center text-base font-semibold tracking-wide text-neutral-800 no-underline',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl'
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl',
           )}
         >
           MyVacation

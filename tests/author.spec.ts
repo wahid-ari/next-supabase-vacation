@@ -49,7 +49,7 @@ test.describe('Testing Author Page', () => {
     await expect(
       page
         .getByRole('row', { name: '1 Suzanne Collins The United States Open Edit Delete' })
-        .getByRole('cell', { name: 'Suzanne Collins' })
+        .getByRole('cell', { name: 'Suzanne Collins' }),
     ).toBeVisible();
   });
   test('should show filter result', async ({ page }) => {

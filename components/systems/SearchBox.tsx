@@ -32,14 +32,14 @@ export default function SearchBox({
         <div
           className={twMerge(
             'relative my-2 w-full cursor-default overflow-hidden rounded-md p-[1px] text-left text-sm',
-            'border border-neutral-300 dark:border-neutral-600'
+            'border border-neutral-300 dark:border-neutral-600',
           )}
         >
           <Combobox.Input
             {...props}
             className={twMerge(
               'w-full rounded-md py-2 pl-3 pr-10 text-sm text-neutral-900 dark:bg-neutral-900 dark:text-white',
-              'border border-transparent focus:border-sky-500 focus:ring-2 focus:ring-sky-500'
+              'border border-transparent focus:border-sky-500 focus:ring-2 focus:ring-sky-500',
             )}
             displayValue={(data: any) => data?.name}
             placeholder={placeholder || 'Search'}
@@ -70,7 +70,7 @@ export default function SearchBox({
                   className={({ active }) =>
                     twMerge(
                       'relative cursor-pointer py-2 pl-10 pr-4',
-                      active ? 'bg-sky-500 text-white' : 'text-neutral-900 dark:text-white'
+                      active ? 'bg-sky-500 text-white' : 'text-neutral-900 dark:text-white',
                     )
                   }
                   value={item}
@@ -84,7 +84,7 @@ export default function SearchBox({
                         <span
                           className={twMerge(
                             'absolute inset-y-0 left-0 flex items-center pl-3',
-                            active ? 'text-white' : 'text-emerald-600'
+                            active ? 'text-white' : 'text-emerald-600',
                           )}
                         >
                           <CheckIcon className='h-5 w-5' aria-hidden='true' />

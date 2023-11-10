@@ -33,7 +33,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
             'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-neutral-900',
             'bg-neutral-50 focus:border-sky-500 focus:ring-sky-500 dark:border-neutral-800 dark:bg-neutral-800',
             'dark:text-white dark:placeholder-neutral-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
-            '!pr-20'
+            '!pr-20',
           )}
           placeholder='Search Movie, Actors...'
           required
@@ -44,7 +44,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
           className={twMerge(
             'absolute bottom-[5px] right-1 bg-sky-500 text-white hover:bg-sky-600',
             'rounded px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-sky-400',
-            'dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-sky-400'
+            'dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-sky-400',
           )}
         >
           Search

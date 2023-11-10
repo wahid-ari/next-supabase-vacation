@@ -16,7 +16,7 @@ export default function FrontTabs({ children, className, items, ...props }: Prop
         {...props}
         className={twMerge(
           'flex whitespace-nowrap border-b border-neutral-200 font-medium dark:border-neutral-800',
-          className
+          className,
         )}
       >
         <div className='flex gap-x-6 overflow-x-auto px-1 py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 sm:gap-x-8'>
@@ -28,7 +28,7 @@ export default function FrontTabs({ children, className, items, ...props }: Prop
                   'w-full py-2 text-[15px] font-medium tracking-wide transition-all sm:text-base',
                   'text-neutral-800 hover:text-neutral-900 dark:text-neutral-200 dark:hover:text-white',
                   'border-b-2 border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                  selected ? 'border-b-2 !border-sky-600 !text-sky-600 dark:!border-sky-500 dark:!text-sky-500' : ''
+                  selected ? 'border-b-2 !border-sky-600 !text-sky-600 dark:!border-sky-500 dark:!text-sky-500' : '',
                 )
               }
             >
@@ -56,7 +56,7 @@ FrontTabs.panel = ({
       {...props}
       className={twMerge(
         'rounded-xl py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-0 dark:text-neutral-200',
-        className
+        className,
       )}
     >
       {children}

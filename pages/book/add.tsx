@@ -41,7 +41,7 @@ export default function Book() {
     queryAuthor === ''
       ? authors
       : authors.filter((item: any) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(queryAuthor.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryAuthor.toLowerCase().replace(/\s+/g, '')),
         );
   const [selectedGenres, setSelectedGenres] = useState();
   const [listOfGenres, setListOfGenres] = useState();

@@ -21,7 +21,7 @@ export default function Card({
       {...props}
       className={twMerge(
         'group flex items-center justify-between gap-2 rounded-md border p-4 shadow',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800',
       )}
     >
       <div>

@@ -28,7 +28,7 @@ test.describe('Testing Breadcrumb Component', () => {
     const breadcrumb = page.getByTestId('breadcrumb');
     await expect(breadcrumb).toBeVisible();
     await expect(breadcrumb).toHaveClass(
-      /inline-flex flex-nowrap items-center space-x-1 whitespace-nowrap md:space-x-1/
+      /inline-flex flex-nowrap items-center space-x-1 whitespace-nowrap md:space-x-1/,
     );
     await expect(breadcrumb).toHaveText(/Home/);
     await expect(breadcrumb).toHaveText(/Design/);
@@ -42,7 +42,7 @@ test.describe('Testing NavAccordion Component', () => {
     const navAccordion = page.getByTestId('nav-accordion');
     await expect(navAccordion).toBeVisible();
     await expect(navAccordion).toHaveClass(
-      /group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all/
+      /group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all/,
     );
     await expect(navAccordion).toHaveText(/Design/);
     const navAccordionLink = page.getByTestId('nav-accordion-link');
@@ -66,7 +66,7 @@ test.describe('Testing NavLink Component', () => {
     const navLink = page.getByTestId('nav-link');
     await expect(navLink).toBeVisible();
     await expect(navLink).toHaveClass(
-      /group flex w-full items-center font-medium justify-start gap-2 rounded px-3 py-1.5 text-sm transition-all/
+      /group flex w-full items-center font-medium justify-start gap-2 rounded px-3 py-1.5 text-sm transition-all/,
     );
     await expect(navLink).toHaveText(/Layout/);
     await expect(navLink).toHaveAttribute('href', '/design/layout');
@@ -75,7 +75,7 @@ test.describe('Testing NavLink Component', () => {
     const navLink = page.getByTestId('nav-link-external');
     await expect(navLink).toBeVisible();
     await expect(navLink).toHaveClass(
-      /rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300/
+      /rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300/,
     );
     await expect(navLink).toHaveText(/External/);
     await expect(navLink).toHaveAttribute('href', 'https://github.com');
@@ -85,7 +85,7 @@ test.describe('Testing NavLink Component', () => {
     const navLink = page.getByTestId('nav-link-login');
     await expect(navLink).toBeVisible();
     await expect(navLink).toHaveClass(
-      /text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500/
+      /text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500/,
     );
     await expect(navLink).toHaveText(/Login/);
     await expect(navLink).toHaveAttribute('href', '/login');
@@ -105,7 +105,7 @@ test.describe('Testing ThemeChanger Component', () => {
     const themeChanger = page.getByTestId('theme-changer');
     await expect(themeChanger).toBeVisible();
     await expect(themeChanger).toHaveClass(
-      /focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/
+      /focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/,
     );
   });
   test('should change theme to dark / light', async ({ page }) => {

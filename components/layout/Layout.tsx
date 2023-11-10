@@ -36,7 +36,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
             className={twMerge(
               'flex items-center justify-between gap-x-4 border-b px-4 py-3 lg:hidden',
               'overflow-x-auto bg-white/95 dark:border-neutral-800 dark:bg-neutral-900/90',
-              'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'
+              'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
             )}
           >
             <Breadcrumb />
@@ -47,7 +47,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
             className={twMerge(
               'hidden items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:flex',
               'sticky top-0 z-40 bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30',
-              demo && '!z-0'
+              demo && '!z-0',
             )}
           >
             <Breadcrumb />

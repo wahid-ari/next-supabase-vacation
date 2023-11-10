@@ -5,11 +5,11 @@ import { twMerge } from 'tailwind-merge';
 
 const linkClassName = twMerge(
   'hover-underline-animation rounded text-[15px] hover:text-neutral-900 px-0.5',
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100',
 );
 const linkIconClassName = twMerge(
   'rounded text-neutral-700 transition-all duration-200 hover:text-neutral-900',
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-white'
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-white',
 );
 
 export default function Footer({ className, ...props }: { className?: string; [props: string]: any }) {
@@ -23,7 +23,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
               <div
                 className={twMerge(
                   'flex items-center rounded font-medium text-neutral-900',
-                  'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'
+                  'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                 )}
               >
                 <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' unoptimized />
@@ -98,7 +98,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
               href='/'
               className={twMerge(
                 'hover-underline-animation rounded transition-all duration-200',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
               MyVacation™

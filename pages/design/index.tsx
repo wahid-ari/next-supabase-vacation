@@ -298,7 +298,7 @@ export default function Example() {
     querySearchBox === ''
       ? searchBoxData
       : searchBoxData.filter((item) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(querySearchBox.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(querySearchBox.toLowerCase().replace(/\s+/g, '')),
         );
 
   const reactSelectData = [
@@ -376,7 +376,7 @@ export default function Example() {
         },
       },
     ],
-    []
+    [],
   );
 
   const columns = useMemo(
@@ -429,7 +429,7 @@ export default function Example() {
         },
       },
     ],
-    []
+    [],
   );
 
   function createUser() {
@@ -1094,7 +1094,7 @@ export default function Example() {
                 className={twMerge(
                   'flex items-center rounded font-medium text-neutral-600 transition-all hover:text-neutral-900',
                   'dark:text-neutral-300 dark:hover:text-neutral-100',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 )}
               >
                 Menu
@@ -1121,7 +1121,7 @@ export default function Example() {
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
-                              : 'text-neutral-700 dark:text-neutral-300'
+                              : 'text-neutral-700 dark:text-neutral-300',
                           )}
                         >
                           Setting
@@ -1136,7 +1136,7 @@ export default function Example() {
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
-                              : 'text-neutral-700 dark:text-neutral-300'
+                              : 'text-neutral-700 dark:text-neutral-300',
                           )}
                         >
                           UI
@@ -1150,7 +1150,7 @@ export default function Example() {
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
-                              : 'text-neutral-700 dark:text-neutral-300'
+                              : 'text-neutral-700 dark:text-neutral-300',
                           )}
                         >
                           Logout
@@ -1245,7 +1245,7 @@ function dissmissAllToast() {
               className={twMerge(
                 'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                 'bg-white p-2.5 !text-[15px] leading-5 text-neutral-700',
-                'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
+                'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
               )}
             >
               Laborum sint culpa nisi commodo. Reprehenderit et laborum do commodo et fugiat elit ullamco. Tempor culpa

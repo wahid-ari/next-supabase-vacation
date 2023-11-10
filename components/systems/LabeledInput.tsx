@@ -48,7 +48,7 @@ export default function LabeledInput({
           'bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100',
           'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:focus:border-sky-500 dark:focus:ring-sky-500',
           'disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50',
-          className
+          className,
         )}
       />
       {type == 'password' && (

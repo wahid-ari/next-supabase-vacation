@@ -15,7 +15,7 @@ const TabsList = React.forwardRef<
     ref={ref}
     className={cn(
       'inline-flex h-10 items-center justify-center rounded-md bg-neutral-100 p-1 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400',
-      className
+      className,
     )}
     {...props}
   />
@@ -33,7 +33,7 @@ const TabsTrigger = React.forwardRef<
       'ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:ring-offset-neutral-900',
       'hover:text-neutral-900 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:text-white',
       'data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow-sm dark:data-[state=active]:bg-neutral-900 dark:data-[state=active]:text-white',
-      className
+      className,
     )}
     {...props}
   />
@@ -48,7 +48,7 @@ const TabsContent = React.forwardRef<
     ref={ref}
     className={cn(
       'mt-2 rounded ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:ring-offset-neutral-900',
-      className
+      className,
     )}
     {...props}
   />

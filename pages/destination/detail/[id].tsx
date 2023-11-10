@@ -167,7 +167,7 @@ export default function Destination() {
           'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
           'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
           'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
-          'prose-blockquote:!my-3'
+          'prose-blockquote:!my-3',
         )}
         dangerouslySetInnerHTML={{ __html: data?.content }}
       />

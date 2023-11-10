@@ -68,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 username: body.username,
                 password: body.name,
               },
-              process.env.NEXTAUTH_SECRET
+              process.env.NEXTAUTH_SECRET,
             );
             const { id, type } = user;
             const { username, name } = body;

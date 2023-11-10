@@ -43,7 +43,7 @@ export default function TextArea({
           'mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white',
           'min-h-[80px] border border-neutral-300 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:border-neutral-700',
           'disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50',
-          className
+          className,
         )}
       />
     </div>

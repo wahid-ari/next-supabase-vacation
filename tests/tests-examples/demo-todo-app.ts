@@ -191,7 +191,7 @@ test.describe('Editing', () => {
     await expect(
       todoItem.locator('label', {
         hasText: TODO_ITEMS[1],
-      })
+      }),
     ).not.toBeVisible();
     await checkNumberOfTodosInLocalStorage(page, 3);
   });

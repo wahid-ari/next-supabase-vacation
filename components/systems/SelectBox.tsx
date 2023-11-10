@@ -21,7 +21,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
           className={twMerge(
             'h-10 relative my-2 w-full p-[1px] text-left border transition-all rounded-md cursor-pointer text-sm',
             'border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800',
-            'focus:ring-2 focus:ring-sky-500 focus-visible:outline-none'
+            'focus:ring-2 focus:ring-sky-500 focus-visible:outline-none',
           )}
         >
           <span className={twMerge('block truncate pl-3', !value ? 'dark:text-neutral-500 text-neutral-500' : '')}>
@@ -42,7 +42,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
           <Listbox.Options
             className={twMerge(
               'z-10 absolute w-full py-1 overflow-auto rounded-md shadow-lg max-h-40 text-sm',
-              'bg-white dark:bg-neutral-800 focus-visible:outline-none'
+              'bg-white dark:bg-neutral-800 focus-visible:outline-none',
             )}
           >
             {options.map((option: any, index: number) => (
@@ -51,7 +51,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
                 className={({ active }) =>
                   twMerge(
                     'relative cursor-pointer py-2 pr-4 pl-10 text-neutral-900 dark:text-white',
-                    active && 'bg-sky-500 text-white'
+                    active && 'bg-sky-500 text-white',
                   )
                 }
                 value={option}
@@ -63,7 +63,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
                       <span
                         className={twMerge(
                           'absolute inset-y-0 left-0 flex items-center pl-3',
-                          active ? 'text-white' : 'text-emerald-600'
+                          active ? 'text-white' : 'text-emerald-600',
                         )}
                       >
                         <CheckIcon className='h-5 w-5' aria-hidden='true' />

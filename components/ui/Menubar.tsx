@@ -38,7 +38,7 @@ const MenubarTrigger = React.forwardRef<
       'flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none',
       'focus:bg-neutral-100 dark:focus:bg-neutral-800',
       'data-[state=open]:text-accent-foreground data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800',
-      className
+      className,
     )}
     {...props}
   />
@@ -58,7 +58,7 @@ const MenubarSubTrigger = React.forwardRef<
       'focus:text-accent-foreground focus:bg-neutral-100 dark:focus:bg-neutral-800',
       'data-[state=open]:text-accent-foreground data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...props}
   >
@@ -78,7 +78,7 @@ const MenubarSubContent = React.forwardRef<
       'text-popover-foreground z-50 min-w-[8rem] overflow-hidden rounded-md border bg-white p-1 dark:border-neutral-700 dark:bg-neutral-900',
       'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
       'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-      className
+      className,
     )}
     {...props}
   />
@@ -99,7 +99,7 @@ const MenubarContent = React.forwardRef<
         'text-popover-foreground z-50 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-md dark:border-neutral-700 dark:bg-neutral-900',
         'data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
         'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-        className
+        className,
       )}
       {...props}
     />
@@ -120,7 +120,7 @@ const MenubarItem = React.forwardRef<
       'focus:text-accent-foreground focus:bg-neutral-100 dark:focus:bg-neutral-800',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...props}
   />
@@ -137,7 +137,7 @@ const MenubarCheckboxItem = React.forwardRef<
       'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none',
       'focus:text-accent-foreground focus:bg-neutral-100 dark:focus:bg-neutral-800',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      className
+      className,
     )}
     checked={checked}
     {...props}
@@ -162,7 +162,7 @@ const MenubarRadioItem = React.forwardRef<
       'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none',
       'focus:text-accent-foreground focus:bg-neutral-100 dark:focus:bg-neutral-800',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      className
+      className,
     )}
     {...props}
   >

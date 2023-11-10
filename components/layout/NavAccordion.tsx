@@ -37,7 +37,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
             'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             'dark:text-neutral-300 dark:hover:text-sky-500',
             'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-            className
+            className,
           )}
         >
           <div className='flex-grow text-left text-sm flex items-center gap-2'>
@@ -65,7 +65,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
                 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-                className
+                className,
               )}
             >
               <div className='flex-grow text-left text-sm flex items-center gap-2'>

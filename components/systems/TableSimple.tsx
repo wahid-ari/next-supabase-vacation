@@ -25,7 +25,7 @@ export default function TableSimple({
       className={twMerge(
         'w-full rounded',
         bordered ? 'border-t dark:border-t-neutral-800' : 'border dark:border-neutral-800',
-        wrapperClassName
+        wrapperClassName,
       )}
     >
       <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
@@ -58,7 +58,7 @@ TableSimple.tr = ({ children, className, ...props }: TrProps) => {
       {...props}
       className={twMerge(
         'border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200',
-        className
+        className,
       )}
     >
       {children}
@@ -101,7 +101,7 @@ TableSimple.th = ({ children, className, shrink, bordered, ...props }: ThProps) 
         'p-3 font-medium',
         shrink && 'w-1',
         bordered && 'border-x dark:border-x-neutral-800',
-        className
+        className,
       )}
     >
       {children}

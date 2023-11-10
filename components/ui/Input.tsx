@@ -13,7 +13,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type,
         'border-neutral-300 ring-offset-white dark:border-neutral-700 dark:ring-offset-neutral-900',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2',
         'file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50',
-        className
+        className,
       )}
       ref={ref}
       {...props}

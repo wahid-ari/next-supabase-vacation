@@ -69,9 +69,9 @@ export default function Destination() {
               <div className='mt-4 h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
           ),
-        }
+        },
       ),
-    []
+    [],
   );
 
   // convert category data from db (id, name) to match with react-select requirement (value, label)
@@ -165,7 +165,7 @@ export default function Destination() {
         },
       },
     }),
-    []
+    [],
   );
 
   if (errorIsland || errorProvince || errorCategory) {
@@ -297,7 +297,7 @@ export default function Destination() {
                                 <Check
                                   className={cn(
                                     'mr-2 h-4 w-4 text-emerald-600',
-                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0'
+                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0',
                                   )}
                                 />
                                 {prov.name}
@@ -400,7 +400,7 @@ export default function Destination() {
                   'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
                   'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
                   'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
-                  'prose-blockquote:!my-3'
+                  'prose-blockquote:!my-3',
                 )}
                 dangerouslySetInnerHTML={{ __html: createItem.content }}
               />

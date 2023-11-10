@@ -22,7 +22,7 @@ Progress.percentage = ({ className, percent, ...props }: Props) => {
         className={twMerge(
           'rounded-full p-0.5 text-center text-xs font-medium leading-none',
           percent > 0 ? 'bg-sky-500 text-sky-100' : 'text-neutral-800 dark:text-neutral-200',
-          className
+          className,
         )}
         style={{ width: percent + '%' }}
       >

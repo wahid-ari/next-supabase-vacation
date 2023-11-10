@@ -47,7 +47,7 @@ test.describe('Testing Book Page', () => {
     await expect(
       page
         .getByRole('row', { name: '3 Pride and Prejudice Jane Austen 1813 Edit Delete' })
-        .getByRole('cell', { name: 'Jane Austen' })
+        .getByRole('cell', { name: 'Jane Austen' }),
     ).toBeVisible();
   });
   test('should show filter result', async ({ page }) => {

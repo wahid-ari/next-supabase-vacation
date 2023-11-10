@@ -94,7 +94,7 @@ export default async function handler(req: NextApiRequest) {
           </p>
         </div>
       ),
-      { width: 1200, height: 630 }
+      { width: 1200, height: 630 },
     );
   } catch (e) {
     console.error(`${e.message}`);

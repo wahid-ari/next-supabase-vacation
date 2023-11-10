@@ -16,7 +16,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
           'focus:outline-none focus:ring-2 focus:ring-sky-500',
           'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
           variant === 'icon' && 'p-1',
-          variant === 'labelled' && 'px-2 py-1'
+          variant === 'labelled' && 'px-2 py-1',
         )}
       >
         <SunMoonIcon className='h-5 w-5 text-neutral-700 dark:text-neutral-200' />
@@ -35,7 +35,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
         'hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-sky-500',
         'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
         variant === 'icon' && 'p-1',
-        variant === 'labelled' && 'py-1 px-2'
+        variant === 'labelled' && 'py-1 px-2',
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}

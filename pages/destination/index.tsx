@@ -101,7 +101,7 @@ export default function Destination() {
                 }}
                 className={twMerge(
                   'max-h-64 w-auto max-w-xs overflow-auto',
-                  'scrollbar-thin scrollbar-thinner scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
+                  'scrollbar-thin scrollbar-thinner scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700',
                 )}
               >
                 {original.image_url ? (
@@ -185,7 +185,7 @@ export default function Destination() {
         },
       },
     ],
-    []
+    [],
   );
 
   const tableInstance = useRef(null);

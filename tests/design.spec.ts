@@ -82,7 +82,7 @@ test.describe('Testing LinkButton Component', () => {
     const linkbutton = page.getByTestId('link-button-secondary');
     await expect(linkbutton).toBeVisible();
     await expect(linkbutton).toHaveClass(
-      /rounded border border-neutral-300 bg-neutral-50 px-3 py-1.5 text-sm font-medium text-neutral-800/
+      /rounded border border-neutral-300 bg-neutral-50 px-3 py-1.5 text-sm font-medium text-neutral-800/,
     );
     await expect(linkbutton).toHaveText('Link Button Secondary');
     await expect(linkbutton).toHaveAttribute('href', '/design#linkbutton');
@@ -146,7 +146,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('badge');
   });
@@ -154,7 +154,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-dark');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400/
+      /text-xs whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400/,
     );
     await expect(badge).toHaveText('dark');
   });
@@ -162,7 +162,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-red');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-red-100 font-semibold text-red-600 dark:bg-red-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-red-100 font-semibold text-red-600 dark:bg-red-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('red');
   });
@@ -170,7 +170,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-green');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-green-100 font-semibold text-green-600 dark:bg-green-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-green-100 font-semibold text-green-600 dark:bg-green-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('green');
   });
@@ -178,7 +178,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-yellow');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-yellow-100 font-semibold text-yellow-600 dark:bg-yellow-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-yellow-100 font-semibold text-yellow-600 dark:bg-yellow-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('yellow');
   });
@@ -186,7 +186,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-indigo');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-indigo-100 font-semibold text-indigo-600 dark:bg-indigo-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-indigo-100 font-semibold text-indigo-600 dark:bg-indigo-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('indigo');
   });
@@ -194,7 +194,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-purple');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-purple-100 font-semibold text-purple-600 dark:bg-purple-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-purple-100 font-semibold text-purple-600 dark:bg-purple-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('purple');
   });
@@ -202,7 +202,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-pink');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-pink-100 font-semibold text-pink-600 dark:bg-pink-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-pink-100 font-semibold text-pink-600 dark:bg-pink-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('pink');
   });
@@ -212,7 +212,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('badge');
   });
@@ -220,7 +220,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-dark-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400/
+      /text-sm whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400/,
     );
     await expect(badge).toHaveText('dark');
   });
@@ -228,7 +228,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-red-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-red-100 font-semibold text-red-600 dark:bg-red-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-red-100 font-semibold text-red-600 dark:bg-red-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('red');
   });
@@ -236,7 +236,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-green-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-green-100 font-semibold text-green-600 dark:bg-green-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-green-100 font-semibold text-green-600 dark:bg-green-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('green');
   });
@@ -244,7 +244,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-yellow-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-yellow-100 font-semibold text-yellow-600 dark:bg-yellow-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-yellow-100 font-semibold text-yellow-600 dark:bg-yellow-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('yellow');
   });
@@ -252,7 +252,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-indigo-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-indigo-100 font-semibold text-indigo-600 dark:bg-indigo-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-indigo-100 font-semibold text-indigo-600 dark:bg-indigo-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('indigo');
   });
@@ -260,7 +260,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-purple-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-purple-100 font-semibold text-purple-600 dark:bg-purple-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-purple-100 font-semibold text-purple-600 dark:bg-purple-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('purple');
   });
@@ -268,7 +268,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-pink-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-pink-100 font-semibold text-pink-600 dark:bg-pink-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-pink-100 font-semibold text-pink-600 dark:bg-pink-600 dark:bg-opacity-10/,
     );
     await expect(badge).toHaveText('pink');
   });
@@ -282,7 +282,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
+      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox');
   });
@@ -292,7 +292,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).toBeChecked();
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
+      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked');
   });
@@ -314,7 +314,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).toHaveAttribute('disabled', '');
     await expect(checkbox).toHaveClass(
-      /disabled:bg-neutral-100 dark:disabled:bg-neutral-800 disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500/
+      /disabled:bg-neutral-100 dark:disabled:bg-neutral-800 disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked Disabled');
   });
@@ -328,7 +328,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).not.toBeChecked();
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
+      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Blue');
   });
@@ -338,7 +338,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).toBeChecked();
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
+      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Red');
   });
@@ -360,7 +360,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute('disabled', '');
     await expect(radio).toHaveClass(
-      /disabled:bg-neutral-100 dark:disabled:bg-neutral-800 disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500/
+      /disabled:bg-neutral-100 dark:disabled:bg-neutral-800 disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Radio Checked Disabled');
   });
@@ -383,7 +383,7 @@ test.describe('Testing Input Component', () => {
     await expect(input).not.toBeEditable();
     await expect(input).toHaveValue('Has a value');
     await expect(input).toHaveClass(
-      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/
+      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/,
     );
   });
 });
@@ -416,7 +416,7 @@ test.describe('Testing LabeledInput Component', () => {
     await expect(input).toHaveValue('');
     await expect(input).toHaveAttribute('type', 'password');
     await expect(input).toHaveClass(
-      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/
+      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/,
     );
   });
   test('renders a LabeledInput Disabled component', async ({ page }) => {
@@ -467,7 +467,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      /mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white/
+      /mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white/,
     );
   });
   test('renders a TextArea Disabled component', async ({ page }) => {
@@ -477,7 +477,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).not.toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/
+      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/,
     );
   });
 });
@@ -557,7 +557,7 @@ test.describe('Testing Tabs Component', () => {
     const tabs = page.getByTestId('tabs');
     await expect(tabs).toBeVisible();
     await expect(tabs).toHaveClass(
-      /flex whitespace-nowrap border-b border-neutral-200 font-medium dark:border-neutral-800/
+      /flex whitespace-nowrap border-b border-neutral-200 font-medium dark:border-neutral-800/,
     );
     await expect(tabs).toHaveAttribute('role', 'tablist');
     await expect(tabs).toContainText('Tab A');
@@ -568,7 +568,7 @@ test.describe('Testing Tabs Component', () => {
     const tabs = page.getByTestId('tabs-panel');
     await expect(tabs).toBeVisible();
     await expect(tabs).toHaveClass(
-      /rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-0 dark:text-neutral-200/
+      /rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-0 dark:text-neutral-200/,
     );
     await expect(tabs).toHaveAttribute('role', 'tabpanel');
     await expect(tabs).toContainText('Tabs Panel');
@@ -586,7 +586,7 @@ test.describe('Testing Table Component', () => {
     const table = page.getByTestId('table-tr');
     await expect(table).toBeVisible();
     await expect(table).toHaveClass(
-      /border-b bg-white text-sm text-neutral-600 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200/
+      /border-b bg-white text-sm text-neutral-600 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200/,
     );
   });
   test('renders a Table.td component', async ({ page }) => {
@@ -607,7 +607,7 @@ test.describe('Testing TableSimple Component', () => {
     const table = page.getByTestId('tablesimple-tr');
     await expect(table).toBeVisible();
     await expect(table).toHaveClass(
-      /border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200/
+      /border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200/,
     );
   });
   test('renders a TableSimple.td component', async ({ page }) => {
@@ -690,14 +690,14 @@ test.describe('Testing ShowMore Component', () => {
     await expect(showmore).toBeVisible();
     await expect(showmore).toHaveClass(/relative/);
     await expect(showmore).toContainText(
-      `Id amet commodo exercitation aliqua irure exercitation adipisicing ipsum cillum elit. Cillum non dolor cillum mollit incididunt tempor quis reprehenderit labore velit sunt anim ipsum quis. Id nostrud ...`
+      `Id amet commodo exercitation aliqua irure exercitation adipisicing ipsum cillum elit. Cillum non dolor cillum mollit incididunt tempor quis reprehenderit labore velit sunt anim ipsum quis. Id nostrud ...`,
     );
   });
   test('renders a ShowMore component and Click Button', async ({ page }) => {
     const showmore = page.getByTestId('showmore');
     await expect(showmore).toBeVisible();
     await expect(showmore).toContainText(
-      `Id amet commodo exercitation aliqua irure exercitation adipisicing ipsum cillum elit. Cillum non dolor cillum mollit incididunt tempor quis reprehenderit labore velit sunt anim ipsum quis. Id nostrud ...`
+      `Id amet commodo exercitation aliqua irure exercitation adipisicing ipsum cillum elit. Cillum non dolor cillum mollit incididunt tempor quis reprehenderit labore velit sunt anim ipsum quis. Id nostrud ...`,
     );
     await page.getByLabel('Show More').click();
     await expect(showmore).toContainText(
@@ -705,7 +705,7 @@ test.describe('Testing ShowMore Component', () => {
           mollit incididunt tempor quis reprehenderit labore velit sunt anim ipsum quis. Id nostrud anim ut excepteur
           pariatur. Eu ad esse nisi et fugiat. Exercitation culpa cupidatat consequat veniam commodo aute id enim Lorem
           id consectetur aliqua. Quis culpa do est non irure aliquip proident exercitation aliqua mollit anim dolor
-          labore.`
+          labore.`,
     );
   });
 });
@@ -803,19 +803,19 @@ test.describe('Testing SearchBox Component', () => {
     const searchbox = page.getByTestId('searchbox');
     await expect(searchbox).toBeVisible();
     await expect(searchbox).toHaveClass(
-      /w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900/
+      /w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900/,
     );
     await searchbox.fill('Option 1');
     await expect(page.getByRole('option', { name: 'Option 1' })).toBeVisible();
     await expect(page.getByRole('option', { name: 'Option 1' })).toHaveClass(
-      /relative cursor-default select-none py-2 pl-10 pr-4/
+      /relative cursor-default select-none py-2 pl-10 pr-4/,
     );
     await page.getByRole('option', { name: 'Option 1' }).click();
     await expect(page.getByRole('option', { name: 'Option 1' })).toHaveAttribute('aria-selected', 'true');
     await searchbox.fill('Option 2');
     await expect(page.getByRole('option', { name: 'Option 2' })).toBeVisible();
     await expect(page.getByRole('option', { name: 'Option 2' })).toHaveClass(
-      /relative cursor-default select-none py-2 pl-10 pr-4/
+      /relative cursor-default select-none py-2 pl-10 pr-4/,
     );
     await page.getByRole('option', { name: 'Option 2' }).click();
     await expect(page.getByRole('option', { name: 'Option 2' })).toHaveAttribute('aria-selected', 'true');
@@ -843,7 +843,7 @@ test.describe('Testing Modal Component', () => {
     await expect(modal).toHaveClass(/relative inline-block max-w-lg transform overflow-hidden rounded-lg bg-white/);
     await expect(modal).toContainText('Delete Confirmation');
     await expect(modal).toContainText(
-      `Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.`
+      `Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.`,
     );
     await page.getByTestId('modal-danger').getByRole('button', { name: 'Delete' }).click();
     await expect(modal).not.toBeVisible();
@@ -871,7 +871,7 @@ test.describe('Testing Dialog Component', () => {
     await expect(dialog).toHaveClass(/bg-white dark:bg-neutral-900 opacity-100 scale-100/);
     await expect(dialog).toContainText('Delete Confirmation');
     await expect(dialog).toContainText(
-      `Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.`
+      `Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.`,
     );
     await page.getByTestId('dialog-danger').getByRole('button', { name: 'Delete' }).click();
     await expect(dialog).not.toBeVisible();

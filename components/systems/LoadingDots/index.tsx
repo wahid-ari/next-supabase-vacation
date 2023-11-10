@@ -13,7 +13,7 @@ export default function LoadingDots({ className, medium, large, ...props }: Prop
   const classNames = twMerge(
     'h-2 w-2 rounded-full bg-neutral-600 dark:bg-zinc-200',
     medium && 'h-3 w-3',
-    large && 'h-4 w-4'
+    large && 'h-4 w-4',
   );
 
   return (

@@ -40,7 +40,7 @@ const InputArrayFormSchema = z.object({
     .array(
       z.object({
         value: z.string().url({ message: 'Please enter a valid URL.' }),
-      })
+      }),
     )
     .optional(),
 });
@@ -447,7 +447,7 @@ export default function FormPage() {
                           variant={'outline'}
                           className={cn(
                             'w-[240px] pl-3 text-left font-normal',
-                            !field.value && 'text-neutral-600 dark:text-neutral-300'
+                            !field.value && 'text-neutral-600 dark:text-neutral-300',
                           )}
                         >
                           {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
@@ -701,7 +701,7 @@ export default function FormPage() {
                               <Check
                                 className={cn(
                                   'mr-2 h-4 w-4',
-                                  language.value === field.value ? 'text-emerald-600 opacity-100' : 'opacity-0'
+                                  language.value === field.value ? 'text-emerald-600 opacity-100' : 'opacity-0',
                                 )}
                               />
                               {language.label}

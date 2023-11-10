@@ -16,7 +16,7 @@ const ToastViewport = React.forwardRef<
     className={cn(
       'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
       'ring-offset-white focus:outline-none focus:ring-offset-2 focus-visible:ring-0 dark:ring-offset-neutral-900',
-      className
+      className,
     )}
     {...props}
   />
@@ -35,7 +35,7 @@ const toastVariants = cva(
     defaultVariants: {
       variant: 'default',
     },
-  }
+  },
 );
 
 const Toast = React.forwardRef<
@@ -56,7 +56,7 @@ const ToastAction = React.forwardRef<
       'inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium ring-offset-white transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:ring-offset-neutral-900 dark:hover:bg-neutral-800',
       'group-[.destructive]:border-red-400 group-[.destructive]:ring-offset-red-600 group-[.destructive]:hover:border-red-300 group-[.destructive]:hover:bg-red-700/50 group-[.destructive]:hover:text-white group-[.destructive]:focus:ring-red-400',
       'focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-      className
+      className,
     )}
     {...props}
   />
@@ -73,7 +73,7 @@ const ToastClose = React.forwardRef<
       'text-foreground/50 hover:text-foreground absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity',
       'ring-offset-white focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:ring-offset-neutral-900',
       'group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600',
-      className
+      className,
     )}
     toast-close=''
     {...props}

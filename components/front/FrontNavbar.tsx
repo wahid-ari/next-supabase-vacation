@@ -21,7 +21,7 @@ function CustomActiveLink({ children, href }: { children: ReactNode; href: strin
       className={twMerge(
         'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
         'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
       )}
     >
       {children}
@@ -32,7 +32,7 @@ function CustomActiveLink({ children, href }: { children: ReactNode; href: strin
 const activeCn = twMerge(
   'block rounded px-3 py-1.5 text-[15px] font-medium',
   'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
 );
 
 export default function FrontNavbar({ className, ...props }: { className?: string; [props: string]: any }) {
@@ -77,7 +77,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     className={twMerge(
                       'group flex items-center space-x-1 rounded px-1 text-[15px] font-medium transition-all duration-200',
                       ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                     )}
                   >
                     <span>More</span>
@@ -102,7 +102,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     <Popover.Panel
                       className={cn(
                         'absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded px-4 py-4 shadow',
-                        'dark:border dark:border-neutral-800 bg-white dark:bg-neutral-900'
+                        'dark:border dark:border-neutral-800 bg-white dark:bg-neutral-900',
                       )}
                     >
                       <CustomActiveLink href='/#'>Studios</CustomActiveLink>
@@ -121,7 +121,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         className={twMerge(
                           'group flex items-center space-x-2 rounded p-0.5 text-[15px] font-medium transition-all duration-200',
                           ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
-                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                         )}
                       >
                         <SearchIcon className='h-[18px] w-[18px]' />
@@ -154,7 +154,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     className={twMerge(
                       'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
                       'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                     )}
                     passHref
                   >
@@ -166,7 +166,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     className={twMerge(
                       'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
                       'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                     )}
                     passHref
                   >
@@ -177,7 +177,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <div
                   className={cn(
                     'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200'
+                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
                   )}
                 >
                   <span>Loading</span>
@@ -193,7 +193,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 className={twMerge(
                   'inline-flex items-center justify-center rounded transition-all',
                   'text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-100',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 )}
               >
                 <span className='sr-only'>Open main menu</span>
@@ -237,7 +237,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                       'p-1 text-neutral-700 transition-all dark:text-neutral-300',
                       'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
                       'hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
-                      'focus:outline-none focus:ring-2 focus:ring-sky-500'
+                      'focus:outline-none focus:ring-2 focus:ring-sky-500',
                     )}
                   >
                     <span className='sr-only'>Close main menu</span>
@@ -293,7 +293,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     className={twMerge(
                       'block rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100',
                       'hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                      'dark:text-neutral-200 dark:hover:bg-neutral-800'
+                      'dark:text-neutral-200 dark:hover:bg-neutral-800',
                     )}
                   >
                     {session?.name ? 'Dashboard' : 'Login'}

@@ -32,7 +32,7 @@ export default function Session() {
           item.vacation_user.name
             .toLowerCase()
             .replace(/\s+/g, '')
-            .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, ''))
+            .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
         );
 
   async function handleDeleteAll() {

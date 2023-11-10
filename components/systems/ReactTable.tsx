@@ -37,7 +37,7 @@ export const ReactTable = forwardRef(
       filteredLength,
       ...props
     }: Props,
-    ref
+    ref,
   ) => {
     // Use the state and functions returned from useTable to build your UI
     const defaultColumn = useMemo(
@@ -45,7 +45,7 @@ export const ReactTable = forwardRef(
         minWidth: 200,
         width: 500,
       }),
-      []
+      [],
     );
     const instance = useTable(
       {
@@ -70,7 +70,7 @@ export const ReactTable = forwardRef(
       useFilters,
       useGlobalFilter,
       useSortBy,
-      usePagination
+      usePagination,
     );
     const {
       getTableProps,
@@ -216,7 +216,7 @@ export const ReactTable = forwardRef(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canPreviousPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed'
+                  : 'cursor-not-allowed',
               )}
             >
               <ChevronsLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
@@ -230,7 +230,7 @@ export const ReactTable = forwardRef(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canPreviousPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed'
+                  : 'cursor-not-allowed',
               )}
             >
               <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
@@ -247,7 +247,7 @@ export const ReactTable = forwardRef(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canNextPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed'
+                  : 'cursor-not-allowed',
               )}
             >
               <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
@@ -261,7 +261,7 @@ export const ReactTable = forwardRef(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canNextPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed'
+                  : 'cursor-not-allowed',
               )}
             >
               <ChevronsRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
@@ -283,7 +283,7 @@ export const ReactTable = forwardRef(
               className={twMerge(
                 'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
                 'transition-all focus:border-transparent dark:focus:border-transparent focus:outline-none focus:ring-2',
-                'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
+                'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
               )}
               placeholder='1'
             />
@@ -296,7 +296,7 @@ export const ReactTable = forwardRef(
               className={twMerge(
                 'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
                 'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent dark:focus:border-transparent focus:outline-none',
-                'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
+                'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
               )}
             >
               {itemPerPage.map((pageSize) => (
@@ -309,7 +309,7 @@ export const ReactTable = forwardRef(
         </div>
       </div>
     );
-  }
+  },
 );
 
 ReactTable.displayName = 'ReactTable';

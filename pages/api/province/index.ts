@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data: destinations } = await supabase
           .from('vacation_destination')
           .select(
-            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
           )
           .eq('province_id', province[0]?.id)
           .order('id');

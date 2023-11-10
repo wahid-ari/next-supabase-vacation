@@ -31,7 +31,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
       'text-neutral-700 focus:bg-neutral-100 dark:text-neutral-200 dark:focus:bg-neutral-800',
       'data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...props}
   >
@@ -52,7 +52,7 @@ const DropdownMenuSubContent = React.forwardRef<
       'text-neutral-700 dark:text-neutral-200',
       'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
       'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-      className
+      className,
     )}
     {...props}
   />
@@ -72,7 +72,7 @@ const DropdownMenuContent = React.forwardRef<
         'text-neutral-700 dark:text-neutral-200',
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
         'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-        className
+        className,
       )}
       {...props}
     />
@@ -93,7 +93,7 @@ const DropdownMenuItem = React.forwardRef<
       'text-neutral-700 focus:bg-neutral-100 dark:text-neutral-200 dark:focus:bg-neutral-800',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...props}
   />
@@ -109,7 +109,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     className={cn(
       'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
       'focus:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800',
-      className
+      className,
     )}
     checked={checked}
     {...props}
@@ -133,7 +133,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     className={cn(
       'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
       'focus:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800',
-      className
+      className,
     )}
     {...props}
   >
@@ -158,7 +158,7 @@ const DropdownMenuLabel = React.forwardRef<
     className={cn(
       'px-2 py-1.5 text-sm font-semibold text-neutral-700 dark:text-neutral-200',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...props}
   />

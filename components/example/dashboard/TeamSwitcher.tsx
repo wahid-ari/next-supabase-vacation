@@ -109,7 +109,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                       <CheckIcon
                         className={cn(
                           'ml-auto h-4 w-4',
-                          selectedTeam.value === team.value ? 'text-emerald-600 opacity-100' : 'opacity-0'
+                          selectedTeam.value === team.value ? 'text-emerald-600 opacity-100' : 'opacity-0',
                         )}
                       />
                     </CommandItem>

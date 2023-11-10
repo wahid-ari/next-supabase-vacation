@@ -38,7 +38,7 @@ export default function Island() {
     inputDebounceValue === ''
       ? data
       : data.filter((item: any) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(inputDebounceValue.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
         );
 
   async function handleCreate() {

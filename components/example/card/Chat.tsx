@@ -86,7 +86,7 @@ export function DemoChat() {
                 key={index}
                 className={cn(
                   'flex max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm',
-                  message.role === 'user' ? 'ml-auto bg-sky-600 text-white' : 'bg-neutral-100 dark:bg-neutral-800'
+                  message.role === 'user' ? 'ml-auto bg-sky-600 text-white' : 'bg-neutral-100 dark:bg-neutral-800',
                 )}
               >
                 {message.content}

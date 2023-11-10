@@ -42,7 +42,7 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
           isHome && 'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500',
           !isHome &&
             'text-neutral-600 hover:bg-neutral-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
-          className
+          className,
         )}
       >
         <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
@@ -70,7 +70,7 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
             'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500 dark:hover:text-sky-500'
           : // not current route
             'text-neutral-600 hover:bg-neutral-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
-        className
+        className,
       )}
     >
       <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
@@ -101,7 +101,7 @@ NavLink.external = ({ children, className, href, icon, ...props }: Other) => {
         'rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300',
         'hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-        className
+        className,
       )}
     >
       <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
@@ -123,7 +123,7 @@ NavLink.login = ({ children, className, href, icon, ...props }: Other) => {
         'gap-2 rounded text-sm font-medium hover:bg-emerald-100 dark:hover:bg-neutral-800',
         'text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
-        className
+        className,
       )}
     >
       {icon}
@@ -143,7 +143,7 @@ NavLink.logout = ({ children, className, href, icon, ...props }: Other) => {
         'gap-2 rounded text-sm font-medium hover:bg-red-100 dark:hover:bg-neutral-800',
         'text-red-500 hover:text-red-600 dark:text-red-600 dark:hover:text-red-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
-        className
+        className,
       )}
     >
       {icon}

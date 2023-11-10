@@ -35,7 +35,7 @@ export default function Table({
     <div
       className={twMerge(
         'w-full rounded border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
-        className
+        className,
       )}
     >
       <div className='w-full overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
@@ -109,7 +109,7 @@ Table.tr = ({ children, className, ...props }: TrProps) => {
       {...props}
       className={twMerge(
         'border-b bg-white text-sm text-neutral-600 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200',
-        className
+        className,
       )}
     >
       {children}

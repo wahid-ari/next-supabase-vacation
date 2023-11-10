@@ -218,7 +218,7 @@ export default function Province() {
         },
       },
     ],
-    []
+    [],
   );
 
   const tableInstance = useRef(null);

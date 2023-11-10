@@ -29,7 +29,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
               fill
               className={twMerge(
                 'rounded-full object-cover brightness-90 hover:brightness-100',
-                isLoading ? 'blur-sm' : 'blur-0'
+                isLoading ? 'blur-sm' : 'blur-0',
               )}
               onLoadingComplete={() => setLoading(false)}
               unoptimized
@@ -46,7 +46,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
           href={href}
           className={twMerge(
             'rounded text-[15px] font-medium text-neutral-700 transition-all duration-200 dark:text-neutral-100',
-            'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500'
+            'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
           )}
         >
           {name}
@@ -56,7 +56,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
             href={web}
             className={twMerge(
               'mt-1 flex w-16 items-center rounded text-sm font-medium transition-all duration-200',
-              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
             target='_blank'
             rel='noreferrer'

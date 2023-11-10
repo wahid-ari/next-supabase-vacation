@@ -92,7 +92,7 @@ export default function Book() {
                   className={twMerge(
                     'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                     'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
+                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
                   )}
                 >
                   {values.title}
@@ -166,7 +166,7 @@ export default function Book() {
         },
       },
     ],
-    []
+    [],
   );
 
   const tableInstance = useRef(null);

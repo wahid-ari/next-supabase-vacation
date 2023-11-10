@@ -192,7 +192,7 @@ export default function Video() {
                   onClick={() => handleShowVideoDialog(original.title, original.video_url)}
                   className={twMerge(
                     'text-left break-all text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-pointer rounded-md font-medium',
-                    'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                    'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}
                 >
                   {/* <p className='break text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-default'> */}
@@ -268,7 +268,7 @@ export default function Video() {
                     original.title,
                     original.video_url,
                     original?.vacation_province?.id,
-                    original?.vacation_island?.id
+                    original?.vacation_island?.id,
                   )
                 }
               >
@@ -289,7 +289,7 @@ export default function Video() {
       },
     ],
     // FIX error, combobox province not working when directly edit after reloading page
-    [province]
+    [province],
   );
 
   const tableInstance = useRef(null);
@@ -462,7 +462,7 @@ export default function Video() {
                                 <Check
                                   className={cn(
                                     'mr-2 h-4 w-4 text-emerald-600',
-                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0'
+                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0',
                                   )}
                                 />
                                 {prov.name}
@@ -623,7 +623,7 @@ export default function Video() {
                                 <Check
                                   className={cn(
                                     'mr-2 h-4 w-4 text-emerald-600',
-                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0'
+                                    comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0',
                                   )}
                                 />
                                 {prov.name}

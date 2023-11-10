@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data } = await supabase
           .from('vacation_destination')
           .select(
-            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
           )
           .order('id');
         res.status(200).json(data);
@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data: destination } = await supabase
           .from('vacation_destination')
           .select(
-            `id, name, slug, image_url, description, video_url, location, content, header_image_url, vacation_island (id, name, slug), vacation_province (id, name, slug)`
+            `id, name, slug, image_url, description, video_url, location, content, header_image_url, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
           )
           .eq(column, param)
           .order('id');

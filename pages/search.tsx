@@ -226,7 +226,7 @@ export default function Search() {
                       onClick={() => removeBooksHistory(item.id)}
                       className={twMerge(
                         'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
-                        'bg-red-500 text-white transition-all hover:bg-red-600'
+                        'bg-red-500 text-white transition-all hover:bg-red-600',
                       )}
                     >
                       X
@@ -266,7 +266,7 @@ export default function Search() {
                       onClick={() => removeAuthorsHistory(item.id)}
                       className={twMerge(
                         'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
-                        'bg-red-500 text-white transition-all hover:bg-red-600'
+                        'bg-red-500 text-white transition-all hover:bg-red-600',
                       )}
                     >
                       X
