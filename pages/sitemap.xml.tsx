@@ -1,6 +1,6 @@
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 
-function generateSiteMap(books: any, authors: any, genres: any) {
+function generateSiteMap(destination: any, category: any, island: any, province: any) {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
 
@@ -13,17 +13,22 @@ function generateSiteMap(books: any, authors: any, genres: any) {
         <priority>1.00</priority>
       </url>
       <url>
-        <loc>${BASE_URL}/books</loc>
+        <loc>${BASE_URL}/destinations</loc>
         <lastmod>${today.toISOString()}</lastmod>
         <priority>0.80</priority>
       </url>
       <url>
-        <loc>${BASE_URL}/authors</loc>
+        <loc>${BASE_URL}/categories</loc>
         <lastmod>${today.toISOString()}</lastmod>
         <priority>0.80</priority>
       </url>
       <url>
-        <loc>${BASE_URL}/genres</loc>
+        <loc>${BASE_URL}/islands</loc>
+        <lastmod>${today.toISOString()}</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
+        <loc>${BASE_URL}/provinces</loc>
         <lastmod>${today.toISOString()}</lastmod>
         <priority>0.80</priority>
       </url>
@@ -38,33 +43,44 @@ function generateSiteMap(books: any, authors: any, genres: any) {
         <priority>0.80</priority>
       </url>
 
-    ${books
-      .map((book: any) => {
+    ${destination
+      .map((item: any) => {
         return `
         <url>
-          <loc>${`${BASE_URL}/books/${book.slug}`}</loc>
+          <loc>${`${BASE_URL}/destinations/${item.slug}`}</loc>
           <lastmod>${today.toISOString()}</lastmod>
         </url>
       `;
       })
       .join('')}
   
-    ${authors
-      .map((author: any) => {
+    ${category
+      .map((item: any) => {
         return `
       <url>
-        <loc>${`${BASE_URL}/authors/${author.slug}`}</loc>
+        <loc>${`${BASE_URL}/categories/${item.slug}`}</loc>
         <lastmod>${today.toISOString()}</lastmod>
       </url>
     `;
       })
       .join('')}
     
-    ${genres
-      .map((genre: any) => {
+    ${island
+      .map((item: any) => {
         return `
       <url>
-        <loc>${`${BASE_URL}/genres/${genre.slug}`}</loc>
+        <loc>${`${BASE_URL}/islands/${item.slug}`}</loc>
+        <lastmod>${today.toISOString()}</lastmod>
+      </url>
+    `;
+      })
+      .join('')}
+    
+    ${province
+      .map((item: any) => {
+        return `
+      <url>
+        <loc>${`${BASE_URL}/provinces/${item.slug}`}</loc>
         <lastmod>${today.toISOString()}</lastmod>
       </url>
     `;
@@ -82,10 +98,10 @@ export default function SiteMap() {
 export async function getServerSideProps({ res }) {
   // We make an API call to gather the URLs for our site
   const getAll = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/sitemap`);
-  const { books, authors, genres } = await getAll.json();
+  const { destination, category, island, province } = await getAll.json();
 
   // We generate the XML sitemap with the data
-  const sitemap = generateSiteMap(books, authors, genres);
+  const sitemap = generateSiteMap(destination, category, island, province);
 
   res.setHeader('Content-Type', 'text/xml');
   // we send the XML to the browser
