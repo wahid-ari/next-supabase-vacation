@@ -797,28 +797,51 @@ test.describe('Testing RactSelect Component', () => {
   });
 });
 
+test.describe('Testing SelectBox Component', () => {
+  // SelectBox ----------------------------------------------------
+  test('renders a SelectBox component', async ({ page }) => {
+    const selectbox = page.getByTestId('selectbox');
+    await expect(selectbox).toBeVisible();
+    await expect(selectbox).toHaveClass(
+      /h-10 relative my-2 w-full text-left border transition-all rounded-md cursor-pointer text-sm/,
+    );
+  });
+  test('selecting option in SelectBox component', async ({ page }) => {
+    const selectbox = page.getByTestId('selectbox');
+    await selectbox.click();
+    await expect(page.getByRole('option', { name: 'Select 1' })).toBeVisible();
+    await expect(page.getByRole('option', { name: 'Select 1' })).toHaveClass(
+      /relative cursor-pointer py-2 pr-4 pl-10 text-neutral-900 dark:text-white/,
+    );
+    await page.getByRole('option', { name: 'Select 1' }).click();
+    await expect(page.getByRole('option', { name: 'Select 1' })).toHaveAttribute('aria-selected', 'true');
+    await expect(selectbox).toHaveText('Select 1');
+  });
+});
+
 test.describe('Testing SearchBox Component', () => {
   // SearchBox ----------------------------------------------------
   test('renders a SearchBox component', async ({ page }) => {
     const searchbox = page.getByTestId('searchbox');
     await expect(searchbox).toBeVisible();
     await expect(searchbox).toHaveClass(
-      /w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900/,
+      /w-full rounded-md py-2 pl-3 pr-10 text-sm text-neutral-900 dark:bg-neutral-900 dark:text-white/,
     );
+  });
+  test('selecting option in SearchBox component', async ({ page }) => {
+    const searchbox = page.getByTestId('searchbox');
     await searchbox.fill('Option 1');
     await expect(page.getByRole('option', { name: 'Option 1' })).toBeVisible();
-    await expect(page.getByRole('option', { name: 'Option 1' })).toHaveClass(
-      /relative cursor-default select-none py-2 pl-10 pr-4/,
-    );
+    await expect(page.getByRole('option', { name: 'Option 1' })).toHaveClass(/relative cursor-pointer py-2 pl-10 pr-4/);
     await page.getByRole('option', { name: 'Option 1' }).click();
-    await expect(page.getByRole('option', { name: 'Option 1' })).toHaveAttribute('aria-selected', 'true');
+    // await expect(page.getByRole('option', { name: 'Option 1' })).toHaveAttribute('aria-selected', 'true');
+    await expect(page.getByTestId('searchbox-value')).toHaveText('Option 1');
     await searchbox.fill('Option 2');
     await expect(page.getByRole('option', { name: 'Option 2' })).toBeVisible();
-    await expect(page.getByRole('option', { name: 'Option 2' })).toHaveClass(
-      /relative cursor-default select-none py-2 pl-10 pr-4/,
-    );
+    await expect(page.getByRole('option', { name: 'Option 2' })).toHaveClass(/relative cursor-pointer py-2 pl-10 pr-4/);
     await page.getByRole('option', { name: 'Option 2' }).click();
-    await expect(page.getByRole('option', { name: 'Option 2' })).toHaveAttribute('aria-selected', 'true');
+    // await expect(page.getByRole('option', { name: 'Option 2' })).toHaveAttribute('aria-selected', 'true');
+    await expect(page.getByTestId('searchbox-value')).toHaveText('Option 2');
   });
 });
 

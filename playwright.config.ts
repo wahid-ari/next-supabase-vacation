@@ -6,6 +6,8 @@ import { defineConfig, devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
+// Install browser
+// npx playwright install chromium
 // Explore test-results
 // TODO Docs https://trace.playwright.dev/
 
