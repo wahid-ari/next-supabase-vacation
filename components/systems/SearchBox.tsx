@@ -26,7 +26,7 @@ export default function SearchBox({
   ...props
 }: Props) {
   return (
-    <Combobox name={name} value={value} onChange={onChange}>
+    <Combobox name={name} by='id' value={value} onChange={onChange}>
       <div className='relative mt-1 pb-1'>
         {label && <Combobox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Combobox.Label>}
         <div

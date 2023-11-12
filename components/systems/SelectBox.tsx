@@ -14,12 +14,13 @@ type Props = {
 
 export default function SelectBox({ label, name, value, placeholder, onChange, options, ...props }: Props) {
   return (
-    <Listbox name={name} value={value} onChange={onChange} {...props}>
+    <Listbox name={name} value={value} onChange={onChange}>
       <div className='relative mt-1 pb-1'>
         {label && <Listbox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Listbox.Label>}
         <Listbox.Button
+          {...props}
           className={twMerge(
-            'h-10 relative my-2 w-full p-[1px] text-left border transition-all rounded-md cursor-pointer text-sm',
+            'h-10 relative my-2 w-full text-left border transition-all rounded-md cursor-pointer text-sm',
             'border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800',
             'focus:ring-2 focus:ring-sky-500 focus-visible:outline-none',
           )}
