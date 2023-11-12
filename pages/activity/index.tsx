@@ -97,16 +97,16 @@ export default function Log() {
 
   if (error) {
     return (
-      <Layout title='Logs - MyVacation'>
+      <Layout title='Log - MyVacation'>
         <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout title='Logs - MyVacation' description='View and Manage Logs - MyVacation' prefetch={['/api/log']}>
+    <Layout title='Log - MyVacation' description='View and Manage Log - MyVacation' prefetch={['/api/log']}>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title>Logs</Title>
+        <Title>Log</Title>
       </div>
 
       <InputDebounce
