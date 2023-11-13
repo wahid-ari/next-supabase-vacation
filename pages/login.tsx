@@ -69,7 +69,7 @@ export default function Login() {
               token,
               callbackUrl: callbackUrl || '/dashboard',
             });
-          }, 500);
+          }, 1000);
         }
       } catch (error) {
         updateToast({ toastId, message: error?.response?.data?.error, isError: true });
