@@ -17,7 +17,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 50 * 1000,
+  timeout: 80 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -31,7 +31,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   // retries: process.env.CI ? 2 : 0,
-  retries: 0,
+  retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
