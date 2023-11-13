@@ -53,20 +53,23 @@ export default function Login() {
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
         if (res.status == 200) {
           // NextAuth
-          const { id, username, name, type, token } = res.data;
-          signIn('credentials', {
-            id,
-            username,
-            name,
-            type,
-            token,
-            callbackUrl: callbackUrl || '/dashboard',
-          });
           updateToast({
             toastId,
             message: 'Success Login',
             isError: false,
           });
+          const { id, username, name, type, token } = res.data;
+          // FIX need this for playwright test case
+          setTimeout(() => {
+            signIn('credentials', {
+              id,
+              username,
+              name,
+              type,
+              token,
+              callbackUrl: callbackUrl || '/dashboard',
+            });
+          }, 500);
         }
       } catch (error) {
         updateToast({ toastId, message: error?.response?.data?.error, isError: true });
