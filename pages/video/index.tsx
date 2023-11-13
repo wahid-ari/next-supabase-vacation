@@ -411,26 +411,26 @@ export default function Video() {
                 name='title'
                 value={item.title}
                 onChange={(e) => setItem((prev) => ({ ...prev, title: e.target.value }))}
-                placeholder='Our Planet'
+                placeholder='Video Name'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='video-url' className='sm:text-right leading-5'>
+              <Label htmlFor='video_url' className='sm:text-right leading-5'>
                 Video URL
               </Label>
               <Input
-                id='video-url'
+                id='video_url'
                 type='text'
-                name='video-url'
+                name='video_url'
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
-                placeholder='https://youtu.be/GfO-3Oir-qM'
+                placeholder='Video URL'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select-province' className='sm:text-right leading-5'>
+              <Label htmlFor='select_province' className='sm:text-right leading-5'>
                 Province
               </Label>
               {province ? (
@@ -515,7 +515,7 @@ export default function Video() {
               )}
             </div> */}
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select-island' className='sm:text-right leading-5'>
+              <Label htmlFor='select_island' className='sm:text-right leading-5'>
                 Island
               </Label>
               {island ? (
@@ -523,7 +523,7 @@ export default function Video() {
                   value={item.island_id || undefined}
                   onValueChange={(e) => setItem((prev) => ({ ...prev, island_id: e }))}
                 >
-                  <SelectTrigger className='sm:col-span-3' id='select-island' aria-label='select-island'>
+                  <SelectTrigger className='sm:col-span-3' id='select_island' aria-label='select island'>
                     <SelectValue placeholder='Select Island' />
                   </SelectTrigger>
                   <SelectContent>
@@ -572,26 +572,26 @@ export default function Video() {
                 name='title'
                 value={item.title}
                 onChange={(e) => setItem((prev) => ({ ...prev, title: e.target.value }))}
-                placeholder='Our Planet'
+                placeholder='Video Name'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='video-url' className='sm:text-right leading-5'>
+              <Label htmlFor='video_url' className='sm:text-right leading-5'>
                 Video URL
               </Label>
               <Input
-                id='video-url'
+                id='video_url'
                 type='text'
-                name='Video URL'
+                name='video_url'
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
-                placeholder='https://youtu.be/GfO-3Oir-qM'
+                placeholder='Video URL'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select-province' className='sm:text-right leading-5'>
+              <Label htmlFor='select_province' className='sm:text-right leading-5'>
                 Province
               </Label>
               {province ? (
@@ -676,7 +676,7 @@ export default function Video() {
               )}
             </div> */}
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select-island' className='sm:text-right leading-5'>
+              <Label htmlFor='select_island' className='sm:text-right leading-5'>
                 Island
               </Label>
               {island ? (
@@ -684,7 +684,7 @@ export default function Video() {
                   value={item.island_id || undefined}
                   onValueChange={(e) => setItem((prev) => ({ ...prev, island_id: e }))}
                 >
-                  <SelectTrigger className='sm:col-span-3' id='select-island' aria-label='select-island'>
+                  <SelectTrigger className='sm:col-span-3' id='select_island' aria-label='select island'>
                     <SelectValue placeholder='Select Island' />
                   </SelectTrigger>
                   <SelectContent>

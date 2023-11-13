@@ -197,31 +197,31 @@ export default function Destination() {
                 name='name'
                 value={createItem.name}
                 onChange={(e: any) => setCreateItem((prev) => ({ ...prev, name: e.target.value }))}
-                placeholder='Kuta Bali'
+                placeholder='Destination Name'
               />
             </div>
 
             <div className='space-y-2'>
-              <Label htmlFor='image-url'>Image URL</Label>
+              <Label htmlFor='image_url'>Image URL</Label>
               <Input
-                id='image-url'
+                id='image_url'
                 type='text'
-                name='image-url'
+                name='image_url'
                 value={createItem.image_url}
                 onChange={(e) => setCreateItem((prev) => ({ ...prev, image_url: e.target.value }))}
-                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                placeholder='Image URL'
               />
             </div>
 
             <div className='space-y-2'>
-              <Label htmlFor='header-image-url'>Header Image URL</Label>
+              <Label htmlFor='header_image_url'>Header Image URL</Label>
               <Input
-                id='header-image-url'
+                id='header_image_url'
                 type='text'
-                name='header-image-url'
+                name='header_image_url'
                 value={createItem.header_image_url}
                 onChange={(e) => setCreateItem((prev) => ({ ...prev, header_image_url: e.target.value }))}
-                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                placeholder='Header Image URL'
               />
             </div>
 
@@ -239,14 +239,14 @@ export default function Destination() {
           </div>
           <div className='space-y-4'>
             <div className='space-y-2'>
-              <Label htmlFor='video-url'>Video URL</Label>
+              <Label htmlFor='video_url'>Video URL</Label>
               <Input
-                id='video-url'
+                id='video_url'
                 type='text'
-                name='video-url'
+                name='video_url'
                 value={createItem.video_url}
                 onChange={(e) => setCreateItem((prev) => ({ ...prev, video_url: e.target.value }))}
-                placeholder='https://youtu.be/GfO-3Oir-qM'
+                placeholder='Video URL'
               />
             </div>
 
@@ -258,12 +258,12 @@ export default function Destination() {
                 name='location'
                 value={createItem.location}
                 onChange={(e: any) => setCreateItem((prev) => ({ ...prev, location: e.target.value }))}
-                placeholder='Kuta Bali'
+                placeholder='Location'
               />
             </div>
 
             <div className='space-y-2'>
-              <Label htmlFor='select-province'>Province</Label>
+              <Label htmlFor='select_province'>Province</Label>
               {province ? (
                 <Popover open={openCombobox} onOpenChange={setOpenCombobox}>
                   <PopoverTrigger asChild>
@@ -319,7 +319,7 @@ export default function Destination() {
             </div>
 
             <div className='space-y-2'>
-              <Label htmlFor='select-island'>Island</Label>
+              <Label htmlFor='select_island'>Island</Label>
               {island ? (
                 <Select
                   // FIX this Select component
@@ -327,7 +327,7 @@ export default function Destination() {
                   value={createItem.island_id}
                   onValueChange={(e) => setCreateItem((prev) => ({ ...prev, island_id: Number(e) }))}
                 >
-                  <SelectTrigger id='select-island' aria-label='select-island'>
+                  <SelectTrigger id='select_island' aria-label='select island'>
                     <SelectValue placeholder='Select Island' />
                   </SelectTrigger>
                   <SelectContent>

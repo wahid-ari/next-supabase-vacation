@@ -342,26 +342,26 @@ export default function Province() {
                 name='name'
                 value={item.name}
                 onChange={(e) => setItem((prev) => ({ ...prev, name: e.target.value }))}
-                placeholder='Jawa Timur'
+                placeholder='Province Name'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='image-url' className='sm:text-right leading-5'>
+              <Label htmlFor='image_url' className='sm:text-right leading-5'>
                 Image URL
               </Label>
               <Input
-                id='image-url'
+                id='image_url'
                 type='text'
-                name='Image URL'
+                name='image_url'
                 value={item.image_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, image_url: e.target.value }))}
-                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                placeholder='Image URL'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select-island' className='sm:text-right leading-5'>
+              <Label htmlFor='select_island' className='sm:text-right leading-5'>
                 Island
               </Label>
               {island ? (
@@ -369,7 +369,7 @@ export default function Province() {
                   value={item.island_id || undefined}
                   onValueChange={(e) => setItem((prev) => ({ ...prev, island_id: e }))}
                 >
-                  <SelectTrigger className='sm:col-span-3' id='select-island' aria-label='select-island'>
+                  <SelectTrigger className='sm:col-span-3' id='select_island' aria-label='select island'>
                     <SelectValue placeholder='Select Island' />
                   </SelectTrigger>
                   <SelectContent>
@@ -415,29 +415,29 @@ export default function Province() {
               <Input
                 id='name'
                 type='text'
-                name='Name'
+                name='name'
                 value={item.name}
                 onChange={(e) => setItem((prev) => ({ ...prev, name: e.target.value }))}
-                placeholder='Jawa Timur'
+                placeholder='Province Name'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='image-url' className='sm:text-right leading-5'>
+              <Label htmlFor='image_url' className='sm:text-right leading-5'>
                 Image URL
               </Label>
               <Input
-                id='image-url'
+                id='image_url'
                 type='text'
-                name='Image URL'
+                name='image_url'
                 value={item.image_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, image_url: e.target.value }))}
-                placeholder='https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500'
+                placeholder='Image URL'
                 className='sm:col-span-3'
               />
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select-island' className='sm:text-right leading-5'>
+              <Label htmlFor='select_island' className='sm:text-right leading-5'>
                 Island
               </Label>
               {island ? (
@@ -445,7 +445,7 @@ export default function Province() {
                   value={item.island_id || undefined}
                   onValueChange={(e) => setItem((prev) => ({ ...prev, island_id: e }))}
                 >
-                  <SelectTrigger className='sm:col-span-3' id='select-island' aria-label='select-island'>
+                  <SelectTrigger className='sm:col-span-3' id='select_island' aria-label='select island'>
                     <SelectValue placeholder='Select Island' />
                   </SelectTrigger>
                   <SelectContent>
