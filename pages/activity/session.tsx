@@ -120,7 +120,7 @@ export default function Session() {
                 <TableSimple.td className='text-center'>{item.user_id}</TableSimple.td>
                 <TableSimple.td>{item.vacation_user.name}</TableSimple.td>
                 <TableSimple.td>
-                  <p className='break-all text-ellipsis overflow-hidden w-40 md:w-52 lg:w-72 xl:w-full'>
+                  <p className='break-all text-ellipsis overflow-hidden w-32 sm:w-64 md:w-72 xl:w-full'>
                     {item.token.split('.')[2]}
                   </p>
                 </TableSimple.td>
@@ -131,7 +131,7 @@ export default function Session() {
                     title={`Delete ${item.vacation_user.name}`}
                     size='sm'
                     variant='destructive'
-                    className='px-2'
+                    className='px-2 ml-1.5'
                     onClick={() => setDeleteDialog({ dialog: true, id: item.id })}
                   >
                     <TrashIcon className='h-4 w-4' />
@@ -145,12 +145,12 @@ export default function Session() {
         <TableSimple
           head={
             <>
-              <TableSimple.th shrink>No</TableSimple.th>
               <TableSimple.th shrink>ID</TableSimple.th>
               <TableSimple.th className='w-28'>Name</TableSimple.th>
               <TableSimple.th className='text-left'>Token</TableSimple.th>
               <TableSimple.th className='w-28'>Date</TableSimple.th>
               <TableSimple.th className='w-28'>Time</TableSimple.th>
+              <TableSimple.th className='w-28'>Action</TableSimple.th>
             </>
           }
         >
