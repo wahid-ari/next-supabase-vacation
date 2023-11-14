@@ -8,7 +8,7 @@ import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
 import { z } from 'zod';
 
-import { tabledata } from '@/utils/table-data';
+import { tabledata } from '@/libs/table-data';
 import { validateFormObject } from '@/validations/zod';
 import { useDebounce } from '@/hooks/use-debounce';
 import useToast from '@/hooks/use-hot-toast';

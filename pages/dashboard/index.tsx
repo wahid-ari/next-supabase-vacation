@@ -14,6 +14,7 @@ import {
   YAxis,
 } from 'recharts';
 
+import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/libs/recharts-setup';
 import {
   useDestinationByCategoryData,
   // useCountsData,
@@ -25,7 +26,6 @@ import {
   useTotalProvinceData,
   useTotalVideoData,
 } from '@/libs/swr';
-import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/utils/recharts-setup';
 import useWindowSize from '@/hooks/use-window-size';
 
 import Card from '@/components/dashboard/Card';
