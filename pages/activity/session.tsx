@@ -82,8 +82,8 @@ export default function Session() {
         title={`Delete ${deleteDialog.id == null ? 'All' : ''} Session`}
         open={deleteDialog.dialog}
         isDanger
-        setOpen={() => setDeleteDialog((prev) => ({ ...prev, dialog: true }))}
-        onClose={() => setDeleteDialog((prev) => ({ ...prev, dialog: false }))}
+        setOpen={() => setDeleteDialog({ id: null, dialog: false })}
+        onClose={() => setDeleteDialog({ id: null, dialog: false })}
         onConfirm={handleDeleteAll}
       >
         <div className='mt-5 text-center sm:text-left'>
