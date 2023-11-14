@@ -16,7 +16,6 @@ test.describe('Testing Design Components Page', () => {
   });
   test('page has Table of Contents', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'Table of Content' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Validation (YUP)', exact: true })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Dialog', exact: true })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Modal', exact: true })).toBeVisible();
   });
@@ -937,69 +936,6 @@ test.describe('Testing LoadingDots Component', () => {
     const loadingdots = page.getByTestId('loadingdots-large');
     await expect(loadingdots).toBeVisible();
     await expect(loadingdots).toHaveClass(/inline-flex items-center gap-1 text-center leading-7/);
-  });
-});
-
-test.describe('Testing YUP Validation Component', () => {
-  // YUP Validation ----------------------------------------------------
-  test('All fields empty', async ({ page }) => {
-    await page.getByRole('button', { name: 'Submit Yup' }).click();
-    await expect(page.getByText('Username required')).toBeVisible();
-    await expect(page.getByText('Username must be alphabet')).toBeVisible();
-    await expect(page.getByText('Email required')).toBeVisible();
-    await expect(page.getByText('Number must be valid')).toBeVisible();
-    await expect(page.getByText('Number positive must be valid')).toBeVisible();
-  });
-  test('Username fill', async ({ page }) => {
-    await page.getByTestId('username-yup').fill('username');
-    await page.getByRole('button', { name: 'Submit Yup' }).click();
-    await expect(page.getByText('Username required')).not.toBeVisible();
-    await expect(page.getByText('Username must be alphabet')).not.toBeVisible();
-    await expect(page.getByText('Email required')).toBeVisible();
-    await expect(page.getByText('Number must be valid')).toBeVisible();
-    await expect(page.getByText('Number positive must be valid')).toBeVisible();
-  });
-  test('Email fill', async ({ page }) => {
-    await page.getByTestId('username-yup').fill('username');
-    await page.getByTestId('email-yup').fill('username@gmail.com');
-    await page.getByRole('button', { name: 'Submit Yup' }).click();
-    await expect(page.getByText('Username required')).not.toBeVisible();
-    await expect(page.getByText('Username must be alphabet')).not.toBeVisible();
-    await expect(page.getByText('Email required')).not.toBeVisible();
-    await expect(page.getByText('Number must be valid')).toBeVisible();
-    await expect(page.getByText('Number positive must be valid')).toBeVisible();
-  });
-  test('Number fill', async ({ page }) => {
-    await page.getByTestId('username-yup').fill('username');
-    await page.getByTestId('email-yup').fill('username@gmail.com');
-    await page.getByTestId('number-yup').fill('1');
-    await page.getByRole('button', { name: 'Submit Yup' }).click();
-    await expect(page.getByText('Username required')).not.toBeVisible();
-    await expect(page.getByText('Username must be alphabet')).not.toBeVisible();
-    await expect(page.getByText('Email required')).not.toBeVisible();
-    await expect(page.getByText('Number must be valid')).not.toBeVisible();
-    await expect(page.getByText('Number positive must be valid')).toBeVisible();
-  });
-  test('Positive Number fill', async ({ page }) => {
-    await page.getByTestId('username-yup').fill('username');
-    await page.getByTestId('email-yup').fill('username@gmail.com');
-    await page.getByTestId('number-yup').fill('1');
-    await page.getByTestId('positive-yup').fill('5');
-    await page.getByRole('button', { name: 'Submit Yup' }).click();
-    await expect(page.getByText('Username required')).not.toBeVisible();
-    await expect(page.getByText('Username must be alphabet')).not.toBeVisible();
-    await expect(page.getByText('Email required')).not.toBeVisible();
-    await expect(page.getByText('Number must be valid')).not.toBeVisible();
-    await expect(page.getByText('Number positive must be valid')).not.toBeVisible();
-  });
-  test('All filled', async ({ page }) => {
-    await page.getByTestId('username-yup').fill('username');
-    await page.getByTestId('email-yup').fill('username@gmail.com');
-    await page.getByTestId('number-yup').fill('1');
-    await page.getByTestId('positive-yup').fill('5');
-    await page.getByRole('button', { name: 'Submit Yup' }).click();
-    await expect(page.getByText('Posting YUP Data')).toBeVisible();
-    await expect(page.getByText('Success Posting YUP Data')).toBeVisible();
   });
 });
 

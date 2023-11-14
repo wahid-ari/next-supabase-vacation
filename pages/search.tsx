@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
-// import { useSearchHistoryStore } from '@/store/use-store';
 import { useSearchData } from '@/libs/swr';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
@@ -39,16 +38,6 @@ export default function Search() {
     resetAllSearchHistory,
   } = useSearchHistory();
 
-  // const booksHistory = useSearchHistoryStore((state: any) => state.booksHistory);
-  // const setBooksHistory = useSearchHistoryStore((state: any) => state.setBooksHistory);
-  // const resetBooksHistory = useSearchHistoryStore((state: any) => state.resetBooksHistory);
-
-  // const authorsHistory = useSearchHistoryStore((state: any) => state.authorsHistory);
-  // const setAuthorsHistory = useSearchHistoryStore((state: any) => state.setAuthorsHistory);
-  // const resetAuthorsHistory = useSearchHistoryStore((state: any) => state.resetAuthorsHistory);
-
-  // const resetAllSearchHistory = useSearchHistoryStore((state: any) => state.resetAllSearchHistory);
-
   useEffect(() => {
     if (data?.books?.length > 0) {
       // if already searching
@@ -62,16 +51,6 @@ export default function Search() {
         // first time searching, set search result to search history directly
         addBooksHistory(data?.books);
       }
-      // if (booksHistory.length > 0) {
-      //   // compare history with new search result
-      //   let newBooks = compareSearchResult(booksHistory, data?.books);
-      //   if (newBooks != booksHistory) {
-      //     setBooksHistory(newBooks);
-      //   }
-      // } else {
-      //   // first time searching, set search result to search history directly
-      //   setBooksHistory(data?.books);
-      // }
     }
     // Authors
     if (data?.authors?.length > 0) {
@@ -84,16 +63,6 @@ export default function Search() {
         addAuthorsHistory(data?.authors);
       }
     }
-    // if (data?.authors?.length > 0) {
-    //   if (authorsHistory.length > 0) {
-    //     let newAuthors = compareSearchResult(authorsHistory, data?.authors);
-    //     if (newAuthors != authorsHistory) {
-    //       setAuthorsHistory(newAuthors);
-    //     }
-    //   } else {
-    //     setAuthorsHistory(data?.authors);
-    //   }
-    // }
   }, [addAuthorsHistory, addBooksHistory, data, searchHistory.authors, searchHistory.books]);
 
   function handleSubmit(e: any) {
@@ -183,7 +152,6 @@ export default function Search() {
           ) : null}
         </>
       ) : searchHistory.books.length > 0 || searchHistory.authors.length > 0 ? (
-        // ) : booksHistory?.length > 0 || authorsHistory?.length > 0 ? (
         <>
           <div className='mt-6 flex items-center justify-between'>
             <Heading h2 className='!mb-0 text-[22px]'>
@@ -198,7 +166,6 @@ export default function Search() {
           </div>
 
           {searchHistory.books.length > 0 ? (
-            // {booksHistory?.length > 0 ? (
             <>
               <div className='mb-6 mt-6 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
@@ -213,7 +180,6 @@ export default function Search() {
               </div>
               <div className='ml-1 mt-2 space-y-6'>
                 {searchHistory.books?.map((item: any, index: number) => (
-                  // {booksHistory?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <BookListItem
                       href={`/book/detail/${item.id}`}
@@ -238,7 +204,6 @@ export default function Search() {
           ) : null}
 
           {searchHistory.authors?.length > 0 ? (
-            // {authorsHistory?.length > 0 ? (
             <>
               <div className='mb-4 mt-8 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
@@ -253,7 +218,6 @@ export default function Search() {
               </div>
               <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
                 {searchHistory.authors?.map((item: any, index: number) => (
-                  // {authorsHistory?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <AuthorListItem
                       href={`/author/detail/${item.id}`}

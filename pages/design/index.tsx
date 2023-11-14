@@ -6,7 +6,6 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon, ChevronDownIcon, MoreHorizontal } from 'lucide-react';
 import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
-import * as yup from 'yup';
 import { z } from 'zod';
 
 import { tabledata } from '@/utils/table-data';
@@ -99,15 +98,9 @@ export default function Example() {
   const [openModal, setOpenModal] = useState(false);
   const [openDangerModal, setOpenDangerModal] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
-  const [user, setUser] = useState({
+  const [admin, setAdmin] = useState({
     username: '',
     email: '',
-    angka: '',
-    angka_positif: '',
-  });
-  const [admin, setAdmin] = useState({
-    usernamee: '',
-    emaill: '',
     age: '',
     password: '',
     confirmPassword: '',
@@ -150,32 +143,13 @@ export default function Example() {
     dismissToast();
   }
 
-  let userSchema = yup.object().shape({
-    username: yup
-      .string()
-      .required('Username required')
-      .matches(/^[A-Za-z]+$/, 'Username must be alphabet'),
-    email: yup.string().required('Email required').email('Email must be valid').typeError('Email must be valid'),
-    angka: yup
-      .number()
-      .required('Number required')
-      .integer('Number must be integer not float')
-      .typeError('Number must be valid'),
-    angka_positif: yup
-      .number()
-      .required('Number positive required')
-      .positive('Number positive must be positif')
-      .integer('Number positive must be integer not float')
-      .typeError('Number positive must be valid'),
-  });
-
   const zodSchema = z
     .object({
-      usernamee: z
+      username: z
         .string()
         .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' })
         .min(1, { message: 'Username is required' }),
-      emaill: z.string().min(1, { message: 'Email is required' }).email({ message: 'Invalid email address' }),
+      email: z.string().min(1, { message: 'Email is required' }).email({ message: 'Invalid email address' }),
       age: z
         .number({
           required_error: 'Age is required',
@@ -197,40 +171,6 @@ export default function Example() {
     .refine((data) => data.password === data.confirmPassword, {
       message: 'Oops! Password doesnt match',
     });
-
-  async function checker(schema: any, param: any) {
-    try {
-      await schema.validate(param, { abortEarly: false });
-      return { valid: true };
-    } catch (err) {
-      return { valid: false, errors: err.errors };
-    }
-  }
-
-  async function checkValid() {
-    try {
-      const { valid, errors } = await checker(userSchema, user);
-      if (!valid && errors) {
-        dismissToast();
-        errors.forEach((el) => {
-          pushToast({ message: el, isError: true });
-        });
-      }
-      // console.log(valid);
-      // console.log(errors);
-      if (valid) {
-        const toastId = pushToast({
-          message: 'Posting YUP Data',
-          isLoading: true,
-        });
-        setTimeout(() => {
-          updateToast({ toastId, message: 'Success Posting YUP Data', isError: false });
-        }, 2000);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
 
   async function checkValidZod(e: any) {
     e.preventDefault();
@@ -255,10 +195,6 @@ export default function Example() {
     } catch (e) {
       console.error(e);
     }
-  }
-
-  function handleUserChange(e) {
-    setUser({ ...user, [e.target.name]: e.target.value });
   }
 
   function handleAdminChange(e) {
@@ -289,7 +225,7 @@ export default function Example() {
     }
   }
 
-  function handleUserRHFChange(e: any) {
+  function handleUserChange(e: any) {
     let valueNumber = e.target.name == 'age_object' ? Number(e.target.value) : e.target.value;
     setUserZod({
       ...userZod,
@@ -481,11 +417,6 @@ export default function Example() {
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
         <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
-          <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#validation'>
-              Validation (YUP)
-            </Link>
-          </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#validation-zod'>
               Validation (ZOD)
@@ -719,62 +650,22 @@ export default function Example() {
         </div>
       </Wrapper>
 
-      <Wrapper id='validation' name='Validation (yup)' noChildren noClassName noProps>
-        <LabeledInput
-          data-testid='username-yup'
-          label='Username'
-          name='username'
-          value={user.username}
-          placeholder='Username'
-          onChange={handleUserChange}
-        />
-        <LabeledInput
-          data-testid='email-yup'
-          label='Email'
-          name='email'
-          type='email'
-          value={user.email}
-          placeholder='Email'
-          onChange={handleUserChange}
-        />
-        <LabeledInput
-          data-testid='number-yup'
-          type='number'
-          label='Number'
-          name='angka'
-          value={user.angka}
-          placeholder='Number'
-          onChange={handleUserChange}
-        />
-        <LabeledInput
-          data-testid='positive-yup'
-          type='number'
-          min={0}
-          label='Positif Number'
-          name='angka_positif'
-          value={user.angka_positif}
-          placeholder='Positif Number'
-          onChange={handleUserChange}
-        />
-        <Button onClick={checkValid}>Submit Yup</Button>
-      </Wrapper>
-
       <Wrapper id='validation-zod' name='Validation (zod)' noChildren noClassName noProps>
         <form onSubmit={checkValidZod}>
           <LabeledInput
             data-testid='username-zod'
             label='Username'
-            name='usernamee'
-            value={admin.usernamee}
+            name='username'
+            value={admin.username}
             placeholder='Username'
             onChange={handleAdminChange}
           />
           <LabeledInput
             data-testid='email-zod'
             label='Email'
-            name='emaill'
+            name='email'
             type='email'
-            value={admin.emaill}
+            value={admin.email}
             placeholder='Email'
             onChange={handleAdminChange}
           />
@@ -817,7 +708,7 @@ export default function Example() {
             name='username_object'
             value={userZod.username_object}
             placeholder='Username'
-            onChange={handleUserRHFChange}
+            onChange={handleUserChange}
           />
           {errorsZod?.username_object && (
             <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.username_object}</span>
@@ -829,7 +720,7 @@ export default function Example() {
             type='email'
             value={userZod.email_object}
             placeholder='Email'
-            onChange={handleUserRHFChange}
+            onChange={handleUserChange}
           />
           {errorsZod?.email_object && <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.email_object}</span>}
           <LabeledInput
@@ -839,7 +730,7 @@ export default function Example() {
             name='age_object'
             value={userZod.age_object}
             placeholder='Number'
-            onChange={handleUserRHFChange}
+            onChange={handleUserChange}
             min={0}
             onKeyPress={(e: any) => !/[0-9]/.test(e.key) && e.preventDefault()}
           />
@@ -852,7 +743,7 @@ export default function Example() {
             name='password_object'
             value={userZod.password_object}
             placeholder='Password'
-            onChange={handleUserRHFChange}
+            onChange={handleUserChange}
           />
           {errorsZod?.password_object && (
             <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.password_object}</span>
@@ -864,7 +755,7 @@ export default function Example() {
             name='confirmPassword_object'
             value={userZod.confirmPassword_object}
             placeholder='Confirm Password'
-            onChange={handleUserRHFChange}
+            onChange={handleUserChange}
           />
           {errorsZod?.confirmPassword_object && (
             <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.confirmPassword_object}</span>
