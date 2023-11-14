@@ -104,8 +104,7 @@ export default function Session() {
         <TableSimple
           head={
             <>
-              <TableSimple.td shrink>No</TableSimple.td>
-              <TableSimple.td shrink>User ID</TableSimple.td>
+              <TableSimple.td shrink>ID</TableSimple.td>
               <TableSimple.td className={cn(filteredData.length < 1 && 'w-32 text-center')}>Name</TableSimple.td>
               <TableSimple.td>Token</TableSimple.td>
               <TableSimple.td shrink>Date</TableSimple.td>
@@ -118,10 +117,13 @@ export default function Session() {
           {filteredData.map((item: any, index: number) => {
             return (
               <TableSimple.tr key={index}>
-                <TableSimple.td shrink>{index + 1}</TableSimple.td>
                 <TableSimple.td className='text-center'>{item.user_id}</TableSimple.td>
                 <TableSimple.td>{item.vacation_user.name}</TableSimple.td>
-                <TableSimple.td>{item.token.split('.')[2]}</TableSimple.td>
+                <TableSimple.td>
+                  <p className='break-all text-ellipsis overflow-hidden w-40 md:w-52 lg:w-72 xl:w-full'>
+                    {item.token.split('.')[2]}
+                  </p>
+                </TableSimple.td>
                 <TableSimple.td>{item.created_at.split('T')[0]}</TableSimple.td>
                 <TableSimple.td>{getTime(item.created_at)}</TableSimple.td>
                 <TableSimple.td>
