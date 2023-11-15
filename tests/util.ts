@@ -25,5 +25,9 @@ export async function logout(page: Page) {
 
 export async function goToLastPage(page: Page) {
   await page.reload();
-  await page.getByRole('button', { name: 'Last' }).click();
+  const button = page.getByRole('button', { name: 'Last' });
+  const isButtonEnabled = await button.isEnabled();
+  if (isButtonEnabled) {
+    await page.getByRole('button', { name: 'Last' }).click();
+  }
 }
