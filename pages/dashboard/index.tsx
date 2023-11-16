@@ -16,10 +16,10 @@ import {
 
 import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/libs/recharts-setup';
 import {
-  useDestinationByCategoryData,
+  useStatisticDestinationByCategoryData,
+  useStatisticDestinationByIslandData,
+  useStatisticDestinationByProvinceData,
   // useCountsData,
-  useDestinationByIslandData,
-  useDestinationByProvinceData,
   useTotalCategoryData,
   useTotalDestinationData,
   useTotalIslandData,
@@ -45,9 +45,12 @@ export default function Dashboard() {
   const { data: totalIsland, error: errorTotalIsland } = useTotalIslandData();
   const { data: totalProvince, error: errorTotalProvince } = useTotalProvinceData();
   const { data: totalVideo, error: errorTotalVideo } = useTotalVideoData();
-  const { data: destinationByCategory, error: errorDestinationByCategory } = useDestinationByCategoryData();
-  const { data: destinationByIsland, error: errorDestinationByIsland } = useDestinationByIslandData();
-  const { data: destinationByProvince, error: errorDestinationByProvince } = useDestinationByProvinceData();
+  const { data: statisticDestinationByCategory, error: errorStatisticDestinationByCategory } =
+    useStatisticDestinationByCategoryData();
+  const { data: statisticDestinationByIsland, error: errorStatisticDestinationByIsland } =
+    useStatisticDestinationByIslandData();
+  const { data: statisticDestinationByProvince, error: errorStatisticDestinationByProvince } =
+    useStatisticDestinationByProvinceData();
 
   if (
     // error ||
@@ -56,9 +59,9 @@ export default function Dashboard() {
     errorTotalIsland ||
     errorTotalProvince ||
     errorTotalVideo ||
-    errorDestinationByCategory ||
-    errorDestinationByIsland ||
-    errorDestinationByProvince
+    errorStatisticDestinationByCategory ||
+    errorStatisticDestinationByIsland ||
+    errorStatisticDestinationByProvince
   ) {
     return (
       <Layout title='Dashboard - MyVacation'>
@@ -192,14 +195,14 @@ export default function Dashboard() {
             <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
               <Text.medium>Total Destination by Category</Text.medium>
             </div>
-            {destinationByCategory ? (
+            {statisticDestinationByCategory ? (
               <div className='m-auto w-80 py-3'>
-                {destinationByCategory.length > 0 ? (
+                {statisticDestinationByCategory.length > 0 ? (
                   <ResponsiveContainer width='99%' height={350}>
-                    <PieChart data={destinationByCategory}>
+                    <PieChart data={statisticDestinationByCategory}>
                       <Pie
                         className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
-                        data={destinationByCategory}
+                        data={statisticDestinationByCategory}
                         dataKey='total'
                         type='monotone'
                         strokeWidth={2}
@@ -208,7 +211,7 @@ export default function Dashboard() {
                         outerRadius={windowSize.width < 450 ? 80 : 90}
                         label={true}
                       >
-                        {destinationByCategory?.map((_, index) => (
+                        {statisticDestinationByCategory?.map((_, index) => (
                           <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index + (1 % RECHARTS_COLORS.length)]} />
                         ))}
                       </Pie>
@@ -254,14 +257,14 @@ export default function Dashboard() {
             <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
               <Text.medium>Total Destination by Province</Text.medium>
             </div>
-            {destinationByProvince ? (
+            {statisticDestinationByProvince ? (
               <div className='m-auto w-80 py-3'>
-                {destinationByProvince.length > 0 ? (
+                {statisticDestinationByProvince.length > 0 ? (
                   <ResponsiveContainer width='99%' height={350}>
-                    <PieChart data={destinationByProvince}>
+                    <PieChart data={statisticDestinationByProvince}>
                       <Pie
                         className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
-                        data={destinationByProvince}
+                        data={statisticDestinationByProvince}
                         dataKey='total'
                         type='monotone'
                         strokeWidth={2}
@@ -273,7 +276,7 @@ export default function Dashboard() {
                         labelLine={true}
                         paddingAngle={1}
                       >
-                        {destinationByProvince?.map((_, index) => (
+                        {statisticDestinationByProvince?.map((_, index) => (
                           <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
                         ))}
                       </Pie>
@@ -321,11 +324,11 @@ export default function Dashboard() {
             <Text.medium>Total Destination by Island</Text.medium>
           </div>
           <div className='m-auto p-3'>
-            {destinationByIsland ? (
-              destinationByIsland.length > 0 ? (
+            {statisticDestinationByIsland ? (
+              statisticDestinationByIsland.length > 0 ? (
                 <ResponsiveContainer width='99%' height={350}>
                   <BarChart
-                    data={destinationByIsland}
+                    data={statisticDestinationByIsland}
                     barCategoryGap={
                       windowSize.width > 1200 ? 20 : windowSize.width > 900 ? 15 : windowSize.width > 600 ? 10 : 5
                     }
@@ -349,7 +352,7 @@ export default function Dashboard() {
                       tickFormatter={(value) => `${value}`}
                     />
                     <Bar dataKey='total' fill='#adfa1d' radius={[4, 4, 0, 0]}>
-                      {destinationByIsland?.map((_, index) => (
+                      {statisticDestinationByIsland?.map((_, index) => (
                         <Cell key={`cell-${index}`} fill={RECHARTS_COLORS[index % RECHARTS_COLORS.length]} />
                       ))}
                     </Bar>

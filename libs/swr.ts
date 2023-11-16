@@ -102,6 +102,14 @@ export function useCategoryData(id: string, slug?: boolean) {
   return { data, error, isLoading };
 }
 
+// get total Destination in each Category
+export function useCategoryWithTotalDestinationData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/category/total-destination`, fetcher, {
+    refreshInterval: 1000,
+  });
+  return { data, error, isLoading };
+}
+
 // Province
 export function useProvincesData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/province`, fetcher, { refreshInterval: 1000 });
@@ -117,14 +125,6 @@ export function useProvinceData(id: string, slug?: boolean) {
   return { data, error, isLoading };
 }
 
-// get total Destination in each Category
-export function useCategoryWithTotalDestinationData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/category/total-destination`, fetcher, {
-    refreshInterval: 1000,
-  });
-  return { data, error, isLoading };
-}
-
 // Search
 export function useSearchData(query: string | string[]) {
   const { data, error, isLoading } = useSWR(`${API_URL}/search?q=${query}`, fetcher);
@@ -132,21 +132,21 @@ export function useSearchData(query: string | string[]) {
 }
 
 // Statistic
-export function useDestinationByCategoryData() {
+export function useStatisticDestinationByCategoryData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/statistics/destination-by-category`, fetcher, {
     refreshInterval: 1000,
   });
   return { data, error, isLoading };
 }
 
-export function useDestinationByIslandData() {
+export function useStatisticDestinationByIslandData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/statistics/destination-by-island`, fetcher, {
     refreshInterval: 1000,
   });
   return { data, error, isLoading };
 }
 
-export function useDestinationByProvinceData() {
+export function useStatisticDestinationByProvinceData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/statistics/destination-by-province`, fetcher, {
     refreshInterval: 1000,
   });
