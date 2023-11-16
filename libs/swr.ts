@@ -42,22 +42,6 @@ export function useTotalVideoData() {
   return { data, error, isLoading };
 }
 
-// all books
-export function useBooksData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/book`, fetcher, { refreshInterval: 1000 });
-  return { data, error, isLoading };
-}
-
-// detail book
-export function useBookData(id: string, slug?: string) {
-  const { data, error, isLoading } = useSWR(
-    slug ? `${API_URL}/book?slug=${slug}` : `${API_URL}/book?id=${id}`,
-    fetcher,
-    { refreshInterval: 1000 },
-  );
-  return { data, error, isLoading };
-}
-
 // Destination
 export function useDestinationsData() {
   const { data, error, isLoading } = useSWR(`${API_URL}/destination`, fetcher, { refreshInterval: 1000 });
@@ -133,9 +117,11 @@ export function useProvinceData(id: string, slug?: boolean) {
   return { data, error, isLoading };
 }
 
-// get total Book in each Genre
-export function useGenreTotalBookData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/genre/total-book`, fetcher, { refreshInterval: 1000 });
+// get total Destination in each Category
+export function useCategoryWithTotalDestinationData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/category/total-destination`, fetcher, {
+    refreshInterval: 1000,
+  });
   return { data, error, isLoading };
 }
 
