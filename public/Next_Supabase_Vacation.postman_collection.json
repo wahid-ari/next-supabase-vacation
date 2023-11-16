@@ -1641,19 +1641,19 @@
                 },
                 {
                   "key": "ETag",
-                  "value": "\"b1sqyhgc5137\""
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "115"
+                  "value": "\"3imb4jp81yyg\""
                 },
                 {
                   "key": "Vary",
                   "value": "Accept-Encoding"
                 },
                 {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
                   "key": "Date",
-                  "value": "Mon, 06 Nov 2023 04:40:29 GMT"
+                  "value": "Thu, 16 Nov 2023 12:28:14 GMT"
                 },
                 {
                   "key": "Connection",
@@ -1662,10 +1662,14 @@
                 {
                   "key": "Keep-Alive",
                   "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
                 }
               ],
               "cookie": [],
-              "body": "[\n    {\n        \"id\": 1,\n        \"label\": \"Architecture\",\n        \"slug\": \"architecture\",\n        \"total\": 1\n    },\n    {\n        \"id\": 2,\n        \"label\": \"Beach\",\n        \"slug\": \"beach\",\n        \"total\": 1\n    }\n]"
+              "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Architecture\",\n        \"created_at\": \"2023-10-22T08:38:55.639635+00:00\",\n        \"image_url\": \"https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500\",\n        \"slug\": \"architecture\",\n        \"total\": 1\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Beach\",\n        \"created_at\": \"2023-10-22T08:38:55.639635+00:00\",\n        \"image_url\": \"https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&q=80&w=500\",\n        \"slug\": \"beach\",\n        \"total\": 1\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Lake\",\n        \"created_at\": \"2023-10-22T08:38:55.639635+00:00\",\n        \"image_url\": \"https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?auto=format&fit=crop&q=80&w=500\",\n        \"slug\": \"lake\",\n        \"total\": 1\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Mountain\",\n        \"created_at\": \"2023-10-22T08:38:55.639635+00:00\",\n        \"image_url\": \"https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&q=80&w=500\",\n        \"slug\": \"mountain\",\n        \"total\": 1\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Forest\",\n        \"created_at\": \"2023-10-22T08:38:55.639635+00:00\",\n        \"image_url\": \"https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&q=80&w=500\",\n        \"slug\": \"forest\",\n        \"total\": 1\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Park\",\n        \"created_at\": \"2023-10-22T08:38:55.639635+00:00\",\n        \"image_url\": \"https://images.unsplash.com/photo-1561283890-5d858c23b2ea?auto=format&fit=crop&q=80&w=500\",\n        \"slug\": \"park\",\n        \"total\": 1\n    }\n]"
             }
           ]
         }

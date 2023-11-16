@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      const { data: vacation_categories } = await supabase
+      const { data: destination_categories } = await supabase
         .from('vacation_destination_category')
         .select(`*`)
         .order('id');
@@ -16,18 +16,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       let items = [];
       for (const category of categories) {
         items.push({
-          id: category.id,
-          label: category.name,
-          slug: category.slug,
+          ...category,
           total: 0,
         });
       }
-      // Count total vacation that have same category
+      // Count total destination that have same category
       let result = [];
       for (const item of items) {
-        for (const vacation_category of vacation_categories) {
-          if (vacation_category.category_id == item.id) {
-            let filtered = items.filter((i) => i.id == vacation_category.category_id)[0];
+        for (const destination_category of destination_categories) {
+          if (destination_category.category_id == item.id) {
+            let filtered = items.filter((i) => i.id == destination_category.category_id)[0];
             filtered.total += 1;
             result.push(filtered);
           }
