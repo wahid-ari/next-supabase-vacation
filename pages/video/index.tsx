@@ -297,6 +297,7 @@ export default function Video() {
       },
     ],
     // FIX error, combobox province not working when directly edit after reloading page
+    // because province data not ready yet, but combobox already opened
     [province],
   );
 

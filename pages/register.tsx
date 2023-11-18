@@ -48,7 +48,7 @@ export default function Register() {
           pushToast({ message: el, isError: true });
         });
       } else {
-        // FIX this
+        // FIX this register logic
         // const toastId = pushToast({
         //   message: 'Registering...',
         //   isLoading: true,
