@@ -116,7 +116,7 @@ export default function Destination() {
   async function handleEdit(e: any) {
     e.preventDefault();
     const toastId = pushToast({
-      message: 'Upting destination',
+      message: 'Updating destination',
       isLoading: true,
     });
     try {
