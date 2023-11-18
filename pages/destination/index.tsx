@@ -167,7 +167,7 @@ export default function Destination() {
           return (
             <div>
               <Button asChild title={`Edit ${original.name}`} size='sm' className='mr-2 px-2'>
-                <Link href={`/destination/detail/${original.id}`}>
+                <Link href={`/destination/edit/${original.id}`}>
                   <PencilIcon className='h-4 w-4' />
                 </Link>
               </Button>

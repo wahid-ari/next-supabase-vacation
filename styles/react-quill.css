@@ -50,23 +50,23 @@ span[aria-expanded='true'].ql-picker-label {
 }
 
 .ql-snow .ql-editor h1 {
-  @apply mb-1 mt-4 font-bold text-neutral-950 dark:text-white;
+  @apply mb-1 mt-4 pb-3 font-bold text-neutral-950 dark:text-white;
 }
 
 .ql-snow .ql-editor h2 {
-  @apply mb-1 mt-4 font-bold text-neutral-950 dark:text-white;
+  @apply mb-1 mt-4 pb-3 font-bold text-neutral-950 dark:text-white;
 }
 
 .ql-snow .ql-editor h3 {
-  @apply mb-1 mt-4 font-semibold text-neutral-950 dark:text-white;
+  @apply mb-1 mt-4 pb-3 font-semibold text-neutral-950 dark:text-white;
 }
 
 .ql-snow .ql-editor h4 {
-  @apply mb-1 mt-4 font-semibold text-neutral-950 dark:text-white;
+  @apply mb-1 mt-4 pb-3 font-semibold text-neutral-950 dark:text-white;
 }
 
 .ql-snow .ql-editor p {
-  @apply my-1 leading-6 text-neutral-800 dark:text-neutral-200;
+  @apply my-1 pb-4 leading-6 text-neutral-800 dark:text-neutral-200;
 }
 
 .ql-snow .ql-editor ol {
@@ -94,7 +94,41 @@ span[aria-expanded='true'].ql-picker-label {
   font-size: 14px;
 }
 
-.ql-snow .ql-tooltip::before {
+.ql-snow .ql-tooltip a.ql-preview {
+  margin-right: 8px;
+}
+
+.ql-snow .ql-tooltip a.ql-action {
+  color: white !important;
+  background: rgb(9, 116, 255);
+  padding: 6px 12px;
+  margin-left: 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.ql-snow .ql-tooltip a.ql-remove {
+  color: white !important;
+  background: rgb(9, 116, 255);
+  padding: 6px 12px;
+  margin-left: 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.ql-snow .ql-tooltip a.ql-action::after {
+  border-right: none !important;
+  content: 'Edit';
+  margin-left: 16px;
+  padding-right: 0px !important;
+}
+
+.ql-snow .ql-tooltip a.ql-remove::before {
+  content: 'Remove';
+  margin-left: 0px !important;
+}
+
+.ql-snow .ql-tooltip[data-mode='image']::before {
   content: 'Image URL :' !important;
   font-size: 14px;
 }
@@ -114,7 +148,7 @@ span[aria-expanded='true'].ql-picker-label {
   margin-left: 0px !important;
 }
 
-.ql-snow a {
+.ql-tooltip.ql-editing a.ql-action {
   color: white !important;
   background: rgb(9, 116, 255);
   padding: 6px 12px;
