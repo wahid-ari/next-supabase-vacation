@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { format } from 'date-fns';
 import { TrashIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
@@ -124,8 +125,10 @@ export default function Session() {
                     {item.token.split('.')[2]}
                   </p>
                 </TableSimple.td>
-                <TableSimple.td>{item.created_at.split('T')[0]}</TableSimple.td>
-                <TableSimple.td>{getTime(item.created_at)}</TableSimple.td>
+                {/* <TableSimple.td>{item.created_at.split('T')[0]}</TableSimple.td> */}
+                <TableSimple.td>{format(new Date(item?.created_at), 'PP')}</TableSimple.td>
+                {/* <TableSimple.td>{getTime(item.created_at)}</TableSimple.td> */}
+                <TableSimple.td>{format(new Date(item?.created_at), 'pp')}</TableSimple.td>
                 <TableSimple.td>
                   <Button
                     title={`Delete ${item.vacation_user.name}`}

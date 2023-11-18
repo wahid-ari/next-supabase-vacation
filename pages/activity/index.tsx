@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { format } from 'date-fns';
 import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
 
 import { useLogsData } from '@/libs/swr';
@@ -72,7 +73,9 @@ export default function Log() {
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
-          return original?.created_at?.split('T')[0];
+          // console.log(original?.created_at);
+          // return original?.created_at?.split('T')[0];
+          return format(new Date(original?.created_at), 'PP');
         },
       },
       {
@@ -81,8 +84,11 @@ export default function Log() {
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
-          let date = new Date(original?.created_at);
-          return date.toLocaleTimeString('en-US');
+          // console.log(original?.created_at);
+          // let date = new Date(original?.created_at);
+          // return date.toLocaleTimeString('en-US');
+          // TODO Docs: https://date-fns.org/v2.16.1/docs/format
+          return format(new Date(original?.created_at), 'pp');
         },
       },
     ],
