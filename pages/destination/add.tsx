@@ -42,7 +42,7 @@ export default function Destination() {
     header_image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
     video_url: 'https://youtu.be/GfO-3Oir-qM',
     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s`,
-    content: `<h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
+    content: `<h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is <a href='https://google.com'>simply</a> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
     province_id: 1, // undefined
     island_id: 1, // undefined
   });
@@ -54,25 +54,6 @@ export default function Destination() {
     { value: 3, label: 'Lake' },
   ]);
   const [listOfCategory, setListOfCategory] = useState();
-
-  const ReactQuill = useMemo(
-    () =>
-      dynamic(
-        () => {
-          return import('react-quill');
-        },
-        {
-          ssr: false,
-          loading: () => (
-            <Shimmer>
-              <div className='h-8 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='mt-4 h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-            </Shimmer>
-          ),
-        },
-      ),
-    [],
-  );
 
   // convert category data from db (id, name) to match with react-select requirement (value, label)
   useEffect(() => {
@@ -89,10 +70,13 @@ export default function Destination() {
     }
   }, [category]);
 
-  // if user selecting category, set category
+  // if user selecting category, set category to editItem
   useEffect(() => {
-    // @ts-ignore
-    setCreateItem({ ...createItem, category: selectedCategory });
+    // FIX use if here to fix data missing when reopening edit page
+    if (selectedCategory) {
+      // @ts-ignore
+      setCreateItem({ ...createItem, category: selectedCategory });
+    }
   }, [selectedCategory]);
 
   async function handleSave(e: any) {
@@ -126,6 +110,25 @@ export default function Destination() {
       }
     }
   }
+
+  const ReactQuill = useMemo(
+    () =>
+      dynamic(
+        () => {
+          return import('react-quill');
+        },
+        {
+          ssr: false,
+          loading: () => (
+            <Shimmer>
+              <div className='h-8 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='mt-4 h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </Shimmer>
+          ),
+        },
+      ),
+    [],
+  );
 
   // TODO Docs https://github.com/quilljs/quill/issues/2044#issuecomment-603630374
   // TODO Docs https://stackoverflow.com/questions/59602182/quill-add-image-url-instead-of-uploading-it
@@ -322,7 +325,7 @@ export default function Destination() {
               <Label htmlFor='select_island'>Island</Label>
               {island ? (
                 <Select
-                  // FIX this Select component
+                  // FIX this Select component, Type 'number' is not assignable to type 'string'.
                   // @ts-ignore
                   value={createItem.island_id}
                   onValueChange={(e) => setCreateItem((prev) => ({ ...prev, island_id: Number(e) }))}
