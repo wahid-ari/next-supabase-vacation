@@ -70,8 +70,6 @@ export default function Destination() {
     }
   }, [data]);
 
-  console.log(editItem);
-
   // convert category data from db (id, name) to match with react-select requirement (value, label)
   // set current destination category
   useEffect(() => {
