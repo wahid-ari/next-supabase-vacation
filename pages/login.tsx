@@ -5,6 +5,7 @@ import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn, useSession } from 'next-auth/react';
+import { z } from 'zod';
 
 import useToast from '@/hooks/use-hot-toast';
 
@@ -13,13 +14,22 @@ import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
+const schema = z.object({
+  username: z
+    .string()
+    .min(1, { message: 'Username is required' })
+    .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+  password: z.string().min(1, { message: 'Password is required' }),
+});
+
 export default function Login() {
   const router = useRouter();
   const callbackUrl = router.query.callbackUrl as string;
   const [form, setForm] = useState({ username: 'develop', password: '' });
+  const formFilled = form.username !== '' && form.password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const { status } = useSession();
 
   useEffect(() => {
@@ -33,18 +43,16 @@ export default function Login() {
   async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
-    let isError = false;
-    if (!form.username) {
-      isError = true;
-      pushToast({ message: "Username can't be empty", isError: true });
-    }
-    if (!form.password) {
-      isError = true;
-      pushToast({ message: "Password can't be empty", isError: true });
-    }
-
-    // jika tidak ada error save data
-    if (!isError) {
+    const valid = schema.safeParse(form);
+    if (valid.success === false) {
+      dismissToast();
+      // console.log(valid.error.issues);
+      const errors = [...valid.error.issues].reverse();
+      errors.forEach((el) => {
+        pushToast({ message: el.message, isError: true });
+      });
+    } else {
+      // jika tidak ada error save data
       const toastId = pushToast({
         message: 'Login...',
         isLoading: true,
@@ -72,6 +80,7 @@ export default function Login() {
           }, 1000);
         }
       } catch (error) {
+        dismissToast();
         updateToast({ toastId, message: error?.response?.data?.error, isError: true });
         console.error(error);
       }
@@ -184,7 +193,7 @@ export default function Login() {
                   </div>
                 </div>
 
-                <Button type='submit' className='w-full !text-base'>
+                <Button type='submit' className='w-full !text-base' disabled={!formFilled}>
                   {loading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>
