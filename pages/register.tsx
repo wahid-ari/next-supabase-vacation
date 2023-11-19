@@ -82,9 +82,21 @@ export default function Register() {
           }, 1000);
         }
       } catch (error) {
-        dismissToast();
-        pushToast({ message: error?.response?.data?.error, isError: true });
         console.error(error);
+        if (Array.isArray(error?.response?.data?.error)) {
+          const errors = [...error?.response?.data?.error].reverse();
+          // show all error
+          dismissToast();
+          errors.forEach((item: any) => {
+            pushToast({ message: item?.message, isError: true });
+          });
+          // only show one error
+          // errors.map((item: any) => {
+          //   updateToast({ toastId, message: item?.message, isError: true });
+          // })
+        } else {
+          updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        }
       }
     }
     setLoading(false);

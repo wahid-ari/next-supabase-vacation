@@ -1,8 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { compare, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { z } from 'zod';
 
 import { supabase } from '@/libs/supabase';
+
+const schema = z.object({
+  username: z
+    .string()
+    .min(1, { message: 'Username is required' })
+    .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+  password: z.string().min(1, { message: 'Password is required' }),
+});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;
@@ -28,13 +37,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'POST':
-      if (!body.username) {
-        res.status(422).json({ error: 'Username required' });
+      const isValid = schema.safeParse(body);
+      // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+      if (isValid.success == false) {
+        res.status(422).json({ error: isValid.error.issues });
         return;
-      } else if (!body.password) {
-        res.status(422).json({ error: 'Password required' });
-        return;
-      } else {
+      }
+      // if (!body.username) {
+      //   res.status(422).json({ error: 'Username required' });
+      //   return;
+      // } else if (!body.password) {
+      //   res.status(422).json({ error: 'Password required' });
+      //   return;
+      // }
+      else {
         const { data, error } = await supabase
           .from('vacation_user')
           .select(`*`)

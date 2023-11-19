@@ -1,8 +1,24 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { compare, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { z } from 'zod';
 
 import { supabase } from '@/libs/supabase';
+
+const schema = z
+  .object({
+    name: z.string().min(5, { message: 'Name length minimal is 5' }),
+    username: z
+      .string()
+      .min(5, { message: 'Username length minimal is 5' })
+      .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+    password: z.string().min(8, { message: 'Password length minimal is 8' }),
+    confirm_password: z.string().min(8, { message: 'Confirm Password length minimal is 8' }),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    path: ['confirm_password'],
+    message: 'Oops! Password doesnt match',
+  });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;
@@ -28,16 +44,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'POST':
-      if (!body.name) {
-        res.status(422).json({ error: 'Name required' });
+      const isValid = schema.safeParse(body);
+      // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+      if (isValid.success == false) {
+        res.status(422).json({ error: isValid.error.issues });
         return;
-      } else if (!body.username) {
-        res.status(422).json({ error: 'Username required' });
-        return;
-      } else if (!body.password) {
-        res.status(422).json({ error: 'Password required' });
-        return;
-      } else {
+      }
+      // if (!body.name) {
+      //   res.status(422).json({ error: 'Name required' });
+      //   return;
+      // } else if (!body.username) {
+      //   res.status(422).json({ error: 'Username required' });
+      //   return;
+      // } else if (!body.password) {
+      //   res.status(422).json({ error: 'Password required' });
+      //   return;
+      // }
+      else {
         const { data: userNameExist } = await supabase
           .from('vacation_user')
           .select(`*`)
