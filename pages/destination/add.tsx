@@ -36,23 +36,35 @@ export default function Destination() {
   const { data: island, error: errorIsland } = useIslandsData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
-    name: 'Destination',
-    location: 'Location',
-    image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
-    header_image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
-    video_url: 'https://youtu.be/GfO-3Oir-qM',
-    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s`,
-    content: `<h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is <a href='https://google.com'>simply</a> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
-    province_id: 1, // undefined
-    island_id: 1, // undefined
+    name: '',
+    location: '',
+    image_url: '',
+    header_image_url: '',
+    video_url: '',
+    description: ``,
+    content: ``,
+    province_id: undefined,
+    island_id: undefined,
   });
+  // const [createItem, setCreateItem] = useState({
+  //   name: 'Destination',
+  //   location: 'Location',
+  //   image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
+  //   header_image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
+  //   video_url: 'https://youtu.be/GfO-3Oir-qM',
+  //   description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s`,
+  //   content: `<h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is <a href='https://google.com'>simply</a> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
+  //   province_id: 1, // undefined
+  //   island_id: 1, // undefined
+  // });
   const [openCombobox, setOpenCombobox] = useState(false);
-  const [comboboxValue, setComboboxValue] = useState('aceh');
-  const [selectedCategory, setSelectedCategory] = useState([
-    { value: 1, label: 'Architecture' },
-    { value: 2, label: 'Beach' },
-    { value: 3, label: 'Lake' },
-  ]);
+  const [comboboxValue, setComboboxValue] = useState(''); // aceh
+  const [selectedCategory, setSelectedCategory] = useState();
+  //   [
+  //   { value: 1, label: 'Architecture' },
+  //   { value: 2, label: 'Beach' },
+  //   { value: 3, label: 'Lake' },
+  // ]
   const [listOfCategory, setListOfCategory] = useState();
 
   // convert category data from db (id, name) to match with react-select requirement (value, label)
