@@ -69,7 +69,6 @@
     "next": "14.0.2",
     "next-auth": "^4.24.5",
     "next-themes": "^0.2.1",
-    "nookies": "^2.5.2",
     "nprogress": "^0.2.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
