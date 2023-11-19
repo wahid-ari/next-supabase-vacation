@@ -22,6 +22,7 @@ create table
     slug text null,
     content text null,
     header_image_url text null,
+    url text null,
     constraint vacation_destination_pkey primary key (id),
     constraint vacation_destination_island_id_fkey foreign key (island_id) references vacation_island (id),
     constraint vacation_destination_province_id_fkey foreign key (province_id) references vacation_province (id)
