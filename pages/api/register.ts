@@ -39,42 +39,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return;
       } else {
         const { data: userNameExist } = await supabase
-          .from('admin')
+          .from('vacation_user')
           .select(`*`)
-          .eq('username', body.username)
+          .eq('username', body.username.toLowerCase())
           .limit(1)
           .single();
         if (userNameExist === null) {
+          // FIX this register logic
           // if username not exist, hash password and inset to db
-          const passwordHashed = await hash(body.password, 8);
-          const { data: insertUser } = await supabase.from('admin').insert([
-            {
-              username: body.username,
-              name: body.name,
-              type: 'user',
-              password: passwordHashed,
-            },
-          ]);
+          // const passwordHashed = await hash(body.password, 8);
+          // const { data: insertUser } = await supabase.from('vacation_user').insert([
+          //   {
+          //     username: body.username.toLowerCase(),
+          //     name: body.name,
+          //     type: 'user',
+          //     password: passwordHashed,
+          //   },
+          // ]);
           // if no error after inserting user
-          if (insertUser == null) {
-            const { data: user } = await supabase
-              .from('admin')
-              .select(`*`)
-              .eq('username', body.username)
-              .limit(1)
-              .single();
-            const token = jwt.sign(
-              {
-                username: body.username,
-                password: body.name,
-              },
-              process.env.NEXTAUTH_SECRET,
-            );
-            const { id, type } = user;
-            const { username, name } = body;
-            res.status(200).json({ id, type, username, name, token });
-            return;
-          }
+          // if (insertUser == null) {
+          res.status(200).json({ message: 'Success register' });
+          return;
+          // }
         } else {
           res.status(422).json({ error: 'Username already exist' });
         }

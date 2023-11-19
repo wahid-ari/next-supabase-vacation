@@ -5,8 +5,8 @@ import Router from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import nookies from 'nookies';
+import { z } from 'zod';
 
-import { validateRegister } from '@/validations/register';
 import useToast from '@/hooks/use-hot-toast';
 
 import HeadSeo from '@/components/layout/HeadSeo';
@@ -27,8 +27,23 @@ export async function getServerSideProps(context: any) {
   };
 }
 
+const schema = z
+  .object({
+    name: z.string().min(5, { message: 'Name length minimal is 5' }),
+    username: z
+      .string()
+      .min(5, { message: 'Username length minimal is 5' })
+      .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+    password: z.string().min(8, { message: 'Password length minimal is 8' }),
+    confirm_password: z.string().min(8, { message: 'Confirm Password length minimal is 8' }),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    path: ['confirm_password'],
+    message: 'Oops! Password doesnt match',
+  });
+
 export default function Register() {
-  const [form, setForm] = useState({ name: '', username: '', password: '' });
+  const [form, setForm] = useState({ name: 'name', username: 'user', password: 'password', confirm_password: 'pass' });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
@@ -40,39 +55,37 @@ export default function Register() {
   async function handleRegister(e: any) {
     e.preventDefault();
     setLoading(true);
-    try {
-      const { valid, errors } = await validateRegister(form);
-      if (!valid && errors) {
-        dismissToast();
-        errors.forEach((el) => {
-          pushToast({ message: el, isError: true });
-        });
-      } else {
-        // FIX this register logic
-        // const toastId = pushToast({
-        //   message: 'Registering...',
-        //   isLoading: true,
-        // });
-        // const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/register`, form);
-        // if (res.status == 200) {
-        //   nookies.set(null, 'id', res.data.id, { path: '/' });
-        //   nookies.set(null, 'username', res.data.username, { path: '/' });
-        //   nookies.set(null, 'name', res.data.name, { path: '/' });
-        //   nookies.set(null, 'type', res.data.type, { path: '/' });
-        //   nookies.set(null, 'token', res.data.token, { path: '/' });
-        //   updateToast({
-        //     toastId,
-        //     message: 'Success Register',
-        //     isError: false,
-        //   });
-        //   Router.replace('/');
-        // }
-        Router.replace('/dashboard');
-      }
-    } catch (error) {
+    const valid = schema.safeParse(form);
+    if (valid.success === false) {
       dismissToast();
-      pushToast({ message: error?.response?.data?.error, isError: true });
-      console.error(error);
+      // console.log(valid.error.issues);
+      const errors = [...valid.error.issues].reverse();
+      errors.forEach((el) => {
+        pushToast({ message: el.message, isError: true });
+      });
+    } else {
+      // FIX this register logic
+      const toastId = pushToast({
+        message: 'Registering...',
+        isLoading: true,
+      });
+      try {
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/register`, form);
+        if (res.status == 200) {
+          updateToast({
+            toastId,
+            message: 'Success Register, proceed to Login',
+            isError: false,
+          });
+          setTimeout(() => {
+            Router.push('/login');
+          }, 1000);
+        }
+      } catch (error) {
+        dismissToast();
+        pushToast({ message: error?.response?.data?.error, isError: true });
+        console.error(error);
+      }
     }
     setLoading(false);
   }
@@ -81,7 +94,7 @@ export default function Register() {
     <>
       <HeadSeo title='Register - MyVacation' description='Register - MyVacation' />
 
-      <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2 '>
+      <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
         <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
           <div>
             <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
@@ -112,7 +125,7 @@ export default function Register() {
               src='/icon.png'
               width={100}
               height={100}
-              className='mx-auto mb-16 hidden sm:block'
+              className='mx-auto mb-4 hidden sm:block'
               unoptimized
             />
 
@@ -163,6 +176,35 @@ export default function Register() {
                     name='password'
                     placeholder='Password'
                     value={form.password}
+                    onChange={handleChange}
+                    className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
+                    autoComplete='off'
+                    required
+                  />
+                  <button
+                    type='button'
+                    onClick={() => setShowPassword(!showPassword)}
+                    className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
+                  >
+                    {showPassword ? (
+                      <EyeIcon className='h-5 w-5 text-neutral-600' />
+                    ) : (
+                      <EyeOffIcon className='h-5 w-5 text-neutral-600' />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className='mb-5'>
+                <label className='block text-sm text-neutral-800' htmlFor='confirm_password'>
+                  Password
+                </label>
+                <div className='relative mb-4 flex items-center'>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    name='confirm_password'
+                    placeholder='Confirm Password'
+                    value={form.confirm_password}
                     onChange={handleChange}
                     className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
