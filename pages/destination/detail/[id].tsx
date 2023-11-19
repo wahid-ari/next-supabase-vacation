@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -11,6 +12,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from 'react-share';
+import { twMerge } from 'tailwind-merge';
 
 import { useDestinationData } from '@/libs/swr';
 import { cn, youTubeGetID } from '@/libs/utils';
@@ -27,6 +29,7 @@ export default function Destination() {
   const id = router.query?.id as string;
   const link = `${process.env.NEXT_PUBLIC_API_ROUTE}${router?.asPath}`;
   const { data, error } = useDestinationData(id);
+  const [isLoading, setLoading] = useState(true);
 
   if (error) {
     return (
@@ -41,19 +44,20 @@ export default function Destination() {
       title={`${data ? data?.name + ' - MyVacation' : 'Destination Detail - MyVacation'}`}
       description={`${data ? data?.description : 'View Detail Destination - MyVacation'}`}
     >
-      {data?.header_image_url ? (
-        <div className='relative h-64 sm:h-72 lg:h-80 xl:h-96 mb-8 w-full rounded mx-auto'>
-          <Image
-            fill
-            alt={data?.name}
-            src={data?.header_image_url}
-            unoptimized
-            quality={50}
-            priority={false}
-            loading='lazy'
-            className='rounded object-cover'
-          />
-        </div>
+      {data ? (
+        data?.header_image_url && (
+          <div className='relative h-64 sm:h-72 lg:h-80 xl:h-96 mb-8 w-full rounded mx-auto'>
+            <Image
+              fill
+              alt={data?.name}
+              src={data?.header_image_url}
+              unoptimized
+              quality={50}
+              className={twMerge('rounded object-cover', isLoading ? 'blur-sm' : 'blur-0')}
+              onLoadingComplete={() => setLoading(false)}
+            />
+          </div>
+        )
       ) : (
         <Shimmer className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full mb-8 mx-auto rounded'>
           <div className='h-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
