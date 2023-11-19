@@ -5,7 +5,6 @@ import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn, useSession } from 'next-auth/react';
-import { z } from 'zod';
 
 import useToast from '@/hooks/use-hot-toast';
 
@@ -13,14 +12,6 @@ import HeadSeo from '@/components/layout/HeadSeo';
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
-
-const schema = z.object({
-  username: z
-    .string()
-    .min(1, { message: 'Username is required' })
-    .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
-  password: z.string().min(1, { message: 'Password is required' }),
-});
 
 export default function Login() {
   const router = useRouter();
@@ -43,58 +34,47 @@ export default function Login() {
   async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
-    const valid = schema.safeParse(form);
-    if (valid.success === false) {
-      dismissToast();
-      // console.log(valid.error.issues);
-      const errors = [...valid.error.issues].reverse();
-      errors.forEach((el) => {
-        pushToast({ message: el.message, isError: true });
-      });
-    } else {
-      // jika tidak ada error save data
-      const toastId = pushToast({
-        message: 'Login...',
-        isLoading: true,
-      });
-      try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
-        if (res.status == 200) {
-          // NextAuth
-          updateToast({
-            toastId,
-            message: 'Success Login',
-            isError: false,
+    const toastId = pushToast({
+      message: 'Login...',
+      isLoading: true,
+    });
+    try {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
+      if (res.status == 200) {
+        // NextAuth
+        updateToast({
+          toastId,
+          message: 'Success Login',
+          isError: false,
+        });
+        const { id, username, name, type, token } = res.data;
+        // FIX need this for playwright test case
+        setTimeout(() => {
+          signIn('credentials', {
+            id,
+            username,
+            name,
+            type,
+            token,
+            callbackUrl: callbackUrl || '/dashboard',
           });
-          const { id, username, name, type, token } = res.data;
-          // FIX need this for playwright test case
-          setTimeout(() => {
-            signIn('credentials', {
-              id,
-              username,
-              name,
-              type,
-              token,
-              callbackUrl: callbackUrl || '/dashboard',
-            });
-          }, 1000);
-        }
-      } catch (error) {
-        console.error(error);
-        if (Array.isArray(error?.response?.data?.error)) {
-          const errors = [...error?.response?.data?.error].reverse();
-          // show all error
-          dismissToast();
-          errors.forEach((item: any) => {
-            pushToast({ message: item?.message, isError: true });
-          });
-          // only show one error
-          // errors.map((item: any) => {
-          //   updateToast({ toastId, message: item?.message, isError: true });
-          // })
-        } else {
-          updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-        }
+        }, 1000);
+      }
+    } catch (error) {
+      console.error(error);
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
       }
     }
     setLoading(false);
@@ -203,7 +183,7 @@ export default function Login() {
                   </div>
                 </div>
 
-                <Button type='submit' className='w-full !text-base' disabled={!formFilled}>
+                <Button type='submit' className='w-full !text-base' disabled={!formFilled || loading}>
                   {loading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>
@@ -214,12 +194,12 @@ export default function Login() {
                   href='/register'
                   className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
                 >
-                  Register Now
+                  Register
                 </Link>
               </p>
 
               <p className='mt-2 text-center font-normal dark:text-neutral-800'>
-                Continue to{' '}
+                or Continue to{' '}
                 <Link
                   href='/'
                   className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'

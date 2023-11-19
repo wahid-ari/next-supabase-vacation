@@ -4,8 +4,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
-import { signIn, useSession } from 'next-auth/react';
-import { z } from 'zod';
+import { useSession } from 'next-auth/react';
 
 import useToast from '@/hooks/use-hot-toast';
 
@@ -14,23 +13,9 @@ import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
-const schema = z
-  .object({
-    name: z.string().min(5, { message: 'Name length minimal is 5' }),
-    username: z
-      .string()
-      .min(5, { message: 'Username length minimal is 5' })
-      .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
-    password: z.string().min(8, { message: 'Password length minimal is 8' }),
-    confirm_password: z.string().min(8, { message: 'Confirm Password length minimal is 8' }),
-  })
-  .refine((data) => data.password === data.confirm_password, {
-    path: ['confirm_password'],
-    message: 'Oops! Password doesnt match',
-  });
-
 export default function Register() {
-  const [form, setForm] = useState({ name: 'name', username: 'user', password: 'password', confirm_password: 'pass' });
+  const [form, setForm] = useState({ name: '', username: '', password: '', confirm_password: '' });
+  const formFilled = form.name !== '' && form.username !== '' && form.password !== '' && form.confirm_password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
@@ -43,48 +28,38 @@ export default function Register() {
   async function handleRegister(e: any) {
     e.preventDefault();
     setLoading(true);
-    const valid = schema.safeParse(form);
-    if (valid.success === false) {
-      dismissToast();
-      // console.log(valid.error.issues);
-      const errors = [...valid.error.issues].reverse();
-      errors.forEach((el) => {
-        pushToast({ message: el.message, isError: true });
-      });
-    } else {
-      // FIX this register logic
-      const toastId = pushToast({
-        message: 'Registering...',
-        isLoading: true,
-      });
-      try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/register`, form);
-        if (res.status == 200) {
-          updateToast({
-            toastId,
-            message: 'Success Register, proceed to Login',
-            isError: false,
-          });
-          setTimeout(() => {
-            Router.push('/login');
-          }, 1000);
-        }
-      } catch (error) {
-        console.error(error);
-        if (Array.isArray(error?.response?.data?.error)) {
-          const errors = [...error?.response?.data?.error].reverse();
-          // show all error
-          dismissToast();
-          errors.forEach((item: any) => {
-            pushToast({ message: item?.message, isError: true });
-          });
-          // only show one error
-          // errors.map((item: any) => {
-          //   updateToast({ toastId, message: item?.message, isError: true });
-          // })
-        } else {
-          updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-        }
+    // FIX this register logic
+    const toastId = pushToast({
+      message: 'Registering...',
+      isLoading: true,
+    });
+    try {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/register`, form);
+      if (res.status == 200) {
+        updateToast({
+          toastId,
+          message: 'Success Register, proceed to Login',
+          isError: false,
+        });
+        setTimeout(() => {
+          Router.push('/login');
+        }, 1000);
+      }
+    } catch (error) {
+      console.error(error);
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
       }
     }
     setLoading(false);
@@ -142,7 +117,7 @@ export default function Register() {
                 unoptimized
               />
 
-              <Heading h1 className='mb-6 font-semibold !text-neutral-800'>
+              <Heading h1 className='mb-4 font-semibold !text-neutral-800'>
                 Register
               </Heading>
 
@@ -237,7 +212,7 @@ export default function Register() {
                   </div>
                 </div>
 
-                <Button type='submit' className='w-full !text-base'>
+                <Button type='submit' className='w-full !text-base' disabled={!formFilled || loading}>
                   {loading ? 'Registering...' : 'Register'}
                 </Button>
               </form>
@@ -248,17 +223,7 @@ export default function Register() {
                   href='/login'
                   className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
                 >
-                  Login Now
-                </Link>
-              </p>
-
-              <p className='mt-2 text-center font-normal dark:text-neutral-800'>
-                Continue to{' '}
-                <Link
-                  href='/'
-                  className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
-                >
-                  Dashboard
+                  Login
                 </Link>
               </p>
             </div>
