@@ -88,8 +88,9 @@ export default function Register() {
               <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
             </div>
             <p className='text-base font-normal text-white'>
-              Find books you&apos;ll love, and keep track of the books you want to read. Be part of the largest
-              community of book lovers on MyVacation
+              Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
+              magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be
+              enough to embrace the wonders of Indonesia.
             </p>
             <p className='font-semibold text-white'>© MyVacation - 2023</p>
           </div>
@@ -99,8 +100,9 @@ export default function Register() {
               <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyVacation</h1>
               <br />
               <p className='text-base font-normal text-white'>
-                Find books you&apos;ll love, and keep track of the books you want to read. Be part of the largest
-                community of book lovers on MyVacation
+                Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
+                magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be
+                enough to embrace the wonders of Indonesia.
               </p>
             </div>
             <p className='font-semibold text-white'>© MyVacation - 2023</p>

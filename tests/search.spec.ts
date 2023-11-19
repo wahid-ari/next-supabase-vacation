@@ -153,7 +153,7 @@ test.describe('Testing Search Page', () => {
       .click();
     await expect(page.getByText('Jane Austen')).not.toBeVisible();
   });
-  test('should remove single book search history', async ({ page }) => {
+  test('should remove single destination search history', async ({ page }) => {
     // first visit to search page, and search "jane"
     const searchInput = page.getByPlaceholder('Search Title, Author, ISBN');
     await searchInput.fill('hunger');

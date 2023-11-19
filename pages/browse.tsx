@@ -152,7 +152,7 @@ export default function Browse() {
                 {data?.books?.map((item: any, index: number) => (
                   <BookListItem
                     key={index}
-                    href={`/book/detail/${item.id}`}
+                    href={`/destination/detail/${item.id}`}
                     image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
                     title={item.title}
                     published={item.published}
@@ -216,7 +216,7 @@ export default function Browse() {
                       // {booksHistory?.map((item: any, index: number) => (
                       <div key={index} className='relative'>
                         <BookListItem
-                          href={`/book/detail/${item.id}`}
+                          href={`/destination/detail/${item.id}`}
                           image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
                           title={item.title}
                           published={item.published}

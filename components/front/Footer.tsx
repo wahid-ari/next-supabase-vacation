@@ -32,8 +32,9 @@ export default function Footer({ className, ...props }: { className?: string; [p
             </Link>
             {/* web logo  */}
             <p className='mt-4 pb-2 pr-4 text-[15px] text-neutral-700 dark:text-neutral-300'>
-              Find books you&apos;ll love, and keep track of the books you want to read. Be part of the largest
-              community of book lovers on MyVacation
+              Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
+              magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be
+              enough to embrace the wonders of Indonesia.
             </p>
           </div>
           <div className='grid grid-cols-2 gap-8 min-[500px]:grid-cols-3 sm:gap-6 md:w-2/4'>
@@ -77,7 +78,12 @@ export default function Footer({ className, ...props }: { className?: string; [p
               </h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
-                  <a href='https://my-book-docs.vercel.app' target='_blank' rel='noreferrer' className={linkClassName}>
+                  <a
+                    href='https://my-destination-docs.vercel.app'
+                    target='_blank'
+                    rel='noreferrer'
+                    className={linkClassName}
+                  >
                     API Docs
                   </a>
                 </li>

@@ -103,10 +103,6 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Search
           </NavLink>
 
-          <NavLink href='/book' icon={<BookIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
-            Book
-          </NavLink>
-
           <NavLink href='/destination' icon={<MountainSnowIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Destination
           </NavLink>
@@ -177,7 +173,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           </NavLink>
 
           <NavLink.external
-            href='https://my-book-docs.vercel.app'
+            href='https://my-vacation-docs.vercel.app'
             icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
             className='mt-0.5'
           >

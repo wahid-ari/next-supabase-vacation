@@ -15,8 +15,7 @@ export default function Home() {
   //   return (
   //     <FrontLayout
   //       title='Home - MyVacation'
-  //       description="Find books you'll love, and keep track of the books you want to read. Be part of the largest community
-  //         of book lovers on MyVacation"
+  //       description="Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia."
   //     >
   //       <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
   //     </FrontLayout>
@@ -26,8 +25,7 @@ export default function Home() {
   return (
     <FrontLayout
       title='Home - MyVacation'
-      description="Find books you'll love, and keep track of the books you want to read. Be part of the largest community
-        of book lovers on MyVacation"
+      description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
       <div className='py-8' />
     </FrontLayout>
