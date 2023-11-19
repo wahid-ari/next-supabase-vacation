@@ -82,5 +82,12 @@
     "created_at": "2023-10-22T08:38:55.639635+00:00",
     "image_url": "https://images.unsplash.com/photo-1508166466920-f65aa51f727c?auto=format&fit=crop&q=80&w=500",
     "slug": "rafting"
+  },
+  {
+    "id": 13,
+    "name": "City",
+    "created_at": "2023-11-18T15:41:29.544081+00:00",
+    "image_url": "https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&q=80&w=500",
+    "slug": "city"
   }
 ]

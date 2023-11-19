@@ -1,0 +1,1736 @@
+[
+  {
+    "id": 1,
+    "destination_id": 1,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:17:23.861668+00:00"
+  },
+  {
+    "id": 2,
+    "destination_id": 1,
+    "category_id": 3,
+    "created_at": "2023-11-18T15:17:23.861668+00:00"
+  },
+  {
+    "id": 3,
+    "destination_id": 1,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:17:23.861668+00:00"
+  },
+  {
+    "id": 4,
+    "destination_id": 1,
+    "category_id": 5,
+    "created_at": "2023-11-18T15:17:23.861668+00:00"
+  },
+  {
+    "id": 5,
+    "destination_id": 2,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:18:28.830633+00:00"
+  },
+  {
+    "id": 6,
+    "destination_id": 2,
+    "category_id": 7,
+    "created_at": "2023-11-18T15:18:28.830633+00:00"
+  },
+  {
+    "id": 7,
+    "destination_id": 2,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:18:28.830633+00:00"
+  },
+  {
+    "id": 8,
+    "destination_id": 2,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:18:28.830633+00:00"
+  },
+  {
+    "id": 9,
+    "destination_id": 3,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:19:33.531145+00:00"
+  },
+  {
+    "id": 10,
+    "destination_id": 3,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:19:33.531145+00:00"
+  },
+  {
+    "id": 11,
+    "destination_id": 3,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:19:33.531145+00:00"
+  },
+  {
+    "id": 12,
+    "destination_id": 4,
+    "category_id": 7,
+    "created_at": "2023-11-18T15:20:34.16254+00:00"
+  },
+  {
+    "id": 13,
+    "destination_id": 4,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:20:34.16254+00:00"
+  },
+  {
+    "id": 14,
+    "destination_id": 4,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:20:34.16254+00:00"
+  },
+  {
+    "id": 15,
+    "destination_id": 4,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:20:34.16254+00:00"
+  },
+  {
+    "id": 16,
+    "destination_id": 4,
+    "category_id": 10,
+    "created_at": "2023-11-18T15:20:34.16254+00:00"
+  },
+  {
+    "id": 17,
+    "destination_id": 5,
+    "category_id": 7,
+    "created_at": "2023-11-18T15:22:05.71321+00:00"
+  },
+  {
+    "id": 18,
+    "destination_id": 5,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:22:05.71321+00:00"
+  },
+  {
+    "id": 19,
+    "destination_id": 5,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:22:05.71321+00:00"
+  },
+  {
+    "id": 20,
+    "destination_id": 5,
+    "category_id": 10,
+    "created_at": "2023-11-18T15:22:05.71321+00:00"
+  },
+  {
+    "id": 21,
+    "destination_id": 6,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:23:46.607194+00:00"
+  },
+  {
+    "id": 22,
+    "destination_id": 6,
+    "category_id": 5,
+    "created_at": "2023-11-18T15:23:46.607194+00:00"
+  },
+  {
+    "id": 23,
+    "destination_id": 7,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:24:26.060948+00:00"
+  },
+  {
+    "id": 24,
+    "destination_id": 7,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:24:26.060948+00:00"
+  },
+  {
+    "id": 25,
+    "destination_id": 8,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:25:55.632406+00:00"
+  },
+  {
+    "id": 26,
+    "destination_id": 8,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:25:55.632406+00:00"
+  },
+  {
+    "id": 27,
+    "destination_id": 9,
+    "category_id": 7,
+    "created_at": "2023-11-18T15:27:04.885579+00:00"
+  },
+  {
+    "id": 28,
+    "destination_id": 9,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:27:04.885579+00:00"
+  },
+  {
+    "id": 29,
+    "destination_id": 9,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:27:04.885579+00:00"
+  },
+  {
+    "id": 30,
+    "destination_id": 9,
+    "category_id": 10,
+    "created_at": "2023-11-18T15:27:04.885579+00:00"
+  },
+  {
+    "id": 31,
+    "destination_id": 10,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:28:22.4107+00:00"
+  },
+  {
+    "id": 32,
+    "destination_id": 10,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:28:22.4107+00:00"
+  },
+  {
+    "id": 33,
+    "destination_id": 10,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:28:22.4107+00:00"
+  },
+  {
+    "id": 34,
+    "destination_id": 10,
+    "category_id": 11,
+    "created_at": "2023-11-18T15:28:22.4107+00:00"
+  },
+  {
+    "id": 35,
+    "destination_id": 11,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:29:25.768812+00:00"
+  },
+  {
+    "id": 36,
+    "destination_id": 11,
+    "category_id": 7,
+    "created_at": "2023-11-18T15:29:25.768812+00:00"
+  },
+  {
+    "id": 37,
+    "destination_id": 11,
+    "category_id": 10,
+    "created_at": "2023-11-18T15:29:25.768812+00:00"
+  },
+  {
+    "id": 38,
+    "destination_id": 11,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:29:25.768812+00:00"
+  },
+  {
+    "id": 39,
+    "destination_id": 12,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:29:59.300127+00:00"
+  },
+  {
+    "id": 40,
+    "destination_id": 12,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:29:59.300127+00:00"
+  },
+  {
+    "id": 41,
+    "destination_id": 13,
+    "category_id": 1,
+    "created_at": "2023-11-18T15:31:15.486103+00:00"
+  },
+  {
+    "id": 42,
+    "destination_id": 13,
+    "category_id": 5,
+    "created_at": "2023-11-18T15:31:15.486103+00:00"
+  },
+  {
+    "id": 43,
+    "destination_id": 13,
+    "category_id": 12,
+    "created_at": "2023-11-18T15:31:15.486103+00:00"
+  },
+  {
+    "id": 44,
+    "destination_id": 13,
+    "category_id": 6,
+    "created_at": "2023-11-18T15:31:15.486103+00:00"
+  },
+  {
+    "id": 45,
+    "destination_id": 14,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:32:14.368473+00:00"
+  },
+  {
+    "id": 46,
+    "destination_id": 14,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:32:14.368473+00:00"
+  },
+  {
+    "id": 47,
+    "destination_id": 15,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:32:53.030015+00:00"
+  },
+  {
+    "id": 48,
+    "destination_id": 15,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:32:53.030015+00:00"
+  },
+  {
+    "id": 49,
+    "destination_id": 15,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:32:53.030015+00:00"
+  },
+  {
+    "id": 50,
+    "destination_id": 16,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:33:49.172375+00:00"
+  },
+  {
+    "id": 51,
+    "destination_id": 16,
+    "category_id": 5,
+    "created_at": "2023-11-18T15:33:49.172375+00:00"
+  },
+  {
+    "id": 52,
+    "destination_id": 16,
+    "category_id": 11,
+    "created_at": "2023-11-18T15:33:49.172375+00:00"
+  },
+  {
+    "id": 53,
+    "destination_id": 17,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:35:44.617933+00:00"
+  },
+  {
+    "id": 54,
+    "destination_id": 17,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:35:44.617933+00:00"
+  },
+  {
+    "id": 55,
+    "destination_id": 17,
+    "category_id": 1,
+    "created_at": "2023-11-18T15:35:44.617933+00:00"
+  },
+  {
+    "id": 56,
+    "destination_id": 18,
+    "category_id": 1,
+    "created_at": "2023-11-18T15:37:12.65187+00:00"
+  },
+  {
+    "id": 57,
+    "destination_id": 18,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:37:12.65187+00:00"
+  },
+  {
+    "id": 58,
+    "destination_id": 19,
+    "category_id": 1,
+    "created_at": "2023-11-18T15:38:09.653825+00:00"
+  },
+  {
+    "id": 62,
+    "destination_id": 20,
+    "category_id": 1,
+    "created_at": "2023-11-18T15:41:51.681422+00:00"
+  },
+  {
+    "id": 63,
+    "destination_id": 20,
+    "category_id": 6,
+    "created_at": "2023-11-18T15:41:51.681422+00:00"
+  },
+  {
+    "id": 64,
+    "destination_id": 20,
+    "category_id": 11,
+    "created_at": "2023-11-18T15:41:51.681422+00:00"
+  },
+  {
+    "id": 65,
+    "destination_id": 20,
+    "category_id": 13,
+    "created_at": "2023-11-18T15:41:51.681422+00:00"
+  },
+  {
+    "id": 66,
+    "destination_id": 21,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:57:39.250651+00:00"
+  },
+  {
+    "id": 67,
+    "destination_id": 21,
+    "category_id": 13,
+    "created_at": "2023-11-18T15:57:39.250651+00:00"
+  },
+  {
+    "id": 68,
+    "destination_id": 21,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:57:39.250651+00:00"
+  },
+  {
+    "id": 69,
+    "destination_id": 21,
+    "category_id": 6,
+    "created_at": "2023-11-18T15:57:39.250651+00:00"
+  },
+  {
+    "id": 70,
+    "destination_id": 22,
+    "category_id": 4,
+    "created_at": "2023-11-18T15:58:40.549854+00:00"
+  },
+  {
+    "id": 71,
+    "destination_id": 22,
+    "category_id": 5,
+    "created_at": "2023-11-18T15:58:40.549854+00:00"
+  },
+  {
+    "id": 72,
+    "destination_id": 22,
+    "category_id": 11,
+    "created_at": "2023-11-18T15:58:40.549854+00:00"
+  },
+  {
+    "id": 73,
+    "destination_id": 22,
+    "category_id": 6,
+    "created_at": "2023-11-18T15:58:40.549854+00:00"
+  },
+  {
+    "id": 74,
+    "destination_id": 23,
+    "category_id": 2,
+    "created_at": "2023-11-18T15:59:41.555587+00:00"
+  },
+  {
+    "id": 75,
+    "destination_id": 23,
+    "category_id": 8,
+    "created_at": "2023-11-18T15:59:41.555587+00:00"
+  },
+  {
+    "id": 76,
+    "destination_id": 23,
+    "category_id": 7,
+    "created_at": "2023-11-18T15:59:41.555587+00:00"
+  },
+  {
+    "id": 77,
+    "destination_id": 23,
+    "category_id": 9,
+    "created_at": "2023-11-18T15:59:41.555587+00:00"
+  },
+  {
+    "id": 78,
+    "destination_id": 24,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:00:25.078743+00:00"
+  },
+  {
+    "id": 79,
+    "destination_id": 24,
+    "category_id": 3,
+    "created_at": "2023-11-18T16:00:25.078743+00:00"
+  },
+  {
+    "id": 80,
+    "destination_id": 24,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:00:25.078743+00:00"
+  },
+  {
+    "id": 81,
+    "destination_id": 24,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:00:25.078743+00:00"
+  },
+  {
+    "id": 82,
+    "destination_id": 25,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:01:18.179878+00:00"
+  },
+  {
+    "id": 83,
+    "destination_id": 25,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:01:18.179878+00:00"
+  },
+  {
+    "id": 84,
+    "destination_id": 26,
+    "category_id": 10,
+    "created_at": "2023-11-18T16:02:10.759292+00:00"
+  },
+  {
+    "id": 85,
+    "destination_id": 26,
+    "category_id": 9,
+    "created_at": "2023-11-18T16:02:10.759292+00:00"
+  },
+  {
+    "id": 86,
+    "destination_id": 26,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:02:10.759292+00:00"
+  },
+  {
+    "id": 87,
+    "destination_id": 26,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:02:10.759292+00:00"
+  },
+  {
+    "id": 88,
+    "destination_id": 27,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:07:18.562155+00:00"
+  },
+  {
+    "id": 89,
+    "destination_id": 27,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:07:18.562155+00:00"
+  },
+  {
+    "id": 90,
+    "destination_id": 28,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:08:40.482978+00:00"
+  },
+  {
+    "id": 91,
+    "destination_id": 28,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:08:40.482978+00:00"
+  },
+  {
+    "id": 92,
+    "destination_id": 28,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:08:40.482978+00:00"
+  },
+  {
+    "id": 93,
+    "destination_id": 29,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:09:29.451749+00:00"
+  },
+  {
+    "id": 94,
+    "destination_id": 29,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:09:29.451749+00:00"
+  },
+  {
+    "id": 95,
+    "destination_id": 29,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:09:29.451749+00:00"
+  },
+  {
+    "id": 96,
+    "destination_id": 30,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:09:54.309601+00:00"
+  },
+  {
+    "id": 97,
+    "destination_id": 30,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:09:54.309601+00:00"
+  },
+  {
+    "id": 98,
+    "destination_id": 31,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:10:30.235326+00:00"
+  },
+  {
+    "id": 99,
+    "destination_id": 31,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:10:30.235326+00:00"
+  },
+  {
+    "id": 100,
+    "destination_id": 32,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:10:56.165184+00:00"
+  },
+  {
+    "id": 101,
+    "destination_id": 32,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:10:56.165184+00:00"
+  },
+  {
+    "id": 102,
+    "destination_id": 33,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:11:48.964722+00:00"
+  },
+  {
+    "id": 103,
+    "destination_id": 33,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:11:48.964722+00:00"
+  },
+  {
+    "id": 104,
+    "destination_id": 33,
+    "category_id": 12,
+    "created_at": "2023-11-18T16:11:48.964722+00:00"
+  },
+  {
+    "id": 105,
+    "destination_id": 33,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:11:48.964722+00:00"
+  },
+  {
+    "id": 106,
+    "destination_id": 34,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:12:59.910247+00:00"
+  },
+  {
+    "id": 107,
+    "destination_id": 34,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:12:59.910247+00:00"
+  },
+  {
+    "id": 108,
+    "destination_id": 34,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:12:59.910247+00:00"
+  },
+  {
+    "id": 109,
+    "destination_id": 34,
+    "category_id": 12,
+    "created_at": "2023-11-18T16:12:59.910247+00:00"
+  },
+  {
+    "id": 110,
+    "destination_id": 35,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:13:58.80195+00:00"
+  },
+  {
+    "id": 111,
+    "destination_id": 35,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:13:58.80195+00:00"
+  },
+  {
+    "id": 112,
+    "destination_id": 35,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:13:58.80195+00:00"
+  },
+  {
+    "id": 113,
+    "destination_id": 36,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:15:13.345431+00:00"
+  },
+  {
+    "id": 114,
+    "destination_id": 36,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:15:13.345431+00:00"
+  },
+  {
+    "id": 115,
+    "destination_id": 36,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:15:13.345431+00:00"
+  },
+  {
+    "id": 116,
+    "destination_id": 37,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:16:12.735001+00:00"
+  },
+  {
+    "id": 117,
+    "destination_id": 37,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:16:12.735001+00:00"
+  },
+  {
+    "id": 118,
+    "destination_id": 38,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:17:34.141463+00:00"
+  },
+  {
+    "id": 119,
+    "destination_id": 38,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:17:34.141463+00:00"
+  },
+  {
+    "id": 120,
+    "destination_id": 38,
+    "category_id": 12,
+    "created_at": "2023-11-18T16:17:34.141463+00:00"
+  },
+  {
+    "id": 121,
+    "destination_id": 38,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:17:34.141463+00:00"
+  },
+  {
+    "id": 122,
+    "destination_id": 39,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:18:09.87823+00:00"
+  },
+  {
+    "id": 123,
+    "destination_id": 39,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:18:09.87823+00:00"
+  },
+  {
+    "id": 124,
+    "destination_id": 40,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:18:57.24041+00:00"
+  },
+  {
+    "id": 125,
+    "destination_id": 40,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:18:57.24041+00:00"
+  },
+  {
+    "id": 126,
+    "destination_id": 40,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:18:57.24041+00:00"
+  },
+  {
+    "id": 127,
+    "destination_id": 41,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:19:33.779367+00:00"
+  },
+  {
+    "id": 128,
+    "destination_id": 41,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:19:33.779367+00:00"
+  },
+  {
+    "id": 129,
+    "destination_id": 42,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:20:03.960857+00:00"
+  },
+  {
+    "id": 130,
+    "destination_id": 42,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:20:03.960857+00:00"
+  },
+  {
+    "id": 131,
+    "destination_id": 43,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:21:59.278227+00:00"
+  },
+  {
+    "id": 132,
+    "destination_id": 43,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:21:59.278227+00:00"
+  },
+  {
+    "id": 133,
+    "destination_id": 44,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:22:34.502911+00:00"
+  },
+  {
+    "id": 134,
+    "destination_id": 44,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:22:34.502911+00:00"
+  },
+  {
+    "id": 135,
+    "destination_id": 44,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:22:34.502911+00:00"
+  },
+  {
+    "id": 136,
+    "destination_id": 44,
+    "category_id": 3,
+    "created_at": "2023-11-18T16:22:34.502911+00:00"
+  },
+  {
+    "id": 137,
+    "destination_id": 45,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:23:08.932762+00:00"
+  },
+  {
+    "id": 138,
+    "destination_id": 45,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:23:08.932762+00:00"
+  },
+  {
+    "id": 139,
+    "destination_id": 45,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:23:08.932762+00:00"
+  },
+  {
+    "id": 140,
+    "destination_id": 45,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:23:08.932762+00:00"
+  },
+  {
+    "id": 141,
+    "destination_id": 46,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:24:07.890649+00:00"
+  },
+  {
+    "id": 142,
+    "destination_id": 46,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:24:07.890649+00:00"
+  },
+  {
+    "id": 143,
+    "destination_id": 46,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:24:07.890649+00:00"
+  },
+  {
+    "id": 144,
+    "destination_id": 46,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:24:07.890649+00:00"
+  },
+  {
+    "id": 145,
+    "destination_id": 47,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:24:42.547708+00:00"
+  },
+  {
+    "id": 146,
+    "destination_id": 47,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:24:42.547708+00:00"
+  },
+  {
+    "id": 147,
+    "destination_id": 47,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:24:42.547708+00:00"
+  },
+  {
+    "id": 148,
+    "destination_id": 48,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:25:32.274536+00:00"
+  },
+  {
+    "id": 149,
+    "destination_id": 48,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:25:32.274536+00:00"
+  },
+  {
+    "id": 150,
+    "destination_id": 48,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:25:32.274536+00:00"
+  },
+  {
+    "id": 151,
+    "destination_id": 48,
+    "category_id": 10,
+    "created_at": "2023-11-18T16:25:32.274536+00:00"
+  },
+  {
+    "id": 152,
+    "destination_id": 49,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:26:04.630309+00:00"
+  },
+  {
+    "id": 153,
+    "destination_id": 49,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:26:04.630309+00:00"
+  },
+  {
+    "id": 154,
+    "destination_id": 49,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:26:04.630309+00:00"
+  },
+  {
+    "id": 155,
+    "destination_id": 50,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:26:46.257435+00:00"
+  },
+  {
+    "id": 156,
+    "destination_id": 50,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:26:46.257435+00:00"
+  },
+  {
+    "id": 157,
+    "destination_id": 50,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:26:46.257435+00:00"
+  },
+  {
+    "id": 158,
+    "destination_id": 51,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:27:46.466896+00:00"
+  },
+  {
+    "id": 159,
+    "destination_id": 51,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:27:46.466896+00:00"
+  },
+  {
+    "id": 160,
+    "destination_id": 51,
+    "category_id": 12,
+    "created_at": "2023-11-18T16:27:46.466896+00:00"
+  },
+  {
+    "id": 161,
+    "destination_id": 52,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:28:24.803636+00:00"
+  },
+  {
+    "id": 162,
+    "destination_id": 52,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:28:24.803636+00:00"
+  },
+  {
+    "id": 163,
+    "destination_id": 52,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:28:24.803636+00:00"
+  },
+  {
+    "id": 164,
+    "destination_id": 52,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:28:24.803636+00:00"
+  },
+  {
+    "id": 165,
+    "destination_id": 53,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:28:55.255551+00:00"
+  },
+  {
+    "id": 166,
+    "destination_id": 53,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:28:55.255551+00:00"
+  },
+  {
+    "id": 167,
+    "destination_id": 54,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:29:35.50848+00:00"
+  },
+  {
+    "id": 168,
+    "destination_id": 54,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:29:35.50848+00:00"
+  },
+  {
+    "id": 169,
+    "destination_id": 54,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:29:35.50848+00:00"
+  },
+  {
+    "id": 170,
+    "destination_id": 55,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:29:53.979479+00:00"
+  },
+  {
+    "id": 171,
+    "destination_id": 55,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:29:53.979479+00:00"
+  },
+  {
+    "id": 172,
+    "destination_id": 56,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:30:24.973456+00:00"
+  },
+  {
+    "id": 173,
+    "destination_id": 56,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:30:24.973456+00:00"
+  },
+  {
+    "id": 174,
+    "destination_id": 56,
+    "category_id": 9,
+    "created_at": "2023-11-18T16:30:24.973456+00:00"
+  },
+  {
+    "id": 175,
+    "destination_id": 57,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:31:09.506326+00:00"
+  },
+  {
+    "id": 176,
+    "destination_id": 57,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:31:09.506326+00:00"
+  },
+  {
+    "id": 177,
+    "destination_id": 58,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:31:50.254255+00:00"
+  },
+  {
+    "id": 178,
+    "destination_id": 58,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:31:50.254255+00:00"
+  },
+  {
+    "id": 179,
+    "destination_id": 59,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:32:29.718462+00:00"
+  },
+  {
+    "id": 180,
+    "destination_id": 59,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:32:29.718462+00:00"
+  },
+  {
+    "id": 181,
+    "destination_id": 59,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:32:29.718462+00:00"
+  },
+  {
+    "id": 182,
+    "destination_id": 60,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:33:04.721806+00:00"
+  },
+  {
+    "id": 183,
+    "destination_id": 60,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:33:04.721806+00:00"
+  },
+  {
+    "id": 184,
+    "destination_id": 60,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:33:04.721806+00:00"
+  },
+  {
+    "id": 185,
+    "destination_id": 61,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:34:40.464201+00:00"
+  },
+  {
+    "id": 186,
+    "destination_id": 61,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:34:40.464201+00:00"
+  },
+  {
+    "id": 187,
+    "destination_id": 61,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:34:40.464201+00:00"
+  },
+  {
+    "id": 188,
+    "destination_id": 61,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:34:40.464201+00:00"
+  },
+  {
+    "id": 189,
+    "destination_id": 62,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:35:13.452677+00:00"
+  },
+  {
+    "id": 190,
+    "destination_id": 62,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:35:13.452677+00:00"
+  },
+  {
+    "id": 191,
+    "destination_id": 62,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:35:13.452677+00:00"
+  },
+  {
+    "id": 192,
+    "destination_id": 63,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:35:37.163689+00:00"
+  },
+  {
+    "id": 193,
+    "destination_id": 63,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:35:37.163689+00:00"
+  },
+  {
+    "id": 194,
+    "destination_id": 63,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:35:37.163689+00:00"
+  },
+  {
+    "id": 195,
+    "destination_id": 63,
+    "category_id": 9,
+    "created_at": "2023-11-18T16:35:37.163689+00:00"
+  },
+  {
+    "id": 196,
+    "destination_id": 64,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:36:26.94025+00:00"
+  },
+  {
+    "id": 197,
+    "destination_id": 64,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:36:26.94025+00:00"
+  },
+  {
+    "id": 198,
+    "destination_id": 64,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:36:26.94025+00:00"
+  },
+  {
+    "id": 199,
+    "destination_id": 64,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:36:26.94025+00:00"
+  },
+  {
+    "id": 200,
+    "destination_id": 65,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:36:52.67317+00:00"
+  },
+  {
+    "id": 201,
+    "destination_id": 65,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:36:52.67317+00:00"
+  },
+  {
+    "id": 202,
+    "destination_id": 65,
+    "category_id": 9,
+    "created_at": "2023-11-18T16:36:52.67317+00:00"
+  },
+  {
+    "id": 203,
+    "destination_id": 65,
+    "category_id": 10,
+    "created_at": "2023-11-18T16:36:52.67317+00:00"
+  },
+  {
+    "id": 204,
+    "destination_id": 66,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:37:44.652511+00:00"
+  },
+  {
+    "id": 205,
+    "destination_id": 66,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:37:44.652511+00:00"
+  },
+  {
+    "id": 206,
+    "destination_id": 67,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:38:18.6857+00:00"
+  },
+  {
+    "id": 207,
+    "destination_id": 67,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:38:18.6857+00:00"
+  },
+  {
+    "id": 208,
+    "destination_id": 67,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:38:18.6857+00:00"
+  },
+  {
+    "id": 209,
+    "destination_id": 68,
+    "category_id": 3,
+    "created_at": "2023-11-18T16:38:40.736392+00:00"
+  },
+  {
+    "id": 210,
+    "destination_id": 68,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:38:40.736392+00:00"
+  },
+  {
+    "id": 211,
+    "destination_id": 69,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:39:41.255258+00:00"
+  },
+  {
+    "id": 212,
+    "destination_id": 69,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:39:41.255258+00:00"
+  },
+  {
+    "id": 213,
+    "destination_id": 69,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:39:41.255258+00:00"
+  },
+  {
+    "id": 214,
+    "destination_id": 70,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:40:03.451891+00:00"
+  },
+  {
+    "id": 215,
+    "destination_id": 70,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:40:03.451891+00:00"
+  },
+  {
+    "id": 216,
+    "destination_id": 71,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:41:28.550567+00:00"
+  },
+  {
+    "id": 217,
+    "destination_id": 71,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:41:28.550567+00:00"
+  },
+  {
+    "id": 218,
+    "destination_id": 71,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:41:28.550567+00:00"
+  },
+  {
+    "id": 219,
+    "destination_id": 72,
+    "category_id": 10,
+    "created_at": "2023-11-18T16:41:55.723397+00:00"
+  },
+  {
+    "id": 220,
+    "destination_id": 72,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:41:55.723397+00:00"
+  },
+  {
+    "id": 221,
+    "destination_id": 72,
+    "category_id": 9,
+    "created_at": "2023-11-18T16:41:55.723397+00:00"
+  },
+  {
+    "id": 222,
+    "destination_id": 72,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:41:55.723397+00:00"
+  },
+  {
+    "id": 223,
+    "destination_id": 73,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:42:18.624178+00:00"
+  },
+  {
+    "id": 224,
+    "destination_id": 73,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:42:18.624178+00:00"
+  },
+  {
+    "id": 225,
+    "destination_id": 74,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:42:47.9612+00:00"
+  },
+  {
+    "id": 226,
+    "destination_id": 74,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:42:47.9612+00:00"
+  },
+  {
+    "id": 227,
+    "destination_id": 75,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:43:33.26538+00:00"
+  },
+  {
+    "id": 228,
+    "destination_id": 75,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:43:33.26538+00:00"
+  },
+  {
+    "id": 229,
+    "destination_id": 76,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:44:07.221751+00:00"
+  },
+  {
+    "id": 230,
+    "destination_id": 76,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:44:07.221751+00:00"
+  },
+  {
+    "id": 231,
+    "destination_id": 76,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:44:07.221751+00:00"
+  },
+  {
+    "id": 232,
+    "destination_id": 76,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:44:07.221751+00:00"
+  },
+  {
+    "id": 233,
+    "destination_id": 77,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:44:56.581229+00:00"
+  },
+  {
+    "id": 234,
+    "destination_id": 77,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:44:56.581229+00:00"
+  },
+  {
+    "id": 235,
+    "destination_id": 78,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:46:34.901495+00:00"
+  },
+  {
+    "id": 236,
+    "destination_id": 78,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:46:34.901495+00:00"
+  },
+  {
+    "id": 237,
+    "destination_id": 78,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:46:34.901495+00:00"
+  },
+  {
+    "id": 238,
+    "destination_id": 79,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:47:19.760279+00:00"
+  },
+  {
+    "id": 239,
+    "destination_id": 79,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:47:19.760279+00:00"
+  },
+  {
+    "id": 240,
+    "destination_id": 80,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:47:49.017088+00:00"
+  },
+  {
+    "id": 241,
+    "destination_id": 80,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:47:49.017088+00:00"
+  },
+  {
+    "id": 242,
+    "destination_id": 81,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:49:43.584204+00:00"
+  },
+  {
+    "id": 243,
+    "destination_id": 81,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:49:43.584204+00:00"
+  },
+  {
+    "id": 244,
+    "destination_id": 81,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:49:43.584204+00:00"
+  },
+  {
+    "id": 245,
+    "destination_id": 81,
+    "category_id": 9,
+    "created_at": "2023-11-18T16:49:43.584204+00:00"
+  },
+  {
+    "id": 246,
+    "destination_id": 82,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:50:12.217316+00:00"
+  },
+  {
+    "id": 247,
+    "destination_id": 82,
+    "category_id": 4,
+    "created_at": "2023-11-18T16:50:12.217316+00:00"
+  },
+  {
+    "id": 248,
+    "destination_id": 82,
+    "category_id": 6,
+    "created_at": "2023-11-18T16:50:12.217316+00:00"
+  },
+  {
+    "id": 249,
+    "destination_id": 82,
+    "category_id": 11,
+    "created_at": "2023-11-18T16:50:12.217316+00:00"
+  },
+  {
+    "id": 250,
+    "destination_id": 83,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:50:35.170452+00:00"
+  },
+  {
+    "id": 251,
+    "destination_id": 83,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:50:35.170452+00:00"
+  },
+  {
+    "id": 252,
+    "destination_id": 83,
+    "category_id": 8,
+    "created_at": "2023-11-18T16:50:35.170452+00:00"
+  },
+  {
+    "id": 253,
+    "destination_id": 84,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:51:22.705388+00:00"
+  },
+  {
+    "id": 254,
+    "destination_id": 84,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:51:22.705388+00:00"
+  },
+  {
+    "id": 255,
+    "destination_id": 84,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:51:22.705388+00:00"
+  },
+  {
+    "id": 256,
+    "destination_id": 85,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:52:10.929152+00:00"
+  },
+  {
+    "id": 257,
+    "destination_id": 85,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:52:10.929152+00:00"
+  },
+  {
+    "id": 258,
+    "destination_id": 86,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:52:28.227875+00:00"
+  },
+  {
+    "id": 259,
+    "destination_id": 86,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:52:28.227875+00:00"
+  },
+  {
+    "id": 260,
+    "destination_id": 87,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:53:12.114919+00:00"
+  },
+  {
+    "id": 261,
+    "destination_id": 87,
+    "category_id": 5,
+    "created_at": "2023-11-18T16:53:12.114919+00:00"
+  },
+  {
+    "id": 262,
+    "destination_id": 88,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:53:52.615497+00:00"
+  },
+  {
+    "id": 263,
+    "destination_id": 88,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:53:52.615497+00:00"
+  },
+  {
+    "id": 264,
+    "destination_id": 88,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:53:52.615497+00:00"
+  },
+  {
+    "id": 265,
+    "destination_id": 89,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:54:31.793408+00:00"
+  },
+  {
+    "id": 266,
+    "destination_id": 89,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:54:31.793408+00:00"
+  },
+  {
+    "id": 267,
+    "destination_id": 90,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:54:54.317565+00:00"
+  },
+  {
+    "id": 268,
+    "destination_id": 90,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:54:54.317565+00:00"
+  },
+  {
+    "id": 269,
+    "destination_id": 91,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:55:50.613541+00:00"
+  },
+  {
+    "id": 270,
+    "destination_id": 91,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:55:50.613541+00:00"
+  },
+  {
+    "id": 271,
+    "destination_id": 92,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:56:05.678447+00:00"
+  },
+  {
+    "id": 272,
+    "destination_id": 92,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:56:05.678447+00:00"
+  },
+  {
+    "id": 273,
+    "destination_id": 93,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:56:22.275984+00:00"
+  },
+  {
+    "id": 274,
+    "destination_id": 93,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:56:22.275984+00:00"
+  },
+  {
+    "id": 275,
+    "destination_id": 94,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:56:44.388551+00:00"
+  },
+  {
+    "id": 276,
+    "destination_id": 94,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:56:44.388551+00:00"
+  },
+  {
+    "id": 277,
+    "destination_id": 95,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:57:36.206198+00:00"
+  },
+  {
+    "id": 278,
+    "destination_id": 95,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:57:36.206198+00:00"
+  },
+  {
+    "id": 279,
+    "destination_id": 96,
+    "category_id": 2,
+    "created_at": "2023-11-18T16:57:55.85242+00:00"
+  },
+  {
+    "id": 280,
+    "destination_id": 96,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:57:55.85242+00:00"
+  },
+  {
+    "id": 281,
+    "destination_id": 97,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:58:41.132269+00:00"
+  },
+  {
+    "id": 282,
+    "destination_id": 97,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:58:41.132269+00:00"
+  },
+  {
+    "id": 283,
+    "destination_id": 98,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:59:03.805551+00:00"
+  },
+  {
+    "id": 284,
+    "destination_id": 98,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:59:03.805551+00:00"
+  },
+  {
+    "id": 285,
+    "destination_id": 99,
+    "category_id": 1,
+    "created_at": "2023-11-18T16:59:39.427071+00:00"
+  },
+  {
+    "id": 286,
+    "destination_id": 99,
+    "category_id": 3,
+    "created_at": "2023-11-18T16:59:39.427071+00:00"
+  },
+  {
+    "id": 287,
+    "destination_id": 99,
+    "category_id": 13,
+    "created_at": "2023-11-18T16:59:39.427071+00:00"
+  },
+  {
+    "id": 288,
+    "destination_id": 99,
+    "category_id": 7,
+    "created_at": "2023-11-18T16:59:39.427071+00:00"
+  },
+  {
+    "id": 289,
+    "destination_id": 100,
+    "category_id": 7,
+    "created_at": "2023-11-18T17:00:06.435714+00:00"
+  },
+  {
+    "id": 290,
+    "destination_id": 100,
+    "category_id": 8,
+    "created_at": "2023-11-18T17:00:06.435714+00:00"
+  },
+  {
+    "id": 291,
+    "destination_id": 101,
+    "category_id": 1,
+    "created_at": "2023-11-18T17:00:51.659533+00:00"
+  },
+  {
+    "id": 292,
+    "destination_id": 101,
+    "category_id": 13,
+    "created_at": "2023-11-18T17:00:51.659533+00:00"
+  }
+]
