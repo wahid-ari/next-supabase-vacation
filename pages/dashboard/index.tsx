@@ -16,10 +16,10 @@ import {
 
 import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/libs/recharts-setup';
 import {
+  // useCountsData,
   useStatisticDestinationByCategoryData,
   useStatisticDestinationByIslandData,
   useStatisticDestinationByProvinceData,
-  // useCountsData,
   useTotalCategoryData,
   useTotalDestinationData,
   useTotalIslandData,
@@ -172,20 +172,31 @@ export default function Dashboard() {
       {/* <div className='mt-8 grid grid-cols-1 gap-4 min-[350px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
         {data ? (
           <>
-            <Card title='Author' link='/author' count={data.authors} icon={<UserGroupIcon />} />
-            <Card title='Book' link='/book' count={data.books} icon={<BookOpenIcon />} />
-            <Card title='Quote' link='/quote' count={data.quotes} icon={<AnnotationIcon />} />
-            <Card title='Genre' link='/genre' count={data.genres} icon={<ColorSwatchIcon />} />
-            <Card title='Tag' link='/tag' count={data.tags} icon={<CollectionIcon />} />
+            <Card
+              title='Destination'
+              link='/destination'
+              count={data.destination}
+              icon={<MountainSnowIcon className='h-12 w-12' />}
+            />
+            <Card
+              title='Category'
+              link='/category'
+              count={data.category}
+              icon={<LayoutListIcon className='h-12 w-12' />}
+            />
+            <Card title='Island' link='/island' count={data.island} icon={<PalmtreeIcon className='h-12 w-12' />} />
+            <Card title='Province' link='/province' count={data.province} icon={<MapPinIcon className='h-12 w-12' />} />
+            <Card title='Video' link='/video' count={data.video} icon={<YoutubeIcon className='h-12 w-12' />} />
           </>
         ) : (
-          <>
-            <Shimmer className='!h-24 w-full' />
-            <Shimmer className='!h-24 w-full' />
-            <Shimmer className='!h-24 w-full' />
-            <Shimmer className='!h-24 w-full' />
-            <Shimmer className='!h-24 w-full' />
-          </>
+          [...Array(5).keys()].map((i) => (
+            <Shimmer key={i}>
+              <div className='space-y-3'>
+                <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              </div>
+            </Shimmer>
+          ))
         )}
       </div> */}
 
