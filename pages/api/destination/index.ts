@@ -6,10 +6,12 @@ import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  image_url: z.string().min(1, { message: 'Image URL is required' }),
+  // image_url: z.string().min(1, { message: 'Image URL is required' }).url({ message: 'Invalid Image URL' }),
+  // TODO Docs https://zod.dev/?id=unions
+  image_url: z.string().url({ message: 'Invalid Image URL' }),
   description: z.string().min(8, { message: 'Description is required' }),
   content: z.string().min(12, { message: 'Content is required' }),
-  // FIX remove this when deployed
+  // FIX change to this when deployed
   // description: z.string().min(80, { message: 'Description is required' }),
   // content: z.string().min(100, { message: 'Content is required' }),
 });
