@@ -9,11 +9,11 @@ const schema = z.object({
   // image_url: z.string().min(1, { message: 'Image URL is required' }).url({ message: 'Invalid Image URL' }),
   // TODO Docs https://zod.dev/?id=unions
   image_url: z.string().url({ message: 'Invalid Image URL' }),
-  description: z.string().min(8, { message: 'Description is required' }),
-  content: z.string().min(12, { message: 'Content is required' }),
-  // FIX change to this when deployed
-  // description: z.string().min(80, { message: 'Description is required' }),
-  // content: z.string().min(100, { message: 'Content is required' }),
+  // TODO Docs https://github.com/colinhacks/zod/discussions/1254#discussioncomment-6395482
+  header_image_url: z.string().url({ message: 'Invalid Header Image URL' }).optional().or(z.literal('')),
+  video_url: z.string().url({ message: 'Invalid Video URL' }).optional().or(z.literal('')),
+  description: z.string().min(70, { message: 'Description must be 70 or more characters long' }),
+  content: z.string().min(100, { message: 'Content must be 100 or more characters long' }),
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       if (!query.id && !query.slug) {
-        // api/province
+        // api/destination
         const { data } = await supabase
           .from('vacation_destination')
           .select(
@@ -34,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
-        // api/province?slug=slug&seo=true
+        // api/destination?slug=slug&seo=true
         const { data } = await supabase
           .from('vacation_destination')
           .select(`name, description`)
@@ -44,8 +44,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(data);
         return;
       } else {
-        // api/province?slug=slug
-        // api/province?id=1
+        // api/destination?slug=slug
+        // api/destination?id=1
         let column = query.id ? 'id' : 'slug';
         let param = query.id ? query.id : query.slug;
         const { data: categories } = await supabase.from('vacation_category').select(`*`).order('id');
@@ -250,7 +250,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.status(200).json('Method required');
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+      res.status(405).end(`Method ${method} Not Allowed`);
       break;
   }
 }
