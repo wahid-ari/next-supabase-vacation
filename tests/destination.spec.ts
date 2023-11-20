@@ -46,8 +46,8 @@ test.describe('Testing Destination Page', () => {
     await expect(page.getByText(/Creating/)).toBeVisible();
     await expect(page.getByText('Name is required')).toBeVisible();
     await expect(page.getByText('Invalid Image URL')).toBeVisible();
-    await expect(page.getByText('Description is required')).toBeVisible();
-    await expect(page.getByText('Content is required')).toBeVisible();
+    await expect(page.getByText('Description must be 70 or more characters long')).toBeVisible();
+    await expect(page.getByText('Content must be 100 or more characters long')).toBeVisible();
     // Logout
     await logout(page);
   });
@@ -62,8 +62,15 @@ test.describe('Testing Destination Page', () => {
     await page
       .getByPlaceholder('Image URL', { exact: true })
       .fill('https://images.unsplash.com/photo-1682686581580-d99b0230064e?w=500&auto=format&fit=crop&q=60');
-    await page.getByPlaceholder('Destination Description').fill('New Destination Description');
-    await page.locator('#content').getByRole('paragraph').fill('New Destination Content');
+    await page
+      .getByPlaceholder('Destination Description')
+      .fill('New Lorem Ipsum is simply dummy text of the printing and typesetting industry');
+    await page
+      .locator('#content')
+      .getByRole('paragraph')
+      .fill(
+        'New Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
+      );
     await page.getByRole('button', { name: 'Save changes' }).click();
     await expect(page.getByText(/Creating/)).toBeVisible();
     await expect(page.getByText('Success add destination')).toBeVisible();
@@ -86,8 +93,15 @@ test.describe('Testing Destination Page', () => {
     await page
       .getByPlaceholder('Image URL', { exact: true })
       .fill('https://images.unsplash.com/photo-1682686581580-d99b0230064e?w=500&auto=format&fit=crop&q=60');
-    await page.getByPlaceholder('Destination Description').fill('Edit Destination Description');
-    await page.locator('#content').getByRole('paragraph').fill('Edit Destination Content');
+    await page
+      .getByPlaceholder('Destination Description')
+      .fill('Edit Lorem Ipsum is simply dummy text of the printing and typesetting industry');
+    await page
+      .locator('#content')
+      .getByRole('paragraph')
+      .fill(
+        'Edit Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
+      );
     await page.getByRole('button', { name: 'Save changes' }).click();
     await expect(page.getByText('Updating destination')).toBeVisible();
     await expect(page.getByText('Success update destination')).toBeVisible();
