@@ -22,7 +22,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select(`id, title, video_url, vacation_island (id, name, slug), vacation_province (id, name, slug)`)
         .order('id');
       res.status(200).json(data);
-      return;
       break;
 
     case 'POST':
@@ -133,7 +132,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.status(200).json('Method required');
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+      res.status(405).end(`Method ${method} Not Allowed`);
       break;
   }
 }
