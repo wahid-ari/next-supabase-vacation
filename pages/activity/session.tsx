@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import axios from 'axios';
 import { format } from 'date-fns';
 import { TrashIcon } from 'lucide-react';
@@ -21,7 +20,6 @@ import Title from '@/components/systems/Title';
 // Session.auth = true;
 
 export default function Session() {
-  const router = useRouter();
   const { data, error } = useSessionsData();
   const { updateToast, pushToast } = useToast();
   const [inputDebounceValue, setInputDebounceValue] = useState('');
@@ -37,9 +35,9 @@ export default function Session() {
             .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
         );
 
-  async function handleDeleteAll() {
+  async function handleDelete() {
     const toastId = pushToast({
-      message: `Deleting All Session`,
+      message: `Deleting ${deleteDialog.id == null ? 'All' : ''} Session`,
       isLoading: true,
     });
     try {
@@ -48,7 +46,6 @@ export default function Session() {
         setDeleteDialog({ dialog: false, id: null });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/session`);
-        router.push('/activity/session');
       }
     } catch (error) {
       console.error(error);
@@ -85,7 +82,7 @@ export default function Session() {
         isDanger
         setOpen={() => setDeleteDialog({ id: null, dialog: false })}
         onClose={() => setDeleteDialog({ id: null, dialog: false })}
-        onConfirm={handleDeleteAll}
+        onConfirm={handleDelete}
       >
         <div className='mt-5 text-center sm:text-left'>
           Are you sure want to delete {deleteDialog.id == null ? 'All' : 'This'} Session ?
