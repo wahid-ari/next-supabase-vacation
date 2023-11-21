@@ -59,8 +59,8 @@ export default function Island() {
       }
     } catch (error) {
       console.error(error);
-      if (Array.isArray(error?.response?.data?.error)) {
-        const errors = [...error?.response?.data?.error].reverse();
+      if (Array.isArray(error?.response?.data?.message)) {
+        const errors = [...error?.response?.data?.message].reverse();
         // show all error
         dismissToast();
         errors.forEach((item: any) => {
@@ -71,7 +71,7 @@ export default function Island() {
         //   updateToast({ toastId, message: item?.message, isError: true });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
       }
     }
   }
@@ -91,8 +91,8 @@ export default function Island() {
       }
     } catch (error) {
       console.error(error);
-      if (Array.isArray(error?.response?.data?.error)) {
-        const errors = [...error?.response?.data?.error].reverse();
+      if (Array.isArray(error?.response?.data?.message)) {
+        const errors = [...error?.response?.data?.message].reverse();
         // show all error
         dismissToast();
         errors.forEach((item: any) => {
@@ -103,7 +103,7 @@ export default function Island() {
         //   updateToast({ toastId, message: item?.message, isError: true });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
       }
     }
   }
@@ -127,7 +127,7 @@ export default function Island() {
       if (detail) {
         updateToast({ toastId, message: detail, isError: true });
       } else {
-        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
       }
     }
   }

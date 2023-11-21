@@ -62,8 +62,8 @@ export default function Login() {
       }
     } catch (error) {
       console.error(error);
-      if (Array.isArray(error?.response?.data?.error)) {
-        const errors = [...error?.response?.data?.error].reverse();
+      if (Array.isArray(error?.response?.data?.message)) {
+        const errors = [...error?.response?.data?.message].reverse();
         // show all error
         dismissToast();
         errors.forEach((item: any) => {
@@ -74,7 +74,7 @@ export default function Login() {
         //   updateToast({ toastId, message: item?.message, isError: true });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
       }
     }
     setLoading(false);

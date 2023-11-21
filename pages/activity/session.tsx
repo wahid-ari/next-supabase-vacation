@@ -49,7 +49,7 @@ export default function Session() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      updateToast({ toastId, message: error?.response?.data?.message, isError: true });
     }
   }
 
