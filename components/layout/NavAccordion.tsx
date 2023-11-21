@@ -81,12 +81,12 @@ export default function NavAccordion({ children, title, routeName, className, ic
               />
             </Disclosure.Button>
             <Transition
-              enter='transition-max-height ease-in-out duration-500 overflow-hidden'
-              enterFrom='max-h-0'
-              enterTo='max-h-screen'
-              leave='transition-max-height ease-in-out duration-100 overflow-hidden'
-              leaveFrom='max-h-screen'
-              leaveTo='max-h-0'
+              enter='transition duration-300 ease-out'
+              enterFrom='transform scale-95 opacity-0'
+              enterTo='transform scale-100 opacity-100'
+              leave='transition duration-75 ease-out'
+              leaveFrom='transform scale-100 opacity-100'
+              leaveTo='transform scale-95 opacity-0'
             >
               <Disclosure.Panel className='relative overflow-hidden py-0.5 px-2.5 transition-all'>
                 {children}
