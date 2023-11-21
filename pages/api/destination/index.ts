@@ -88,7 +88,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const isValid = schema.safeParse(body);
         // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
         if (isValid.success == false) {
-          res.status(422).json({ error: isValid.error.issues });
+          res.status(422).json({ message: isValid.error.issues });
           return;
         } else {
           let nameSlug = slug(body.name);
@@ -121,7 +121,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             ])
             .select();
           if (error) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           // get destination id after inserting
@@ -139,14 +139,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // insert category of a destination to vacation_destination_category table
             const { error } = await supabase.from('vacation_destination_category').insert(category);
             if (error) {
-              res.status(422).json({ error: error.message });
+              res.status(422).json({ message: error.message });
               return;
             }
           }
           // Write logs
           const errorLogs = await writeLogs(sessionPost.user_id, 'create', 'destination');
           if (errorLogs) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           res.status(200).json({ message: 'Success add destination' });
@@ -161,7 +161,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const isValid = schema.safeParse(body);
         // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
         if (isValid.success == false) {
-          res.status(422).json({ error: isValid.error.issues });
+          res.status(422).json({ message: isValid.error.issues });
           return;
         } else {
           // update destination
@@ -180,7 +180,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             })
             .eq('id', body.id);
           if (error) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           // delete category related to edited destination
@@ -189,7 +189,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .delete()
             .eq('destination_id', body.id);
           if (errorDestinationCategory) {
-            res.status(422).json({ error: errorDestinationCategory.message });
+            res.status(422).json({ message: errorDestinationCategory.message });
             return;
           }
           // if edited destination have category
@@ -205,14 +205,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // insert category of a edited destination to vacation_destination_category table
             const { error } = await supabase.from('vacation_destination_category').insert(category);
             if (error) {
-              res.status(422).json({ error: error.message });
+              res.status(422).json({ message: error.message });
               return;
             }
           }
           // Write logs
           const errorLogs = await writeLogs(sessionPut.user_id, 'update', 'destination', body.id);
           if (errorLogs) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           res.status(201).json({ message: 'Success update destination' });
@@ -225,7 +225,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const sessionDelete = await getSessionToken(res, header, token);
       if (sessionDelete) {
         if (!query.id) {
-          res.status(422).json({ error: 'Id required' });
+          res.status(422).json({ message: 'Id required' });
           return;
         } else {
           // delete category related to destination in vacation_destination_category table
@@ -235,13 +235,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .eq('destination_id', query.id);
           const { error } = await supabase.from('vacation_destination').delete().eq('id', query.id);
           if (error || errorDestinationCategory) {
-            res.status(422).json({ error: error.message, detail: error.details });
+            res.status(422).json({ message: error.message, detail: error.details });
             return;
           }
           // Write logs
           const errorLogs = await writeLogs(sessionDelete.user_id, 'delete', 'destination', query.id);
           if (errorLogs) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           res.status(200).json({ message: 'Success delete destination' });

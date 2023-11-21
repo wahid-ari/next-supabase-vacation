@@ -47,17 +47,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const isValid = schema.safeParse(body);
       // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
       if (isValid.success == false) {
-        res.status(422).json({ error: isValid.error.issues });
+        res.status(422).json({ message: isValid.error.issues });
         return;
       }
       // if (!body.name) {
-      //   res.status(422).json({ error: 'Name required' });
+      //   res.status(422).json({ message: 'Name required' });
       //   return;
       // } else if (!body.username) {
-      //   res.status(422).json({ error: 'Username required' });
+      //   res.status(422).json({ message: 'Username required' });
       //   return;
       // } else if (!body.password) {
-      //   res.status(422).json({ error: 'Password required' });
+      //   res.status(422).json({ message: 'Password required' });
       //   return;
       // }
       else {
@@ -85,7 +85,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return;
           // }
         } else {
-          res.status(422).json({ error: 'Username already exist' });
+          res.status(422).json({ message: 'Username already exist' });
         }
       }
       break;
@@ -100,15 +100,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 //   case "GET":
 //     try {
 //       if (!req.headers.authorization) {
-//         return res.json({ error: "Please provide headers" });
+//         return res.json({ message: "Please provide headers" });
 //       }
 //       const token = req.headers.authorization.split("Bearer ")[1];
 //       if (!token) {
-//         return res.json({ error: "Token not found" });
+//         return res.json({ message: "Token not found" });
 //       }
 //       const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
 //       if (!user) {
-//         return res.json({ error: "Token not valid" });
+//         return res.json({ message: "Token not valid" });
 //       }
 //       const user_data = await User.aggregate([
 //         {
@@ -118,17 +118,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 //         },
 //       ]);
 //       if (!user_data[0]) {
-//         return res.json({ error: "User not found" });
+//         return res.json({ message: "User not found" });
 //       }
 //       const isMatch = await compare(user.password, user_data[0].password);
 //       if (!isMatch) {
-//         return res.json({ error: "Token not valid" });
+//         return res.json({ message: "Token not valid" });
 //       }
 //       delete user_data[0].password;
 //       return res.json(user_data[0]);
 //     } catch (err) {
-//       return res.json({ error: "Error on calling API" });
+//       return res.json({ message: "Error on calling API" });
 //     }
 //   default:
-//     return res.json({ error: "Only accepting GET method" });
+//     return res.json({ message: "Only accepting GET method" });
 // }
