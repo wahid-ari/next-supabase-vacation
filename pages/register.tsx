@@ -187,7 +187,7 @@ export default function Register() {
 
                 <div className='mb-5'>
                   <label className='block text-sm text-neutral-800' htmlFor='confirm_password'>
-                    Password
+                    Confirm Password
                   </label>
                   <div className='relative mb-4 flex items-center'>
                     <input
