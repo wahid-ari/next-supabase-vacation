@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { PlayIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
 import { useSearchData } from '@/libs/swr';
+import { youTubeGetID } from '@/libs/utils';
+
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
+import VideoCardItem from '@/components/dashboard/VideoCardItem';
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
@@ -21,6 +27,8 @@ export default function Search() {
   const search = (router.query?.q as string) || '';
   const [query, setQuery] = useState(search);
   const { data, error } = useSearchData(search);
+  const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
+  const youtube_url = youTubeGetID(videoPreview?.video_url);
 
   useEffect(() => {
     setQuery(search);
@@ -29,41 +37,45 @@ export default function Search() {
   const {
     searchHistory,
     setSearchHistory,
-    addBooksHistory,
-    addAuthorsHistory,
-    removeBooksHistory,
-    removeAuthorsHistory,
-    resetBooksHistory,
-    resetAuthorsHistory,
+    addDestinationHistory,
+    removeDestinationHistory,
+    resetDestinationHistory,
+    addVideoHistory,
+    removeVideoHistory,
+    resetVideoHistory,
     resetAllSearchHistory,
   } = useSearchHistory();
 
   useEffect(() => {
-    if (data?.books?.length > 0) {
+    // Destination
+    if (data?.destination?.length > 0) {
       // if already searching
-      if (searchHistory.books.length > 0) {
+      if (searchHistory.destination?.length > 0) {
         // compare history with new search result
-        let newBooks = compareSearchResult(searchHistory.books, data?.books);
-        if (newBooks != searchHistory.books) {
-          addBooksHistory(newBooks);
+        let newDestination = compareSearchResult(searchHistory.destination, data?.destination);
+        if (newDestination != searchHistory.destination) {
+          addDestinationHistory(newDestination);
         }
       } else {
         // first time searching, set search result to search history directly
-        addBooksHistory(data?.books);
+        addDestinationHistory(data?.destination);
       }
     }
-    // Authors
-    if (data?.authors?.length > 0) {
-      if (searchHistory.authors.length > 0) {
-        let newAuthors = compareSearchResult(searchHistory.authors, data?.authors);
-        if (newAuthors != searchHistory.authors) {
-          addAuthorsHistory(newAuthors);
+    // Video
+    if (data?.video?.length > 0) {
+      // if already searching
+      if (searchHistory.video?.length > 0) {
+        // compare history with new search result
+        let newVideo = compareSearchResult(searchHistory.video, data?.video);
+        if (newVideo != searchHistory.video) {
+          addVideoHistory(newVideo);
         }
       } else {
-        addAuthorsHistory(data?.authors);
+        // first time searching, set search result to search history directly
+        addVideoHistory(data?.video);
       }
     }
-  }, [addAuthorsHistory, addBooksHistory, data, searchHistory.authors, searchHistory.books]);
+  }, [data, searchHistory.destination, searchHistory.video, addDestinationHistory, addVideoHistory]);
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -89,9 +101,9 @@ export default function Search() {
       <form className='mt-4' onSubmit={handleSubmit}>
         <div className='flex items-end gap-2'>
           <LabeledInput
-            wrapperClassName='w-full sm:max-w-sm'
+            wrapperClassName='w-full sm:max-w-md'
             name='search'
-            placeholder='Search Title, Author, ISBN'
+            placeholder='Search Destination, Video, Province, Category and Island'
             type='text'
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -107,19 +119,19 @@ export default function Search() {
         <>
           {!data && <Text>Searching &#8220;{search}&#8221;...</Text>}
 
-          {data?.books.length < 1 && data?.authors.length < 1 ? (
+          {data?.destination?.length < 1 && data?.video?.length < 1 ? (
             <div className='mt-8 rounded border border-red-500 p-3'>
               <p className='text-red-500'>{`No results for "${query || search}"`}</p>
             </div>
           ) : null}
 
-          {data?.books.length > 0 ? (
+          {data?.destination?.length > 0 ? (
             <>
               <Heading h3 className='mt-6'>
-                Books
+                Destination
               </Heading>
               <div className='mt-2 space-y-6'>
-                {data?.books?.map((item: any, index: number) => (
+                {data?.destination?.map((item: any, index: number) => (
                   <BookListItem
                     key={index}
                     href={`/destination/detail/${item.id}`}
@@ -132,26 +144,25 @@ export default function Search() {
             </>
           ) : null}
 
-          {data?.authors.length > 0 ? (
+          {data?.video?.length > 0 ? (
             <>
               <Heading h3 className='mt-6'>
-                Authors
+                Video
               </Heading>
               <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
-                {data?.authors?.map((item: any, index: number) => (
-                  <AuthorListItem
+                {data?.video?.map((item: any, index: number) => (
+                  <VideoCardItem
                     key={index}
-                    href={`/author/detail/${item.id}`}
-                    image={item.image}
-                    name={item.name}
-                    web={item.web}
+                    title={item?.title}
+                    url={item?.video_url}
+                    onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
                   />
                 ))}
               </div>
             </>
           ) : null}
         </>
-      ) : searchHistory.books.length > 0 || searchHistory.authors.length > 0 ? (
+      ) : searchHistory.destination?.length > 0 || searchHistory.video?.length > 0 ? (
         <>
           <div className='mt-6 flex items-center justify-between'>
             <Heading h2 className='!mb-0 text-[22px]'>
@@ -165,21 +176,21 @@ export default function Search() {
             </button>
           </div>
 
-          {searchHistory.books.length > 0 ? (
+          {searchHistory.destination.length > 0 ? (
             <>
               <div className='mb-6 mt-6 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
-                  Books
+                  Destination
                 </Heading>
                 <button
-                  onClick={resetBooksHistory}
+                  onClick={resetDestinationHistory}
                   className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
                 >
-                  Clear Books
+                  Clear Destination
                 </button>
               </div>
               <div className='ml-1 mt-2 space-y-6'>
-                {searchHistory.books?.map((item: any, index: number) => (
+                {searchHistory.destination?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <BookListItem
                       href={`/destination/detail/${item.id}`}
@@ -189,7 +200,7 @@ export default function Search() {
                     />
                     <button
                       title='Delete'
-                      onClick={() => removeBooksHistory(item.id)}
+                      onClick={() => removeDestinationHistory(item.id)}
                       className={twMerge(
                         'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
@@ -203,34 +214,34 @@ export default function Search() {
             </>
           ) : null}
 
-          {searchHistory.authors?.length > 0 ? (
+          {searchHistory.video?.length > 0 ? (
             <>
               <div className='mb-4 mt-8 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
-                  Authors
+                  Video
                 </Heading>
                 <button
-                  onClick={resetAuthorsHistory}
+                  onClick={resetVideoHistory}
                   className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
                 >
-                  Clear Authors
+                  Clear Video
                 </button>
               </div>
-              <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
-                {searchHistory.authors?.map((item: any, index: number) => (
+              <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 lg:grid-cols-3'>
+                {searchHistory.video?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
-                    <AuthorListItem
-                      href={`/author/detail/${item.id}`}
-                      image={item.image}
-                      name={item.name}
-                      web={item.web}
+                    <VideoCardItem
+                      title={item?.title}
+                      url={item?.video_url}
+                      onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
                     />
                     <button
                       title='Delete'
-                      onClick={() => removeAuthorsHistory(item.id)}
+                      onClick={() => removeVideoHistory(item.id)}
                       className={twMerge(
-                        'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
+                        'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
                       )}
                     >
                       X
@@ -242,6 +253,24 @@ export default function Search() {
           ) : null}
         </>
       ) : null}
+
+      {/* Preview Dialog */}
+      <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
+        <DialogContent className='sm:max-w-[720px]'>
+          <DialogHeader className='text-left'>
+            <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
+          </DialogHeader>
+          <div className='py-4'>
+            <iframe
+              className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
+              src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
+              title={videoPreview.title}
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowFullScreen
+            ></iframe>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 }
