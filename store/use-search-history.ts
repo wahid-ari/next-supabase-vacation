@@ -2,47 +2,53 @@ import { useAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
 const searchHistoryAtom = atomWithStorage('search-history', {
-  books: [],
-  authors: [],
+  destination: [],
+  video: [],
 });
 
 export function useSearchHistory() {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
-  function addBooksHistory(book: any) {
-    setSearchHistory({ ...searchHistory, books: searchHistory.books.concat(book) });
+  // Destination
+  function addDestinationHistory(item: any) {
+    setSearchHistory((prev) => ({ ...prev, destination: searchHistory.destination?.concat(item) }));
   }
-  function addAuthorsHistory(author: any) {
-    setSearchHistory({ ...searchHistory, authors: searchHistory.authors.concat(author) });
+  function removeDestinationHistory(id: any) {
+    let filter = searchHistory.destination?.filter((item) => item.id !== id);
+    setSearchHistory((prev) => ({ ...prev, destination: filter }));
   }
-  function removeBooksHistory(id: any) {
-    let booksFilter = searchHistory.books.filter((book) => book.id !== id);
-    setSearchHistory({ ...searchHistory, books: booksFilter });
+  function resetDestinationHistory() {
+    setSearchHistory((prev) => ({ ...prev, destination: [] }));
   }
-  function removeAuthorsHistory(id: any) {
-    let authorsFilter = searchHistory.authors.filter((author) => author.id !== id);
-    setSearchHistory({ ...searchHistory, authors: authorsFilter });
+  // Video
+  function addVideoHistory(item: any) {
+    setSearchHistory((prev) => ({ ...prev, video: searchHistory.video?.concat(item) }));
   }
-  function resetBooksHistory() {
-    setSearchHistory({ ...searchHistory, books: [] });
+  function removeVideoHistory(id: any) {
+    let filter = searchHistory.video?.filter((item) => item.id !== id);
+    setSearchHistory((prev) => ({ ...prev, video: filter }));
   }
-  function resetAuthorsHistory() {
-    setSearchHistory({ ...searchHistory, authors: [] });
+  function resetVideoHistory() {
+    setSearchHistory((prev) => ({ ...prev, video: [] }));
   }
+  // Reset
   function resetAllSearchHistory() {
     setSearchHistory({
-      books: [],
-      authors: [],
+      destination: [],
+      video: [],
     });
   }
   return {
     searchHistory,
     setSearchHistory,
-    addBooksHistory,
-    addAuthorsHistory,
-    removeBooksHistory,
-    removeAuthorsHistory,
-    resetBooksHistory,
-    resetAuthorsHistory,
+    // Destination
+    addDestinationHistory,
+    removeDestinationHistory,
+    resetDestinationHistory,
+    // Destination
+    addVideoHistory,
+    removeVideoHistory,
+    resetVideoHistory,
+    // Reset
     resetAllSearchHistory,
   };
 }
