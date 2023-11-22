@@ -15,3 +15,8 @@ export function youTubeGetID(url: string) {
     return a;
   }
 }
+
+// TODO Docs https://github.com/matiassingers/youtube-thumbnail
+export function youTubeGetCoverImage(url: string) {
+  return `https://img.youtube.com/vi/${url}/hqdefault.jpg`;
+}
