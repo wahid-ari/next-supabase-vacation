@@ -615,7 +615,7 @@ export default function Ui() {
       >
         <div className='max-w-sm'>
           <AspectRatio ratio={16 / 9}>
-            <Image src='/og.png' fill alt='Image' className='rounded-md object-cover' />
+            <Image src='/og.png' fill alt='Image' className='rounded-md object-cover' unoptimized />
           </AspectRatio>
         </div>
       </Wrapper>

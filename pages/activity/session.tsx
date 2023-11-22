@@ -4,17 +4,11 @@ import { format } from 'date-fns';
 import { TrashIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
-
-
 import { useSessionsData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
 import useToast from '@/hooks/use-hot-toast';
 
-
-
 import { Button } from '@/components/ui/Button';
-
-
 
 import Layout from '@/components/layout/Layout';
 import Dialog from '@/components/systems/Dialog';
@@ -22,10 +16,6 @@ import InputDebounce from '@/components/systems/InputDebounce';
 import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
-
-
-
-
 
 // Session.auth = true;
 
