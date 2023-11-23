@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { PlayIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
@@ -10,8 +8,7 @@ import { youTubeGetID } from '@/libs/utils';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 
-import AuthorListItem from '@/components/dashboard/AuthorListItem';
-import BookListItem from '@/components/dashboard/BookListItem';
+import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
 import VideoCardItem from '@/components/dashboard/VideoCardItem';
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
@@ -130,15 +127,15 @@ export default function Search() {
               <Heading h3 className='mt-6'>
                 Destination
               </Heading>
-              <div className='mt-2 space-y-6'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
                 {data?.destination?.map((item: any, index: number) => (
-                  <BookListItem
-                    key={index}
-                    href={`/destination/detail/${item.id}`}
-                    image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
-                    title={item.title}
-                    published={item.published}
-                  />
+                  <div key={index} className='relative'>
+                    <DestinationCardItem
+                      href={`/destination/detail/${item.id}`}
+                      image_url={item.image_url}
+                      name={item.name}
+                    />
+                  </div>
                 ))}
               </div>
             </>
@@ -189,21 +186,21 @@ export default function Search() {
                   Clear Destination
                 </button>
               </div>
-              <div className='ml-1 mt-2 space-y-6'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
                 {searchHistory.destination?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
-                    <BookListItem
+                    <DestinationCardItem
                       href={`/destination/detail/${item.id}`}
-                      image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
-                      title={item.title}
-                      published={item.published}
+                      image_url={item.image_url}
+                      name={item.name}
                     />
                     <button
-                      title='Delete'
+                      title={`Delete ${item?.name}`}
                       onClick={() => removeDestinationHistory(item.id)}
                       className={twMerge(
-                        'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
+                        'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
                       )}
                     >
                       X
@@ -216,7 +213,7 @@ export default function Search() {
 
           {searchHistory.video?.length > 0 ? (
             <>
-              <div className='mb-4 mt-8 flex items-center justify-between'>
+              <div className='mb-6 mt-8 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
                   Video
                 </Heading>
@@ -227,7 +224,7 @@ export default function Search() {
                   Clear Video
                 </button>
               </div>
-              <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 lg:grid-cols-3'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 lg:grid-cols-3'>
                 {searchHistory.video?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <VideoCardItem
@@ -236,7 +233,7 @@ export default function Search() {
                       onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
                     />
                     <button
-                      title='Delete'
+                      title={`Delete ${item?.title}`}
                       onClick={() => removeVideoHistory(item.id)}
                       className={twMerge(
                         'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
