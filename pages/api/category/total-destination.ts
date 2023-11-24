@@ -38,68 +38,46 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Count total destination that have same category
       let result = [];
       for (const item of items) {
-        for (const destination_category of destination_categories) {
-          if (destination_category.category_id == item.id) {
-            let filtered = items.filter((i) => i.id == destination_category.category_id)[0];
-            filtered.total += 1;
-            result.push(filtered);
-          }
-        }
+        let filtered = destination_categories.filter((i) => i.category_id == item.id);
+        result.push({
+          ...item,
+          total: filtered.length,
+        });
       }
-      // console.log(result)
+      // console.log(result);
       // [
       //   {
       //     id: 1,
       //     name: 'Architecture',
       //     slug: 'architecture',
-      //     total: 48,
-      //   },
-      //   {
-      //     id: 1,
-      //     name: 'Architecture',
-      //     slug: 'architecture',
-      //     total: 48,
+      //     total: 48
       //   },
       //   {
       //     id: 2,
       //     name: 'Beach',
       //     slug: 'beach',
-      //     total: 30,
-      //   },
-      //   {
-      //     id: 2,
-      //     name: 'Beach',
-      //     slug: 'beach',
-      //     total: 30,
+      //     total: 30
       //   }
       // ]
-      // Remove duplicate values from an array of objects in javascript
-      // TODO Docs https://stackoverflow.com/questions/45439961/remove-duplicate-values-from-an-array-of-objects-in-javascript
-      let data = result.reduce((unique, o) => {
-        if (!unique.some((obj: any) => obj.id === o.id)) {
-          unique.push(o);
-        }
-        return unique;
-      }, []);
-      // console.log(data)
+      result.sort((a: any, b: any) => b.total - a.total);
+      // console.log(result);
       // [
       //   {
+      //     id: 13,
+      //     name: 'City',
+      //     slug: 'city',
+      //     total: 60
+      //   },
+      //   {
       //     id: 1,
       //     name: 'Architecture',
       //     slug: 'architecture',
-      //     total: 48,
-      //   },
-      //   {
-      //     id: 2,
-      //     name: 'Beach',
-      //     slug: 'beach',
-      //     total: 30,
+      //     total: 48
       //   }
       // ]
-      data.sort((a: any, b: any) => b.total - a.total);
       // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
-      res.status(200).json(data);
+      res.status(200).json(result);
       break;
 
     default:
