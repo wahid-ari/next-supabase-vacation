@@ -20,6 +20,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           total: 0,
         });
       }
+      // console.log(items);
+      // [
+      //   {
+      //     id: 1,
+      //     name: 'Architecture',
+      //     slug: 'architecture',
+      //     total: 0
+      //   },
+      //    {
+      //     id: 2,
+      //     name: 'Beach',
+      //     slug: 'beach',
+      //     total: 0
+      //   }
+      // ]
       // Count total destination that have same category
       let result = [];
       for (const item of items) {
@@ -31,6 +46,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
         }
       }
+      // console.log(result)
+      // [
+      //   {
+      //     id: 1,
+      //     name: 'Architecture',
+      //     slug: 'architecture',
+      //     total: 48,
+      //   },
+      //   {
+      //     id: 1,
+      //     name: 'Architecture',
+      //     slug: 'architecture',
+      //     total: 48,
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'Beach',
+      //     slug: 'beach',
+      //     total: 30,
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'Beach',
+      //     slug: 'beach',
+      //     total: 30,
+      //   }
+      // ]
       // Remove duplicate values from an array of objects in javascript
       // TODO Docs https://stackoverflow.com/questions/45439961/remove-duplicate-values-from-an-array-of-objects-in-javascript
       let data = result.reduce((unique, o) => {
@@ -39,6 +81,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         return unique;
       }, []);
+      // console.log(data)
+      // [
+      //   {
+      //     id: 1,
+      //     name: 'Architecture',
+      //     slug: 'architecture',
+      //     total: 48,
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'Beach',
+      //     slug: 'beach',
+      //     total: 30,
+      //   }
+      // ]
       data.sort((a: any, b: any) => b.total - a.total);
       // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
