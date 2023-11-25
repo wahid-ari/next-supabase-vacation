@@ -14,6 +14,7 @@ import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LabeledInput from '@/components/systems/LabeledInput';
+import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
@@ -114,7 +115,37 @@ export default function Search() {
 
       {search ? (
         <>
-          {!data && <Text>Searching &#8220;{search}&#8221;...</Text>}
+          {!data && (
+            <>
+              <Text>Searching &#8220;{search}&#8221;...</Text>
+              <Heading h3 className='mt-6'>
+                Destination
+              </Heading>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+                {[...Array(4).keys()].map((i) => (
+                  <Shimmer key={i}>
+                    <div className='space-y-3'>
+                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                      <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    </div>
+                  </Shimmer>
+                ))}
+              </div>
+              <Heading h3 className='mt-6'>
+                Video
+              </Heading>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+                {[...Array(3).keys()].map((i) => (
+                  <Shimmer key={i}>
+                    <div className='space-y-3'>
+                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                      <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    </div>
+                  </Shimmer>
+                ))}
+              </div>
+            </>
+          )}
 
           {data?.destination?.length < 1 && data?.video?.length < 1 ? (
             <div className='mt-8 rounded border border-red-500 p-3'>
@@ -175,7 +206,7 @@ export default function Search() {
 
           {searchHistory.destination.length > 0 ? (
             <>
-              <div className='mb-6 mt-6 flex items-center justify-between'>
+              <div className='my-6 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
                   Destination
                 </Heading>
