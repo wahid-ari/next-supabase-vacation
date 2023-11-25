@@ -55,7 +55,6 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@supabase/supabase-js": "^2.38.4",
     "@tanstack/react-table": "^8.10.7",
-    "@vercel/og": "^0.5.20",
     "axios": "^1.6.1",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
