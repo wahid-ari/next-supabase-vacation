@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  BookIcon,
-  LayoutListIcon,
-  MapPinIcon,
-  MountainSnowIcon,
-  PalmtreeIcon,
-  UsersIcon,
-  YoutubeIcon,
-} from 'lucide-react';
+import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, YoutubeIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
@@ -18,8 +10,6 @@ import { youTubeGetID } from '@/libs/utils';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 
-import AuthorListItem from '@/components/dashboard/AuthorListItem';
-import BookListItem from '@/components/dashboard/BookListItem';
 import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
 import VideoCardItem from '@/components/dashboard/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
