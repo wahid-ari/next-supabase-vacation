@@ -1,19 +1,32 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
+import {
+  BookIcon,
+  LayoutListIcon,
+  MapPinIcon,
+  MountainSnowIcon,
+  PalmtreeIcon,
+  UsersIcon,
+  YoutubeIcon,
+} from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
-// import { useSearchHistoryStore } from '@/store/use-store';
 import { useSearchData } from '@/libs/swr';
+import { youTubeGetID } from '@/libs/utils';
+
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
+import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
+import VideoCardItem from '@/components/dashboard/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LabeledInput from '@/components/systems/LabeledInput';
+import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
@@ -22,6 +35,8 @@ export default function Browse() {
   const search = (router.query?.q as string) || '';
   const [query, setQuery] = useState(search);
   const { data, error } = useSearchData(search);
+  const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
+  const youtube_url = youTubeGetID(videoPreview?.video_url);
 
   useEffect(() => {
     setQuery(search);
@@ -30,70 +45,41 @@ export default function Browse() {
   const {
     searchHistory,
     setSearchHistory,
-    addBooksHistory,
-    addAuthorsHistory,
-    removeBooksHistory,
-    removeAuthorsHistory,
-    resetBooksHistory,
-    resetAuthorsHistory,
+    addDestinationHistory,
+    removeDestinationHistory,
+    resetVideoHistory,
+    addVideoHistory,
+    removeVideoHistory,
+    resetDestinationHistory,
     resetAllSearchHistory,
   } = useSearchHistory();
-  // const booksHistory = useSearchHistoryStore((state) => state.books);
-  // const setBooksHistory = useSearchHistoryStore((state) => state.setBooks);
-  // const resetBooksHistory = useSearchHistoryStore((state) => state.resetBooks);
-
-  // const authorsHistory = useSearchHistoryStore((state) => state.authors);
-  // const setAuthorsHistory = useSearchHistoryStore((state) => state.setAuthors);
-  // const resetAuthorsHistory = useSearchHistoryStore((state) => state.resetAuthors);
-
-  // const resetAllSearchHistory = useSearchHistoryStore((state) => state.resetAllSearchHistory);
 
   useEffect(() => {
-    if (data?.books?.length > 0) {
+    if (data?.destination?.length > 0) {
       // if already searching
-      if (searchHistory.books.length > 0) {
+      if (searchHistory.destination.length > 0) {
         // compare history with new search result
-        let newBooks = compareSearchResult(searchHistory.books, data?.books);
-        if (newBooks != searchHistory.books) {
-          addBooksHistory(newBooks);
+        let newDestination = compareSearchResult(searchHistory.destination, data?.destination);
+        if (newDestination != searchHistory.destination) {
+          addDestinationHistory(newDestination);
         }
       } else {
         // first time searching, set search result to search history directly
-        addBooksHistory(data?.books);
+        addDestinationHistory(data?.destination);
       }
-      // if (booksHistory.length > 0) {
-      //   // compare history with new search result
-      //   let newMovies = compareSearchResult(booksHistory, data?.books);
-      //   if (newMovies != booksHistory) {
-      //     setBooksHistory(newMovies);
-      //   }
-      // } else {
-      //   // first time searching, set search result to search history directly
-      //   setBooksHistory(data?.books);
-      // }
     }
-    // Authors
-    if (data?.authors?.length > 0) {
-      if (searchHistory.authors.length > 0) {
-        let newAuthors = compareSearchResult(searchHistory.authors, data?.authors);
-        if (newAuthors != searchHistory.authors) {
-          addAuthorsHistory(newAuthors);
+    // Video
+    if (data?.video?.length > 0) {
+      if (searchHistory.video.length > 0) {
+        let newVideo = compareSearchResult(searchHistory.video, data?.video);
+        if (newVideo != searchHistory.video) {
+          addVideoHistory(newVideo);
         }
       } else {
-        addAuthorsHistory(data?.authors);
+        addVideoHistory(data?.video);
       }
     }
-    // if (data?.authors?.length > 0) {
-    //   if (authorsHistory.length > 0) {
-    //     let newActors = compareSearchResult(authorsHistory, data?.authors);
-    //     if (newActors != authorsHistory) {
-    //       setAuthorsHistory(newActors);
-    //     }
-    //   } else {
-    //     setAuthorsHistory(data?.authors);
-    //   }
-    // }
-  }, [addAuthorsHistory, addBooksHistory, data, searchHistory.authors, searchHistory.books]);
+  }, [data, searchHistory.destination, searchHistory.video, addDestinationHistory, addVideoHistory]);
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -106,22 +92,24 @@ export default function Browse() {
 
   if (error) {
     return (
-      <FrontLayout title='Browse - MyVacation' description='Browse books - MyVacation'>
+      <FrontLayout title='Browse - MyVacation' description='Browse destination - MyVacation'>
         <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </FrontLayout>
     );
   }
 
   return (
-    <FrontLayout title='Browse - MyVacation' description='Browse books - MyVacation'>
-      <Title>Browse</Title>
+    <FrontLayout title='Browse - MyVacation' description='Browse destination - MyVacation'>
+      <div className='pt-2'>
+        <Title>Browse</Title>
+      </div>
 
       <form className='mt-4' onSubmit={handleSubmit}>
         <div className='flex items-end gap-2'>
           <LabeledInput
             wrapperClassName='w-full'
             name='search'
-            placeholder='Search Title, Author, ISBN'
+            placeholder='Search Destination, Video, Province, Category and Island'
             type='text'
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -135,46 +123,75 @@ export default function Browse() {
 
       {search ? (
         <>
-          {!data && <Text>Searching &#8220;{search}&#8221;...</Text>}
+          {!data && (
+            <>
+              <Text>Searching &#8220;{search}&#8221;...</Text>
+              <Heading h3 className='mt-6'>
+                Destination
+              </Heading>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+                {[...Array(4).keys()].map((i) => (
+                  <Shimmer key={i}>
+                    <div className='space-y-3'>
+                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                      <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    </div>
+                  </Shimmer>
+                ))}
+              </div>
+              <Heading h3 className='mt-6'>
+                Video
+              </Heading>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+                {[...Array(3).keys()].map((i) => (
+                  <Shimmer key={i}>
+                    <div className='space-y-3'>
+                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                      <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    </div>
+                  </Shimmer>
+                ))}
+              </div>
+            </>
+          )}
 
-          {data?.books?.length < 1 && data?.authors?.length < 1 ? (
+          {data?.destination?.length < 1 && data?.video?.length < 1 ? (
             <div className='mb-12 mt-8 rounded border border-red-500 p-3'>
               <p className='text-red-500'>{`No results for "${query || search}"`}</p>
             </div>
           ) : null}
 
-          {data?.books.length > 0 ? (
+          {data?.destination?.length > 0 ? (
             <>
               <Heading h2 className='my-6 !text-[19px]'>
-                Movies
+                Destination
               </Heading>
-              <div className='mt-2 space-y-6'>
-                {data?.books?.map((item: any, index: number) => (
-                  <BookListItem
-                    key={index}
-                    href={`/destination/detail/${item.id}`}
-                    image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
-                    title={item.title}
-                    published={item.published}
-                  />
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+                {data?.destination?.map((item: any, index: number) => (
+                  <div key={index} className='relative'>
+                    <DestinationCardItem
+                      href={`/destination/detail/${item.id}`}
+                      image_url={item.image_url}
+                      name={item.name}
+                    />
+                  </div>
                 ))}
               </div>
             </>
           ) : null}
 
-          {data?.authors?.length > 0 ? (
+          {data?.video?.length > 0 ? (
             <>
               <Heading h2 className='my-6 !text-[19px]'>
-                Actors
+                Video
               </Heading>
               <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
-                {data?.authors?.map((item: any, index: number) => (
-                  <AuthorListItem
+                {data?.video?.map((item: any, index: number) => (
+                  <VideoCardItem
                     key={index}
-                    href={`/author/detail/${item.id}`}
-                    image={item.image}
-                    name={item.name}
-                    web={item.web}
+                    title={item?.title}
+                    url={item?.video_url}
+                    onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
                   />
                 ))}
               </div>
@@ -183,7 +200,7 @@ export default function Browse() {
         </>
       ) : (
         <>
-          {searchHistory.books.length > 0 || searchHistory.authors.length > 0 ? (
+          {searchHistory.destination.length > 0 || searchHistory.video.length > 0 ? (
             <>
               <div className='mt-6 flex items-center justify-between'>
                 <Heading h2 className='!mb-0 !text-[20px]'>
@@ -197,36 +214,34 @@ export default function Browse() {
                 </button>
               </div>
 
-              {searchHistory.books.length > 0 ? (
-                // {booksHistory?.length > 0 ? (
+              {searchHistory.destination.length > 0 ? (
                 <>
-                  <div className='my-8 flex items-center justify-between'>
+                  <div className='my-6 flex items-center justify-between'>
                     <Heading h3 className='!mb-0'>
-                      Books
+                      Destination
                     </Heading>
                     <button
-                      onClick={resetBooksHistory}
+                      onClick={resetDestinationHistory}
                       className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
                     >
-                      Clear Books
+                      Clear Destination
                     </button>
                   </div>
-                  <div className='ml-1 mt-2 space-y-6'>
-                    {searchHistory.books?.map((item: any, index: number) => (
-                      // {booksHistory?.map((item: any, index: number) => (
+                  <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+                    {searchHistory.destination?.map((item: any, index: number) => (
                       <div key={index} className='relative'>
-                        <BookListItem
+                        <DestinationCardItem
                           href={`/destination/detail/${item.id}`}
-                          image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
-                          title={item.title}
-                          published={item.published}
+                          image_url={item.image_url}
+                          name={item.name}
                         />
                         <button
-                          onClick={() => removeBooksHistory(item.id)}
+                          title={`Delete ${item?.name}`}
+                          onClick={() => removeDestinationHistory(item.id)}
                           className={twMerge(
-                            'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
+                            'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
-                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
                           )}
                         >
                           X
@@ -237,36 +252,34 @@ export default function Browse() {
                 </>
               ) : null}
 
-              {searchHistory.authors?.length > 0 ? (
-                // {authorsHistory?.length > 0 ? (
+              {searchHistory.video?.length > 0 ? (
                 <>
-                  <div className='my-8 flex items-center justify-between'>
+                  <div className='my-6 flex items-center justify-between'>
                     <Heading h3 className='!mb-0'>
-                      Authors
+                      Video
                     </Heading>
                     <button
-                      onClick={resetAuthorsHistory}
+                      onClick={resetVideoHistory}
                       className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
                     >
-                      Clear Authors
+                      Clear Video
                     </button>
                   </div>
-                  <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
-                    {searchHistory.authors?.map((item: any, index: number) => (
-                      // {authorsHistory?.map((item: any, index: number) => (
+                  <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 lg:grid-cols-3'>
+                    {searchHistory.video?.map((item: any, index: number) => (
                       <div key={index} className='relative'>
-                        <AuthorListItem
-                          href={`/author/detail/${item.id}`}
-                          image={item.image}
-                          name={item.name}
-                          web={item.web}
+                        <VideoCardItem
+                          title={item?.title}
+                          url={item?.video_url}
+                          onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
                         />
                         <button
-                          onClick={() => removeAuthorsHistory(item.id)}
+                          title={`Delete ${item?.title}`}
+                          onClick={() => removeVideoHistory(item.id)}
                           className={twMerge(
-                            'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
+                            'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
-                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
                           )}
                         >
                           X
@@ -284,41 +297,81 @@ export default function Browse() {
       <Heading h3 className='mt-8 !text-[19px]'>
         Browse
       </Heading>
-      <div className='mt-2 grid grid-cols-1 gap-6 min-[400px]:grid-cols-2 sm:grid-cols-3'>
+      <div className='mt-2 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[700px]:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
         <Link
-          href='/books'
-          className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
+          href='/destination'
+          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
-              Book
+            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+              Destination
             </h2>
-            <BookIcon className='h-10 w-10 text-yellow-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <MountainSnowIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
-          href='/authors'
-          className='group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500'
+          href='/category'
+          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
-              Author
+            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+              Category
             </h2>
-            <UsersIcon className='h-10 w-10 text-purple-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <LayoutListIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
-          href='/genres'
-          className='group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
+          href='/island'
+          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
-              Genre
+            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+              Island
             </h2>
-            <LayoutListIcon className='h-10 w-10 text-blue-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <PalmtreeIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+          </div>
+        </Link>
+        <Link
+          href='/province'
+          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500'
+        >
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
+            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+              Province
+            </h2>
+            <MapPinIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+          </div>
+        </Link>
+        <Link
+          href='/video'
+          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-violet-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500'
+        >
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
+            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+              Video
+            </h2>
+            <YoutubeIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
       </div>
+
+      {/* Preview Dialog */}
+      <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
+        <DialogContent className='sm:max-w-[720px]'>
+          <DialogHeader className='text-left'>
+            <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
+          </DialogHeader>
+          <div className='py-4'>
+            <iframe
+              className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
+              src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
+              title={videoPreview.title}
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowFullScreen
+            ></iframe>
+          </div>
+        </DialogContent>
+      </Dialog>
     </FrontLayout>
   );
 }
