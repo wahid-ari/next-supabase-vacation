@@ -174,26 +174,22 @@ export default function Example() {
 
   async function checkValidZod(e: any) {
     e.preventDefault();
-    try {
-      const validZod = zodSchema.safeParse(admin);
-      if (validZod.success === false) {
-        dismissToast();
-        // console.log(validZod.error);
-        // console.log(validZod.error.issues);
-        validZod.error.issues.forEach((el) => {
-          pushToast({ message: el.message, isError: true });
-        });
-      } else {
-        const toastId = pushToast({
-          message: 'Posting ZOD Data',
-          isLoading: true,
-        });
-        setTimeout(() => {
-          updateToast({ toastId, message: 'Success Posting ZOD Data', isError: false });
-        }, 2000);
-      }
-    } catch (e) {
-      console.error(e);
+    const validZod = zodSchema.safeParse(admin);
+    if (validZod.success === false) {
+      dismissToast();
+      // console.log(validZod.error);
+      // console.log(validZod.error.issues);
+      validZod.error.issues.forEach((el) => {
+        pushToast({ message: el.message, isError: true });
+      });
+    } else {
+      const toastId = pushToast({
+        message: 'Posting ZOD Data',
+        isLoading: true,
+      });
+      setTimeout(() => {
+        updateToast({ toastId, message: 'Success Posting ZOD Data', isError: false });
+      }, 2000);
     }
   }
 
