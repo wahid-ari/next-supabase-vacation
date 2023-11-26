@@ -177,7 +177,7 @@ export default function Search() {
               <Heading h3 className='mt-6'>
                 Video
               </Heading>
-              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 xl:grid-cols-3'>
                 {data?.video?.map((item: any, index: number) => (
                   <VideoCardItem
                     key={index}
@@ -255,7 +255,7 @@ export default function Search() {
                   Clear Video
                 </button>
               </div>
-              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 lg:grid-cols-3'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 xl:grid-cols-3'>
                 {searchHistory.video?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <VideoCardItem
