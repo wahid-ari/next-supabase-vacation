@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { PlayIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
@@ -19,15 +20,20 @@ export default function VideoCardItem({
 }: Props) {
   const youtub_id = youTubeGetID(url);
   const cover_url = youTubeGetCoverImage(youtub_id);
+  const [isLoading, setLoading] = useState(true);
 
   return (
     <div className='relative h-64 rounded-md group overflow-hidden' {...props}>
       <Image
-        className='w-full object-cover rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300'
+        className={twMerge(
+          'w-full object-cover rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300',
+          isLoading ? 'blur-sm' : 'blur-0',
+        )}
         src={cover_url}
-        alt='hero'
+        alt={title}
         layout='fill'
         unoptimized
+        onLoadingComplete={() => setLoading(false)}
       />
       <button
         onClick={onPlay}
