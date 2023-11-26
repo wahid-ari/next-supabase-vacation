@@ -27,7 +27,7 @@ test.describe('Testing Search Page', () => {
     await searchButton.click();
     await expect(page.getByText(/Searching “toba”.../)).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Destination' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'hero Lake Toba' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Lake Toba Lake Toba' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Video' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'The Heartbeat of Toba' })).toBeVisible();
   });
@@ -147,7 +147,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Destination' })).toBeVisible();
     await expect(page.getByText('West Bali National Park')).toBeVisible();
     // clear single destination search history
-    await page.getByTitle('Delete West Bali National Park').click();
+    await page.getByTitle('Remove West Bali National Park').click();
     await expect(page.getByText('West Bali National Park')).not.toBeVisible();
   });
   test('should remove single video search history', async ({ page }) => {
@@ -166,7 +166,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Video' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'The Heartbeat of Toba' })).toBeVisible();
     // clear single video search history
-    await page.getByTitle('Delete The Heartbeat of Toba').click();
+    await page.getByTitle('Remove The Heartbeat of Toba').click();
     await expect(page.getByRole('button', { name: 'The Heartbeat of Toba' })).not.toBeVisible();
   });
 });

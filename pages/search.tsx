@@ -226,7 +226,7 @@ export default function Search() {
                       name={item.name}
                     />
                     <button
-                      title={`Delete ${item?.name}`}
+                      title={`Remove ${item?.name}`}
                       onClick={() => removeDestinationHistory(item.id)}
                       className={twMerge(
                         'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
@@ -264,7 +264,7 @@ export default function Search() {
                       onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
                     />
                     <button
-                      title={`Delete ${item?.title}`}
+                      title={`Remove ${item?.title}`}
                       onClick={() => removeVideoHistory(item.id)}
                       className={twMerge(
                         'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
