@@ -31,9 +31,9 @@ export default function VideoCardItem({
         )}
         src={cover_url}
         alt={title}
-        layout='fill'
+        fill
         unoptimized
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={() => setLoading(false)}
       />
       <button
         onClick={onPlay}

@@ -34,9 +34,9 @@ export default function DestinationCardItem({
               )}
               src={image_url}
               alt={name}
-              layout='fill'
+              fill
               unoptimized
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
           </div>
         ) : (

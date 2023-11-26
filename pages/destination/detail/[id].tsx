@@ -54,7 +54,8 @@ export default function Destination() {
               unoptimized
               quality={50}
               className={twMerge('rounded object-cover', isLoading ? 'blur-sm' : 'blur-0')}
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
+              priority
             />
           </div>
         )

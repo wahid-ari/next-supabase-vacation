@@ -31,7 +31,7 @@ export default function BookListItem({ href, image, title, published, ...props }
                 'rounded object-cover brightness-90 hover:brightness-100',
                 isLoading ? 'blur-sm' : 'blur-0',
               )}
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
               unoptimized
             />
           </div>

@@ -31,7 +31,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
                 'rounded-full object-cover brightness-90 hover:brightness-100',
                 isLoading ? 'blur-sm' : 'blur-0',
               )}
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
               unoptimized
             />
           </div>
