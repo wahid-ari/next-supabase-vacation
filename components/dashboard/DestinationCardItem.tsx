@@ -46,7 +46,7 @@ export default function DestinationCardItem({
         )}
         <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
           <div className='flex justify-center items-end h-full'>
-            <p className='font-medium text-base text-center line-clamp-2 text-white px-4 pb-4'>{name}</p>
+            <p className='font-medium text-base text-center line-clamp-2 text-white px-4 mb-4'>{name}</p>
           </div>
         </div>
       </Link>

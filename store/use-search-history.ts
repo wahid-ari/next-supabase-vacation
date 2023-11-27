@@ -44,7 +44,7 @@ export function useSearchHistory() {
     addDestinationHistory,
     removeDestinationHistory,
     resetDestinationHistory,
-    // Destination
+    //Video
     addVideoHistory,
     removeVideoHistory,
     resetVideoHistory,

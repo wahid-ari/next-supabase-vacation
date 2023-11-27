@@ -53,7 +53,7 @@ export default function VideoCardItem({
           </div>
         </div>
         <div className='absolute bottom-0 inset-x-0'>
-          <p className='font-medium text-base text-center line-clamp-2 text-white px-4 pb-4'>{title}</p>
+          <p className='font-medium text-base text-center line-clamp-2 text-white px-4 mb-4'>{title}</p>
         </div>
       </button>
     </div>
