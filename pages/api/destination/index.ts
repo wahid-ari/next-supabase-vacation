@@ -35,8 +35,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return;
       } else if (query.page) {
         // api/destination?page=1
-        // api/destination?page=1&limit=10
-        const { from, to } = getPagination(Number(query.page), query.limit ? Number(query.limit) : 10);
+        // api/destination?page=1&limit=20
+        const page = query.page ? Number(query.page) : 1;
+        const limit = query.limit ? Number(query.limit) : 10;
+        // TODO Docs https://stackoverflow.com/questions/76100890/issue-in-pagination-in-react-and-supabase
+        const { count } = await supabase.from('vacation_destination').select('*', { count: 'exact', head: true });
+        const paginate = Math.ceil(count / limit);
+        const pages = [];
+        for (let index = 1; index <= paginate; index++) {
+          pages.push({
+            page: index,
+            url: limit == 10 ? `/destination?page=${index}` : `/destination?page=${index}&limit=${limit}`,
+          });
+        }
+        const { from, to } = getPagination(page, limit);
         const { data } = await supabase
           .from('vacation_destination')
           .select(
@@ -45,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .order('id', { ascending: true })
           .range(from, to);
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
-        res.status(200).json(data);
+        res.status(200).json({ data, total: count, limit, pages });
         return;
       } else if (query.slug && query.seo) {
         // api/destination?slug=slug&seo=true
