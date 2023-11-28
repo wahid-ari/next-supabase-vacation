@@ -2,13 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import slug from 'slug';
 import { z } from 'zod';
 
-
-
 import { getPagination, getSessionToken, supabase, writeLogs } from '@/libs/supabase';
-
-
-
-
 
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
@@ -41,7 +35,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return;
       } else if (query.page) {
         // api/destination?page=1
-        const { from, to } = getPagination(Number(query.page));
+        // api/destination?page=1&limit=10
+        const { from, to } = getPagination(Number(query.page), query.limit ? Number(query.limit) : 10);
         const { data } = await supabase
           .from('vacation_destination')
           .select(
