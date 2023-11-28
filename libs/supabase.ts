@@ -21,3 +21,22 @@ export async function writeLogs(user_id: number, action: string, table: string =
   ]);
   return error;
 }
+
+// TODO Docs https://github.com/orgs/supabase/discussions/1223
+// getPagination() will result 0 - 9
+// getPagination(1) will result 10 - 19
+// getPagination(2) will result 20 - 29
+// export function getPagination(page?: number, size: number = 10) {
+//   const from = page ? page * size : 0;
+//   const to = page ? from + size - 1 : size - 1;
+//   return { from, to };
+// }
+
+// getPagination() will result 0 - 9
+// getPagination(1) will result 0 - 9
+// getPagination(2) will result 10 - 19
+export function getPagination(page: number = 1, size: number = 10) {
+  const from = page * size - size;
+  const to = from + size - 1;
+  return { from, to };
+}

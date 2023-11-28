@@ -2,7 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import slug from 'slug';
 import { z } from 'zod';
 
-import { getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+
+import { getPagination, getSessionToken, supabase, writeLogs } from '@/libs/supabase';
+
+
+
+
 
 const schema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
@@ -23,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      if (!query.id && !query.slug) {
+      if (!query.id && !query.slug && !query.page) {
         // api/destination
         const { data } = await supabase
           .from('vacation_destination')
@@ -31,6 +37,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
           )
           .order('id');
+        res.status(200).json(data);
+        return;
+      } else if (query.page) {
+        // api/destination?page=1
+        const { from, to } = getPagination(Number(query.page));
+        const { data } = await supabase
+          .from('vacation_destination')
+          .select(
+            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
+          )
+          .order('id', { ascending: true })
+          .range(from, to);
+        res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
         return;
       } else if (query.slug && query.seo) {
