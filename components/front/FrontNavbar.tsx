@@ -63,10 +63,14 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             {/* web logo  */}
 
             {/* Nav Link  */}
-            <div className='hidden md:block'>
-              <div className='flex items-center md:space-x-4 min-[900px]:space-x-6 lg:space-x-8'>
+            <div className='hidden lg:block'>
+              <div className='flex items-center lg:space-x-3 min-[1100px]:space-x-5 xl:space-x-7'>
                 <CustomActiveLink href='/'>Home</CustomActiveLink>
-                <CustomActiveLink href='/dashboard'>Dashboard</CustomActiveLink>
+                <CustomActiveLink href='/destinations'>Destination</CustomActiveLink>
+                <CustomActiveLink href='/categories'>Category</CustomActiveLink>
+                <CustomActiveLink href='/videos'>Video</CustomActiveLink>
+                <CustomActiveLink href='/provinces'>Province</CustomActiveLink>
+                <CustomActiveLink href='/islands'>Island</CustomActiveLink>
 
                 <Popover
                   className='relative'
@@ -105,7 +109,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         'dark:border dark:border-neutral-800 bg-white dark:bg-neutral-900',
                       )}
                     >
-                      <CustomActiveLink href='/#'>Studios</CustomActiveLink>
+                      <CustomActiveLink href='/dashboard'>Dashboard</CustomActiveLink>
                     </Popover.Panel>
                   </Transition>
                 </Popover>
@@ -146,7 +150,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             </div>
             {/* End Nav Link  */}
 
-            <div className='hidden items-center gap-2 md:flex'>
+            <div className='hidden items-center gap-2 lg:flex'>
               {mounted && status != 'loading' ? (
                 session?.name ? (
                   <Link
@@ -188,7 +192,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             </div>
 
             {/* Mobile menu button */}
-            <div className='flex md:hidden'>
+            <div className='flex lg:hidden'>
               <Popover.Button
                 className={twMerge(
                   'inline-flex items-center justify-center rounded transition-all',
@@ -216,7 +220,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
         >
           <Popover.Panel
             focus
-            className='absolute inset-x-0 top-0 z-10 origin-top-right transform p-3 transition md:hidden'
+            className='absolute inset-x-0 top-0 z-10 origin-top-right transform p-3 transition lg:hidden'
           >
             <div className='overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5 dark:bg-[#1a1a1a]'>
               <div className='flex items-center justify-between border-b py-3 dark:border-b-neutral-800'>
@@ -250,8 +254,20 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <ActiveLink href='/' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Home
                 </ActiveLink>
-                <ActiveLink href='/dashboard' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
-                  Dashboard
+                <ActiveLink href='/destinations' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Destination
+                </ActiveLink>
+                <ActiveLink href='/categories' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Category
+                </ActiveLink>
+                <ActiveLink href='/videos' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Video
+                </ActiveLink>
+                <ActiveLink href='/provinces' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Province
+                </ActiveLink>
+                <ActiveLink href='/islands' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Islands
                 </ActiveLink>
                 <Menu>
                   {({ open }) => (
@@ -273,10 +289,10 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           {({ active }) => (
                             <ActiveLink
                               activeClassName='!text-sky-500 dark:text-sky-500'
-                              href='/#'
+                              href='/dashboard'
                               className={cn(activeCn, active && 'bg-neutral-100 dark:bg-neutral-800')}
                             >
-                              Studios
+                              dashboard
                             </ActiveLink>
                           )}
                         </Menu.Item>
