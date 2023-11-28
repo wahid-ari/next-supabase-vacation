@@ -49,8 +49,18 @@ export default function Footer({ className, ...props }: { className?: string; [p
                   </Link>
                 </li>
                 <li className='mb-2'>
-                  <Link href='/design' className={linkClassName}>
-                    Design
+                  <Link href='/destinations' className={linkClassName}>
+                    Destination
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link href='/categories' className={linkClassName}>
+                    Category
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link href='/videos' className={linkClassName}>
+                    Video
                   </Link>
                 </li>
               </ul>
@@ -61,8 +71,13 @@ export default function Footer({ className, ...props }: { className?: string; [p
               </h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
-                  <Link href='/#' className={linkClassName}>
-                    Studios
+                  <Link href='/provinces' className={linkClassName}>
+                    Province
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link href='/islands' className={linkClassName}>
+                    Island
                   </Link>
                 </li>
                 <li className='mb-2'>
@@ -79,7 +94,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
                   <a
-                    href='https://my-destination-docs.vercel.app'
+                    href='https://my-vacation-docs.vercel.app'
                     target='_blank'
                     rel='noreferrer'
                     className={linkClassName}
