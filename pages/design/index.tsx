@@ -41,6 +41,7 @@ import LabeledInput from '@/components/systems/LabeledInput';
 import LinkButton from '@/components/systems/LinkButton';
 import LoadingDots from '@/components/systems/LoadingDots';
 import Modal from '@/components/systems/Modal';
+import Pagination from '@/components/systems/Pagination';
 import Progress from '@/components/systems/Progress';
 import Radio from '@/components/systems/Radio';
 import ReactTable from '@/components/systems/ReactTable';
@@ -405,6 +406,8 @@ export default function Example() {
     setSelectedColor(e.target.value);
   }
 
+  const [currentPage, setCurrentPage] = useState(0);
+
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
@@ -641,6 +644,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#loading-skeleton'>
               LoadingSkeleton
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#pagination'>
+              Pagination
             </Link>
           </span>
         </div>
@@ -1743,6 +1751,11 @@ function dissmissAllToast() {
 
           <Shimmer className='rounded-3xl h-20 w-20' />
         </div>
+      </Wrapper>
+
+      <Wrapper id='pagination' name='Pagination' props={['currentPage', 'setCurrentPage', 'totalPages']} noChildren>
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={10} />
+        <Text className='mt-4'>page : {currentPage + 1}</Text>
       </Wrapper>
     </Layout>
   );
