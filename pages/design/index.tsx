@@ -1753,8 +1753,37 @@ function dissmissAllToast() {
         </div>
       </Wrapper>
 
-      <Wrapper id='pagination' name='Pagination' props={['currentPage', 'setCurrentPage', 'totalPages']} noChildren>
-        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={10} />
+      <Wrapper
+        id='pagination'
+        name='Pagination'
+        props={['currentPage', 'setCurrentPage', 'totalPages', 'showPrevNext', 'showFirstLast']}
+        noChildren
+      >
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={10}
+          showFirstLast
+          showPrevNext
+        />
+        <div className='flex justify-center'>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={7}
+            showPrevNext
+            className='mt-4'
+          />
+        </div>
+        <div className='text-center'>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={5}
+            showPrevNext
+            className='mt-4'
+          />
+        </div>
         <Text className='mt-4'>page : {currentPage + 1}</Text>
       </Wrapper>
     </Layout>
