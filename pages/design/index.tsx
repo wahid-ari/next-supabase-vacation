@@ -231,9 +231,31 @@ export default function Example() {
     });
   }
 
-  function onNext() {}
+  const totalData = 20;
+  const rowPerPage = 5;
+  const totalPage = Math.ceil(totalData / rowPerPage);
+  const [slicedTableData, setSlicedTableData] = useState(tabledata.slice(0, rowPerPage));
+  const [currentTablePage, setCurrentTablePage] = useState(1);
 
-  function onPrev() {}
+  function onNext() {
+    if (currentTablePage < totalPage) {
+      setCurrentTablePage(currentTablePage + 1);
+      // need to (currentTablePage + 1) because currentTablePage not updated immediately
+      setSlicedTableData(
+        tabledata.slice((currentTablePage + 1) * rowPerPage - rowPerPage, (currentTablePage + 1) * rowPerPage),
+      );
+    }
+  }
+
+  function onPrev() {
+    if (currentTablePage > 1) {
+      setCurrentTablePage(currentTablePage - 1);
+      // need to (currentTablePage - 1) because currentTablePage not updated immediately
+      setSlicedTableData(
+        tabledata.slice((currentTablePage - 1) * rowPerPage - rowPerPage, (currentTablePage - 1) * rowPerPage),
+      );
+    }
+  }
 
   const [selectBox, setSelectBox] = useState();
   function handleSelectBoxChange(e) {
@@ -1514,54 +1536,37 @@ function dissmissAllToast() {
         noWrap
       >
         <Table
-          totalPage={5}
-          totalData={50}
-          currentPage={1}
+          totalPage={totalPage}
+          totalData={totalData}
+          currentPage={currentTablePage}
           next={onNext}
           prev={onPrev}
+          rowPerPage={rowPerPage}
           data-testid='table'
           head={
             <>
               <Table.th shrink>No</Table.th>
-              <Table.th>Column 1</Table.th>
-              <Table.th>Column 2</Table.th>
-              <Table.th>Column 3</Table.th>
-              <Table.th>Column 4</Table.th>
-              <Table.th>Column 5</Table.th>
-              <Table.th>Column 6</Table.th>
-              <Table.th>Column 7</Table.th>
-              <Table.th>Column 8</Table.th>
+              <Table.td>Email</Table.td>
+              <Table.td>Name</Table.td>
+              <Table.td>Age</Table.td>
+              <Table.td>Gender</Table.td>
+              <Table.td>Company</Table.td>
+              <Table.td>Phone</Table.td>
             </>
           }
         >
-          {[...Array(5).keys()].map((e, index) => {
+          {slicedTableData.map((item, index) => {
             return (
               <Table.tr key={index}>
-                <Table.td shrink>{index + 1}</Table.td>
-                <Table.td className='text-center'>
-                  <Badge>badge</Badge>
+                <Table.td small>{item.id}</Table.td>
+                <Table.td>{item.email}</Table.td>
+                <Table.td>{item.name}</Table.td>
+                <Table.td>{item.age}</Table.td>
+                <Table.td>
+                  {item.gender == 'male' ? <Badge.red>{item.gender}</Badge.red> : <Badge>{item.gender}</Badge>}
                 </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.red>badge red</Badge.red>
-                </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.dark>badge dark</Badge.dark>
-                </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.green>badge green</Badge.green>
-                </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.yellow>badge yellow</Badge.yellow>
-                </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.indigo>badge indigo</Badge.indigo>
-                </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.purple>badge purple</Badge.purple>
-                </Table.td>
-                <Table.td className='text-center'>
-                  <Badge.pink>badge pink</Badge.pink>
-                </Table.td>
+                <Table.td>{item.company}</Table.td>
+                <Table.td>{item.phone}</Table.td>
               </Table.tr>
             );
           })}

@@ -11,9 +11,9 @@ type Props = {
   totalPage?: number;
   totalData?: number;
   currentPage?: number;
+  rowPerPage?: number;
   next?: () => void;
   prev?: () => void;
-  rowPerPage?: number;
   noPagination?: boolean;
   [props: string]: any;
 };
@@ -25,9 +25,9 @@ export default function Table({
   totalPage = 0,
   totalData = 0,
   currentPage = 0,
+  rowPerPage,
   next,
   prev,
-  rowPerPage,
   noPagination,
   ...props
 }: Props) {
@@ -53,21 +53,12 @@ export default function Table({
       ) : (
         <div className='bg-white text-[13px] font-medium text-neutral-600 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-300'>
           <div className='flex w-full items-center justify-between gap-2 px-4 py-3'>
-            {rowPerPage === 5 ? (
-              totalData === 0 ? (
-                <p className='whitespace-nowrap'>No data</p>
-              ) : (
-                <p className='whitespace-nowrap'>
-                  Showing {(currentPage - 1) * 5 + 1} - {currentPage * 5}{' '}
-                  {/* dari <span className="font-bold">{totalData}</span> data */}
-                </p>
-              )
-            ) : totalData === 0 ? (
+            {totalData === 0 ? (
               <p className='whitespace-nowrap'>No data</p>
             ) : (
               <p className='whitespace-nowrap'>
-                Showing {(currentPage - 1) * 5 + 1} - {currentPage !== totalPage ? currentPage * 5 : totalData} from{' '}
-                {totalData} data
+                Showing {(currentPage - 1) * rowPerPage + 1} -{' '}
+                {currentPage !== totalPage ? currentPage * rowPerPage : totalData} from {totalData} data
               </p>
             )}
             <div className='flex items-center justify-end gap-2'>
