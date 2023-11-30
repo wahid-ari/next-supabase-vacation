@@ -939,6 +939,72 @@ test.describe('Testing LoadingDots Component', () => {
   });
 });
 
+test.describe('Testing Pagination Component', () => {
+  // Pagination ----------------------------------------------------
+  test('renders a Pagination component', async ({ page }) => {
+    const pagination = page.getByTestId('pagination');
+    await expect(pagination).toBeVisible();
+    await expect(pagination).toHaveClass(/inline-flex flex-wrap gap-1 select-none items-center text-sm/);
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+  });
+  test('change page in Pagination component using page button', async ({ page }) => {
+    const pagination = page.getByTestId('pagination');
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+    await pagination.getByText('2').click();
+    await expect(page.getByText('Pagination : 2')).toBeVisible();
+    await pagination.getByText('3').click();
+    await expect(page.getByText('Pagination : 3')).toBeVisible();
+    await pagination.getByText('4').click();
+    await expect(page.getByText('Pagination : 4')).toBeVisible();
+    await pagination.getByText('5').click();
+    await expect(page.getByText('Pagination : 5')).toBeVisible();
+    await pagination.getByText('6').click();
+    await expect(page.getByText('Pagination : 6')).toBeVisible();
+    await pagination.getByText('7').click();
+    await expect(page.getByText('Pagination : 7')).toBeVisible();
+    await pagination.getByText('8').click();
+    await expect(page.getByText('Pagination : 8')).toBeVisible();
+    await pagination.getByText('9').click();
+    await expect(page.getByText('Pagination : 9')).toBeVisible();
+    await pagination.getByText('10').click();
+    await expect(page.getByText('Pagination : 10')).toBeVisible();
+  });
+  test('change page in Pagination component using prev next button', async ({ page }) => {
+    const pagination = page.getByTestId('pagination');
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+    await pagination.getByLabel('Next').click();
+    await expect(page.getByText('Pagination : 2')).toBeVisible();
+    await pagination.getByLabel('Next').click();
+    await expect(page.getByText('Pagination : 3')).toBeVisible();
+    await pagination.getByLabel('Prev').click();
+    await expect(page.getByText('Pagination : 2')).toBeVisible();
+    await pagination.getByLabel('Prev').click();
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+  });
+  test('change page in Pagination component using first last button', async ({ page }) => {
+    const pagination = page.getByTestId('pagination');
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+    await pagination.getByLabel('Last').click();
+    await expect(page.getByText('Pagination : 10')).toBeVisible();
+    await pagination.getByLabel('First').click();
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+  });
+  test('Pagination first and prev button should disabled when in first page', async ({ page }) => {
+    const pagination = page.getByTestId('pagination');
+    await pagination.getByText('1', { exact: true }).click();
+    await expect(page.getByText('Pagination : 1')).toBeVisible();
+    await expect(pagination.getByLabel('First')).toBeDisabled();
+    await expect(pagination.getByLabel('Prev')).toBeDisabled();
+  });
+  test('Pagination last and next button should disabled when in first page', async ({ page }) => {
+    const pagination = page.getByTestId('pagination');
+    await pagination.getByText('10').click();
+    await expect(page.getByText('Pagination : 10')).toBeVisible();
+    await expect(pagination.getByLabel('Last')).toBeDisabled();
+    await expect(pagination.getByLabel('Next')).toBeDisabled();
+  });
+});
+
 test.describe('Testing ZOD Validation Component', () => {
   // ZOD Validation ----------------------------------------------------
   test('All fields empty', async ({ page }) => {

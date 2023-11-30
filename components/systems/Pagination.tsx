@@ -12,6 +12,7 @@ type Props = {
   className?: string;
   showFirstLast?: boolean;
   showPrevNext?: boolean;
+  testId?: string;
   [props: string]: any;
 };
 
@@ -31,11 +32,13 @@ export default function Pagination({
   className,
   showFirstLast,
   showPrevNext,
+  testId,
   ...props
 }: Props) {
   return (
     <HeadlessPagination
       {...props}
+      dataTestId={testId}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
       totalPages={totalPages}

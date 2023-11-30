@@ -1756,10 +1756,20 @@ function dissmissAllToast() {
       <Wrapper
         id='pagination'
         name='Pagination'
-        props={['currentPage', 'setCurrentPage', 'totalPages', 'showPrevNext', 'showFirstLast']}
+        props={[
+          'currentPage',
+          'setCurrentPage',
+          'totalPages',
+          'edgePageCount',
+          'middlePagesSiblingCount',
+          'showPrevNext',
+          'showFirstLast',
+          'testId',
+        ]}
         noChildren
       >
         <Pagination
+          testId='pagination'
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           totalPages={10}
@@ -1784,7 +1794,7 @@ function dissmissAllToast() {
             className='mt-4'
           />
         </div>
-        <Text className='mt-4'>page : {currentPage + 1}</Text>
+        <Text className='mt-4'>Pagination : {currentPage + 1}</Text>
       </Wrapper>
     </Layout>
   );
