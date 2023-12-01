@@ -3,18 +3,26 @@ import Link from 'next/link';
 import { faker } from '@faker-js/faker';
 import { Menu, Transition } from '@headlessui/react';
 import * as HoverCard from '@radix-ui/react-hover-card';
-import { ArrowRightIcon, ChevronDownIcon, MoreHorizontal } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon, MoreHorizontal } from 'lucide-react';
 import ReactSelect from 'react-select';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { twMerge } from 'tailwind-merge';
 import { z } from 'zod';
 
+import 'swiper/css';
+
+import Image from 'next/image';
+
 import { tabledata } from '@/libs/table-data';
+import { cn } from '@/libs/utils';
 import { validateFormObject } from '@/validations/zod';
 import { useDebounce } from '@/hooks/use-debounce';
 import useToast from '@/hooks/use-hot-toast';
 import { useMounted } from '@/hooks/use-mounted';
 
 import { Button as ButtonUi } from '@/components/ui/Button';
+import { DialogContent as DialogContentUi, Dialog as DialogUi } from '@/components/ui/Dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +31,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
+import { ScrollArea } from '@/components/ui/ScrollArea';
 
 import Layout from '@/components/layout/Layout';
 import Badge from '@/components/systems/Badge';
@@ -58,6 +67,27 @@ import Text from '@/components/systems/Text';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
+
+const imagesData = [
+  {
+    id: 0,
+    format: 'avif',
+    href: 'https://unsplash.com/photos/X5REiD-cIlw',
+    public_id: 'https://images.unsplash.com/photo-1656268164012-119304af0c69?auto=format&fit=crop&w=500',
+  },
+  {
+    id: 1,
+    format: 'avif',
+    href: 'https://unsplash.com/photos/z6BYp6it5Rg',
+    public_id: 'https://images.unsplash.com/photo-1655853459092-a7bae19f9806?auto=format&fit=crop&w=500',
+  },
+  {
+    id: 2,
+    format: 'avif',
+    href: 'https://unsplash.com/photos/t9MP5ZyTxlI',
+    public_id: 'https://images.unsplash.com/photo-1506368670575-2ecb8dd6d86e?auto=format&fit=crop&w=500',
+  },
+];
 
 const selectBoxData = [
   {
@@ -430,6 +460,17 @@ export default function Example() {
 
   const [currentPage, setCurrentPage] = useState(0);
 
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const [openDialogUi, setOpenDialogUi] = useState(false);
+  const [imageOpened, setImageOpened] = useState({ id: null, format: '', href: '', public_id: '' });
+
+  function openImage(id: any) {
+    const filteredImage = imagesData.filter((image) => image.id == id)[0];
+    setImageOpened(filteredImage);
+    setOpenDialogUi(true);
+  }
+
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
@@ -671,6 +712,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#pagination'>
               Pagination
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#dialog-swiper'>
+              DialogSwiper
             </Link>
           </span>
         </div>
@@ -1800,6 +1846,84 @@ function dissmissAllToast() {
           />
         </div>
         <Text className='mt-4'>Pagination : {currentPage + 1}</Text>
+      </Wrapper>
+
+      <Wrapper id='dialog-swiper' name='DialogSwiper' noClassName noProps noChildren>
+        <div className='gap-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+          {imagesData.map((image, index) => (
+            <button onClick={() => openImage(image.id)} key={index} className='relative h-64'>
+              <Image alt='Image' src={image.public_id} fill className='object-cover' />
+            </button>
+          ))}
+        </div>
+
+        <DialogUi open={openDialogUi} onOpenChange={setOpenDialogUi}>
+          <DialogContentUi className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
+            <Swiper
+              modules={[Navigation]}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              onBeforeInit={(swiper) => {
+                // @ts-ignore
+                swiper.params.navigation.prevEl = prevRef.current;
+                // @ts-ignore
+                swiper.params.navigation.nextEl = nextRef.current;
+              }}
+              initialSlide={imageOpened.id}
+              loop={true}
+              className='py-4 w-full'
+            >
+              {imagesData.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-3'>
+                    <div className='relative h-full min-h-[300px] sm:min-h-[450px] w-full'>
+                      <Image
+                        alt='Image'
+                        src={image.public_id}
+                        fill
+                        className='object-cover rounded-t-lg sm:rounded-t-none sm:rounded-l-lg sm:rounded-tl-lg'
+                      />
+                    </div>
+                    <div className='p-4 sm:pt-4 sm:pr-8'>
+                      <ScrollArea className='h-40 sm:h-[450px]'>
+                        <h3 className='font-semibold text-xl mb-4'>Esse eu tempor nisi aliquip excepteur.</h3>
+                        <p>
+                          Esse eu tempor nisi aliquip excepteur. Enim irure cillum nostrud aliqua voluptate consequat
+                          labore ea ex laboris occaecat deserunt. Amet culpa nisi adipisicing id ad quis consequat. Sint
+                          consectetur ex occaecat non id mollit duis adipisicing. In veniam commodo minim exercitation
+                          incididunt exercitation aliquip aliqua do pariatur mollit excepteur labore ea. Esse eu tempor
+                          nisi aliquip excepteur.
+                        </p>
+                      </ScrollArea>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <button
+              ref={prevRef}
+              className={cn(
+                'absolute z-[70] left-4 lg:-left-16 top-[30%] sm:top-[45%]',
+                'rounded-full p-2 bg-black/60 transition-all hover:bg-black/90 cursor-pointer',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+              )}
+            >
+              <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
+            </button>
+            <button
+              ref={nextRef}
+              className={cn(
+                'absolute z-[70] right-4 lg:-right-16 top-[30%] sm:top-[45%]',
+                'rounded-full p-2 bg-black/60 transition-all hover:bg-black/90 cursor-pointer',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+              )}
+            >
+              <ArrowRightIcon className='h-6 w-6 dark:text-white' />
+            </button>
+          </DialogContentUi>
+        </DialogUi>
       </Wrapper>
     </Layout>
   );
