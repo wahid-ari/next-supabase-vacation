@@ -1905,8 +1905,8 @@ function dissmissAllToast() {
             <button
               ref={prevRef}
               className={cn(
-                'absolute z-[70] left-4 lg:-left-16 top-[30%] sm:top-[45%]',
-                'rounded-full p-2 bg-black/60 transition-all hover:bg-black/90 cursor-pointer',
+                'absolute z-[70] left-4 lg:-left-16 top-[30%] sm:top-[45%] rounded-full p-2 shadow-lg transition-all cursor-pointer',
+                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
@@ -1915,8 +1915,8 @@ function dissmissAllToast() {
             <button
               ref={nextRef}
               className={cn(
-                'absolute z-[70] right-4 lg:-right-16 top-[30%] sm:top-[45%]',
-                'rounded-full p-2 bg-black/60 transition-all hover:bg-black/90 cursor-pointer',
+                'absolute z-[70] right-4 lg:-right-16 top-[30%] sm:top-[45%] rounded-full p-2 shadow-lg transition-all cursor-pointer',
+                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
