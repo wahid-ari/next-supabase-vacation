@@ -43,8 +43,8 @@ export function useTotalVideoData() {
 }
 
 // Destination
-export function useDestinationsData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/destination`, fetcher, { refreshInterval: 1000 });
+export function useDestinationsData(params?: string) {
+  const { data, error, isLoading } = useSWR(`${API_URL}/destination?${params}`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
