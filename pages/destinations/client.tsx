@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import useSWR from 'swr';
 
-import { useDestinationsData } from '@/libs/swr';
+import { API_URL, fetcher } from '@/libs/swr';
 import { cn } from '@/libs/utils';
 
 import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
@@ -10,23 +11,23 @@ import FrontLayout from '@/components/front/FrontLayout';
 import Pagination from '@/components/systems/Pagination';
 import Shimmer from '@/components/systems/Shimmer';
 
-export async function getServerSideProps({ query }) {
-  const page = query.page || 0;
-  return { props: { page } };
-}
-
-export default function Destinations(params: any) {
+export default function Destinations() {
   const router = useRouter();
-  const pageQuery = Number(params.page);
+  const pageQuery = Number(router?.query?.page) || null;
   const [page, setPage] = useState(pageQuery);
-  const { data, error } = useDestinationsData(`page=${page + 1}&limit=12`);
+  const [shouldFetch, setShouldFetch] = useState(false);
+  const { data, error } = useSWR(shouldFetch ? `${API_URL}/destination?page=${page + 1}&limit=12` : null, fetcher);
+
   // this to update page based on pageQuery
   // pagination start from 0, if pageQuery = 1 then page = 0
+  // only fetch data when pageQuery !== null
   useEffect(() => {
-    if (pageQuery !== 0) {
+    if (pageQuery !== 0 && pageQuery !== null) {
       setPage(pageQuery - 1);
+      setShouldFetch(true);
     } else {
       setPage(0);
+      setShouldFetch(true);
     }
   }, [pageQuery]);
 
@@ -58,7 +59,7 @@ export default function Destinations(params: any) {
             <p>
               Back to{' '}
               <Link
-                href='/destinations'
+                href='/destinations/client'
                 className={cn(
                   'hover-underline-animation font-medium rounded text-[15px] hover:text-neutral-900 px-0.5',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100',
@@ -78,7 +79,7 @@ export default function Destinations(params: any) {
       title='Destination - MyVacation'
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
-      <div className='py-4'>
+      <div className='pt-8 pb-4'>
         <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
           {data
             ? data?.data?.map((item: any, index: number) => (
