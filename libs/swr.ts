@@ -1,8 +1,8 @@
 import useSWR from 'swr';
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const API_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}/api`;
+export const API_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}/api`;
 
 // get total record count on each table for dashboard
 export function useCountsData() {
