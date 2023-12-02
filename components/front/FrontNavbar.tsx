@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, useState } from 'react';
+import { Fragment, ReactNode, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
@@ -13,7 +13,7 @@ import ActiveLink from '@/components/front/ActiveLink';
 import FrontThemeChanger from '@/components/front/FrontThemeChanger';
 import NavbarSearch from '@/components/front/NavbarSearch';
 
-function CustomActiveLink({ children, href }: { children: ReactNode; href: string }) {
+function CustomActiveLink({ children, href, className }: { children: ReactNode; href: string; className?: string }) {
   return (
     <ActiveLink
       href={href}
@@ -22,6 +22,7 @@ function CustomActiveLink({ children, href }: { children: ReactNode; href: strin
         'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
         'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        className,
       )}
     >
       {children}
@@ -29,22 +30,48 @@ function CustomActiveLink({ children, href }: { children: ReactNode; href: strin
   );
 }
 
-const activeCn = twMerge(
+const mobileLinkClassname = twMerge(
   'block rounded px-3 py-1.5 text-[15px] font-medium',
   'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
 );
 
-export default function FrontNavbar({ className, ...props }: { className?: string; [props: string]: any }) {
+export default function FrontNavbar({
+  className,
+  transparentNavbar,
+  ...props
+}: {
+  className?: string;
+  transparentNavbar?: boolean;
+  [props: string]: any;
+}) {
   const { data: session, status }: { data: any; status: any } = useSession();
   const mounted = useMounted();
   const [isShowMore, setIsShowMore] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    });
+  }, []);
 
   return (
     <Popover
       {...props}
       as='header'
-      className={twMerge('sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800', className)}
+      className={twMerge(
+        'sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800 max-w-full 2xl:max-w-7xl mx-auto',
+        transparentNavbar &&
+          !scrolled &&
+          ' border-none bg-gradient-to-b from-black/50 via-black/30 to-transparentNavbar',
+        scrolled && 'bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30 ',
+        className,
+      )}
     >
       <>
         <div className='mx-auto max-w-7xl px-4 py-3'>
@@ -57,7 +84,14 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             >
               <div className='flex items-center justify-center font-medium text-neutral-900 md:justify-start'>
                 <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' unoptimized />
-                <span className='text-xl font-semibold text-neutral-800 dark:text-neutral-100'>MyVacation</span>
+                <span
+                  className={twMerge(
+                    'text-xl font-semibold text-neutral-800 dark:text-neutral-100',
+                    transparentNavbar && !scrolled && 'text-white dark:text-white',
+                  )}
+                >
+                  MyVacation
+                </span>
               </div>
             </Link>
             {/* web logo  */}
@@ -65,12 +99,42 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             {/* Nav Link  */}
             <div className='hidden lg:block'>
               <div className='flex items-center lg:space-x-3 min-[1100px]:space-x-5 xl:space-x-7'>
-                <CustomActiveLink href='/'>Home</CustomActiveLink>
-                <CustomActiveLink href='/destinations'>Destination</CustomActiveLink>
-                <CustomActiveLink href='/categories'>Category</CustomActiveLink>
-                <CustomActiveLink href='/videos'>Video</CustomActiveLink>
-                <CustomActiveLink href='/provinces'>Province</CustomActiveLink>
-                <CustomActiveLink href='/islands'>Island</CustomActiveLink>
+                <CustomActiveLink
+                  href='/'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Home
+                </CustomActiveLink>
+                <CustomActiveLink
+                  href='/destinations'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Destination
+                </CustomActiveLink>
+                <CustomActiveLink
+                  href='/categories'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Category
+                </CustomActiveLink>
+                <CustomActiveLink
+                  href='/videos'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Video
+                </CustomActiveLink>
+                <CustomActiveLink
+                  href='/provinces'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Province
+                </CustomActiveLink>
+                <CustomActiveLink
+                  href='/islands'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Island
+                </CustomActiveLink>
 
                 <Popover
                   className='relative'
@@ -82,6 +146,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                       'group flex items-center space-x-1 rounded px-1 text-[15px] font-medium transition-all duration-200',
                       ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                      transparentNavbar && !scrolled && 'text-white dark:text-white',
                     )}
                   >
                     <span>More</span>
@@ -114,9 +179,14 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   </Transition>
                 </Popover>
 
-                <CustomActiveLink href='/browse'>Browse</CustomActiveLink>
+                <CustomActiveLink
+                  href='/browse'
+                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                >
+                  Browse
+                </CustomActiveLink>
 
-                <Popover className=''>
+                <Popover>
                   {({ open }) => (
                     <>
                       <Popover.Button
@@ -126,6 +196,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           'group flex items-center space-x-2 rounded p-0.5 text-[15px] font-medium transition-all duration-200',
                           ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                          transparentNavbar && !scrolled && 'text-white dark:text-white',
                         )}
                       >
                         <SearchIcon className='h-[18px] w-[18px]' />
@@ -139,7 +210,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         leaveFrom='opacity-100 scale-100'
                         leaveTo='opacity-0 scale-95'
                       >
-                        <Popover.Panel className='absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
+                        <Popover.Panel className='absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded border border-transparentNavbar bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
                           <NavbarSearch />
                         </Popover.Panel>
                       </Transition>
@@ -159,6 +230,9 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                       'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
                       'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                      transparentNavbar &&
+                        !scrolled &&
+                        'text-white dark:text-white hover:bg-neutral-800 border-neutral-300 dark:border-neutral-300',
                     )}
                     passHref
                   >
@@ -171,6 +245,9 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                       'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
                       'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                      transparentNavbar &&
+                        !scrolled &&
+                        'text-white dark:text-white hover:bg-neutral-800 border-neutral-300 dark:border-neutral-300',
                     )}
                     passHref
                   >
@@ -188,7 +265,13 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 </div>
               )}
 
-              <FrontThemeChanger />
+              <FrontThemeChanger
+                className={twMerge(
+                  transparentNavbar &&
+                    !scrolled &&
+                    'text-white dark:text-white hover:bg-neutral-800 border-neutral-300 dark:border-neutral-300',
+                )}
+              />
             </div>
 
             {/* Mobile menu button */}
@@ -198,6 +281,9 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   'inline-flex items-center justify-center rounded transition-all',
                   'text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-100',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                  transparentNavbar &&
+                    !scrolled &&
+                    'text-neutral-100 dark:text-neutral-100 hover:text-white dark:hover:text-white',
                 )}
               >
                 <span className='sr-only'>Open main menu</span>
@@ -228,7 +314,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href='/'
                     passHref
-                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent'
+                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparentNavbar'
                   >
                     <span className='text-xl font-semibold dark:text-white'>MyVacation</span>
                   </Link>
@@ -251,22 +337,42 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 {/* EndCLose Mobile Menu Button  */}
               </div>
               <div className='my-4 flex flex-col space-y-1 px-4'>
-                <ActiveLink href='/' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink href='/' activeClassName='!text-sky-500 dark:text-sky-500' className={mobileLinkClassname}>
                   Home
                 </ActiveLink>
-                <ActiveLink href='/destinations' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink
+                  href='/destinations'
+                  activeClassName='!text-sky-500 dark:text-sky-500'
+                  className={mobileLinkClassname}
+                >
                   Destination
                 </ActiveLink>
-                <ActiveLink href='/categories' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink
+                  href='/categories'
+                  activeClassName='!text-sky-500 dark:text-sky-500'
+                  className={mobileLinkClassname}
+                >
                   Category
                 </ActiveLink>
-                <ActiveLink href='/videos' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink
+                  href='/videos'
+                  activeClassName='!text-sky-500 dark:text-sky-500'
+                  className={mobileLinkClassname}
+                >
                   Video
                 </ActiveLink>
-                <ActiveLink href='/provinces' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink
+                  href='/provinces'
+                  activeClassName='!text-sky-500 dark:text-sky-500'
+                  className={mobileLinkClassname}
+                >
                   Province
                 </ActiveLink>
-                <ActiveLink href='/islands' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink
+                  href='/islands'
+                  activeClassName='!text-sky-500 dark:text-sky-500'
+                  className={mobileLinkClassname}
+                >
                   Islands
                 </ActiveLink>
                 <Menu>
@@ -290,9 +396,9 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                             <ActiveLink
                               activeClassName='!text-sky-500 dark:text-sky-500'
                               href='/dashboard'
-                              className={cn(activeCn, active && 'bg-neutral-100 dark:bg-neutral-800')}
+                              className={cn(mobileLinkClassname, active && 'bg-neutral-100 dark:bg-neutral-800')}
                             >
-                              dashboard
+                              Dashboard
                             </ActiveLink>
                           )}
                         </Menu.Item>
@@ -300,7 +406,11 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     </>
                   )}
                 </Menu>
-                <ActiveLink href='/browse' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink
+                  href='/browse'
+                  activeClassName='!text-sky-500 dark:text-sky-500'
+                  className={mobileLinkClassname}
+                >
                   Browse
                 </ActiveLink>
                 {mounted && (

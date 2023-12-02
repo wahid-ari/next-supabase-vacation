@@ -10,16 +10,17 @@ type Props = {
   children: ReactNode;
   title: string;
   description: string;
+  transparentNavbar?: boolean;
   className?: string;
   [props: string]: any;
 };
 
-export default function FrontLayout({ children, title, description, className, ...props }: Props) {
+export default function FrontLayout({ children, title, description, transparentNavbar, className, ...props }: Props) {
   return (
     <>
       <HeadSeo title={title} description={description} />
       <div {...props} className='relative dark:bg-neutral-900'>
-        <FrontNavbar className='bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30' />
+        <FrontNavbar transparentNavbar={transparentNavbar} />
         <main className={twMerge('mx-auto min-h-screen w-full max-w-7xl p-4 pb-10', className)}>{children}</main>
         <Footer />
         <BackToTop />
