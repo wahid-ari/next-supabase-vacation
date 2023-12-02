@@ -66,9 +66,7 @@ export default function FrontNavbar({
       as='header'
       className={twMerge(
         'sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800 max-w-full 2xl:max-w-7xl mx-auto',
-        transparentNavbar &&
-          !scrolled &&
-          ' border-none bg-gradient-to-b from-black/50 via-black/30 to-transparentNavbar',
+        transparentNavbar && !scrolled && ' border-none bg-gradient-to-b from-black/50 via-black/30 to-transparent',
         scrolled && 'bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30 ',
         className,
       )}
@@ -210,7 +208,12 @@ export default function FrontNavbar({
                         leaveFrom='opacity-100 scale-100'
                         leaveTo='opacity-0 scale-95'
                       >
-                        <Popover.Panel className='absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded border border-transparentNavbar bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
+                        <Popover.Panel
+                          className={twMerge(
+                            'absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded',
+                            'border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]',
+                          )}
+                        >
                           <NavbarSearch />
                         </Popover.Panel>
                       </Transition>
@@ -314,7 +317,7 @@ export default function FrontNavbar({
                   <Link
                     href='/'
                     passHref
-                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparentNavbar'
+                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent'
                   >
                     <span className='text-xl font-semibold dark:text-white'>MyVacation</span>
                   </Link>
@@ -378,7 +381,13 @@ export default function FrontNavbar({
                 <Menu>
                   {({ open }) => (
                     <>
-                      <Menu.Button className='w-full rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'>
+                      <Menu.Button
+                        className={twMerge(
+                          'w-full rounded px-3 py-1.5 text-[15px] font-medium',
+                          'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                        )}
+                      >
                         <div className='flex items-center justify-between'>
                           <span>More</span>
                           <ChevronRightIcon
