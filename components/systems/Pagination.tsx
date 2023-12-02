@@ -18,7 +18,7 @@ type Props = {
 
 const buttonClassname = cn(
   'flex h-8 w-8 items-center justify-center text-neutral-700 dark:text-neutral-100 rounded border dark:border-neutral-700 px-1.5 transition-all',
-  'enabled:hover:bg-neutral-100 enabled:hover:text-text-neutral-900 dark:enabled:hover:bg-neutral-800 dark:enabled:hover:text-text-white',
+  'enabled:hover:bg-neutral-200 enabled:hover:text-text-neutral-900 dark:enabled:hover:bg-neutral-800 dark:enabled:hover:text-text-white',
   'disabled:opacity-60 disabled:cursor-not-allowed',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
 );
@@ -67,8 +67,8 @@ export default function Pagination({
       <nav className='flex flex-wrap'>
         <ul className='flex flex-wrap items-center gap-1'>
           <HeadlessPagination.PageButton
-            activeClassName='bg-sky-500 text-white font-medium focus-visible:ring-sky-400'
-            inactiveClassName='text-neutral-700 dark:text-neutral-300 hover:font-medium hover:text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-white focus-visible:ring-sky-500'
+            activeClassName='bg-sky-500 text-white font-semibold focus-visible:ring-sky-400'
+            inactiveClassName='text-neutral-800 dark:text-neutral-300 font-medium hover:text-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white focus-visible:ring-sky-500'
             className={
               'flex h-8 w-8 cursor-pointer items-center justify-center rounded transition-all focus-visible:outline-none focus-visible:ring-2'
             }
