@@ -101,7 +101,9 @@ export default function Videos() {
                         </div>
                       </div>
                       <div className='absolute bottom-0 inset-x-0'>
-                        <p className='font-medium text-lg text-center line-clamp-2 text-white px-4 mb-4'>{video.title}</p>
+                        <p className='font-medium text-lg text-center line-clamp-2 text-white px-4 mb-4'>
+                          {video.title}
+                        </p>
                       </div>
                     </button>
                   </div>

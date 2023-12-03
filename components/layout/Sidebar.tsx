@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useShowNav } from 'context/GlobalContext';
 import {
-  BookIcon,
   ComputerIcon,
   ContainerIcon,
   ExternalLinkIcon,
@@ -18,6 +17,7 @@ import {
   MapPinIcon,
   MountainSnowIcon,
   PalmtreeIcon,
+  PanelRightCloseIcon,
   SearchIcon,
   SettingsIcon,
   SheetIcon,
@@ -141,6 +141,13 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[18px] w-[18px]' />}>
             <NavLink href='/design' icon={<LayersIcon className='h-[18px] w-[18px]' />}>
               Component
+            </NavLink>
+            <NavLink
+              href='/design/custom'
+              className='relative mt-1.5'
+              icon={<PanelRightCloseIcon className='h-[18px] w-[18px]' />}
+            >
+              Custom
             </NavLink>
             <NavLink
               href='/design/layout'
