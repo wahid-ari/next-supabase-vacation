@@ -17,6 +17,15 @@ export function youTubeGetID(url: string) {
 }
 
 // TODO Docs https://github.com/matiassingers/youtube-thumbnail
-export function youTubeGetCoverImage(url: string) {
-  return `https://img.youtube.com/vi/${url}/hqdefault.jpg`;
+// default	120 x 90
+// mqdefault	320 x 180
+// hqdefault	480 x 360
+// sddefault	640 x 480
+// maxresdefault	Matches the resolution of the uploaded video
+// NOTE: May not be available for non-highres videos.
+export function youTubeGetCoverImage(
+  url: string,
+  quality: 'default' | 'mqdefault' | 'hqdefault' | 'sddefault' | 'maxresdefault' = 'hqdefault',
+) {
+  return `https://img.youtube.com/vi/${url}/${quality}.jpg`;
 }
