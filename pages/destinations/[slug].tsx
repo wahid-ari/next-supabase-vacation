@@ -19,7 +19,6 @@ import { cn, youTubeGetID } from '@/libs/utils';
 
 import { Text } from '@/components/ui/Text';
 
-import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
 import DestinationListItem from '@/components/dashboard/DestinationListItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
@@ -52,7 +51,6 @@ export default function Destinations({ slug, seo }) {
   // const fiveDestinationWithImage = movieWithImage?.slice(0, 5);
   const shuffled = movieWithImage?.sort(() => 0.5 - Math.random());
   const fiveDestinationWithImage = shuffled?.slice(0, 5);
-  console.log(fiveDestinationWithImage);
 
   if (error || errorDestination) {
     return (
@@ -85,9 +83,7 @@ export default function Destinations({ slug, seo }) {
           </div>
         )
       ) : (
-        <Shimmer className='mt-4 h-72 sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px] w-full mb-8 mx-auto'>
-          <div className='h-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-        </Shimmer>
+        <Shimmer className='mt-4 h-72 sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px] w-full mb-8 mx-auto' />
       )}
 
       <div className='max-w-7xl mx-auto p-4 pb-12'>
