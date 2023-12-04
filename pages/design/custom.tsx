@@ -14,6 +14,7 @@ import { ScrollArea } from '@/components/ui/ScrollArea';
 
 import Layout from '@/components/layout/Layout';
 import Pagination from '@/components/systems/Pagination';
+import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
@@ -80,6 +81,12 @@ export default function Custom() {
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
   const youtube_url = youTubeGetID(videoPreview?.video_url);
 
+  const prevRefVideoActive = useRef(null);
+  const nextRefVideoActive = useRef(null);
+
+  const prevRefVideoHover = useRef(null);
+  const nextRefVideoHover = useRef(null);
+
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
@@ -101,6 +108,16 @@ export default function Custom() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#swiper-dialog'>
               SwiperDialog
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#swiper-hover-video'>
+              SwiperHoverVideo
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#swiper-activ-video'>
+              SwiperActiveVideo
             </Link>
           </span>
         </div>
@@ -229,18 +246,262 @@ export default function Custom() {
       </Wrapper>
 
       <Wrapper id='swiper-dialog' name='SwiperDialog' noClassName noProps noChildren>
-        <div className='relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
+        <Text>When clicked, show dialog</Text>
+        {videoData ? (
+          <div className='mt-4 relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
+            <Swiper
+              modules={[Navigation]}
+              navigation={{
+                prevEl: prevRefVideo.current,
+                nextEl: nextRefVideo.current,
+              }}
+              onBeforeInit={(swiper) => {
+                // @ts-ignore
+                swiper.params.navigation.prevEl = prevRefVideo.current;
+                // @ts-ignore
+                swiper.params.navigation.nextEl = nextRefVideo.current;
+              }}
+              spaceBetween={24}
+              slidesPerView={3}
+              centeredSlides={true}
+              loop={true}
+              className='py-4 w-full'
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                },
+                640: {
+                  slidesPerView: 1.3,
+                },
+              }}
+            >
+              {videoData?.map((video, index) => (
+                <SwiperSlide key={index}>
+                  {({ isActive }) => (
+                    <div
+                      className={cn(
+                        'relative h-64 lg:h-72 xl:h-80 rounded-md group overflow-hidden',
+                        isActive && 'h-[280px] lg:h-[320px] xl:h-[370px]',
+                        !isActive && 'mt-4 lg:mt-6',
+                      )}
+                    >
+                      <Image
+                        className={cn(
+                          'w-full object-cover rounded-md transition-all duration-500',
+                          isActive && 'group-hover:scale-105',
+                        )}
+                        src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
+                        alt={video.title}
+                        fill
+                        unoptimized
+                      />
+                      <button
+                        onClick={() =>
+                          setVideoPreview({ open: true, title: video?.title, video_url: video?.video_url })
+                        }
+                        disabled={!isActive}
+                        className={cn(
+                          'group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none',
+                          'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
+                          !isActive && 'bg-black/50 cursor-default',
+                        )}
+                      >
+                        <div className='flex justify-center items-center h-full'>
+                          <svg
+                            className='h-14 w-14 sm:h-[68px] sm:w-[68px] rounded-md group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-red-600'
+                            height='100%'
+                            version='1.1'
+                            viewBox='0 0 68 48'
+                            width='100%'
+                          >
+                            <path
+                              d='M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z'
+                              fill='#f00'
+                            ></path>
+                            <path d='M 45,24 27,14 27,34' fill='#fff'></path>
+                          </svg>
+                        </div>
+                        <div className='absolute bottom-0 inset-x-0'>
+                          <p className='font-medium text-lg text-center line-clamp-2 text-white px-4 mb-4'>
+                            {video.title}
+                          </p>
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <button
+              ref={prevRefVideo}
+              className={cn(
+                'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
+                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+              )}
+            >
+              <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            </button>
+            <button
+              ref={nextRefVideo}
+              className={cn(
+                'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
+                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+              )}
+            >
+              <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            </button>
+          </div>
+        ) : (
+          <div className='flex gap-6 lg:max-w-2xl xl:max-w-4xl mx-auto'>
+            <Shimmer className='rounded-md h-64 lg:h-72 xl:h-80 hidden sm:block sm:w-[11%] my-auto' />
+            <Shimmer className='rounded-md h-[280px] lg:h-[320px] xl:h-[370px] w-full' />
+            <Shimmer className='rounded-md h-64 lg:h-72 xl:h-80 hidden sm:block sm:w-[11%] my-auto' />
+          </div>
+        )}
+
+        {/* Preview Dialog */}
+        <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
+          <DialogContent className='max-w-5xl p-3 md:p-6'>
+            {/* <DialogHeader className='text-left'>
+            <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
+          </DialogHeader> */}
+            <iframe
+              className='h-64 sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] w-full rounded'
+              src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
+              title={videoPreview.title}
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowFullScreen
+            ></iframe>
+          </DialogContent>
+        </Dialog>
+      </Wrapper>
+
+      <Wrapper id='swiper-hover-video' name='SwiperHoverVideo' noClassName noProps noChildren>
+        <Text>When hover, show iframe</Text>
+        <div className='mt-4 relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRefVideo.current,
-              nextEl: nextRefVideo.current,
+              prevEl: prevRefVideoHover.current,
+              nextEl: nextRefVideoHover.current,
             }}
             onBeforeInit={(swiper) => {
               // @ts-ignore
-              swiper.params.navigation.prevEl = prevRefVideo.current;
+              swiper.params.navigation.prevEl = prevRefVideoHover.current;
               // @ts-ignore
-              swiper.params.navigation.nextEl = nextRefVideo.current;
+              swiper.params.navigation.nextEl = nextRefVideoHover.current;
+            }}
+            spaceBetween={24}
+            slidesPerView={3}
+            centeredSlides={true}
+            loop={true}
+            className='py-4 w-full'
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 1.3,
+              },
+            }}
+          >
+            {videoData?.map((video, index) => (
+              <SwiperSlide key={index}>
+                {({ isActive }) => (
+                  <div
+                    className={cn(
+                      'group relative h-64 lg:h-72 xl:h-80 rounded-md group overflow-hidden',
+                      isActive && 'h-[280px] lg:h-[320px] xl:h-[370px]',
+                      !isActive && 'mt-4 lg:mt-6',
+                    )}
+                  >
+                    <Image
+                      className='w-full object-cover rounded-md'
+                      src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
+                      alt={video.title}
+                      fill
+                      unoptimized
+                    />
+                    <div
+                      className={cn(
+                        'z-[0] absolute inset-0 rounded-md bg-gradient-to-b from-black/50 via-transparent to-transparent transition-all duration-500',
+                        !isActive && 'bg-black/50 cursor-default',
+                        isActive && 'group-hover:z-[-1] cursor-pointer',
+                      )}
+                    >
+                      <div className='flex justify-center items-center h-full'>
+                        <svg
+                          className='h-14 w-14 sm:h-[68px] sm:w-[68px]'
+                          height='100%'
+                          version='1.1'
+                          viewBox='0 0 68 48'
+                          width='100%'
+                        >
+                          <path
+                            d='M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z'
+                            fill='#f00'
+                          ></path>
+                          <path d='M 45,24 27,14 27,34' fill='#fff'></path>
+                        </svg>
+                      </div>
+                      <div className='absolute top-0 inset-x-0'>
+                        <p className='font-medium text-[17px] line-clamp-1 text-white px-6 mt-6'>{video.title}</p>
+                      </div>
+                    </div>
+                    <iframe
+                      className={cn(
+                        'z-[-1] absolute inset-0 w-full h-full rounded transition-all duration-500',
+                        isActive && 'group-hover:z-[1]',
+                      )}
+                      src={`https://www.youtube.com/embed/${youTubeGetID(video.video_url)}?autoplay=0`}
+                      title={video.title}
+                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button
+            ref={prevRefVideoHover}
+            className={cn(
+              'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
+              'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
+          >
+            <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+          </button>
+          <button
+            ref={nextRefVideoHover}
+            className={cn(
+              'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
+              'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
+          >
+            <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+          </button>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='swiper-active-video' name='SwiperActiveVideo' noClassName noProps noChildren>
+        <Text>When active, show iframe</Text>
+        <div className='mt-4 relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              prevEl: prevRefVideoActive.current,
+              nextEl: nextRefVideoActive.current,
+            }}
+            onBeforeInit={(swiper) => {
+              // @ts-ignore
+              swiper.params.navigation.prevEl = prevRefVideoActive.current;
+              // @ts-ignore
+              swiper.params.navigation.nextEl = nextRefVideoActive.current;
             }}
             spaceBetween={24}
             slidesPerView={3}
@@ -267,17 +528,15 @@ export default function Custom() {
                     )}
                   >
                     <Image
-                      className='w-full object-cover rounded-md transition-all duration-300 scale-125'
+                      className='w-full object-cover rounded-md transition-all duration-300'
                       src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
                       alt={video.title}
                       fill
                       unoptimized
                     />
-                    <button
-                      onClick={() => setVideoPreview({ open: true, title: video?.title, video_url: video?.video_url })}
+                    <div
                       className={cn(
                         'group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none',
-                        'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
                         !isActive && 'bg-black/50',
                       )}
                     >
@@ -285,25 +544,26 @@ export default function Custom() {
                         <div
                           className={cn(
                             'bg-neutral-800/80 rounded-md p-2 sm:p-3 text-white group-hover:bg-red-600 transition-all duration-300',
-                            'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                           )}
                         >
                           <PlayIcon className='h-5 w-5 sm:h-6 sm:w-6' />
                         </div>
                       </div>
-                      <div className='absolute bottom-0 inset-x-0'>
-                        <p className='font-medium text-lg text-center line-clamp-2 text-white px-4 mb-4'>
-                          {video.title}
-                        </p>
-                      </div>
-                    </button>
+                    </div>
+                    <iframe
+                      className={cn('absolute inset-0 w-full h-full rounded', isActive ? 'z-[0]' : '-z-[1]')}
+                      src={`https://www.youtube.com/embed/${youTubeGetID(video.video_url)}?autoplay=0`}
+                      title={video.title}
+                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                      allowFullScreen
+                    ></iframe>
                   </div>
                 )}
               </SwiperSlide>
             ))}
           </Swiper>
           <button
-            ref={prevRefVideo}
+            ref={prevRefVideoActive}
             className={cn(
               'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
               'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
@@ -313,7 +573,7 @@ export default function Custom() {
             <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
           </button>
           <button
-            ref={nextRefVideo}
+            ref={nextRefVideoActive}
             className={cn(
               'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
               'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
@@ -323,22 +583,6 @@ export default function Custom() {
             <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
           </button>
         </div>
-
-        {/* Preview Dialog */}
-        <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
-          <DialogContent className='max-w-5xl p-3 md:p-6'>
-            {/* <DialogHeader className='text-left'>
-            <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
-          </DialogHeader> */}
-            <iframe
-              className='h-64 sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] w-full rounded'
-              src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
-              title={videoPreview.title}
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-            ></iframe>
-          </DialogContent>
-        </Dialog>
       </Wrapper>
     </Layout>
   );
