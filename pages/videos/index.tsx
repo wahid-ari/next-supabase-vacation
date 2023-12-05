@@ -1,27 +1,44 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
 import Image from 'next/image';
-import { ArrowLeftIcon, ArrowRightIcon, PlayIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
 import { useVideosData } from '@/libs/swr';
 import { cn, youTubeGetCoverImage, youTubeGetID } from '@/libs/utils';
 
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
+import { InputDebounce } from '@/components/ui/InputDebounce';
 
+import VideoCardItem from '@/components/dashboard/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 
 export default function Videos() {
   const { data, error } = useVideosData();
-  const shuffledData = data?.sort(() => 0.5 - Math.random());
+  // VIDEO SLIDER
+  // using useMemo to prevent reshuffled data if doing searching
+  const copyData = useMemo(() => (data ? [...data] : []), [data]);
+  const shuffledData = useMemo(() => copyData?.sort(() => 0.5 - Math.random()).slice(0, 5), [copyData]);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
   const youtube_url = youTubeGetID(videoPreview?.video_url);
+  // VIDEO GRID
+  const [query, setQuery] = useState('');
+  const limit = 12;
+  const [page, setPage] = useState(1);
+  const filtered =
+    query === ''
+      ? data
+      : data.filter((item: any) =>
+          item.title.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, '')),
+        );
+  let lastPage = page > filtered?.length / limit;
 
   if (error) {
     return (
@@ -40,7 +57,7 @@ export default function Videos() {
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
       <div className='py-4'>
-        {shuffledData ? (
+        {data ? (
           <div className='relative'>
             <Swiper
               modules={[Navigation]}
@@ -68,7 +85,7 @@ export default function Videos() {
                 },
               }}
             >
-              {data?.map((video: any, index: number) => (
+              {shuffledData?.map((video: any, index: number) => (
                 <SwiperSlide key={index}>
                   {({ isActive }) => (
                     <div
@@ -80,8 +97,8 @@ export default function Videos() {
                     >
                       <Image
                         className={cn(
-                          'w-full object-cover rounded-md transition-all duration-500',
-                          isActive && 'group-hover:scale-110',
+                          'w-full object-cover rounded-md transition-all duration-500 scale-110',
+                          isActive && 'group-hover:scale-125',
                         )}
                         src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
                         alt={video.title}
@@ -101,7 +118,7 @@ export default function Videos() {
                       >
                         <div className='flex justify-center items-center h-full'>
                           <svg
-                            className='h-14 w-14 sm:h-[68px] sm:w-[68px]'
+                            className='h-12 w-12 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px]'
                             height='100%'
                             version='1.1'
                             viewBox='0 0 68 48'
@@ -154,6 +171,48 @@ export default function Videos() {
           </div>
         )}
       </div>
+
+      <InputDebounce
+        id='search'
+        name='search'
+        placeholder='Search Video'
+        className='max-w-xs mt-10'
+        debounce={500}
+        value={query}
+        onChange={(value) => setQuery(value)}
+      />
+
+      <div className='mt-8 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 xl:grid-cols-3'>
+        {filtered
+          ? filtered?.slice(0, page * limit).map((item: any, index: number) => (
+              <div key={index} className='relative'>
+                <VideoCardItem
+                  className='scale-150'
+                  title={item?.title}
+                  url={item?.video_url}
+                  onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
+                />
+              </div>
+            ))
+          : [...Array(12).keys()].map((i) => (
+              <Shimmer key={i}>
+                <div className='space-y-3'>
+                  <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                </div>
+              </Shimmer>
+            ))}
+      </div>
+
+      {data && !lastPage && (
+        <div className='mt-10 flex justify-center'>
+          <Button onClick={() => setPage(page + 1)}>Load More</Button>
+        </div>
+      )}
+
+      {query !== '' && filtered?.length < 1 && (
+        <p className='py-32 text-center'>There are no Destination with name &quot;{query}&quot;</p>
+      )}
 
       {/* Preview Dialog */}
       <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
