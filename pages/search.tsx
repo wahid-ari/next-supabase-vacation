@@ -180,6 +180,7 @@ export default function Search() {
               <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 xl:grid-cols-3'>
                 {data?.video?.map((item: any, index: number) => (
                   <VideoCardItem
+                    className='scale-125'
                     key={index}
                     title={item?.title}
                     url={item?.video_url}
@@ -259,6 +260,7 @@ export default function Search() {
                 {searchHistory.video?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <VideoCardItem
+                      className='scale-125'
                       title={item?.title}
                       url={item?.video_url}
                       onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}

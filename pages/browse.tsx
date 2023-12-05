@@ -178,6 +178,7 @@ export default function Browse() {
               <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
                 {data?.video?.map((item: any, index: number) => (
                   <VideoCardItem
+                    className='scale-125'
                     key={index}
                     title={item?.title}
                     url={item?.video_url}
@@ -259,6 +260,7 @@ export default function Browse() {
                     {searchHistory.video?.map((item: any, index: number) => (
                       <div key={index} className='relative'>
                         <VideoCardItem
+                          className='scale-125'
                           title={item?.title}
                           url={item?.video_url}
                           onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
@@ -289,7 +291,7 @@ export default function Browse() {
       </Heading>
       <div className='mt-2 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[700px]:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
         <Link
-          href='/destination'
+          href='/destinations'
           className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
@@ -300,7 +302,7 @@ export default function Browse() {
           </div>
         </Link>
         <Link
-          href='/category'
+          href='/categories'
           className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
@@ -311,7 +313,7 @@ export default function Browse() {
           </div>
         </Link>
         <Link
-          href='/island'
+          href='/islands'
           className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
@@ -322,7 +324,7 @@ export default function Browse() {
           </div>
         </Link>
         <Link
-          href='/province'
+          href='/provinces'
           className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
@@ -333,7 +335,7 @@ export default function Browse() {
           </div>
         </Link>
         <Link
-          href='/video'
+          href='/videos'
           className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-violet-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
