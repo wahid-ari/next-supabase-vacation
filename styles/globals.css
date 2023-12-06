@@ -172,3 +172,9 @@ html[class='dark'] {
   transform: scaleX(1);
   transform-origin: bottom center;
 }
+
+/* YouTubeEmbed */
+lite-youtube {
+  max-width: 980px !important;
+  @apply h-64 rounded-md sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px];
+}

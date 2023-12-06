@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
+// import { YouTubeEmbed } from '@next/third-parties/google';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -224,8 +225,9 @@ export default function Videos() {
       <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
         <DialogContent className='max-w-5xl p-3 md:p-6'>
           <DialogHeader className='text-left'>
-            <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
+            <DialogTitle className='pr-8 leading-6'>{videoPreview.title}</DialogTitle>
           </DialogHeader>
+          {/* <YouTubeEmbed videoid={youtube_url} /> */}
           <iframe
             className='h-64 sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] w-full rounded'
             src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
