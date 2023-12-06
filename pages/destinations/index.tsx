@@ -99,18 +99,18 @@ export default function Destinations(params: any) {
                 </Shimmer>
               ))}
         </div>
-        {data && data?.data?.length > 0 && (
-          <div className='text-center mt-8'>
-            <Pagination
-              currentPage={page}
-              setCurrentPage={changePage}
-              totalPages={data?.pages?.length}
-              showFirstLast
-              showPrevNext
-            />
-          </div>
-        )}
       </div>
+      {data && data?.data?.length > 0 && (
+        <div className='text-center mt-4'>
+          <Pagination
+            currentPage={page}
+            setCurrentPage={changePage}
+            totalPages={data?.pages?.length}
+            showFirstLast
+            showPrevNext
+          />
+        </div>
+      )}
     </FrontLayout>
   );
 }
