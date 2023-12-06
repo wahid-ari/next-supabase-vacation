@@ -13,10 +13,21 @@ import ActiveLink from '@/components/front/ActiveLink';
 import FrontThemeChanger from '@/components/front/FrontThemeChanger';
 import NavbarSearch from '@/components/front/NavbarSearch';
 
-function CustomActiveLink({ children, href, className }: { children: ReactNode; href: string; className?: string }) {
+function CustomActiveLink({
+  children,
+  href,
+  pathname,
+  className,
+}: {
+  children: ReactNode;
+  href: string;
+  pathname?: string;
+  className?: string;
+}) {
   return (
     <ActiveLink
       href={href}
+      pathname={pathname}
       activeClassName='!text-sky-500 dark:!text-sky-500'
       className={twMerge(
         'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
@@ -105,12 +116,14 @@ export default function FrontNavbar({
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/destinations'
+                  pathname='/destinations/[slug]'
                   className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Destination
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/categories'
+                  pathname='/categories/[slug]'
                   className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Category
@@ -123,12 +136,14 @@ export default function FrontNavbar({
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/provinces'
+                  pathname='/provinces/[slug]'
                   className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Province
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/islands'
+                  pathname='/islands/[slug]'
                   className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Island
