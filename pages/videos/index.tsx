@@ -12,6 +12,7 @@ import { cn, youTubeGetCoverImage, youTubeGetID } from '@/libs/utils';
 
 import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
+import { Heading } from '@/components/ui/Heading';
 import { InputDebounce } from '@/components/ui/InputDebounce';
 
 import VideoCardItem from '@/components/dashboard/VideoCardItem';
@@ -30,7 +31,7 @@ export default function Videos() {
   const youtube_url = youTubeGetID(videoPreview?.video_url);
   // VIDEO GRID
   const [query, setQuery] = useState('');
-  const limit = 12;
+  const limit = 9;
   const [page, setPage] = useState(1);
   const filtered =
     query === ''
@@ -38,7 +39,7 @@ export default function Videos() {
       : data.filter((item: any) =>
           item.title.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, '')),
         );
-  let lastPage = page > filtered?.length / limit;
+  let lastPage = page >= filtered?.length / limit;
 
   if (error) {
     return (
@@ -172,15 +173,20 @@ export default function Videos() {
         )}
       </div>
 
-      <InputDebounce
-        id='search'
-        name='search'
-        placeholder='Search Video'
-        className='max-w-xs mt-10'
-        debounce={500}
-        value={query}
-        onChange={(value) => setQuery(value)}
-      />
+      <div className='flex gap-3 justify-between items-center mt-8'>
+        <Heading as='h1' variant='h3' className='font-medium'>
+          Video
+        </Heading>
+        <InputDebounce
+          id='search'
+          name='search'
+          placeholder='Search Video'
+          className='max-w-xs'
+          debounce={500}
+          value={query}
+          onChange={(value) => setQuery(value)}
+        />
+      </div>
 
       <div className='mt-8 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 xl:grid-cols-3'>
         {filtered
@@ -205,13 +211,13 @@ export default function Videos() {
       </div>
 
       {data && !lastPage && (
-        <div className='mt-10 flex justify-center'>
+        <div className='mt-8 flex justify-center'>
           <Button onClick={() => setPage(page + 1)}>Load More</Button>
         </div>
       )}
 
       {query !== '' && filtered?.length < 1 && (
-        <p className='py-32 text-center'>There are no Destination with name &quot;{query}&quot;</p>
+        <p className='py-32 text-center'>There are no Video with Title &quot;{query}&quot;</p>
       )}
 
       {/* Preview Dialog */}
