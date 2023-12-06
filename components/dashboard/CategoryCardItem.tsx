@@ -11,7 +11,7 @@ type Props = {
   [props: string]: any;
 };
 
-export default function IslandCardItem({ href = '/province', name = 'Island Name', image_url, ...props }: Props) {
+export default function CategoryCardItem({ href = '/categories', name = 'Category Name', image_url, ...props }: Props) {
   const [isLoading, setLoading] = useState(true);
 
   return (
