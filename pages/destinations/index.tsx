@@ -35,9 +35,11 @@ export default function Destinations(params: any) {
     }
   }, [pageQuery]);
 
-  function changePage(page: any) {
-    router.push(`?page=${page + 1}`);
-    setPage(page);
+  function changePage(toPage: any) {
+    if (pageQuery != toPage + 1) {
+      router.push(`?page=${toPage + 1}`);
+      setPage(toPage);
+    }
   }
 
   // this to update query based on search param
