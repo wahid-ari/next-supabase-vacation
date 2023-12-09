@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -47,9 +47,12 @@ export default function Destinations({ slug, seo }) {
   const { data, error } = useDestinationData(null, slug);
   const [isLoading, setLoading] = useState(true);
   const { data: destination, error: errorDestination } = useDestinationsData();
-  const movieWithImage = destination?.filter((item: any) => item.image_url != null && item.image_url != '');
-  // const fiveDestinationWithImage = movieWithImage?.slice(0, 5);
-  const shuffled = movieWithImage?.sort(() => 0.5 - Math.random());
+  // using useMemo to prevent reshuffled data if page refreshed
+  const destinationWithImage = useMemo(
+    () => destination?.filter((item: any) => item.image_url != null && item.image_url != '' && item.slug !== slug),
+    [destination, slug],
+  );
+  const shuffled = useMemo(() => destinationWithImage?.sort(() => 0.5 - Math.random()), [destinationWithImage]);
   const fiveDestinationWithImage = shuffled?.slice(0, 5);
 
   if (error || errorDestination) {
