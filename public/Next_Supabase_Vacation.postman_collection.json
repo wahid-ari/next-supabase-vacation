@@ -262,6 +262,103 @@
           ]
         },
         {
+          "name": "Destination Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/destination?q=bali",
+              "host": ["{{NEXT_SUPABASE_BOOK}}"],
+              "path": ["api", "destination"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "bali"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Destination Search",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/destination?q=bali",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "destination"],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "bali"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "public, s-maxage=10, stale-while-revalidate=59"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"j3nlb3exwb19z\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 Dec 2023 05:15:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Kintamani: Bali's Scenic Gem\",\n        \"slug\": \"kintamani-balis-scenic-gem\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revision-2019/all-revision-destination/bali-nusa-tenggara/Kintamani.jpg\",\n        \"description\": \"Explore the scenic gem of Kintamani in Bali. Marvel at Mount Batur's beauty, serene Lake Batur, and captivating volcanic landscapes\",\n        \"location\": \"Kintamani, Bali\",\n        \"vacation_island\": {\n            \"id\": 2,\n            \"name\": \"Bali\",\n            \"slug\": \"bali\"\n        },\n        \"vacation_province\": {\n            \"id\": 15,\n            \"name\": \"Bali\",\n            \"slug\": \"bali\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Bali\",\n        \"slug\": \"bali\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revisi-2020/destinations-thumbnail/Bali-Thumbnail.jpg\",\n        \"description\": \"Bali is also known as the Land of the Gods with dramatic dances and colorful ceremonies, to its luxurious beach resorts with exciting nightlife and famous for surfers’ paradise.\",\n        \"location\": \"Bali, Indonesia\",\n        \"vacation_island\": {\n            \"id\": 2,\n            \"name\": \"Bali\",\n            \"slug\": \"bali\"\n        },\n        \"vacation_province\": {\n            \"id\": 15,\n            \"name\": \"Bali\",\n            \"slug\": \"bali\"\n        }\n    },\n    {\n        \"id\": 16,\n        \"name\": \"West Bali National Park\",\n        \"slug\": \"west-bali-national-park\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revision-2019/all-revision-destination/bali-nusa-tenggara/West_Bali_National_Park.jpg\",\n        \"description\": \"West Bali National Park. Home to over a hundred species of wildlife, the national park is best known as the sanctuary of the exotic white Bali Starling, an endemic iconic bird of the island of the gods.\",\n        \"location\": \"Klampok, Bali\",\n        \"vacation_island\": {\n            \"id\": 2,\n            \"name\": \"Bali\",\n            \"slug\": \"bali\"\n        },\n        \"vacation_province\": {\n            \"id\": 15,\n            \"name\": \"Bali\",\n            \"slug\": \"bali\"\n        }\n    }\n]"
+            }
+          ]
+        },
+        {
           "name": "All Destination With Category",
           "request": {
             "method": "GET",

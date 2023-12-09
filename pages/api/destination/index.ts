@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      if (!query.id && !query.slug && !query.page) {
+      if (!query.id && !query.slug && !query.page && !query.q) {
         // api/destination
         const { data } = await supabase
           .from('vacation_destination')
@@ -31,6 +31,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
           )
           .order('id');
+        res.status(200).json(data);
+        return;
+      } else if (query.q) {
+        // api/destination?q=bali
+        const { data } = await supabase
+          .from('vacation_destination')
+          .select(
+            `id, name, slug, image_url, description, location, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
+          )
+          .textSearch('name', `'${query.q}'`);
+        res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
         return;
       } else if (query.page) {
