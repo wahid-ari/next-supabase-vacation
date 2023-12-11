@@ -350,17 +350,15 @@ export default function Browse() {
       <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
         <DialogContent className='sm:max-w-[720px]'>
           <DialogHeader className='text-left'>
-            <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
+            <DialogTitle className='pr-6'>{videoPreview.title}</DialogTitle>
           </DialogHeader>
-          <div className='py-4'>
-            <iframe
-              className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
-              src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
-              title={videoPreview.title}
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-            ></iframe>
-          </div>
+          <iframe
+            className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
+            src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
+            title={videoPreview.title}
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          ></iframe>
         </DialogContent>
       </Dialog>
     </FrontLayout>
