@@ -120,7 +120,7 @@ export default function Videos() {
                       >
                         <div className='flex justify-center items-center h-full'>
                           <svg
-                            className='h-12 w-12 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px]'
+                            className='h-12 w-12 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px] group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 rounded'
                             height='100%'
                             version='1.1'
                             viewBox='0 0 68 48'
@@ -147,7 +147,7 @@ export default function Videos() {
             <button
               ref={prevRef}
               className={cn(
-                'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
+                'absolute left-4 lg:left-16 z-[1] top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
                 'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
@@ -157,7 +157,7 @@ export default function Videos() {
             <button
               ref={nextRef}
               className={cn(
-                'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
+                'absolute right-4 lg:right-16 z-[1] top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
                 'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
