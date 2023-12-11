@@ -35,7 +35,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
             'dark:text-white dark:placeholder-neutral-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
             '!pr-20',
           )}
-          placeholder='Search Destination, Video, Province, Category and Island...'
+          placeholder='Search Destination, Video.'
           required
         />
         <button

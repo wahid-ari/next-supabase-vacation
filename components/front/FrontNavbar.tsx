@@ -356,6 +356,7 @@ export default function FrontNavbar({
                 {/* EndCLose Mobile Menu Button  */}
               </div>
               <div className='my-4 flex flex-col space-y-1 px-4'>
+                <NavbarSearch className='mb-2' />
                 <ActiveLink href='/' activeClassName='!text-sky-500 dark:text-sky-500' className={mobileLinkClassname}>
                   Home
                 </ActiveLink>
