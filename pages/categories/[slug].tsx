@@ -99,7 +99,11 @@ export default function Categories({ slug, seo }) {
       )}
 
       {query !== '' && filtered?.length < 1 && (
-        <p className='py-32 text-center'>There are no Video with Title &quot;{query}&quot;</p>
+        <p className='py-32 text-center'>There are no Destination with Name &quot;{query}&quot;</p>
+      )}
+
+      {query == '' && filtered?.length < 1 && (
+        <p className='py-32 text-center'>There are no Destination from {seo?.name}</p>
       )}
     </FrontLayout>
   );
