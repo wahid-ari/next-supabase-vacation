@@ -224,6 +224,7 @@ export default function FrontNavbar({
                         leaveTo='opacity-0 scale-95'
                       >
                         <Popover.Panel
+                          focus
                           className={twMerge(
                             'absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded',
                             'border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]',
