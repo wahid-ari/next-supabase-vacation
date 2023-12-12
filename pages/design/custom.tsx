@@ -199,16 +199,15 @@ export default function Custom() {
             }}
             spaceBetween={24}
             slidesPerView={3}
-            centeredSlides={true}
             loop={true}
             breakpoints={{
-              320: {
+              400: {
                 slidesPerView: 1,
               },
-              480: {
+              650: {
                 slidesPerView: 2,
               },
-              640: {
+              900: {
                 slidesPerView: 3,
               },
             }}
@@ -401,8 +400,12 @@ export default function Custom() {
       <Wrapper id='dialog-swiper' name='DialogSwiper' noClassName noProps noChildren>
         <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
           {imagesData.map((image, index) => (
-            <button onClick={() => openImage(image.id)} key={index} className='relative h-64'>
-              <Image alt='Image' src={image.public_id} fill className='object-cover' />
+            <button
+              onClick={() => openImage(image.id)}
+              key={index}
+              className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            >
+              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' />
             </button>
           ))}
         </div>
