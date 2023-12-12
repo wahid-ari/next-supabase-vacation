@@ -1,3 +1,4 @@
+import ImageBanner from '@/components/card/ImageBanner';
 import FrontLayout from '@/components/front/FrontLayout';
 
 export default function Home() {
@@ -22,8 +23,6 @@ export default function Home() {
     <FrontLayout
       title='Home - MyVacation'
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
-    >
-      <div className='py-8' />
-    </FrontLayout>
+    ></FrontLayout>
   );
 }

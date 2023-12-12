@@ -119,7 +119,7 @@ export default function Destinations(params: any) {
           </div>
         ) : null}
 
-        <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+        <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
           {/* if user not searching, show data from pagination */}
           {data &&
             !search &&

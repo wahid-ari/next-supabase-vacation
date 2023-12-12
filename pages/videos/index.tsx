@@ -189,7 +189,7 @@ export default function Videos() {
         />
       </div>
 
-      <div className='mt-8 grid grid-cols-1 gap-6 pb-4 min-[550px]:grid-cols-2 xl:grid-cols-3'>
+      <div className='mt-8 grid grid-cols-1 gap-6 min-[550px]:grid-cols-2 xl:grid-cols-3'>
         {filtered
           ? filtered?.slice(0, page * limit).map((item: any, index: number) => (
               <div key={index} className='relative'>
