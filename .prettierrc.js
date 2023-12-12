@@ -5,7 +5,7 @@ module.exports = {
   tabWidth: 2,
   semi: true,
   printWidth: 120,
-  plugins: ['prettier-plugin-tailwindcss', '@ianvs/prettier-plugin-sort-imports'],
+  plugins: ['@ianvs/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
   tailwindConfig: './tailwind.config.js',
   importOrder: [
     '^(react/(.*)$)|^(react$)',
