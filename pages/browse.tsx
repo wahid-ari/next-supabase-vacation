@@ -12,8 +12,8 @@ import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 import { Input } from '@/components/ui/Input';
 
-import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
-import VideoCardItem from '@/components/dashboard/VideoCardItem';
+import DestinationCardItem from '@/components/card/DestinationCardItem';
+import VideoCardItem from '@/components/card/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Heading from '@/components/systems/Heading';
 import Shimmer from '@/components/systems/Shimmer';

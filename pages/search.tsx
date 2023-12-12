@@ -8,8 +8,8 @@ import { youTubeGetID } from '@/libs/utils';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 
-import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
-import VideoCardItem from '@/components/dashboard/VideoCardItem';
+import DestinationCardItem from '@/components/card/DestinationCardItem';
+import VideoCardItem from '@/components/card/VideoCardItem';
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';

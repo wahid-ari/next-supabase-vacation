@@ -1,6 +1,6 @@
 import { useIslandsData } from '@/libs/swr';
 
-import IslandCardItem from '@/components/dashboard/IslandCardItem';
+import IslandCardItem from '@/components/card/IslandCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 

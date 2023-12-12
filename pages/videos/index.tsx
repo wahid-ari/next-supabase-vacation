@@ -16,7 +16,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Heading } from '@/components/ui/Heading';
 import { InputDebounce } from '@/components/ui/InputDebounce';
 
-import VideoCardItem from '@/components/dashboard/VideoCardItem';
+import VideoCardItem from '@/components/card/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 

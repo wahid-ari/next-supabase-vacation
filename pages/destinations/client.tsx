@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import { API_URL, fetcher } from '@/libs/swr';
 import { cn } from '@/libs/utils';
 
-import DestinationCardItem from '@/components/dashboard/DestinationCardItem';
+import DestinationCardItem from '@/components/card/DestinationCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Pagination from '@/components/systems/Pagination';
 import Shimmer from '@/components/systems/Shimmer';

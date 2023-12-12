@@ -1,6 +1,6 @@
 import { useProvincesData } from '@/libs/swr';
 
-import ProvinceCardItem from '@/components/dashboard/ProvinceCardItem';
+import ProvinceCardItem from '@/components/card/ProvinceCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 

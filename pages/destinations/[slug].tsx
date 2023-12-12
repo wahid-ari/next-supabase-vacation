@@ -19,7 +19,7 @@ import { cn, youTubeGetID } from '@/libs/utils';
 
 import { Text } from '@/components/ui/Text';
 
-import DestinationListItem from '@/components/dashboard/DestinationListItem';
+import DestinationListItem from '@/components/card/DestinationListItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 

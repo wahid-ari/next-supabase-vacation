@@ -1,6 +1,6 @@
 import { useCategoriesData } from '@/libs/swr';
 
-import CategoryCardItem from '@/components/dashboard/CategoryCardItem';
+import CategoryCardItem from '@/components/card/CategoryCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 

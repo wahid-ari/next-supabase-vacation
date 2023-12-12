@@ -28,7 +28,7 @@ import {
 } from '@/libs/swr';
 import useWindowSize from '@/hooks/use-window-size';
 
-import Card from '@/components/dashboard/Card';
+import Card from '@/components/card/Card';
 import Layout from '@/components/layout/Layout';
 import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
