@@ -1,0 +1,4 @@
+id,created_at,username,name,type,password
+1,2023-10-21 15:09:40.271817+00,admin,Admin,admin,$2a$08$6gHYujlqqwvD1PsXKhBRresAk2NR.MYGqDx.QvdJTst2FODTh6lM.
+2,2023-10-21 15:09:40.271817+00,develop,Develop,admin,$2a$08$DZ0MeBTV7Ye5d9gU3sl0IuVjjnUHAUT9JooGfejzIs5mngfKm56Ei
+3,2023-10-21 15:09:40.271817+00,user,User,user,$2a$08$.VYArp8fHFiVVx.bna1uGO4JZyvYzG0gw0iMAG2ccajjjZpPqC1NC

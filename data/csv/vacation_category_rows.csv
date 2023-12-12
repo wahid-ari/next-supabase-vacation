@@ -1,0 +1,16 @@
+id,name,created_at,image_url,slug
+1,Architecture,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1697299708650-e4d1ce150d38?auto=format&fit=crop&q=80&w=500,architecture
+2,Beach,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&q=80&w=500,beach
+3,Lake,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?auto=format&fit=crop&q=80&w=500,lake
+4,Mountain,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&q=80&w=500,mountain
+5,Forest,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&q=80&w=500,forest
+6,Park,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1561283890-5d858c23b2ea?auto=format&fit=crop&q=80&w=500,park
+7,Island,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1516091877740-fde016699f2c?auto=format&fit=crop&q=80&w=500,island
+8,Ocean,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&q=80&w=500,ocean
+9,Underwater,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&q=80&w=500,underwater
+10,Coral,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&q=80&w=500,coral
+11,Camping,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1601134917279-ef70a0a90f18?auto=format&fit=crop&q=80&w=500,camping
+12,Rafting,2023-10-22 08:38:55.639635+00,https://images.unsplash.com/photo-1508166466920-f65aa51f727c?auto=format&fit=crop&q=80&w=500,rafting
+13,City,2023-11-18 15:41:29.544081+00,https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&q=80&w=500,city
+14,Culture,2023-12-11 08:23:46.71316+00,https://images.unsplash.com/photo-1542897643-8158da5b4607?auto=format&fit=crop&q=80&w=500,culture
+15,Landscape,2023-12-11 08:29:37.802103+00,https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&q=80&w=500,landscape
