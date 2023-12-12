@@ -108,7 +108,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     ref={ref}
     className={cn(
       'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
-      'focus:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800',
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-neutral-100 dark:focus:bg-neutral-800',
       className,
     )}
     checked={checked}
@@ -132,7 +132,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cn(
       'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
-      'focus:bg-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800',
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-neutral-100 dark:focus:bg-neutral-800',
       className,
     )}
     {...props}

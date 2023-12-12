@@ -123,7 +123,7 @@ export default function Session() {
                 <TableSimple.td className='text-center'>{item.user_id}</TableSimple.td>
                 <TableSimple.td>{item.vacation_user.name}</TableSimple.td>
                 <TableSimple.td>
-                  <p className='break-all text-ellipsis overflow-hidden w-32 sm:w-64 md:w-72 xl:w-full'>
+                  <p className='w-32 overflow-hidden text-ellipsis break-all sm:w-64 md:w-72 xl:w-full'>
                     {item.token.split('.')[2]}
                   </p>
                 </TableSimple.td>
@@ -136,7 +136,7 @@ export default function Session() {
                     title={`Delete ${item.vacation_user.name}`}
                     size='sm'
                     variant='destructive'
-                    className='px-2 ml-1.5'
+                    className='ml-1.5 px-2'
                     onClick={() => setDeleteDialog({ dialog: true, id: item.id })}
                   >
                     <TrashIcon className='h-4 w-4' />

@@ -46,7 +46,7 @@ export default function Destination() {
     >
       {data ? (
         data?.header_image_url && (
-          <div className='relative h-64 sm:h-72 lg:h-80 xl:h-96 mb-8 w-full rounded mx-auto'>
+          <div className='relative mx-auto mb-8 h-64 w-full rounded sm:h-72 lg:h-80 xl:h-96'>
             <Image
               fill
               alt={data?.name}
@@ -60,25 +60,25 @@ export default function Destination() {
           </div>
         )
       ) : (
-        <Shimmer className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full mb-8 mx-auto rounded'>
+        <Shimmer className='mx-auto mb-8 h-64 w-full rounded sm:h-72 lg:h-80 xl:h-96'>
           <div className='h-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
         </Shimmer>
       )}
 
       {data ? (
         <>
-          <h1 className='text-3xl font-bold mb-4'>{data?.name}</h1>
+          <h1 className='mb-4 text-3xl font-bold'>{data?.name}</h1>
           <Text className='leading-7 text-gray-700 dark:text-neutral-200'>{data?.description}</Text>
         </>
       ) : (
         <>
-          <Shimmer className='h-9 w-64 mb-6 rounded' />
-          <Shimmer className='p-3 w-full mb-2 rounded' />
-          <Shimmer className='p-3 max-w-xl mb-4 rounded' />
+          <Shimmer className='mb-6 h-9 w-64 rounded' />
+          <Shimmer className='mb-2 w-full rounded p-3' />
+          <Shimmer className='mb-4 max-w-xl rounded p-3' />
         </>
       )}
 
-      <table className='text-[15px] my-4'>
+      <table className='my-4 text-[15px]'>
         <tbody>
           <tr>
             <td className='pb-3 pr-4 font-medium'>Location</td>
@@ -159,7 +159,7 @@ export default function Destination() {
 
       {data?.video_url && (
         <iframe
-          className='h-64 sm:h-72 lg:h-80 xl:h-96 my-8 w-full sm:w-5/6 md:w-4/6 rounded mx-auto'
+          className='mx-auto my-8 h-64 w-full rounded sm:h-72 sm:w-5/6 md:w-4/6 lg:h-80 xl:h-96'
           src={`https://www.youtube.com/embed/${youTubeGetID(data?.video_url)}`}
           title={data?.name}
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -169,8 +169,8 @@ export default function Destination() {
 
       <div
         className={cn(
-          'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
-          'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
+          'ql-editor !prose !max-w-none !p-0 dark:!prose-invert prose-video:!w-96',
+          'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-center',
           'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
           'prose-blockquote:!my-3',
         )}

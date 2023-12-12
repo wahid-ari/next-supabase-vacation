@@ -36,7 +36,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
             className={twMerge(
               'flex items-center justify-between gap-x-4 border-b px-4 py-3 lg:hidden',
               'overflow-x-auto bg-white/95 dark:border-neutral-800 dark:bg-neutral-900/90',
-              'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
+              'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
             )}
           >
             <Breadcrumb />
@@ -55,7 +55,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
             <Menu />
           </div>
 
-          <div className='px-5 pt-4 pb-5'>{children}</div>
+          <div className='px-5 pb-5 pt-4'>{children}</div>
         </main>
       </div>
     </>

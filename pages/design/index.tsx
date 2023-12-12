@@ -1170,7 +1170,7 @@ function dissmissAllToast() {
               className={twMerge(
                 'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                 'bg-white p-2.5 !text-[15px] leading-5 text-neutral-700',
-                'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
+                'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
               )}
             >
               Laborum sint culpa nisi commodo. Reprehenderit et laborum do commodo et fugiat elit ullamco. Tempor culpa
@@ -1494,8 +1494,8 @@ function dissmissAllToast() {
       </Wrapper>
 
       <Wrapper id='shimmer' name='Shimmer' noChildren noProps>
-        <Shimmer className='max-w-[5rem] mb-2' data-testid='shimmer' />
-        <Shimmer className='max-w-[10rem] mb-2' />
+        <Shimmer className='mb-2 max-w-[5rem]' data-testid='shimmer' />
+        <Shimmer className='mb-2 max-w-[10rem]' />
         <Shimmer className='max-w-[15rem]' />
       </Wrapper>
 
@@ -1740,13 +1740,13 @@ function dissmissAllToast() {
             </div>
           </Shimmer>
 
-          <Shimmer className='rounded-2xl h-8' />
+          <Shimmer className='h-8 rounded-2xl' />
 
-          <Shimmer className='rounded-full h-20 w-20' />
+          <Shimmer className='h-20 w-20 rounded-full' />
 
-          <Shimmer className='rounded h-20' />
+          <Shimmer className='h-20 rounded' />
 
-          <Shimmer className='rounded-3xl h-20 w-20' />
+          <Shimmer className='h-20 w-20 rounded-3xl' />
         </div>
       </Wrapper>
     </Layout>

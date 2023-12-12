@@ -76,7 +76,7 @@ export default function FrontNavbar({
       {...props}
       as='header'
       className={twMerge(
-        'sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800 max-w-full 2xl:max-w-7xl mx-auto',
+        'sticky top-0 z-10 mx-auto max-w-full border-b border-b-neutral-200/70 dark:border-b-neutral-800 2xl:max-w-7xl',
         transparentNavbar && !scrolled && ' border-none bg-gradient-to-b from-black/50 via-black/30 to-transparent',
         scrolled && 'bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30 ',
         className,
@@ -184,7 +184,7 @@ export default function FrontNavbar({
                     <Popover.Panel
                       className={cn(
                         'absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded px-4 py-4 shadow',
-                        'dark:border dark:border-neutral-800 bg-white dark:bg-neutral-900',
+                        'bg-white dark:border dark:border-neutral-800 dark:bg-neutral-900',
                       )}
                     >
                       <CustomActiveLink href='/dashboard'>Dashboard</CustomActiveLink>
@@ -246,12 +246,12 @@ export default function FrontNavbar({
                   <Link
                     href='/dashboard'
                     className={twMerge(
-                      'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                      'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                      'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                      'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       transparentNavbar &&
                         !scrolled &&
-                        'text-white dark:text-white hover:bg-neutral-800 border-neutral-300 dark:border-neutral-300',
+                        'border-neutral-300 text-white hover:bg-neutral-800 dark:border-neutral-300 dark:text-white',
                     )}
                     passHref
                   >
@@ -261,12 +261,12 @@ export default function FrontNavbar({
                   <Link
                     href='/login'
                     className={twMerge(
-                      'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                      'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                      'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                      'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       transparentNavbar &&
                         !scrolled &&
-                        'text-white dark:text-white hover:bg-neutral-800 border-neutral-300 dark:border-neutral-300',
+                        'border-neutral-300 text-white hover:bg-neutral-800 dark:border-neutral-300 dark:text-white',
                     )}
                     passHref
                   >
@@ -276,8 +276,8 @@ export default function FrontNavbar({
               ) : (
                 <div
                   className={cn(
-                    'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                    'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                    'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                   )}
                 >
                   <span>Loading</span>
@@ -288,7 +288,7 @@ export default function FrontNavbar({
                 className={twMerge(
                   transparentNavbar &&
                     !scrolled &&
-                    'text-white dark:text-white hover:bg-neutral-800 border-neutral-300 dark:border-neutral-300',
+                    'border-neutral-300 text-white hover:bg-neutral-800 dark:border-neutral-300 dark:text-white',
                 )}
               />
             </div>
@@ -302,7 +302,7 @@ export default function FrontNavbar({
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   transparentNavbar &&
                     !scrolled &&
-                    'text-neutral-100 dark:text-neutral-100 hover:text-white dark:hover:text-white',
+                    'text-neutral-100 hover:text-white dark:text-neutral-100 dark:hover:text-white',
                 )}
               >
                 <span className='sr-only'>Open main menu</span>

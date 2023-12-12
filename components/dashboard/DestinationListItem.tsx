@@ -16,7 +16,7 @@ export default function DestinationListItem({ href, name, image_url, location, .
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <div {...props} className='flex gap-3 items-center'>
+    <div {...props} className='flex items-center gap-3'>
       <Link
         href={href}
         className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500'
@@ -28,7 +28,7 @@ export default function DestinationListItem({ href, name, image_url, location, .
               src={image_url}
               fill
               className={twMerge(
-                'rounded object-cover brightness-90 hover:brightness-100 hover:scale-110 transition-all duration-300',
+                'rounded object-cover brightness-90 transition-all duration-300 hover:scale-110 hover:brightness-100',
                 isLoading ? 'blur-sm' : 'blur-0',
               )}
               onLoad={() => setLoading(false)}
@@ -45,13 +45,13 @@ export default function DestinationListItem({ href, name, image_url, location, .
         <Link
           href={href}
           className={twMerge(
-            'rounded text-md line-clamp-2 font-semibold text-neutral-700 transition-all duration-200 dark:text-neutral-100',
+            'text-md line-clamp-2 rounded font-semibold text-neutral-700 transition-all duration-200 dark:text-neutral-100',
             'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
           )}
         >
           {name}
         </Link>
-        <p className='text-[15px] mt-2 text-neutral-700 dark:text-neutral-300'>{location}</p>
+        <p className='mt-2 text-[15px] text-neutral-700 dark:text-neutral-300'>{location}</p>
       </div>
     </div>
   );

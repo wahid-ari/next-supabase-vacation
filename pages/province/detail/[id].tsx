@@ -52,7 +52,7 @@ export default function Province() {
                   href={`/destination/detail/${original.id}`}
                   className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
-                  <p className='break-all text-ellipsis overflow-hidden w-40 lg:w-44 xl:w-full'>{original.name}</p>
+                  <p className='w-40 overflow-hidden text-ellipsis break-all lg:w-44 xl:w-full'>{original.name}</p>
                 </Link>
               </HoverCardTrigger>
               <HoverCardContent
@@ -63,7 +63,7 @@ export default function Province() {
                 }}
                 className={twMerge(
                   'max-h-64 w-auto max-w-xs overflow-auto',
-                  'scrollbar-thin scrollbar-thinner scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700',
+                  'scrollbar-thinner scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700',
                 )}
               >
                 {original.image_url ? (
@@ -84,10 +84,10 @@ export default function Province() {
                     <ImageIcon className='h-16 w-16 text-neutral-500' />
                   </div>
                 )}
-                <p className='text-neutral-700 dark:text-white font-semibold leading-6 text-lg mt-3 mb-2'>
+                <p className='mb-2 mt-3 text-lg font-semibold leading-6 text-neutral-700 dark:text-white'>
                   {original.name}
                 </p>
-                <p className='text-[15px] dark:text-neutral-200 text-neutral-600'>{original.description}</p>
+                <p className='text-[15px] text-neutral-600 dark:text-neutral-200'>{original.description}</p>
               </HoverCardContent>
             </HoverCard>
           );
@@ -153,7 +153,7 @@ export default function Province() {
               onChange={(e) => {
                 setInputDebounce(e.target.value);
               }}
-              className='mt-2 mb-4'
+              className='mb-4 mt-2'
             />
 
             <ReactTable columns={column} data={data?.destinations} ref={tableInstance} page_size={20} />
@@ -169,23 +169,23 @@ export default function Province() {
           <TableSimple
             head={
               <>
-                <TableSimple.th className='flex gap-1 items-center'>
-                  No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+                <TableSimple.th className='flex items-center gap-1'>
+                  No <ChevronUpIcon className='h-4 w-4 opacity-50' />
                 </TableSimple.th>
                 <TableSimple.th className='text-left sm:w-[40%] md:w-[45%]'>
-                  <div className='flex gap-1 items-center'>
-                    Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  <div className='flex items-center gap-1'>
+                    Name <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                   </div>
                 </TableSimple.th>
                 <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
-                  <div className='flex gap-1 items-center'>
-                    Location <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  <div className='flex items-center gap-1'>
+                    Location <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                   </div>
                 </TableSimple.th>
                 <TableSimple.th className='sm:w-[30%] md:w-[20%]'>
-                  <div className='flex gap-1 items-center'>
+                  <div className='flex items-center gap-1'>
                     Province
-                    <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                    <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                   </div>
                 </TableSimple.th>
               </>

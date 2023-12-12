@@ -142,38 +142,38 @@ export default function Log() {
         <TableSimple
           head={
             <>
-              <TableSimple.th className='flex gap-1 items-center'>
-                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              <TableSimple.th className='flex items-center gap-1'>
+                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th>
-                <div className='flex gap-1 justify-center items-center'>
-                  User <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center justify-center gap-1'>
+                  User <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
-                <div className='flex gap-1 justify-center items-center'>
-                  Action <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center justify-center gap-1'>
+                  Action <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
-                <div className='flex gap-1 justify-center items-center'>
-                  Table <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center justify-center gap-1'>
+                  Table <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
-                <div className='flex gap-1 justify-center items-center'>
-                  Description <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center justify-center gap-1'>
+                  Description <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
-                <div className='flex gap-1 justify-center items-center'>
-                  Date <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center justify-center gap-1'>
+                  Date <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
-                <div className='flex gap-1 justify-center items-center'>
+                <div className='flex items-center justify-center gap-1'>
                   Time
-                  <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
             </>

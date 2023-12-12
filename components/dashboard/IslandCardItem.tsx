@@ -18,13 +18,13 @@ export default function IslandCardItem({ href = '/province', name = 'Island Name
     <div className='grid' {...props}>
       <Link
         href={href}
-        className='rounded-md group overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        className='group overflow-hidden rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       >
         {image_url ? (
           <div className='relative h-64 overflow-hidden'>
             <Image
               className={twMerge(
-                'w-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-500 transform group-hover:scale-110',
+                'w-full transform object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
                 isLoading ? 'blur-sm' : 'blur-0',
               )}
               src={image_url}
@@ -40,8 +40,8 @@ export default function IslandCardItem({ href = '/province', name = 'Island Name
           </div>
         )}
         <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-          <div className='flex justify-center items-end h-full'>
-            <p className='font-medium text-base text-center line-clamp-2 text-white px-4 mb-4'>{name}</p>
+          <div className='flex h-full items-end justify-center'>
+            <p className='mb-4 line-clamp-2 px-4 text-center text-base font-medium text-white'>{name}</p>
           </div>
         </div>
       </Link>

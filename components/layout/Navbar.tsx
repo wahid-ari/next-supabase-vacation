@@ -24,7 +24,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
     >
       <div className='flex gap-x-3'>
         <button
-          className='-ml-0.5 px-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+          className='-ml-0.5 rounded px-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           id='menu'
           aria-label='Menu'
           title='Menu'

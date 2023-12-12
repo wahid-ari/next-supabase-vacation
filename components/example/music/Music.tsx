@@ -22,7 +22,7 @@ export default function MusicPage() {
             <div className='col-span-6 overflow-hidden md:col-span-4 md:border-l dark:md:border-l-neutral-700 xl:col-span-4'>
               <div className='h-full p-4 md:p-6'>
                 <Tabs defaultValue='music' className='h-full space-y-6'>
-                  <div className='space-between flex items-center flex-wrap-reverse gap-3'>
+                  <div className='space-between flex flex-wrap-reverse items-center gap-3'>
                     <TabsList className='mr-auto'>
                       <TabsTrigger value='music' className='relative'>
                         Music

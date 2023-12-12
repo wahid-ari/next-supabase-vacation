@@ -24,10 +24,10 @@ export default function VideoCardItem({
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <div className='relative h-64 rounded-md group overflow-hidden' {...props}>
+    <div className='group relative h-64 overflow-hidden rounded-md' {...props}>
       <Image
         className={twMerge(
-          'w-full object-cover rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300',
+          'w-full rounded-md object-cover brightness-90 transition-all duration-300 group-hover:brightness-100',
           isLoading ? 'blur-sm' : 'blur-0',
           className,
         )}
@@ -40,13 +40,13 @@ export default function VideoCardItem({
       <button
         onClick={onPlay}
         className={twMerge(
-          'group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none',
+          'group absolute inset-0 cursor-pointer rounded-md focus-visible:outline-none',
           'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
         )}
       >
-        <div className='flex justify-center items-center h-full'>
+        <div className='flex h-full items-center justify-center'>
           <svg
-            className='h-12 w-12 sm:h-14 sm:w-14 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 rounded'
+            className='h-12 w-12 rounded group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 sm:h-14 sm:w-14'
             height='100%'
             version='1.1'
             viewBox='0 0 68 48'
@@ -59,8 +59,8 @@ export default function VideoCardItem({
             <path d='M 45,24 27,14 27,34' fill='#fff'></path>
           </svg>
         </div>
-        <div className='absolute bottom-0 inset-x-0'>
-          <p className='font-medium text-base text-center line-clamp-2 text-white px-4 mb-4'>{title}</p>
+        <div className='absolute inset-x-0 bottom-0'>
+          <p className='mb-4 line-clamp-2 px-4 text-center text-base font-medium text-white'>{title}</p>
         </div>
       </button>
     </div>

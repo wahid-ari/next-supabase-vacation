@@ -66,13 +66,13 @@ export default function Destinations({ slug, seo }) {
   return (
     <FrontLayout
       transparentNavbar
-      className='-mt-20 p-0 max-w-full 2xl:max-w-7xl'
+      className='-mt-20 max-w-full p-0 2xl:max-w-7xl'
       title={`${seo ? seo?.name + ' - MyVacation' : 'Destination Detail - MyVacation'}`}
       description={`${seo ? seo?.description : 'View Detail Destination - MyVacation'}`}
     >
       {data ? (
         data?.header_image_url && (
-          <div className='relative mt-4 h-72 sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px] mb-8 w-full mx-auto'>
+          <div className='relative mx-auto mb-8 mt-4 h-72 w-full sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px]'>
             <Image
               fill
               alt={data?.name}
@@ -86,27 +86,27 @@ export default function Destinations({ slug, seo }) {
           </div>
         )
       ) : (
-        <Shimmer className='mt-4 h-72 sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px] w-full mb-8 mx-auto' />
+        <Shimmer className='mx-auto mb-8 mt-4 h-72 w-full sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px]' />
       )}
 
-      <div className='max-w-7xl mx-auto p-4 pb-12'>
-        <div className='grid lg:grid-cols-6 gap-x-16 gap-y-8'>
+      <div className='mx-auto max-w-7xl p-4 pb-12'>
+        <div className='grid gap-x-16 gap-y-8 lg:grid-cols-6'>
           {/* MAIN CONTENT */}
           <article className='lg:col-span-4'>
             {data ? (
               <>
-                <h1 className='text-3xl font-bold mb-4'>{data?.name}</h1>
-                <Text className='leading-7 text-gray-700 dark:text-neutral-200 text-justify'>{data?.description}</Text>
+                <h1 className='mb-4 text-3xl font-bold'>{data?.name}</h1>
+                <Text className='text-justify leading-7 text-gray-700 dark:text-neutral-200'>{data?.description}</Text>
               </>
             ) : (
               <>
-                <Shimmer className='h-9 w-64 mb-6 rounded' />
-                <Shimmer className='p-3 w-full mb-2 rounded' />
-                <Shimmer className='p-3 max-w-xl mb-4 rounded' />
+                <Shimmer className='mb-6 h-9 w-64 rounded' />
+                <Shimmer className='mb-2 w-full rounded p-3' />
+                <Shimmer className='mb-4 max-w-xl rounded p-3' />
               </>
             )}
 
-            <table className='text-[15px] my-4'>
+            <table className='my-4 text-[15px]'>
               <tbody>
                 <tr>
                   <td className='pb-3 pr-4 font-medium'>Location</td>
@@ -187,7 +187,7 @@ export default function Destinations({ slug, seo }) {
 
             {data?.video_url && (
               <iframe
-                className='h-64 sm:h-72 lg:h-80 xl:h-96 my-8 w-full sm:w-5/6 md:w-4/6 rounded mx-auto'
+                className='mx-auto my-8 h-64 w-full rounded sm:h-72 sm:w-5/6 md:w-4/6 lg:h-80 xl:h-96'
                 src={`https://www.youtube.com/embed/${youTubeGetID(data?.video_url)}`}
                 title={data?.name}
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -197,8 +197,8 @@ export default function Destinations({ slug, seo }) {
 
             <div
               className={cn(
-                'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96 prose-p:text-justify',
-                'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
+                'ql-editor !prose !max-w-none !p-0 dark:!prose-invert prose-p:text-justify prose-video:!w-96',
+                'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-center',
                 'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
                 'prose-blockquote:!my-3',
               )}
@@ -207,9 +207,9 @@ export default function Destinations({ slug, seo }) {
           </article>
           {/* MAIN CONTENT */}
           {/* RIGHT CONTENT */}
-          <div className='lg:col-span-2 pt-2'>
-            <p className='dark:text-white text-xl font-semibold'>Popular Destinations</p>
-            <div className='space-y-4 mt-6'>
+          <div className='pt-2 lg:col-span-2'>
+            <p className='text-xl font-semibold dark:text-white'>Popular Destinations</p>
+            <div className='mt-6 space-y-4'>
               {fiveDestinationWithImage?.map((item: any, index: number) => (
                 <div key={index} className='relative'>
                   <DestinationListItem

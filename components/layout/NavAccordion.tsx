@@ -33,15 +33,15 @@ export default function NavAccordion({ children, title, routeName, className, ic
       <>
         <button
           className={twMerge(
-            'group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all',
+            'group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
             'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             'dark:text-neutral-300 dark:hover:text-sky-500',
             'hover:bg-neutral-100 dark:hover:bg-neutral-800',
             className,
           )}
         >
-          <div className='flex-grow text-left text-sm flex items-center gap-2'>
-            <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
+          <div className='flex flex-grow items-center gap-2 text-left text-sm'>
+            <div className='rounded-md border bg-neutral-100 p-0.5 dark:border-neutral-800 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
               {icon}
             </div>
             <span>{title}</span>
@@ -61,15 +61,15 @@ export default function NavAccordion({ children, title, routeName, className, ic
             <Disclosure.Button
               {...props}
               className={twMerge(
-                'group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all',
+                'group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
                 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
                 className,
               )}
             >
-              <div className='flex-grow text-left text-sm flex items-center gap-2'>
-                <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
+              <div className='flex flex-grow items-center gap-2 text-left text-sm'>
+                <div className='rounded-md border bg-neutral-100 p-0.5 dark:border-neutral-800 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
                   {icon}
                 </div>
                 <span>{title}</span>
@@ -88,7 +88,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
               leaveFrom='transform scale-100 opacity-100'
               leaveTo='transform scale-95 opacity-0'
             >
-              <Disclosure.Panel className='relative overflow-hidden py-0.5 px-2.5 transition-all'>
+              <Disclosure.Panel className='relative overflow-hidden px-2.5 py-0.5 transition-all'>
                 {children}
               </Disclosure.Panel>
             </Transition>

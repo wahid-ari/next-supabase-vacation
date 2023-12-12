@@ -224,7 +224,7 @@ export default function Destination() {
 
       {data ? (
         <form onSubmit={handleEdit}>
-          <div className='mb-4 gap-4 grid grid-cols-1 gap-x-8 md:grid-cols-2'>
+          <div className='mb-4 grid grid-cols-1 gap-4 gap-x-8 md:grid-cols-2'>
             <div className='space-y-4'>
               <div className='space-y-2'>
                 <Label htmlFor='name'>Name</Label>
@@ -309,7 +309,7 @@ export default function Destination() {
                         role='combobox'
                         aria-label='combobox'
                         aria-expanded={openCombobox}
-                        className='h-10 justify-between px-3 font-normal w-full'
+                        className='h-10 w-full justify-between px-3 font-normal'
                       >
                         {comboboxValue
                           ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
@@ -439,8 +439,8 @@ export default function Destination() {
                 </Text>
                 <div
                   className={cn(
-                    'ql-editor !p-0 !prose dark:!prose-invert !max-w-none prose-video:!w-96',
-                    'prose-img:mx-auto prose-img:rounded prose-img:object-center prose-img:h-64',
+                    'ql-editor !prose !max-w-none !p-0 dark:!prose-invert prose-video:!w-96',
+                    'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-center',
                     'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
                     'prose-blockquote:!my-3',
                   )}
@@ -460,27 +460,27 @@ export default function Destination() {
             <div>
               {[...Array(3).keys()].map((_, i) => (
                 <Shimmer key={i} className='mb-4 p-2'>
-                  <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 </Shimmer>
               ))}
 
               <Shimmer className='mb-4 p-2'>
-                <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 <div className='h-[106px] rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               </Shimmer>
             </div>
             <div>
               {[...Array(5).keys()].map((_, i) => (
                 <Shimmer key={i} className='mb-4 p-2'>
-                  <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 </Shimmer>
               ))}
             </div>
           </div>
           <Shimmer className='mb-4 p-2'>
-            <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='h-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
         </>

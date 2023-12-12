@@ -38,7 +38,7 @@ export default function Table({
         className,
       )}
     >
-      <div className='w-full overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
+      <div className='scrollbar-thumb-rounded w-full overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
         <table {...props} className='w-full table-auto whitespace-nowrap text-neutral-800 dark:text-neutral-100'>
           <thead>
             <tr className='whitespace-nowrap border-b bg-neutral-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>

@@ -173,7 +173,7 @@ export default function Island() {
         placeholder='Search'
         value={inputDebounceValue}
         onChange={(value) => setInputDebounceValue(value)}
-        className='mt-2 mb-4'
+        className='mb-4 mt-2'
       />
 
       {/* Create Dialog */}
@@ -184,8 +184,8 @@ export default function Island() {
             <DialogDescription>Create new island here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='name' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='name' className='leading-5 sm:text-right'>
                 Name
               </Label>
               <Input
@@ -198,8 +198,8 @@ export default function Island() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='image_url' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='image_url' className='leading-5 sm:text-right'>
                 Image URL
               </Label>
               <Input
@@ -232,8 +232,8 @@ export default function Island() {
             <DialogDescription>Make changes to island here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='name' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='name' className='leading-5 sm:text-right'>
                 Name
               </Label>
               <Input
@@ -246,8 +246,8 @@ export default function Island() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='image_url' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='image_url' className='leading-5 sm:text-right'>
                 Image URL
               </Label>
               <Input
@@ -360,11 +360,11 @@ export default function Island() {
                 <Shimmer className='p-3' />
               </TableSimple.td>
               <TableSimple.td>
-                <Shimmer className='p-3 w-8 mx-auto' />
+                <Shimmer className='mx-auto w-8 p-3' />
               </TableSimple.td>
               <TableSimple.td className='flex justify-end gap-2'>
-                <Shimmer className='p-3 w-8' />
-                <Shimmer className='p-3 w-8' />
+                <Shimmer className='w-8 p-3' />
+                <Shimmer className='w-8 p-3' />
               </TableSimple.td>
             </TableSimple.tr>
           ))}

@@ -19,7 +19,7 @@ export default function FrontTabs({ children, className, items, ...props }: Prop
           className,
         )}
       >
-        <div className='flex gap-x-6 overflow-x-auto px-1 py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 sm:gap-x-8'>
+        <div className='scrollbar-thumb-rounded flex gap-x-6 overflow-x-auto px-1 py-2 scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 sm:gap-x-8'>
           {items.map((item, index) => (
             <Tab
               key={index + 1}

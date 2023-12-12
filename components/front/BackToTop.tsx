@@ -29,7 +29,7 @@ export default function BackToTop({ className, ...props }: { className?: string;
       <div
         {...props}
         className={cn(
-          'fixed bottom-[18px] right-4 sm:right-auto sm:left-1/2 z-40 sm:-translate-x-1/2 sm:transform rounded-full',
+          'fixed bottom-[18px] right-4 z-40 rounded-full sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:transform',
           'bg-neutral-100 bg-opacity-20 backdrop-blur backdrop-filter dark:bg-opacity-40',
           'border dark:border-neutral-800 dark:bg-neutral-800',
         )}

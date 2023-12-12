@@ -54,7 +54,7 @@ export default function Provinces({ slug, seo }) {
       title={`${seo ? seo?.name + ' - MyVacation' : 'Province Detail - MyVacation'}`}
       description={`${seo ? seo?.description : 'View Detail Province - MyVacation'}`}
     >
-      <div className='flex gap-3 justify-between items-center mt-4'>
+      <div className='mt-4 flex items-center justify-between gap-3'>
         <Heading as='h1' variant='h3' className='font-medium'>
           {seo ? seo?.name : 'Province Detail'}
         </Heading>

@@ -73,7 +73,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className='focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 lg:hidden border p-0.5 rounded dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            className='rounded border p-0.5 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-700 dark:hover:bg-neutral-800 lg:hidden'
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
@@ -92,7 +92,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         <div
           className={twMerge(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 lg:flex-grow',
-            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
+            'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
           )}
         >
           <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-[18px] w-[18px]' />}>
@@ -188,7 +188,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           </NavLink.external>
         </div>
 
-        <hr className='mt-2 dark:border-neutral-800 mx-7 lg:mx-0' />
+        <hr className='mx-7 mt-2 dark:border-neutral-800 lg:mx-0' />
 
         <div className='px-4 py-1.5'>
           <button
@@ -200,7 +200,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
             )}
           >
-            <LogOutIcon className='h-[18px] w-[18px] mr-0.5' />
+            <LogOutIcon className='mr-0.5 h-[18px] w-[18px]' />
             Logout
           </button>
         </div>

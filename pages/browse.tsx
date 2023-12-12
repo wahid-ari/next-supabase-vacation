@@ -291,57 +291,57 @@ export default function Browse() {
       <div className='mt-2 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[700px]:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
         <Link
           href='/destinations'
-          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-neutral-700'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+            <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Destination
             </h2>
-            <MountainSnowIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+            <MountainSnowIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
           href='/categories'
-          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 dark:border-neutral-700'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+            <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Category
             </h2>
-            <LayoutListIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+            <LayoutListIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
           href='/islands'
-          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-neutral-700'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+            <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Island
             </h2>
-            <PalmtreeIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+            <PalmtreeIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
           href='/provinces'
-          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-orange-500 to-pink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:border-neutral-700'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+            <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Province
             </h2>
-            <MapPinIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+            <MapPinIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
           href='/videos'
-          className='dark:border-neutral-700 border-2 group h-20 rounded-lg bg-gradient-to-br from-violet-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-violet-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:border-neutral-700'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <h2 className='text-xl font-semibold transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200'>
+            <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Video
             </h2>
-            <YoutubeIcon className='h-10 w-10 transition-all duration-300 ease-in text-neutral-600 group-hover:text-white dark:text-neutral-200' />
+            <YoutubeIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
       </div>
@@ -353,7 +353,7 @@ export default function Browse() {
             <DialogTitle className='pr-6'>{videoPreview.title}</DialogTitle>
           </DialogHeader>
           <iframe
-            className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
+            className='h-64 w-full rounded sm:h-72 lg:h-80 xl:h-96'
             src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
             title={videoPreview.title}
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

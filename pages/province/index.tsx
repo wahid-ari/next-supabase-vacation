@@ -269,7 +269,7 @@ export default function Province() {
           setInputDebounceValue(value);
           tableInstance?.current?.setGlobalFilter(value);
         }}
-        className='mt-2 mb-4'
+        className='mb-4 mt-2'
       />
 
       {data ? (
@@ -278,23 +278,23 @@ export default function Province() {
         <TableSimple
           head={
             <>
-              <TableSimple.th className='flex gap-1 items-center'>
-                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              <TableSimple.th className='flex items-center gap-1'>
+                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='text-left sm:w-[40%] md:w-[38%]'>
-                <div className='flex gap-1 items-center'>
-                  Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Name <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] md:w-[28%]'>
-                <div className='flex gap-1 items-center'>
-                  Island <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Island <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] md:w-[27%]'>
-                <div className='flex gap-1 items-center'>
+                <div className='flex items-center gap-1'>
                   Destination
-                  <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th shrink>Action</TableSimple.th>
@@ -316,8 +316,8 @@ export default function Province() {
                 <Shimmer className='p-3' />
               </TableSimple.td>
               <TableSimple.td className='flex justify-end gap-2'>
-                <Shimmer className='p-3 w-8' />
-                <Shimmer className='p-3 w-8' />
+                <Shimmer className='w-8 p-3' />
+                <Shimmer className='w-8 p-3' />
               </TableSimple.td>
             </TableSimple.tr>
           ))}
@@ -332,8 +332,8 @@ export default function Province() {
             <DialogDescription>Create new province here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='name' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='name' className='leading-5 sm:text-right'>
                 Name
               </Label>
               <Input
@@ -346,8 +346,8 @@ export default function Province() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='image_url' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='image_url' className='leading-5 sm:text-right'>
                 Image URL
               </Label>
               <Input
@@ -360,8 +360,8 @@ export default function Province() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select_island' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='select_island' className='leading-5 sm:text-right'>
                 Island
               </Label>
               {island ? (
@@ -408,8 +408,8 @@ export default function Province() {
             <DialogDescription>Make changes to province here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='name' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='name' className='leading-5 sm:text-right'>
                 Name
               </Label>
               <Input
@@ -422,8 +422,8 @@ export default function Province() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='image_url' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='image_url' className='leading-5 sm:text-right'>
                 Image URL
               </Label>
               <Input
@@ -436,8 +436,8 @@ export default function Province() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select_island' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='select_island' className='leading-5 sm:text-right'>
                 Island
               </Label>
               {island ? (

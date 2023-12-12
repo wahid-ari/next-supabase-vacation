@@ -20,16 +20,16 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
         <Listbox.Button
           {...props}
           className={twMerge(
-            'h-10 relative my-2 w-full text-left border transition-all rounded-md cursor-pointer text-sm',
-            'border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800',
+            'relative my-2 h-10 w-full cursor-pointer rounded-md border text-left text-sm transition-all',
+            'border-neutral-300 hover:bg-neutral-100 dark:border-neutral-600 dark:hover:bg-neutral-800',
             'focus:ring-2 focus:ring-sky-500 focus-visible:outline-none',
           )}
         >
-          <span className={twMerge('block truncate pl-3', !value ? 'dark:text-neutral-500 text-neutral-500' : '')}>
+          <span className={twMerge('block truncate pl-3', !value ? 'text-neutral-500 dark:text-neutral-500' : '')}>
             {value ? value?.name : placeholder || 'Select'}
           </span>
           <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
-            <ChevronDownIcon className='w-5 h-5 text-neutral-500 dark:text-neutral-300' aria-hidden='true' />
+            <ChevronDownIcon className='h-5 w-5 text-neutral-500 dark:text-neutral-300' aria-hidden='true' />
           </span>
         </Listbox.Button>
         <Transition
@@ -42,8 +42,8 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
         >
           <Listbox.Options
             className={twMerge(
-              'z-10 absolute w-full py-1 overflow-auto rounded-md shadow-lg max-h-40 text-sm',
-              'bg-white dark:bg-neutral-800 focus-visible:outline-none',
+              'absolute z-10 max-h-40 w-full overflow-auto rounded-md py-1 text-sm shadow-lg',
+              'bg-white focus-visible:outline-none dark:bg-neutral-800',
             )}
           >
             {options.map((option: any, index: number) => (
@@ -51,7 +51,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
                 key={index}
                 className={({ active }) =>
                   twMerge(
-                    'relative cursor-pointer py-2 pr-4 pl-10 text-neutral-900 dark:text-white',
+                    'relative cursor-pointer py-2 pl-10 pr-4 text-neutral-900 dark:text-white',
                     active && 'bg-sky-500 text-white',
                   )
                 }

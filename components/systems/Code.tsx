@@ -46,14 +46,14 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
         >
           {copy ? (
             <div className='flex items-center'>
-              <ClipboardPasteIcon className='h-5 w-5 transition-all text-neutral-400' />
+              <ClipboardPasteIcon className='h-5 w-5 text-neutral-400 transition-all' />
               <span className='pl-1 text-xs text-neutral-400'>Copied !</span>
             </div>
           ) : (
             <ClipboardCopyIcon className='h-5 w-5 text-neutral-400 transition-all hover:text-neutral-200' />
           )}
         </button>
-        <pre className='line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800'>
+        <pre className='line-numbers scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800'>
           <code className={`language-${lang}`}>{code}</code>
         </pre>
       </div>

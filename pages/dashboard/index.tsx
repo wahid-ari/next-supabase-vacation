@@ -201,7 +201,7 @@ export default function Dashboard() {
       </div> */}
 
       <div className='mt-5 space-y-5'>
-        <div className='grid grid-cols-1 xl:grid-cols-2 gap-5'>
+        <div className='grid grid-cols-1 gap-5 xl:grid-cols-2'>
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
             <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
               <Text.medium>Total Destination by Category</Text.medium>
@@ -212,7 +212,7 @@ export default function Dashboard() {
                   <ResponsiveContainer width='99%' height={350}>
                     <PieChart data={statisticDestinationByCategory}>
                       <Pie
-                        className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
+                        className='mb-4 focus:outline-1 focus:outline-sky-600 dark:focus:!outline-1 dark:focus:!outline-sky-500'
                         data={statisticDestinationByCategory}
                         dataKey='total'
                         type='monotone'
@@ -239,17 +239,17 @@ export default function Dashboard() {
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
-                  <div className='h-40 flex items-center justify-center'>
+                  <div className='flex h-40 items-center justify-center'>
                     <Text.medium>Total Destination by Category Data Not Found</Text.medium>
                   </div>
                 )}
               </div>
             ) : (
-              <div className='py-3 w-80 m-auto'>
-                <Shimmer className='w-64 h-64 m-auto rounded-full'>
+              <div className='m-auto w-80 py-3'>
+                <Shimmer className='m-auto h-64 w-64 rounded-full'>
                   <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 </Shimmer>
-                <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+                <div className='mx-auto mb-3 mt-3 flex w-64 flex-wrap justify-center gap-x-4 gap-y-2'>
                   <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -274,7 +274,7 @@ export default function Dashboard() {
                   <ResponsiveContainer width='99%' height={350}>
                     <PieChart data={statisticDestinationByProvince}>
                       <Pie
-                        className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
+                        className='mb-4 focus:outline-1 focus:outline-sky-600 dark:focus:!outline-1 dark:focus:!outline-sky-500'
                         data={statisticDestinationByProvince}
                         dataKey='total'
                         type='monotone'
@@ -304,17 +304,17 @@ export default function Dashboard() {
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
-                  <div className='h-40 flex items-center justify-center'>
+                  <div className='flex h-40 items-center justify-center'>
                     <Text.medium>Total Destination by Province Data Not Found</Text.medium>
                   </div>
                 )}
               </div>
             ) : (
-              <div className='py-3 w-80 m-auto'>
-                <Shimmer className='w-64 h-64 m-auto rounded-full'>
+              <div className='m-auto w-80 py-3'>
+                <Shimmer className='m-auto h-64 w-64 rounded-full'>
                   <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 </Shimmer>
-                <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+                <div className='mx-auto mb-3 mt-3 flex w-64 flex-wrap justify-center gap-x-4 gap-y-2'>
                   <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -380,7 +380,7 @@ export default function Dashboard() {
                   </BarChart>
                 </ResponsiveContainer>
               ) : (
-                <div className='h-40 flex items-center justify-center'>
+                <div className='flex h-40 items-center justify-center'>
                   <Text.medium>Total Destination by Island Data Not Found</Text.medium>
                 </div>
               )

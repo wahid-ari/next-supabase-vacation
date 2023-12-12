@@ -168,7 +168,7 @@ export default function Custom() {
       </Wrapper>
 
       <Wrapper id='dialog-swiper' name='DialogSwiper' noClassName noProps noChildren>
-        <div className='gap-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
           {imagesData.map((image, index) => (
             <button onClick={() => openImage(image.id)} key={index} className='relative h-64'>
               <Image alt='Image' src={image.public_id} fill className='object-cover' />
@@ -192,22 +192,22 @@ export default function Custom() {
               }}
               initialSlide={imageOpened.id}
               loop={true}
-              className='py-4 w-full'
+              className='w-full py-4'
             >
               {imagesData.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-3'>
-                    <div className='relative h-full min-h-[300px] sm:min-h-[450px] w-full'>
+                  <div className='grid grid-cols-1 gap-x-3 sm:grid-cols-2'>
+                    <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
                       <Image
                         alt='Image'
                         src={image.public_id}
                         fill
-                        className='object-cover rounded-t-lg sm:rounded-t-none sm:rounded-l-lg sm:rounded-tl-lg'
+                        className='rounded-t-lg object-cover sm:rounded-l-lg sm:rounded-t-none sm:rounded-tl-lg'
                       />
                     </div>
-                    <div className='p-4 sm:pt-4 sm:pr-8'>
+                    <div className='p-4 sm:pr-8 sm:pt-4'>
                       <ScrollArea className='h-40 sm:h-[450px]'>
-                        <h3 className='font-semibold text-xl mb-4'>Esse eu tempor nisi aliquip excepteur.</h3>
+                        <h3 className='mb-4 text-xl font-semibold'>Esse eu tempor nisi aliquip excepteur.</h3>
                         <p>
                           Esse eu tempor nisi aliquip excepteur. Enim irure cillum nostrud aliqua voluptate consequat
                           labore ea ex laboris occaecat deserunt. Amet culpa nisi adipisicing id ad quis consequat. Sint
@@ -224,8 +224,8 @@ export default function Custom() {
             <button
               ref={prevRef}
               className={cn(
-                'absolute z-[70] left-4 lg:-left-16 top-[30%] sm:top-[45%] rounded-full p-2 shadow-lg transition-all cursor-pointer',
-                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
@@ -234,8 +234,8 @@ export default function Custom() {
             <button
               ref={nextRef}
               className={cn(
-                'absolute z-[70] right-4 lg:-right-16 top-[30%] sm:top-[45%] rounded-full p-2 shadow-lg transition-all cursor-pointer',
-                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
@@ -248,7 +248,7 @@ export default function Custom() {
       <Wrapper id='swiper-dialog' name='SwiperDialog' noClassName noProps noChildren>
         <Text>When clicked, show dialog</Text>
         {videoData ? (
-          <div className='mt-4 relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
+          <div className='relative mx-auto mt-4 w-full lg:max-w-2xl xl:max-w-4xl'>
             <Swiper
               modules={[Navigation]}
               navigation={{
@@ -265,7 +265,7 @@ export default function Custom() {
               slidesPerView={3}
               centeredSlides={true}
               loop={true}
-              className='py-4 w-full'
+              className='w-full py-4'
               breakpoints={{
                 320: {
                   slidesPerView: 1,
@@ -280,14 +280,14 @@ export default function Custom() {
                   {({ isActive }) => (
                     <div
                       className={cn(
-                        'relative h-64 lg:h-72 xl:h-80 rounded-md group overflow-hidden',
+                        'group relative h-64 overflow-hidden rounded-md lg:h-72 xl:h-80',
                         isActive && 'h-[280px] lg:h-[320px] xl:h-[370px]',
                         !isActive && 'mt-4 lg:mt-6',
                       )}
                     >
                       <Image
                         className={cn(
-                          'w-full object-cover rounded-md transition-all duration-500',
+                          'w-full rounded-md object-cover transition-all duration-500',
                           isActive && 'group-hover:scale-105',
                         )}
                         src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
@@ -301,14 +301,14 @@ export default function Custom() {
                         }
                         disabled={!isActive}
                         className={cn(
-                          'group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none',
+                          'group absolute inset-0 cursor-pointer rounded-md focus-visible:outline-none',
                           'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
-                          !isActive && 'bg-black/50 cursor-default',
+                          !isActive && 'cursor-default bg-black/50',
                         )}
                       >
-                        <div className='flex justify-center items-center h-full'>
+                        <div className='flex h-full items-center justify-center'>
                           <svg
-                            className='h-14 w-14 sm:h-[68px] sm:w-[68px] rounded-md group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-red-600'
+                            className='h-14 w-14 rounded-md group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-red-600 sm:h-[68px] sm:w-[68px]'
                             height='100%'
                             version='1.1'
                             viewBox='0 0 68 48'
@@ -321,8 +321,8 @@ export default function Custom() {
                             <path d='M 45,24 27,14 27,34' fill='#fff'></path>
                           </svg>
                         </div>
-                        <div className='absolute bottom-0 inset-x-0'>
-                          <p className='font-medium text-lg text-center line-clamp-2 text-white px-4 mb-4'>
+                        <div className='absolute inset-x-0 bottom-0'>
+                          <p className='mb-4 line-clamp-2 px-4 text-center text-lg font-medium text-white'>
                             {video.title}
                           </p>
                         </div>
@@ -335,29 +335,29 @@ export default function Custom() {
             <button
               ref={prevRefVideo}
               className={cn(
-                'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'absolute left-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
               ref={nextRefVideo}
               className={cn(
-                'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'absolute right-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
           </div>
         ) : (
-          <div className='flex gap-6 lg:max-w-2xl xl:max-w-4xl mx-auto'>
-            <Shimmer className='rounded-md h-64 lg:h-72 xl:h-80 hidden sm:block sm:w-[11%] my-auto' />
-            <Shimmer className='rounded-md h-[280px] lg:h-[320px] xl:h-[370px] w-full' />
-            <Shimmer className='rounded-md h-64 lg:h-72 xl:h-80 hidden sm:block sm:w-[11%] my-auto' />
+          <div className='mx-auto flex gap-6 lg:max-w-2xl xl:max-w-4xl'>
+            <Shimmer className='my-auto hidden h-64 rounded-md sm:block sm:w-[11%] lg:h-72 xl:h-80' />
+            <Shimmer className='h-[280px] w-full rounded-md lg:h-[320px] xl:h-[370px]' />
+            <Shimmer className='my-auto hidden h-64 rounded-md sm:block sm:w-[11%] lg:h-72 xl:h-80' />
           </div>
         )}
 
@@ -368,7 +368,7 @@ export default function Custom() {
             <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
           </DialogHeader> */}
             <iframe
-              className='h-64 sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] w-full rounded'
+              className='h-64 w-full rounded sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]'
               src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
               title={videoPreview.title}
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -380,7 +380,7 @@ export default function Custom() {
 
       <Wrapper id='swiper-hover-video' name='SwiperHoverVideo' noClassName noProps noChildren>
         <Text>When hover, show iframe</Text>
-        <div className='mt-4 relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
+        <div className='relative mx-auto mt-4 w-full lg:max-w-2xl xl:max-w-4xl'>
           <Swiper
             modules={[Navigation]}
             navigation={{
@@ -397,7 +397,7 @@ export default function Custom() {
             slidesPerView={3}
             centeredSlides={true}
             loop={true}
-            className='py-4 w-full'
+            className='w-full py-4'
             breakpoints={{
               320: {
                 slidesPerView: 1,
@@ -412,13 +412,13 @@ export default function Custom() {
                 {({ isActive }) => (
                   <div
                     className={cn(
-                      'group relative h-64 lg:h-72 xl:h-80 rounded-md group overflow-hidden',
+                      'group group relative h-64 overflow-hidden rounded-md lg:h-72 xl:h-80',
                       isActive && 'h-[280px] lg:h-[320px] xl:h-[370px]',
                       !isActive && 'mt-4 lg:mt-6',
                     )}
                   >
                     <Image
-                      className='w-full object-cover rounded-md'
+                      className='w-full rounded-md object-cover'
                       src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
                       alt={video.title}
                       fill
@@ -426,12 +426,12 @@ export default function Custom() {
                     />
                     <div
                       className={cn(
-                        'z-[0] absolute inset-0 rounded-md bg-gradient-to-b from-black/50 via-transparent to-transparent transition-all duration-500',
-                        !isActive && 'bg-black/50 cursor-default',
-                        isActive && 'group-hover:z-[-1] cursor-pointer',
+                        'absolute inset-0 z-[0] rounded-md bg-gradient-to-b from-black/50 via-transparent to-transparent transition-all duration-500',
+                        !isActive && 'cursor-default bg-black/50',
+                        isActive && 'cursor-pointer group-hover:z-[-1]',
                       )}
                     >
-                      <div className='flex justify-center items-center h-full'>
+                      <div className='flex h-full items-center justify-center'>
                         <svg
                           className='h-14 w-14 sm:h-[68px] sm:w-[68px]'
                           height='100%'
@@ -446,13 +446,13 @@ export default function Custom() {
                           <path d='M 45,24 27,14 27,34' fill='#fff'></path>
                         </svg>
                       </div>
-                      <div className='absolute top-0 inset-x-0'>
-                        <p className='font-medium text-[17px] line-clamp-1 text-white px-6 mt-6'>{video.title}</p>
+                      <div className='absolute inset-x-0 top-0'>
+                        <p className='mt-6 line-clamp-1 px-6 text-[17px] font-medium text-white'>{video.title}</p>
                       </div>
                     </div>
                     <iframe
                       className={cn(
-                        'z-[-1] absolute inset-0 w-full h-full rounded transition-all duration-500',
+                        'absolute inset-0 z-[-1] h-full w-full rounded transition-all duration-500',
                         isActive && 'group-hover:z-[1]',
                       )}
                       src={`https://www.youtube.com/embed/${youTubeGetID(video.video_url)}?autoplay=0`}
@@ -468,29 +468,29 @@ export default function Custom() {
           <button
             ref={prevRefVideoHover}
             className={cn(
-              'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-              'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+              'absolute left-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+              'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
             ref={nextRefVideoHover}
             className={cn(
-              'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-              'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+              'absolute right-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+              'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
         </div>
       </Wrapper>
 
       <Wrapper id='swiper-active-video' name='SwiperActiveVideo' noClassName noProps noChildren>
         <Text>When active, show iframe</Text>
-        <div className='mt-4 relative w-full lg:max-w-2xl xl:max-w-4xl mx-auto'>
+        <div className='relative mx-auto mt-4 w-full lg:max-w-2xl xl:max-w-4xl'>
           <Swiper
             modules={[Navigation]}
             navigation={{
@@ -507,7 +507,7 @@ export default function Custom() {
             slidesPerView={3}
             centeredSlides={true}
             loop={true}
-            className='py-4 w-full'
+            className='w-full py-4'
             breakpoints={{
               320: {
                 slidesPerView: 1,
@@ -522,13 +522,13 @@ export default function Custom() {
                 {({ isActive }) => (
                   <div
                     className={cn(
-                      'relative h-64 lg:h-72 xl:h-80 rounded-md group overflow-hidden',
+                      'group relative h-64 overflow-hidden rounded-md lg:h-72 xl:h-80',
                       isActive && 'h-[280px] lg:h-[320px] xl:h-[370px]',
                       !isActive && 'mt-4 lg:mt-6',
                     )}
                   >
                     <Image
-                      className='w-full object-cover rounded-md transition-all duration-300'
+                      className='w-full rounded-md object-cover transition-all duration-300'
                       src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
                       alt={video.title}
                       fill
@@ -536,14 +536,14 @@ export default function Custom() {
                     />
                     <div
                       className={cn(
-                        'group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none',
+                        'group absolute inset-0 cursor-pointer rounded-md focus-visible:outline-none',
                         !isActive && 'bg-black/50',
                       )}
                     >
-                      <div className='flex justify-center items-center h-full'>
+                      <div className='flex h-full items-center justify-center'>
                         <div
                           className={cn(
-                            'bg-neutral-800/80 rounded-md p-2 sm:p-3 text-white group-hover:bg-red-600 transition-all duration-300',
+                            'rounded-md bg-neutral-800/80 p-2 text-white transition-all duration-300 group-hover:bg-red-600 sm:p-3',
                           )}
                         >
                           <PlayIcon className='h-5 w-5 sm:h-6 sm:w-6' />
@@ -551,7 +551,7 @@ export default function Custom() {
                       </div>
                     </div>
                     <iframe
-                      className={cn('absolute inset-0 w-full h-full rounded', isActive ? 'z-[0]' : '-z-[1]')}
+                      className={cn('absolute inset-0 h-full w-full rounded', isActive ? 'z-[0]' : '-z-[1]')}
                       src={`https://www.youtube.com/embed/${youTubeGetID(video.video_url)}?autoplay=0`}
                       title={video.title}
                       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -565,22 +565,22 @@ export default function Custom() {
           <button
             ref={prevRefVideoActive}
             className={cn(
-              'absolute left-4 lg:left-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-              'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+              'absolute left-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+              'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
             ref={nextRefVideoActive}
             className={cn(
-              'absolute right-4 lg:right-16 z-10 top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-              'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+              'absolute right-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+              'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
         </div>
       </Wrapper>

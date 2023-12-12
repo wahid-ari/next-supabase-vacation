@@ -291,7 +291,7 @@ export default function Search() {
             <DialogTitle className='pr-6'>{videoPreview.title}</DialogTitle>
           </DialogHeader>
           <iframe
-            className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
+            className='h-64 w-full rounded sm:h-72 lg:h-80 xl:h-96'
             src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
             title={videoPreview.title}
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

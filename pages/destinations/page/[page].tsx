@@ -57,14 +57,14 @@ export default function Destinations(params: any) {
         description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
       >
         <div className='flex h-[36rem] items-center justify-center text-base'>
-          <div className='text-center space-y-3'>
+          <div className='space-y-3 text-center'>
             <p>Data not found</p>
             <p>
               Back to{' '}
               <Link
                 href='/destinations'
                 className={cn(
-                  'hover-underline-animation font-medium rounded text-[15px] hover:text-neutral-900 px-0.5',
+                  'hover-underline-animation rounded px-0.5 text-[15px] font-medium hover:text-neutral-900',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100',
                 )}
               >
@@ -93,7 +93,7 @@ export default function Destinations(params: any) {
               onChange={(e) => setQuery(e.target.value)}
               required
             />
-            <Button type='submit' value='Submit' className='text-[15px] h-10 px-6'>
+            <Button type='submit' value='Submit' className='h-10 px-6 text-[15px]'>
               Search
             </Button>
           </div>
@@ -138,7 +138,7 @@ export default function Destinations(params: any) {
       </div>
       {/* if user not searching, show pagination */}
       {data && data?.data?.length > 0 && !search && (
-        <div className='text-center mt-4'>
+        <div className='mt-4 text-center'>
           <Pagination
             currentPage={page - 1}
             setCurrentPage={changePage}

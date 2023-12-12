@@ -54,14 +54,14 @@ export default function Destinations() {
         description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
       >
         <div className='flex h-[36rem] items-center justify-center text-base'>
-          <div className='text-center space-y-3'>
+          <div className='space-y-3 text-center'>
             <p>Data not found</p>
             <p>
               Back to{' '}
               <Link
                 href='/destinations/client'
                 className={cn(
-                  'hover-underline-animation font-medium rounded text-[15px] hover:text-neutral-900 px-0.5',
+                  'hover-underline-animation rounded px-0.5 text-[15px] font-medium hover:text-neutral-900',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100',
                 )}
               >
@@ -79,7 +79,7 @@ export default function Destinations() {
       title='Destination - MyVacation'
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
-      <div className='pt-8 pb-4'>
+      <div className='pb-4 pt-8'>
         <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
           {data
             ? data?.data?.map((item: any, index: number) => (
@@ -101,7 +101,7 @@ export default function Destinations() {
               ))}
         </div>
         {data && data?.data?.length > 0 && (
-          <div className='text-center mt-8'>
+          <div className='mt-8 text-center'>
             <Pagination
               currentPage={page}
               setCurrentPage={changePage}

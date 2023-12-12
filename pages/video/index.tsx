@@ -199,7 +199,7 @@ export default function Video() {
                 <button
                   onClick={() => handleShowVideoDialog(original.title, original.video_url)}
                   className={twMerge(
-                    'text-left break-all text-ellipsis overflow-hidden w-40 lg:w-52 xl:w-full hover:cursor-pointer rounded-md font-medium',
+                    'w-40 overflow-hidden text-ellipsis break-all rounded-md text-left font-medium hover:cursor-pointer lg:w-52 xl:w-full',
                     'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}
                 >
@@ -338,7 +338,7 @@ export default function Video() {
           setInputDebounceValue(value);
           tableInstance?.current?.setGlobalFilter(value);
         }}
-        className='mt-2 mb-4'
+        className='mb-4 mt-2'
       />
 
       {data ? (
@@ -347,23 +347,23 @@ export default function Video() {
         <TableSimple
           head={
             <>
-              <TableSimple.th className='flex gap-1 items-center'>
-                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              <TableSimple.th className='flex items-center gap-1'>
+                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='text-left sm:w-[40%] lg:w-[50%] xl:w-[65%]'>
-                <div className='flex gap-1 items-center'>
-                  Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[19%]'>
-                <div className='flex gap-1 items-center'>
-                  Province <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Province <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[15%]'>
-                <div className='flex gap-1 items-center'>
+                <div className='flex items-center gap-1'>
                   Island
-                  <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th shrink>Action</TableSimple.th>
@@ -385,9 +385,9 @@ export default function Video() {
                 <Shimmer className='p-3' />
               </TableSimple.td>
               <TableSimple.td className='flex justify-end gap-2'>
-                <Shimmer className='p-3 w-8' />
-                <Shimmer className='p-3 w-8' />
-                <Shimmer className='p-3 w-8' />
+                <Shimmer className='w-8 p-3' />
+                <Shimmer className='w-8 p-3' />
+                <Shimmer className='w-8 p-3' />
               </TableSimple.td>
             </TableSimple.tr>
           ))}
@@ -402,8 +402,8 @@ export default function Video() {
             <DialogDescription>Create new video here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='title' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='title' className='leading-5 sm:text-right'>
                 Title
               </Label>
               <Input
@@ -416,8 +416,8 @@ export default function Video() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='video_url' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='video_url' className='leading-5 sm:text-right'>
                 Video URL
               </Label>
               <Input
@@ -430,8 +430,8 @@ export default function Video() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select_province' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='select_province' className='leading-5 sm:text-right'>
                 Province
               </Label>
               {province ? (
@@ -442,7 +442,7 @@ export default function Video() {
                       role='combobox'
                       aria-label='combobox'
                       aria-expanded={openCombobox}
-                      className='sm:col-span-3 h-10 justify-between px-3 font-normal'
+                      className='h-10 justify-between px-3 font-normal sm:col-span-3'
                     >
                       {comboboxValue
                         ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
@@ -515,8 +515,8 @@ export default function Video() {
                 <Shimmer className='h-10 sm:col-span-3' />
               )}
             </div> */}
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select_island' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='select_island' className='leading-5 sm:text-right'>
                 Island
               </Label>
               {island ? (
@@ -563,8 +563,8 @@ export default function Video() {
             <DialogDescription>Make changes to video here. Click save when you done.</DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='title' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='title' className='leading-5 sm:text-right'>
                 Title
               </Label>
               <Input
@@ -577,8 +577,8 @@ export default function Video() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='video_url' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='video_url' className='leading-5 sm:text-right'>
                 Video URL
               </Label>
               <Input
@@ -591,8 +591,8 @@ export default function Video() {
                 className='sm:col-span-3'
               />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select_province' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='select_province' className='leading-5 sm:text-right'>
                 Province
               </Label>
               {province ? (
@@ -603,7 +603,7 @@ export default function Video() {
                       role='combobox'
                       aria-label='combobox'
                       aria-expanded={openCombobox}
-                      className='sm:col-span-3 h-10 justify-between px-3 font-normal'
+                      className='h-10 justify-between px-3 font-normal sm:col-span-3'
                     >
                       {comboboxValue
                         ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
@@ -676,8 +676,8 @@ export default function Video() {
                 <Shimmer className='h-10 sm:col-span-3' />
               )}
             </div> */}
-            <div className='grid grid-cols-1 sm:grid-cols-4 items-center gap-2 sm:gap-4'>
-              <Label htmlFor='select_island' className='sm:text-right leading-5'>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='select_island' className='leading-5 sm:text-right'>
                 Island
               </Label>
               {island ? (
@@ -745,7 +745,7 @@ export default function Video() {
           </DialogHeader>
           <div className='py-4'>
             <iframe
-              className='h-64 sm:h-72 lg:h-80 xl:h-96 w-full rounded'
+              className='h-64 w-full rounded sm:h-72 lg:h-80 xl:h-96'
               src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
               title={videoPreview.title}
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

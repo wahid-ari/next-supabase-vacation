@@ -886,7 +886,7 @@ export default function Ui() {
             onClick={() => setOpenCommand((openCommand) => !openCommand)}
             size='sm'
             variant='outline'
-            className='flex gap-2 px-1.5 mb-4'
+            className='mb-4 flex gap-2 px-1.5'
           >
             Command Menu
             <div className='flex items-center gap-0.5'>

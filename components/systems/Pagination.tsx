@@ -44,7 +44,7 @@ export default function Pagination({
       totalPages={totalPages}
       edgePageCount={totalPages > 6 ? edgePageCount : 2}
       middlePagesSiblingCount={totalPages > 6 ? middlePagesSiblingCount : 2}
-      className={cn('inline-flex flex-wrap gap-1 select-none items-center text-sm', className)}
+      className={cn('inline-flex select-none flex-wrap items-center gap-1 text-sm', className)}
       truncableText='..'
       truncableClassName='text-center'
     >

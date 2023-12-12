@@ -40,24 +40,24 @@ export default function FrontThemeChanger({
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
       className={twMerge(
         'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
-        'hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-sky-500',
+        'hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:hover:bg-neutral-800',
         'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
         'text-neutral-700 dark:text-neutral-200',
         variant === 'icon' && 'p-1',
-        variant === 'labelled' && 'py-1 px-2',
+        variant === 'labelled' && 'px-2 py-1',
         className,
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className='relative h-5 w-5'>
         <span
-          className='flex items-center justify-center absolute inset-0 rotate-90 transform transition duration-500 motion-reduce:duration-0 dark:rotate-0'
+          className='absolute inset-0 flex rotate-90 transform items-center justify-center transition duration-500 motion-reduce:duration-0 dark:rotate-0'
           style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon className='h-[19px] w-[19px]' />
         </span>
         <span
-          className='flex items-center justify-center absolute inset-0 rotate-0 transform transition duration-500 motion-reduce:duration-0 dark:-rotate-90'
+          className='absolute inset-0 flex rotate-0 transform items-center justify-center transition duration-500 motion-reduce:duration-0 dark:-rotate-90'
           style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon className='h-[19px] w-[19px]' />

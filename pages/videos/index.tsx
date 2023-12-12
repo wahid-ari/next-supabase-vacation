@@ -77,7 +77,7 @@ export default function Videos() {
               slidesPerView={3}
               centeredSlides={true}
               loop={true}
-              className='py-4 w-full'
+              className='w-full py-4'
               breakpoints={{
                 320: {
                   slidesPerView: 1,
@@ -92,14 +92,14 @@ export default function Videos() {
                   {({ isActive }) => (
                     <div
                       className={cn(
-                        'relative h-64 sm:h-72 lg:h-80 xl:h-96 rounded-md group overflow-hidden',
+                        'group relative h-64 overflow-hidden rounded-md sm:h-72 lg:h-80 xl:h-96',
                         isActive && 'sm:h-[350px] lg:h-[400px] xl:h-[450px]',
                         !isActive && 'sm:mt-8',
                       )}
                     >
                       <Image
                         className={cn(
-                          'w-full object-cover rounded-md transition-all duration-500 scale-110',
+                          'w-full scale-110 rounded-md object-cover transition-all duration-500',
                           isActive && 'group-hover:scale-125',
                         )}
                         src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
@@ -113,14 +113,14 @@ export default function Videos() {
                         }
                         disabled={!isActive}
                         className={cn(
-                          'group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none',
+                          'group absolute inset-0 cursor-pointer rounded-md focus-visible:outline-none',
                           'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
-                          !isActive && 'bg-black/50 cursor-default',
+                          !isActive && 'cursor-default bg-black/50',
                         )}
                       >
-                        <div className='flex justify-center items-center h-full'>
+                        <div className='flex h-full items-center justify-center'>
                           <svg
-                            className='h-12 w-12 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px] group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 rounded'
+                            className='h-12 w-12 rounded group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px]'
                             height='100%'
                             version='1.1'
                             viewBox='0 0 68 48'
@@ -133,8 +133,8 @@ export default function Videos() {
                             <path d='M 45,24 27,14 27,34' fill='#fff'></path>
                           </svg>
                         </div>
-                        <div className='absolute bottom-0 inset-x-0'>
-                          <p className='font-medium text-lg text-center line-clamp-2 text-white px-4 mb-4'>
+                        <div className='absolute inset-x-0 bottom-0'>
+                          <p className='mb-4 line-clamp-2 px-4 text-center text-lg font-medium text-white'>
                             {video.title}
                           </p>
                         </div>
@@ -147,34 +147,34 @@ export default function Videos() {
             <button
               ref={prevRef}
               className={cn(
-                'absolute left-4 lg:left-16 z-[1] top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'absolute left-4 top-[42%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
               ref={nextRef}
               className={cn(
-                'absolute right-4 lg:right-16 z-[1] top-[42%] sm:top-[45%] rounded-full p-2 lg:p-3 shadow-lg transition-all cursor-pointer',
-                'border dark:border-neutral-800 bg-neutral-100 hover:bg-neutral-200 dark:bg-black/60 dark:hover:bg-black/90',
+                'absolute right-4 top-[42%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
           </div>
         ) : (
           <div className='flex gap-6'>
-            <Shimmer className='rounded-md h-64 sm:h-72 lg:h-80 xl:h-96 hidden sm:block sm:w-[12%] my-auto' />
-            <Shimmer className='rounded-md h-64 sm:h-[350px] lg:h-[400px] xl:h-[450px] w-full' />
-            <Shimmer className='rounded-md h-64 sm:h-72 lg:h-80 xl:h-96 hidden sm:block sm:w-[12%] my-auto' />
+            <Shimmer className='my-auto hidden h-64 rounded-md sm:block sm:h-72 sm:w-[12%] lg:h-80 xl:h-96' />
+            <Shimmer className='h-64 w-full rounded-md sm:h-[350px] lg:h-[400px] xl:h-[450px]' />
+            <Shimmer className='my-auto hidden h-64 rounded-md sm:block sm:h-72 sm:w-[12%] lg:h-80 xl:h-96' />
           </div>
         )}
       </div>
 
-      <div className='flex gap-3 justify-between items-center mt-8'>
+      <div className='mt-8 flex items-center justify-between gap-3'>
         <Heading as='h1' variant='h3' className='font-medium'>
           Video
         </Heading>
@@ -229,7 +229,7 @@ export default function Videos() {
           </DialogHeader>
           {/* <YouTubeEmbed videoid={youtube_url} /> */}
           <iframe
-            className='h-64 sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] w-full rounded'
+            className='h-64 w-full rounded sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]'
             src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
             title={videoPreview.title}
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

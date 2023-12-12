@@ -34,7 +34,7 @@ export default function Akun({ className, ...props }: Props) {
             <Menu.Button
               {...props}
               className={twMerge(
-                'inline-flex w-full items-center font-medium justify-center rounded transition-all',
+                'inline-flex w-full items-center justify-center rounded font-medium transition-all',
                 'text-neutral-600 hover:text-neutral-900',
                 'dark:text-neutral-300 dark:hover:text-neutral-100',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -55,7 +55,7 @@ export default function Akun({ className, ...props }: Props) {
               leaveFrom='transform opacity-100 scale-100'
               leaveTo='transform opacity-0 scale-95'
             >
-              <Menu.Items className='absolute right-0 lg:right-1 z-50 mt-2 w-32 origin-top-right rounded-md bg-white shadow-md focus:outline-none dark:bg-neutral-900 border dark:border-neutral-800'>
+              <Menu.Items className='absolute right-0 z-50 mt-2 w-32 origin-top-right rounded-md border bg-white shadow-md focus:outline-none dark:border-neutral-800 dark:bg-neutral-900 lg:right-1'>
                 <div className='space-y-1 p-1'>
                   <Menu.Item>
                     {({ active }) => (
