@@ -12,6 +12,10 @@ import { cn, youTubeGetCoverImage, youTubeGetID } from '@/libs/utils';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
+import DestinationCardItem from '@/components/card/DestinationCardItem';
+import DestinationListItem from '@/components/card/DestinationListItem';
+import ImageBanner from '@/components/card/ImageBanner';
+import VideoCardItem from '@/components/card/VideoCardItem';
 import Layout from '@/components/layout/Layout';
 import Pagination from '@/components/systems/Pagination';
 import Shimmer from '@/components/systems/Shimmer';
@@ -46,19 +50,19 @@ const imagesData = [
   {
     id: 0,
     format: 'avif',
-    href: 'https://unsplash.com/photos/X5REiD-cIlw',
+    href: 'https://unsplash.com/photos/X5REiD-cIlw?q=80&w=500',
     public_id: 'https://images.unsplash.com/photo-1656268164012-119304af0c69?auto=format&fit=crop&w=500',
   },
   {
     id: 1,
     format: 'avif',
-    href: 'https://unsplash.com/photos/z6BYp6it5Rg',
+    href: 'https://unsplash.com/photos/z6BYp6it5Rg?q=80&w=500',
     public_id: 'https://images.unsplash.com/photo-1655853459092-a7bae19f9806?auto=format&fit=crop&w=500',
   },
   {
     id: 2,
     format: 'avif',
-    href: 'https://unsplash.com/photos/t9MP5ZyTxlI',
+    href: 'https://unsplash.com/photos/t9MP5ZyTxlI?q=80&w=500',
     public_id: 'https://images.unsplash.com/photo-1506368670575-2ecb8dd6d86e?auto=format&fit=crop&w=500',
   },
 ];
@@ -120,7 +124,131 @@ export default function Custom() {
               SwiperActiveVideo
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#image-banner'>
+              ImageBanner
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#destination-card-item'>
+              DestinationCardItem
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#destination-list-item'>
+              DestinationListItem
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#video-card-item'>
+              VideoCardItem
+            </Link>
+          </span>
         </div>
+      </Wrapper>
+
+      <Wrapper id='video-card-item' name='VideoCardItem' props={['title', 'url', 'onPlay']} noChildren>
+        <div className='grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3'>
+          {videoData.slice(0, 3).map((video, index) => (
+            <div key={index} className='relative'>
+              <VideoCardItem
+                className='scale-150'
+                title={video?.title}
+                url={video?.video_url}
+                onPlay={() => setVideoPreview({ open: true, title: video?.title, video_url: video?.video_url })}
+              />
+            </div>
+          ))}
+        </div>
+      </Wrapper>
+
+      <Wrapper
+        id='destination-list-item'
+        name='DestinationListItem'
+        props={['href', 'name', 'image_url', 'location']}
+        noChildren
+      >
+        <div className='space-y-4'>
+          <div className='relative'>
+            <DestinationListItem
+              href={`/design/custom/#destination-list-item`}
+              image_url='https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=500'
+              name='Destination List Item'
+              location='Location'
+            />
+          </div>
+          <div className='relative'>
+            <DestinationListItem
+              href={`/design/custom/#destination-list-item`}
+              image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=500'
+              name='Destination List Item'
+              location='Location'
+            />
+          </div>
+          <div className='relative'>
+            <DestinationListItem
+              href={`/design/custom/#destination-list-item`}
+              image_url='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500'
+              name='Destination List Item'
+              location='Location'
+            />
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='destination-card-item' name='DestinationCardItem' props={['href', 'name', 'image_url']} noChildren>
+        <div className='grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3'>
+          <div className='relative'>
+            <DestinationCardItem
+              href={`/design/custom/#destination-card-item`}
+              image_url='https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=500'
+              name='Destination Card Item'
+            />
+          </div>
+          <div className='relative'>
+            <DestinationCardItem
+              href={`/design/custom/#destination-card-item`}
+              image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=500'
+              name='Destination Card Item'
+            />
+          </div>
+          <div className='relative'>
+            <DestinationCardItem
+              href={`/design/custom/#destination-card-item`}
+              image_url='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500'
+              name='Destination Card Item'
+            />
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper
+        id='image-banner'
+        name='ImageBanner'
+        props={['href', 'image_url', 'align', 'text', 'textLink']}
+        noChildren
+      >
+        <ImageBanner
+          text='Velit non sint cupidatat ad consectetur elit qui ullamco.'
+          href='/'
+          image_url='https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=500'
+        />
+
+        <ImageBanner
+          text='Cupidatat excepteur proident exercitation sit mollit.'
+          href='/'
+          image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=500'
+          align='center'
+          className='mt-8'
+        />
+
+        <ImageBanner
+          text='Mollit sunt commodo nostrud ea nulla magna ut nisi aliqua.'
+          href='/'
+          image_url='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500'
+          align='right'
+          className='mt-8'
+        />
       </Wrapper>
 
       <Wrapper

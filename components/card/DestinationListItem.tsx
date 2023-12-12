@@ -45,7 +45,7 @@ export default function DestinationListItem({ href, name, image_url, location, .
         <Link
           href={href}
           className={twMerge(
-            'text-md line-clamp-2 rounded font-semibold text-neutral-700 transition-all duration-200 dark:text-neutral-100',
+            'line-clamp-2 rounded text-base font-medium text-neutral-700 transition-all duration-200 dark:text-neutral-100',
             'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
           )}
         >
