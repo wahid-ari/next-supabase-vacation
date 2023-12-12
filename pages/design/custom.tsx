@@ -23,6 +23,34 @@ import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
+const destinationData = [
+  {
+    id: 0,
+    name: 'Destination',
+    image_url: 'https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=500',
+  },
+  {
+    id: 1,
+    name: 'Destination',
+    image_url: 'https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=500',
+  },
+  {
+    id: 2,
+    name: 'Destination',
+    image_url: 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500',
+  },
+  {
+    id: 3,
+    name: 'Destination',
+    image_url: 'https://images.unsplash.com/photo-1656268164012-119304af0c69?q=80&w=500',
+  },
+  {
+    id: 4,
+    name: 'Destination',
+    image_url: 'https://images.unsplash.com/photo-1655853459092-a7bae19f9806?q=80&w=500',
+  },
+];
+
 const videoData = [
   {
     id: 0,
@@ -91,6 +119,9 @@ export default function Custom() {
   const prevRefVideoHover = useRef(null);
   const nextRefVideoHover = useRef(null);
 
+  const prevRefSlider = useRef(null);
+  const nextRefSlider = useRef(null);
+
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
@@ -144,6 +175,78 @@ export default function Custom() {
               VideoCardItem
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#slider'>
+              Slider
+            </Link>
+          </span>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='slider' name='Slider' noClassName noProps noChildren>
+        <div className='relative mx-auto w-full lg:max-w-2xl xl:max-w-4xl'>
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              prevEl: prevRefSlider.current,
+              nextEl: nextRefSlider.current,
+            }}
+            onBeforeInit={(swiper) => {
+              // @ts-ignore
+              swiper.params.navigation.prevEl = prevRefSlider.current;
+              // @ts-ignore
+              swiper.params.navigation.nextEl = nextRefSlider.current;
+            }}
+            spaceBetween={24}
+            slidesPerView={3}
+            centeredSlides={true}
+            loop={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+              480: {
+                slidesPerView: 2,
+              },
+              640: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {destinationData?.map((destination, index) => (
+              <SwiperSlide key={index} className='p-0.5'>
+                {({ isActive }) => (
+                  <div className='relative'>
+                    <DestinationCardItem
+                      href={`/design/custom/#slider`}
+                      image_url={destination?.image_url}
+                      name={destination?.name}
+                    />
+                  </div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button
+            ref={prevRefSlider}
+            className={cn(
+              'absolute left-0 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%]',
+              'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
+          >
+            <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
+          </button>
+          <button
+            ref={nextRefSlider}
+            className={cn(
+              'absolute right-0 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%]',
+              'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
+          >
+            <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
+          </button>
         </div>
       </Wrapper>
 
@@ -230,13 +333,13 @@ export default function Custom() {
       >
         <ImageBanner
           text='Velit non sint cupidatat ad consectetur elit qui ullamco.'
-          href='/'
+          href='/design/custom/#image-banner'
           image_url='https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=500'
         />
 
         <ImageBanner
           text='Cupidatat excepteur proident exercitation sit mollit.'
-          href='/'
+          href='/design/custom/#image-banner'
           image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=500'
           align='center'
           className='mt-8'
@@ -244,7 +347,7 @@ export default function Custom() {
 
         <ImageBanner
           text='Mollit sunt commodo nostrud ea nulla magna ut nisi aliqua.'
-          href='/'
+          href='/design/custom/#image-banner'
           image_url='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500'
           align='right'
           className='mt-8'
