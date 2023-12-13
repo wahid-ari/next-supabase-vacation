@@ -12,6 +12,7 @@ import { cn, youTubeGetCoverImage, youTubeGetID } from '@/libs/utils';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
+import CategoryCardItem from '@/components/card/CategoryCardItem';
 import DestinationCardItem from '@/components/card/DestinationCardItem';
 import DestinationListItem from '@/components/card/DestinationListItem';
 import ImageBanner from '@/components/card/ImageBanner';
@@ -176,6 +177,11 @@ export default function Custom() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#category-card-item'>
+              CategoryCardItem
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#slider'>
               Slider
             </Link>
@@ -293,6 +299,32 @@ export default function Custom() {
               image_url='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500'
               name='Destination List Item'
               location='Location'
+            />
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='category-card-item' name='CategoryCardItem' props={['href', 'name', 'image_url']} noChildren>
+        <div className='grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3'>
+          <div className='relative'>
+            <CategoryCardItem
+              href={`/design/custom/#category-card-item`}
+              image_url='https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=500'
+              name='Category Card Item'
+            />
+          </div>
+          <div className='relative'>
+            <CategoryCardItem
+              href={`/design/custom/#category-card-item`}
+              image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=500'
+              name='Category Card Item'
+            />
+          </div>
+          <div className='relative'>
+            <CategoryCardItem
+              href={`/design/custom/#category-card-item`}
+              image_url='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=500'
+              name='Category Card Item'
             />
           </div>
         </div>

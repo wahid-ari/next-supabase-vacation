@@ -21,21 +21,31 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
         className='group overflow-hidden rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       >
         {image_url ? (
-          <div className='relative h-64 overflow-hidden'>
+          <>
             <Image
-              className={twMerge(
-                'w-full transform object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
-                isLoading ? 'blur-sm' : 'blur-0',
-              )}
+              className='mx-auto h-[6px] w-[90%] transform rounded-t-3xl object-cover object-top opacity-70'
               src={image_url}
               alt={name}
-              fill
+              width={10}
+              height={10}
               unoptimized
-              onLoad={() => setLoading(false)}
             />
-          </div>
+            <div className='relative mt-[2px] h-60 overflow-hidden rounded-md'>
+              <Image
+                className={twMerge(
+                  'w-full transform rounded-md object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
+                  isLoading ? 'blur-sm' : 'blur-0',
+                )}
+                src={image_url}
+                alt={name}
+                fill
+                unoptimized
+                onLoad={() => setLoading(false)}
+              />
+            </div>
+          </>
         ) : (
-          <div className='flex h-64 w-full items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
+          <div className='flex h-60 w-full items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
             <ImageIcon className='h-20 w-20 text-neutral-500' />
           </div>
         )}
