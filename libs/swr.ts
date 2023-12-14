@@ -125,6 +125,17 @@ export function useProvinceData(id: string, slug?: boolean) {
   return { data, error, isLoading };
 }
 
+// Inspiration
+export function useInspirationsData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/inspiration`, fetcher, { refreshInterval: 1000 });
+  return { data, error, isLoading };
+}
+
+export function useInspirationData(id: string) {
+  const { data, error, isLoading } = useSWR(`${API_URL}/inspiration?id=${id}`, fetcher, { refreshInterval: 1000 });
+  return { data, error, isLoading };
+}
+
 // Search
 export function useSearchData(query: string | string[]) {
   const { data, error, isLoading } = useSWR(`${API_URL}/search?q=${query}`, fetcher);
