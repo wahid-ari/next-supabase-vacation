@@ -21,6 +21,7 @@ import {
   SearchIcon,
   SettingsIcon,
   SheetIcon,
+  TentIcon,
   XIcon,
   YoutubeIcon,
 } from 'lucide-react';
@@ -117,6 +118,10 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
           <NavLink href='/island' icon={<PalmtreeIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Island
+          </NavLink>
+
+          <NavLink href='/inspiration' icon={<TentIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Inspiration
           </NavLink>
 
           <NavLink href='/province' icon={<MapPinIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
