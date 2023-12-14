@@ -48,6 +48,7 @@ export default function Destination() {
     province_id: undefined,
     island_id: undefined,
   });
+  const [dataReady, setDataReady] = useState(false);
   const [openCombobox, setOpenCombobox] = useState(false);
   const [comboboxValue, setComboboxValue] = useState('');
   const [selectedCategory, setSelectedCategory] = useState();
@@ -67,6 +68,7 @@ export default function Destination() {
         island_id: data?.vacation_island?.id,
       });
       setComboboxValue(data?.vacation_province?.slug);
+      setDataReady(true);
     }
   }, [data]);
 
@@ -104,7 +106,7 @@ export default function Destination() {
 
   // if user selecting category, set category to editItem
   useEffect(() => {
-    // FIX use if here to fix data missing when reopening edit page
+    // FIX error use if here to fix data missing when reopening edit page
     if (selectedCategory) {
       // @ts-ignore
       setEditItem({ ...editItem, category: selectedCategory });
@@ -160,7 +162,8 @@ export default function Destination() {
           ),
         },
       ),
-    [],
+    // FIX error use depedency here to fix data missing when reopening edit page
+    [dataReady],
   );
 
   // TODO Docs https://github.com/quilljs/quill/issues/2044#issuecomment-603630374

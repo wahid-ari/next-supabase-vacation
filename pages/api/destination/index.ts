@@ -187,6 +187,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(200).json({ message: 'Success add destination' });
+          return;
         }
       }
       break;
@@ -253,6 +254,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(201).json({ message: 'Success update destination' });
+          return;
         }
       }
       break;
@@ -282,6 +284,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(200).json({ message: 'Success delete destination' });
+          return;
         }
       }
       break;
