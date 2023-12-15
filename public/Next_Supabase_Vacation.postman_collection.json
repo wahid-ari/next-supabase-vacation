@@ -923,7 +923,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"name\": \"Destination Name 1\",\r\n\t\"image_url\": \"https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500\",\r\n\t\"header_image_url\": \"https://images.unsplash.com\",\r\n\t\"description\": \"Destination Description 1\",\r\n\t\"content\": \"Destination Content 1\",\r\n\t\"video_url\": \"https://images.unsplash.com/\",\r\n\t\"location\": \"Destination Location 1\",\r\n\t\"island_id\": null,\r\n\t\"province_id\": null,\r\n\t\"category\": [\r\n\t\t{\r\n\t\t\t\"value\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"value\": 2\r\n\t\t}\r\n\t]\r\n}",
+              "raw": "{\r\n\t\"name\": \"New Destination\",\r\n\t\"image_url\": \"https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500\",\r\n\t\"header_image_url\": \"https://images.unsplash.com\",\r\n\t\"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\",\r\n\t\"content\": \"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.\",\r\n\t\"video_url\": \"https://youtu.be/_IzOqfrLc0o\",\r\n\t\"location\": \"Destination Location 1\",\r\n\t\"island_id\": null,\r\n\t\"province_id\": null,\r\n\t\"category\": [\r\n\t\t{\r\n\t\t\t\"value\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"value\": 2\r\n\t\t}\r\n\t]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -937,6 +937,78 @@
             }
           },
           "response": [
+            {
+              "name": "Create Destination",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"name\": \"New Destination\",\r\n\t\"image_url\": \"https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500\",\r\n\t\"header_image_url\": \"https://images.unsplash.com\",\r\n\t\"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\",\r\n\t\"content\": \"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.\",\r\n\t\"video_url\": \"https://youtu.be/_IzOqfrLc0o\",\r\n\t\"location\": \"Destination Location 1\",\r\n\t\"island_id\": null,\r\n\t\"province_id\": null,\r\n\t\"category\": [\r\n\t\t{\r\n\t\t\t\"value\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"value\": 2\r\n\t\t}\r\n\t]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/destination",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "destination"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"nyckhc4sco11\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 14:11:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Success add destination\"\n}"
+            },
             {
               "name": "Create Destination Error",
               "originalRequest": {
@@ -1018,7 +1090,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"id\": 102,\r\n\t\"name\": \"Destination Name Edited\",\r\n\t\"image_url\": \"Destination Image URL Edited\",\r\n\t\"header_image_url\": \"Destination Header Image URL 1\",\r\n\t\"description\": \"Destination Description Edited\",\r\n\t\"content\": \"Destination Content Edited\",\r\n\t\"video_url\": \"Destination Video URL Edited\",\r\n\t\"location\": \"Destination Location Edited\",\r\n\t\"island_id\": 1,\r\n\t\"province_id\": 1,\r\n\t\"category\": [\r\n\t\t{\r\n\t\t\t\"value\": 3\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"value\": 4\r\n\t\t}\r\n\t]\r\n}",
+              "raw": "{\r\n\t\"id\": 138,\r\n\t\"name\": \"Edit Destination\",\r\n\t\"image_url\": \"https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500\",\r\n\t\"header_image_url\": \"https://images.unsplash.com\",\r\n\t\"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\",\r\n\t\"content\": \"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.\",\r\n\t\"video_url\": \"https://youtu.be/_IzOqfrLc0o\",\r\n\t\"location\": \"Destination Location Edited\",\r\n\t\"island_id\": 1,\r\n\t\"province_id\": 1,\r\n\t\"category\": [\r\n\t\t{\r\n\t\t\t\"value\": 3\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"value\": 4\r\n\t\t}\r\n\t]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1032,6 +1104,78 @@
             }
           },
           "response": [
+            {
+              "name": "Edit Destination",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"id\": 138,\r\n\t\"name\": \"Edit Destination\",\r\n\t\"image_url\": \"https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500\",\r\n\t\"header_image_url\": \"https://images.unsplash.com\",\r\n\t\"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\",\r\n\t\"content\": \"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.\",\r\n\t\"video_url\": \"https://youtu.be/_IzOqfrLc0o\",\r\n\t\"location\": \"Destination Location Edited\",\r\n\t\"island_id\": 1,\r\n\t\"province_id\": 1,\r\n\t\"category\": [\r\n\t\t{\r\n\t\t\t\"value\": 3\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"value\": 4\r\n\t\t}\r\n\t]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/destination",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "destination"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"bfkl3sjpdd14\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "40"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 14:14:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Success update destination\"\n}"
+            },
             {
               "name": "Edit Destination Error",
               "originalRequest": {
@@ -1121,13 +1265,13 @@
               }
             },
             "url": {
-              "raw": "{{NEXT_SUPABASE_BOOK}}/api/destination?id=104",
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/destination?id=138",
               "host": ["{{NEXT_SUPABASE_BOOK}}"],
               "path": ["api", "destination"],
               "query": [
                 {
                   "key": "id",
-                  "value": "104"
+                  "value": "138"
                 }
               ]
             }
@@ -3870,7 +4014,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n\t\"title\": \"New Video\",\r\n\t\"video_url\": \"New Video URL\",\r\n\t\"island_id\": null,\r\n\t\"province_id\": null\r\n}",
+                  "raw": "{\r\n\t\"title\": \"New Video\",\r\n\t\"video_url\": \"https://youtu.be/_IzOqfrLc0o\",\r\n\t\"island_id\": null,\r\n\t\"province_id\": null\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4280,6 +4424,533 @@
               ],
               "cookie": [],
               "body": "{\n    \"message\": \"Success delete video\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Inspiration",
+      "item": [
+        {
+          "name": "All Inspiration",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+              "host": ["{{NEXT_SUPABASE_BOOK}}"],
+              "path": ["api", "inspiration"]
+            }
+          },
+          "response": [
+            {
+              "name": "All Inspiration",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"d10a3h3ulpc67\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 13:51:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Kelimutu\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/2.jpg\",\n        \"content\": \"<p>Literally translated as \\\"the boiling lake\\\", Kelimutu has three craters that apparently change colors and alternating between green, red, and blue which always independent of one another. Located in Flores, East Nusa Tenggara, you can take public transportation from Moni, the closest small town, to get to the parking lot before Kelimutu’s peak. From there, hike to see the otherworldly spectacle from the top of the world. 📷: <a href=\\\"https://www.instagram.com/thefreedomcomplex/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@thefreedomcomplex</a> <a href=\\\"https://www.instagram.com/explore/tags/kelimutu/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Kelimutu</a> <a href=\\\"https://www.instagram.com/explore/tags/eastnusatenggara/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#EastNusaTenggara</a> <a href=\\\"https://www.instagram.com/explore/tags/indonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Indonesia</a> <a href=\\\"https://www.instagram.com/explore/tags/travel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Travel</a> <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T05:47:04.21066+00:00\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Prambanan Temple\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/3.jpg\",\n        \"content\": \"<p>This picture taken by <a href=\\\"https://www.instagram.com/furstset/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@furstset</a> shows the 47-meter-tall majestic Prambanan Temple in Yogyakarta. This temple is easy to get to; simply take a bus from Tugu Train Station or Halte Malioboro 1. Dream big. Never stop believing. The Earth is gradually healing. We are waiting for the best time for you to come and visit us. Inspire people to make their own <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> by sharing your past travelling moments in Indonesia on your social media. Don’t forget to use hashtag <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> and mention us <a href=\\\"https://www.instagram.com/indtravel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@indtravel</a> or add hashtag <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> for a chance to be featured. <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a> <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/thoughtfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#ThoughtfulIndonesia</a> </p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T05:49:11.075918+00:00\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Wae Rebo\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/4.jpg\",\n        \"content\": \"<p>Covered by thin mist all over the village, Wae Rebo in Flores, East Nusa Tenggara is deservingly holding the title \\\"the town above the clouds\\\". Reach this truly fascinating traditional village from Labuan Bajo Airport through Ruteng City and then proceed to Denge Village before trekking for 4 hours to Wae Rebo. 📸: <a href=\\\"https://www.instagram.com/backpackertampan/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@backpackertampan</a> <a href=\\\"https://www.instagram.com/explore/tags/waerebo/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WaeRebo</a> <a href=\\\"https://www.instagram.com/explore/tags/eastnusatenggara/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#EastNusaTenggara</a> <a href=\\\"https://www.instagram.com/explore/tags/indonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Indonesia</a> <a href=\\\"https://www.instagram.com/explore/tags/travel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Travel</a> <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> </p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T05:51:59.861172+00:00\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Padar Island\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/5.jpg\",\n        \"content\": \"<p>How are you doing? We hope you're holding up strong and waiting to fulfill your desire to travel. Let this picture of Padar Island, by <a href=\\\"https://www.instagram.com/justkay/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@justkay</a>, spark your inspiration. It might not be safe to travel right now, but planning for the future is always good. Inspire people to make their own <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> by sharing your past travelling moments in Indonesia on your social media. Don’t forget to use hashtag <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> and mention us <a href=\\\"https://www.instagram.com/indtravel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@indtravel</a> or add hashtag <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> for a chance to be featured. <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a> <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/thoughtfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#ThoughtfulIndonesia</a> </p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:41:44.695+00:00\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Raja Ampat\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/6.jpg\",\n        \"content\": \"<p>Here’s a bird’s-eye view picture of Raja Ampat, from <a href=\\\"https://www.instagram.com/thetravelertwins/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@thetravelertwins</a>, to inspire you to keep dreaming and never lose hope. The wait is coming to an end. Be a little stronger. Inspire people to make their own <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> by sharing your past travelling moments in Indonesia on your social media. Don’t forget to use hashtag <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> and mention us <a href=\\\"https://www.instagram.com/indtravel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@indtravel</a> or add hashtag <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> for a chance to be featured. <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a> <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/thoughtfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#ThoughtfulIndonesia</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:42:35.237016+00:00\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Pulo Cinta\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/7.jpg\",\n        \"content\": \"<p>May this picture of Pulo Cinta in Gorontalo, by <a href=\\\"https://www.instagram.com/backpackertampan/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@backpackertampan</a>, remind you that love is still here, holding us together in these difficult times. Let your dearest ones know how much you love them. • Spark positivity during these hard times by sharing your past moments <a href=\\\"https://www.instagram.com/explore/tags/wheninindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WheninIndonesia</a> on your social media. Don’t forget to use hashtag <a href=\\\"https://www.instagram.com/explore/tags/wheninindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WheninIndonesia</a> and mention us <a href=\\\"https://www.instagram.com/indtravel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@indtravel</a> or add hashtag <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> for a chance to be featured. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a> <a href=\\\"https://www.instagram.com/explore/tags/thoughtfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#ThoughtfulIndonesia</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:43:36.921271+00:00\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Mount Bromo\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/8.jpg\",\n        \"content\": \"<p>Stood over 2,329 meters above the sea level and situated 35 kilometers away from the city of Malang, Mount Bromo might not be the tallest mountain in the entire Java, but it sure delivers an otherworldly spectacle. Climbing to the summit takes about 20-30 minutes depending on how quickly you can haul yourself up the sandy slope. Dare to try the challenging experience? A friendly reminder before visiting: a healthy lifestyle determines 📸: <a href=\\\"https://www.instagram.com/fedorovdmitry/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@fedorovdmitry</a> <a href=\\\"https://www.instagram.com/explore/tags/mountbromo/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#MountBromo</a> <a href=\\\"https://www.instagram.com/explore/tags/indonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Indonesia</a> <a href=\\\"https://www.instagram.com/explore/tags/travel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Travel</a> <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:44:31.746056+00:00\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Komodo National Park\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/9.jpg\",\n        \"content\": \"<p>We understand that one needs a lot of patience to remain indoors and avoid traveling at this moment. But your strong patience is what’s needed the most to make this world safe to travel again. Although the site is still temporarily closed, let us add the beauty of Komodo National Park in East Nusa Tenggara to your timeline in the hope that it positively inspires you to create a <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a> wishlist. 📸: <a href=\\\"https://www.instagram.com/van_taylan/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@van_taylan</a> • • Spark positivity during these hard times by sharing your past moments <a href=\\\"https://www.instagram.com/explore/tags/wheninindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WheninIndonesia</a> on your social media. Don’t forget to use hashtag <a href=\\\"https://www.instagram.com/explore/tags/wheninindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WheninIndonesia</a> and mention us <a href=\\\"https://www.instagram.com/indtravel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@indtravel</a> or add hashtag <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> for a chance to be featured. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/thoughtfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#ThoughtfulIndonesia</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:45:41.330538+00:00\"\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Kenawa Island\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/10.jpg\",\n        \"content\": \"<p>Let this picture from <a href=\\\"https://www.instagram.com/sashajuliard/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@sashajuliard</a> virtually transport you to Kenawa Island, West Nusa Tenggara while you keep lying in your bed and <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a>. Don’t worry. Soon you will be able to feel the tropical breeze touch your skin again. But right now, it’s time to rest for a while and distance ourselves from the outside world while the Earth heals. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:46:34.400283+00:00\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Kelingking Beach\",\n        \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/1.jpg\",\n        \"content\": \"<p>Witness this rare moment captured by <a href=\\\"https://www.instagram.com/watchluke/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@watchluke</a>; a monkey sitting in front of the landscape of Kelingking Beach in Nusa Penida. Nature has a way of showing us some extraordinary sights. So let it heal itself while you stay at home. Inspire people to make their own <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> by sharing your past travelling moments in Indonesia on your social media. Don’t forget to use hashtag <a href=\\\"https://www.instagram.com/explore/tags/indonesiabucketlist/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#IndonesiaBucketList</a> and mention us <a href=\\\"https://www.instagram.com/indtravel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@indtravel</a> or add hashtag <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a> for a chance to be featured. <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a> <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/thoughtfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#ThoughtfulIndonesia</a></p>\",\n        \"url\": \"https://www.indonesia.travel/gb/en/home\",\n        \"created_at\": \"2023-12-14T07:47:53.330654+00:00\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Create  Inspiration",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"title\": \"New Inspiration\",\r\n\t\"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/10.jpg\",\r\n\t\"content\": \"<p>Let this picture from <a href=\\\"https://www.instagram.com/sashajuliard/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@sashajuliard</a> virtually transport you to Kenawa Island, West Nusa Tenggara while you keep lying in your bed and <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a>. Donâ€™t worry. Soon you will be able to feel the tropical breeze touch your skin again. But right now, itâ€™s time to rest for a while and distance ourselves from the outside world while the Earth heals. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a></p>\",\r\n\t\"url\": \"https://www.indonesia.travel/gb/en/home\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+              "host": ["{{NEXT_SUPABASE_BOOK}}"],
+              "path": ["api", "inspiration"]
+            }
+          },
+          "response": [
+            {
+              "name": "Create  Inspiration",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"title\": \"New Inspiration\",\r\n\t\"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/10.jpg\",\r\n\t\"content\": \"<p>Let this picture from <a href=\\\"https://www.instagram.com/sashajuliard/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@sashajuliard</a> virtually transport you to Kenawa Island, West Nusa Tenggara while you keep lying in your bed and <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a>. Donâ€™t worry. Soon you will be able to feel the tropical breeze touch your skin again. But right now, itâ€™s time to rest for a while and distance ourselves from the outside world while the Earth heals. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a></p>\",\r\n\t\"url\": \"https://www.indonesia.travel/gb/en/home\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"ozxdmg0ldn11\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 14:04:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Success add inspiration\"\n}"
+            },
+            {
+              "name": "Create  Inspiration Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"title\": \"\",\r\n\t\"image_url\": \"\",\r\n\t\"content\": \"\",\r\n\t\"url\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"cfhy48661tav\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "391"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 13:59:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": [\n        {\n            \"code\": \"too_small\",\n            \"minimum\": 1,\n            \"type\": \"string\",\n            \"inclusive\": true,\n            \"exact\": false,\n            \"message\": \"Title is required\",\n            \"path\": [\n                \"title\"\n            ]\n        },\n        {\n            \"validation\": \"url\",\n            \"code\": \"invalid_string\",\n            \"message\": \"Invalid Image URL\",\n            \"path\": [\n                \"image_url\"\n            ]\n        },\n        {\n            \"code\": \"too_small\",\n            \"minimum\": 50,\n            \"type\": \"string\",\n            \"inclusive\": true,\n            \"exact\": false,\n            \"message\": \"Content must be 50 or more characters long\",\n            \"path\": [\n                \"content\"\n            ]\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Edit  Inspiration",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"id\": 11,\r\n\t\"title\": \"Edit Inspiration\",\r\n\t\"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/10.jpg\",\r\n\t\"content\": \"<p>Let this picture from <a href=\\\"https://www.instagram.com/sashajuliard/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@sashajuliard</a> virtually transport you to Kenawa Island, West Nusa Tenggara while you keep lying in your bed and <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a>. Donâ€™t worry. Soon you will be able to feel the tropical breeze touch your skin again. But right now, itâ€™s time to rest for a while and distance ourselves from the outside world while the Earth heals. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a></p>\",\r\n\t\"url\": \"https://www.indonesia.travel/gb/en/home\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+              "host": ["{{NEXT_SUPABASE_BOOK}}"],
+              "path": ["api", "inspiration"]
+            }
+          },
+          "response": [
+            {
+              "name": "Edit  Inspiration",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"id\": 11,\r\n\t\"title\": \"Edit Inspiration\",\r\n\t\"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/10.jpg\",\r\n\t\"content\": \"<p>Let this picture from <a href=\\\"https://www.instagram.com/sashajuliard/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@sashajuliard</a> virtually transport you to Kenawa Island, West Nusa Tenggara while you keep lying in your bed and <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a>. Donâ€™t worry. Soon you will be able to feel the tropical breeze touch your skin again. But right now, itâ€™s time to rest for a while and distance ourselves from the outside world while the Earth heals. <a href=\\\"https://www.instagram.com/explore/tags/stayathome/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#StayatHome</a> <a href=\\\"https://www.instagram.com/explore/tags/traveltomorrow/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#TravelTomorrow</a></p>\",\r\n\t\"url\": \"https://www.indonesia.travel/gb/en/home\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"h7p9o5u0qr14\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "40"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 14:06:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Success update inspiration\"\n}"
+            },
+            {
+              "name": "Edit  Inspiration Error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"id\": 11,\r\n\t\"title\": \"\",\r\n\t\"image_url\": \"\",\r\n\t\"content\": \"\",\r\n\t\"url\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"cfhy48661tav\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "391"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 14:05:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": [\n        {\n            \"code\": \"too_small\",\n            \"minimum\": 1,\n            \"type\": \"string\",\n            \"inclusive\": true,\n            \"exact\": false,\n            \"message\": \"Title is required\",\n            \"path\": [\n                \"title\"\n            ]\n        },\n        {\n            \"validation\": \"url\",\n            \"code\": \"invalid_string\",\n            \"message\": \"Invalid Image URL\",\n            \"path\": [\n                \"image_url\"\n            ]\n        },\n        {\n            \"code\": \"too_small\",\n            \"minimum\": 50,\n            \"type\": \"string\",\n            \"inclusive\": true,\n            \"exact\": false,\n            \"message\": \"Content must be 50 or more characters long\",\n            \"path\": [\n                \"content\"\n            ]\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete  Inspiration",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration?id=11",
+              "host": ["{{NEXT_SUPABASE_BOOK}}"],
+              "path": ["api", "inspiration"],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "11"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete  Inspiration",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration?id=11",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "11"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"15kqlv9r5ur14\""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "40"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 15 Dec 2023 14:07:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Success delete inspiration\"\n}"
             }
           ]
         }

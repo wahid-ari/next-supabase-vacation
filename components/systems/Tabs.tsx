@@ -7,10 +7,11 @@ type Props = {
   children: ReactNode;
   className?: string;
   items: string[];
+  name?: string;
   [props: string]: any;
 };
 
-export default function Tabs({ children, className, items, ...props }: Props) {
+export default function Tabs({ children, className, items, name = 'underline', ...props }: Props) {
   return (
     <Tab.Group>
       <Tab.List
@@ -29,8 +30,9 @@ export default function Tabs({ children, className, items, ...props }: Props) {
             >
               {({ selected }) => (
                 <button
+                  type='button'
                   className={twMerge(
-                    'relative w-full border-transparent py-2.5 text-sm font-semibold tracking-wide transition-all',
+                    'relative w-full border-transparent py-2.5 text-sm font-medium tracking-wide transition-all',
                     'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200',
                     'rounded outline-none ring-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                     selected && '!text-sky-600 dark:!text-sky-500',
@@ -40,7 +42,7 @@ export default function Tabs({ children, className, items, ...props }: Props) {
                   {selected && (
                     <motion.div
                       className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-sky-600'
-                      layoutId='underline'
+                      layoutId={name}
                       initial={false}
                     />
                   )}
