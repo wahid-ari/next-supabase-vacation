@@ -42,6 +42,14 @@ export function useTotalVideoData() {
   return { data, error, isLoading };
 }
 
+// get total inspiration record count for dashboard
+export function useTotalInspirationData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-inspiration`, fetcher, {
+    refreshInterval: 1000,
+  });
+  return { data, error, isLoading };
+}
+
 // Destination
 export function useDestinationsData(params?: string) {
   const { data, error, isLoading } = useSWR(`${API_URL}/destination?${params}`, fetcher, { refreshInterval: 1000 });

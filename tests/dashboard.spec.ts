@@ -48,6 +48,13 @@ test.describe('Testing Data Count', () => {
     await expect(video).toHaveClass(/group flex items-center justify-between gap-2 rounded-md border p-4 shadow/);
     await expect(video).toHaveAttribute('href', '/video');
   });
+  test('page show total inspiration', async ({ page }) => {
+    const inspiration = page.getByTestId('inspiration-count');
+    await expect(inspiration).toBeVisible();
+    await expect(inspiration).toContainText('Inspiration');
+    await expect(inspiration).toHaveClass(/group flex items-center justify-between gap-2 rounded-md border p-4 shadow/);
+    await expect(inspiration).toHaveAttribute('href', '/inspiration');
+  });
 });
 
 test.describe('Testing Statistic', () => {

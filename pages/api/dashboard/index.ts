@@ -12,6 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { data: island } = await supabase.from('vacation_island').select(`id`, { count: 'exact' });
       const { data: province } = await supabase.from('vacation_province').select(`id`, { count: 'exact' });
       const { data: video } = await supabase.from('vacation_video').select(`id`, { count: 'exact' });
+      const { data: inspiration } = await supabase.from('vacation_inspiration').select(`id`, { count: 'exact' });
 
       // const { count: destination } = await supabase.from('vacation_destination').select(`*`, { count: 'exact', head: true });
       // const { count: category } = await supabase.from('vacation_category').select(`*`, { count: 'exact', head: true });
@@ -33,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         island: island.length,
         province: province.length,
         video: video.length,
+        inspiration: inspiration.length,
       });
       break;
 

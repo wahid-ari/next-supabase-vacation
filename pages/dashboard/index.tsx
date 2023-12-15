@@ -1,4 +1,4 @@
-import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, YoutubeIcon } from 'lucide-react';
+import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, TentIcon, YoutubeIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import {
   Bar,
@@ -22,6 +22,7 @@ import {
   useStatisticDestinationByProvinceData,
   useTotalCategoryData,
   useTotalDestinationData,
+  useTotalInspirationData,
   useTotalIslandData,
   useTotalProvinceData,
   useTotalVideoData,
@@ -45,6 +46,7 @@ export default function Dashboard() {
   const { data: totalIsland, error: errorTotalIsland } = useTotalIslandData();
   const { data: totalProvince, error: errorTotalProvince } = useTotalProvinceData();
   const { data: totalVideo, error: errorTotalVideo } = useTotalVideoData();
+  const { data: totalInspiration, error: errorTotalInspiration } = useTotalInspirationData();
   const { data: statisticDestinationByCategory, error: errorStatisticDestinationByCategory } =
     useStatisticDestinationByCategoryData();
   const { data: statisticDestinationByIsland, error: errorStatisticDestinationByIsland } =
@@ -59,6 +61,7 @@ export default function Dashboard() {
     errorTotalIsland ||
     errorTotalProvince ||
     errorTotalVideo ||
+    errorTotalInspiration ||
     errorStatisticDestinationByCategory ||
     errorStatisticDestinationByIsland ||
     errorStatisticDestinationByProvince
@@ -79,6 +82,7 @@ export default function Dashboard() {
         '/api/dashboard/total-island',
         '/api/dashboard/total-province',
         '/api/dashboard/total-video',
+        '/api/dashboard/total-inspiration',
         '/api/statistics/destination-by-category',
         '/api/statistics/destination-by-island',
         '/api/statistics/destination-by-province',
@@ -87,7 +91,7 @@ export default function Dashboard() {
     >
       <Titles>Dashboard</Titles>
 
-      <div className='mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-5'>
+      <div className='mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:grid-cols-3'>
         {totalDestination ? (
           <Card
             title='Destination'
@@ -168,6 +172,22 @@ export default function Dashboard() {
             </div>
           </Shimmer>
         )}
+        {totalInspiration ? (
+          <Card
+            title='Inspiration'
+            link='/inspiration'
+            count={totalInspiration.inspiration}
+            icon={<TentIcon className='h-12 w-12' />}
+            data-testid='inspiration-count'
+          />
+        ) : (
+          <Shimmer>
+            <div className='space-y-3'>
+              <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </Shimmer>
+        )}
       </div>
       {/* <div className='mt-8 grid grid-cols-1 gap-4 min-[350px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
         {data ? (
@@ -187,9 +207,10 @@ export default function Dashboard() {
             <Card title='Island' link='/island' count={data.island} icon={<PalmtreeIcon className='h-12 w-12' />} />
             <Card title='Province' link='/province' count={data.province} icon={<MapPinIcon className='h-12 w-12' />} />
             <Card title='Video' link='/video' count={data.video} icon={<YoutubeIcon className='h-12 w-12' />} />
+            <Card title='Inspiration' link='/inspiration' count={data.inspiration} icon={<TentIcon className='h-12 w-12' />} />
           </>
         ) : (
-          [...Array(5).keys()].map((i) => (
+          [...Array(6).keys()].map((i) => (
             <Shimmer key={i}>
               <div className='space-y-3'>
                 <div className='h-7 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
