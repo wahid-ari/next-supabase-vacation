@@ -17,6 +17,7 @@ import { Text } from '@/components/ui/Text';
 
 import Layout from '@/components/layout/Layout';
 import Shimmer from '@/components/systems/Shimmer';
+import Tabs from '@/components/systems/Tabs';
 import Title from '@/components/systems/Title';
 
 // Inspiration.auth = true;
@@ -143,35 +144,28 @@ export default function Inspiration() {
             </div>
           </div>
         </div>
-        <div className='space-y-2'>
+        <div>
           <Label htmlFor='content'>Content</Label>
-          <div className='mb-3'>
-            <ReactQuill
-              id='content'
-              theme='snow'
-              placeholder='Inspiration Content'
-              onChange={(e) => setCreateItem({ ...createItem, content: e })}
-              modules={modules}
-              value={createItem.content}
-            />
-          </div>
-
-          {createItem.content != '' && createItem.content != '<p><br></p>' && (
-            <>
-              <Text size='xl' weight='semibold' className='pb-1 pt-4'>
-                Preview :
-              </Text>
-              <div
-                className={cn(
-                  'ql-editor !prose !max-w-none !p-0 dark:!prose-invert prose-video:!w-96',
-                  'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-center',
-                  'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
-                  'prose-blockquote:!my-3',
-                )}
-                dangerouslySetInnerHTML={{ __html: createItem.content }}
+          <Tabs items={['Editor', 'Preview']}>
+            <Tabs.panel>
+              <ReactQuill
+                id='content'
+                theme='snow'
+                placeholder='Inspiration Content'
+                onChange={(e) => setCreateItem({ ...createItem, content: e })}
+                modules={modules}
+                value={createItem.content}
               />
-            </>
-          )}
+            </Tabs.panel>
+            <Tabs.panel>
+              {createItem.content != '' && createItem.content != '<p><br></p>' && (
+                <div
+                  className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
+                  dangerouslySetInnerHTML={{ __html: createItem.content }}
+                />
+              )}
+            </Tabs.panel>
+          </Tabs>
         </div>
 
         <Button type='submit' variant='success' className='mt-4 w-full'>
