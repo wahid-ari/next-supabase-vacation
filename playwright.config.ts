@@ -5,7 +5,9 @@ import { defineConfig, devices } from '@playwright/test';
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
-
+// Install playwright latest
+// https://playwright.dev/docs/intro#updating-playwright
+// pnpm i -D @playwright/test@latest
 // Install browser
 // npx playwright install chromium
 // Explore test-results
