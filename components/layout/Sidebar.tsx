@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useShowNav } from 'context/GlobalContext';
 import {
@@ -13,6 +14,7 @@ import {
   LayoutPanelLeftIcon,
   ListTodoIcon,
   ListTreeIcon,
+  LogInIcon,
   LogOutIcon,
   MapPinIcon,
   MountainSnowIcon,
@@ -25,6 +27,7 @@ import {
   XIcon,
   YoutubeIcon,
 } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
 import NavAccordion from '@/components/layout/NavAccordion';
@@ -35,6 +38,7 @@ import Modal from '@/components/systems/Modal';
 
 export default function Sidebar({ className, ...props }: { className?: string; [props: string]: any }) {
   const router = useRouter();
+  const { data: session }: { data: any } = useSession();
   const [openModal, setOpenModal] = useState(false);
   const { showNav, setShowNav } = useShowNav();
 
@@ -196,19 +200,32 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         <hr className='mx-7 mt-2 dark:border-neutral-800 lg:mx-0' />
 
         <div className='px-4 py-1.5'>
-          {/* TODO add login button */}
-          <button
-            data-testid='button-logout'
-            onClick={() => setOpenModal(true)}
-            className={twMerge(
-              'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
-              'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
-            )}
-          >
-            <LogOutIcon className='mr-0.5 h-[18px] w-[18px]' />
-            Logout
-          </button>
+          {session == null ? (
+            <Link
+              href='/login'
+              className={twMerge(
+                'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
+                'rounded text-emerald-600 hover:bg-emerald-100 dark:hover:bg-neutral-800',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
+              )}
+            >
+              <LogInIcon className='mr-0.5 h-[18px] w-[18px]' />
+              Login
+            </Link>
+          ) : (
+            <button
+              data-testid='button-logout'
+              onClick={() => setOpenModal(true)}
+              className={twMerge(
+                'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
+                'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
+              )}
+            >
+              <LogOutIcon className='mr-0.5 h-[18px] w-[18px]' />
+              Logout
+            </button>
+          )}
         </div>
       </aside>
       <Modal

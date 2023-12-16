@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function Akun({ className, ...props }: Props) {
-  const { data: session }: { data: any; status: any } = useSession();
+  const { data: session }: { data: any } = useSession();
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
   const mounted = useMounted();
@@ -72,22 +72,39 @@ export default function Akun({ className, ...props }: Props) {
                       </Link>
                     )}
                   </Menu.Item>
-                  {/* TODO add login button */}
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        onClick={() => setOpenModal(true)}
-                        className={twMerge(
-                          'flex w-full rounded px-2 py-1.5 text-sm',
-                          active
-                            ? 'bg-neutral-100 text-red-600 transition-all dark:bg-neutral-800 dark:text-red-500'
-                            : 'text-red-500 dark:text-red-500',
-                        )}
-                      >
-                        Logout
-                      </button>
-                    )}
-                  </Menu.Item>
+                  {session == null ? (
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href='/login'
+                          className={twMerge(
+                            'flex w-full rounded px-2 py-1.5 text-sm',
+                            active
+                              ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                              : 'text-neutral-700 dark:text-neutral-300',
+                          )}
+                        >
+                          Login
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  ) : (
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          onClick={() => setOpenModal(true)}
+                          className={twMerge(
+                            'flex w-full rounded px-2 py-1.5 text-sm',
+                            active
+                              ? 'bg-neutral-100 text-red-600 transition-all dark:bg-neutral-800 dark:text-red-500'
+                              : 'text-red-500 dark:text-red-500',
+                          )}
+                        >
+                          Logout
+                        </button>
+                      )}
+                    </Menu.Item>
+                  )}
                 </div>
               </Menu.Items>
             </Transition>
