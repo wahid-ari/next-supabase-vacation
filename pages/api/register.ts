@@ -68,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .limit(1)
           .single();
         if (userNameExist === null) {
-          // FIX this register logic
+          // this register logic
           // if username not exist, hash password and inset to db
           // const passwordHashed = await hash(body.password, 8);
           // const { data: insertUser } = await supabase.from('vacation_user').insert([

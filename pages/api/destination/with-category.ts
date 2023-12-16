@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select(`id, destination_id, category_id`)
         .order('id');
 
-      // TODO FIRST comparing destination table with destination_category table
+      // FIRST comparing destination table with destination_category table
       // comparing destination table with destination_category table to get all category id related to destination
       const destinations_with_all_categories_id = [];
       // iterate per destination
@@ -75,7 +75,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       //   }
       // ]
       // --------------------------------------------------------------------------------------------------------------
-      // TODO SECOND comparing destination table with category table
+      // SECOND comparing destination table with category table
       // from object above we can compare the category_array key to category table
       // comparing destinations_with_all_categories_id variabel with category table to get all category name related to destination
       const destination_with_all_categories_name = [];

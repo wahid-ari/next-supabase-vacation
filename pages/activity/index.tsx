@@ -87,7 +87,7 @@ export default function Log() {
           // console.log(original?.created_at);
           // let date = new Date(original?.created_at);
           // return date.toLocaleTimeString('en-US');
-          // TODO Docs: https://date-fns.org/v2.16.1/docs/format
+          // TODO Docs https://date-fns.org/v2.16.1/docs/format
           return format(new Date(original?.created_at), 'pp');
         },
       },

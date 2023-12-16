@@ -72,6 +72,7 @@ export default function Akun({ className, ...props }: Props) {
                       </Link>
                     )}
                   </Menu.Item>
+                  {/* TODO add login button */}
                   <Menu.Item>
                     {({ active }) => (
                       <button

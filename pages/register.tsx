@@ -28,7 +28,7 @@ export default function Register() {
   async function handleRegister(e: any) {
     e.preventDefault();
     setLoading(true);
-    // FIX this register logic
+    // this register logic
     const toastId = pushToast({
       message: 'Registering...',
       isLoading: true,

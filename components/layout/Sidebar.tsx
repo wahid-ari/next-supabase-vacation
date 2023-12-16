@@ -196,6 +196,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         <hr className='mx-7 mt-2 dark:border-neutral-800 lg:mx-0' />
 
         <div className='px-4 py-1.5'>
+          {/* TODO add login button */}
           <button
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}

@@ -1,7 +1,6 @@
 import { goToLastPage, login, logout } from '@/tests/util';
 import { expect, test, type Page } from '@playwright/test';
 
-// TODO Create Test for Inspiration
 async function goToPage(page: Page) {
   await page.goto('http://localhost:3000/inspiration');
 }

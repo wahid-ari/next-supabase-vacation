@@ -53,7 +53,7 @@ for tr in trs[25:]:
     # print(meta)
     description = meta.get("content")
     # print(description)
-    # # FIX Uncomment this to create JSON 
+    # # Uncomment this to create JSON 
     # data.append({
     #     "id": index,
     #     "name": name,
@@ -65,6 +65,6 @@ for tr in trs[25:]:
     print("------------------- \n")
     index = index + 1
 
-# # FIX Uncomment this to create JSON 
+# # Uncomment this to create JSON 
 # with open(f'{path}{".json"}', "w") as outfile:
 #     json.dump(data, outfile, indent=4)

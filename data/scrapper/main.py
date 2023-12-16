@@ -137,7 +137,7 @@ for tr in trs[25:]:
     # print("------------------- \n")
     content_ready = str(heading) + str(subheading) + str(content)
     # print(content_ready)
-    # FIX Uncomment this to create JSON 
+    # Uncomment this to create JSON 
     data.append({
         "id": index,
         "name": name,
@@ -155,6 +155,6 @@ for tr in trs[25:]:
     print("------------------- \n")
     index = index + 1
 
-# FIX Uncomment this to create JSON 
+# Uncomment this to create JSON 
 with open(f'{path}{".json"}', "w") as outfile:
     json.dump(data, outfile, indent=4)

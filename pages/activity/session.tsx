@@ -23,7 +23,6 @@ import Title from '@/components/systems/Title';
 export default function Session() {
   const { data: session }: { data: any } = useSession();
   const token = session?.token || '';
-  console.log(token);
   const { data, error } = useSessionsData();
   const { updateToast, pushToast } = useToast();
   const [inputDebounceValue, setInputDebounceValue] = useState('');

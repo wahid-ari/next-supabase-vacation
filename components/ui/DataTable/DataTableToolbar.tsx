@@ -45,11 +45,11 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
     <div className='flex flex-wrap items-center gap-x-2 gap-y-3 pb-4'>
       <Input
         placeholder='Search data...'
-        // TODO filter by email
+        // filter by email
         // value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
         value={table.getState().globalFilter ?? ''}
         onChange={(event) => {
-          // TODO filter by email
+          // filter by email
           // table.getColumn('email')?.setFilterValue(event.target.value);
           table.setGlobalFilter(event.target.value);
         }}
