@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { format } from 'date-fns';
 import { TrashIcon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { mutate } from 'swr';
 
 import { useSessionsData } from '@/libs/swr';
@@ -20,6 +21,9 @@ import Title from '@/components/systems/Title';
 // Session.auth = true;
 
 export default function Session() {
+  const { data: session }: { data: any } = useSession();
+  const token = session?.token || '';
+  console.log(token);
   const { data, error } = useSessionsData();
   const { updateToast, pushToast } = useToast();
   const [inputDebounceValue, setInputDebounceValue] = useState('');
@@ -135,6 +139,7 @@ export default function Session() {
                   <Button
                     title={`Delete ${item.vacation_user.name}`}
                     size='sm'
+                    disabled={token == item.token}
                     variant='destructive'
                     className='ml-1.5 px-2'
                     onClick={() => setDeleteDialog({ dialog: true, id: item.id })}
