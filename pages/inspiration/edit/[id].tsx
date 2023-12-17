@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { mutate } from 'swr';
@@ -8,13 +9,11 @@ import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 
 import { useInspirationData } from '@/libs/swr';
-import { cn } from '@/libs/utils';
 import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
-import { Text } from '@/components/ui/Text';
 
 import Layout from '@/components/layout/Layout';
 import Shimmer from '@/components/systems/Shimmer';
@@ -104,7 +103,12 @@ export default function Inspiration() {
   const modules = useMemo(
     () => ({
       toolbar: {
-        container: [['bold', 'italic', 'underline', 'strike'], ['link'], ['clean']],
+        container: [
+          ['bold', 'italic', 'underline', 'strike'],
+          ['link'],
+          [{ color: [] }, { background: [] }],
+          ['clean'],
+        ],
       },
     }),
     [],
@@ -180,10 +184,24 @@ export default function Inspiration() {
               </Tabs.panel>
               <Tabs.panel>
                 {editItem?.content != '' && editItem?.content != '<p><br></p>' && (
-                  <div
-                    className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
-                    dangerouslySetInnerHTML={{ __html: editItem?.content }}
-                  />
+                  <>
+                    <div className='relative mb-4 h-52 w-64'>
+                      <Image
+                        fill
+                        alt={'Preview'}
+                        src={editItem.image_url}
+                        unoptimized
+                        quality={50}
+                        priority={false}
+                        loading='lazy'
+                        className='rounded-t object-cover object-center'
+                      />
+                    </div>
+                    <div
+                      className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
+                      dangerouslySetInnerHTML={{ __html: editItem?.content }}
+                    />
+                  </>
                 )}
               </Tabs.panel>
             </Tabs>
