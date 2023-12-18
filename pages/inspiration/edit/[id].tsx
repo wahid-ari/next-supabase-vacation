@@ -199,7 +199,8 @@ export default function Inspiration() {
                     </div>
                     <div
                       className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
-                      dangerouslySetInnerHTML={{ __html: editItem?.content }}
+                      // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
+                      dangerouslySetInnerHTML={{ __html: editItem?.content.replace(/&nbsp;/g, ' ') }}
                     />
                   </>
                 )}

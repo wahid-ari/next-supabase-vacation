@@ -136,7 +136,8 @@ export default function Inspiration() {
                 </p>
                 <div
                   className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
-                  dangerouslySetInnerHTML={{ __html: original.content }}
+                  // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
+                  dangerouslySetInnerHTML={{ __html: original?.content.replace(/&nbsp;/g, ' ') }}
                 />
               </HoverCardContent>
             </HoverCard>
