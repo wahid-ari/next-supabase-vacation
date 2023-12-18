@@ -5086,6 +5086,103 @@
           ]
         },
         {
+          "name": "Detail Inspiration",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration?id=1",
+              "host": ["{{NEXT_SUPABASE_BOOK}}"],
+              "path": ["api", "inspiration"],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Detail Inspiration",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/inspiration?id=1",
+                  "host": ["{{NEXT_SUPABASE_BOOK}}"],
+                  "path": ["api", "inspiration"],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "public, s-maxage=10, stale-while-revalidate=59"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "\"10shn71pclm14m\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 18 Dec 2023 07:39:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"title\": \"Kelimutu\",\n    \"image_url\": \"https://www.indonesia.travel/content/dam/indtravelrevamp/user-generated-content/ugc-july-2020/gb-en/2.jpg\",\n    \"content\": \"<p>Literally translated as \\\"the boiling lake\\\", Kelimutu has three craters that apparently change colors and alternating between green, red, and blue which always independent of one another. Located in Flores, East Nusa Tenggara, you can take public transportation from Moni, the closest small town, to get to the parking lot before Kelimutu’s peak. From there, hike to see the otherworldly spectacle from the top of the world. 📷: <a href=\\\"https://www.instagram.com/thefreedomcomplex/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">@thefreedomcomplex</a> <a href=\\\"https://www.instagram.com/explore/tags/kelimutu/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Kelimutu</a> <a href=\\\"https://www.instagram.com/explore/tags/eastnusatenggara/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#EastNusaTenggara</a> <a href=\\\"https://www.instagram.com/explore/tags/indonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Indonesia</a> <a href=\\\"https://www.instagram.com/explore/tags/travel/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#Travel</a> <a href=\\\"https://www.instagram.com/explore/tags/wonderfulindonesia/\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">#WonderfulIndonesia</a></p>\",\n    \"url\": \"https://www.instagram.com/wonderfulindonesia/\",\n    \"created_at\": \"2023-12-14T05:47:04.21066+00:00\"\n}"
+            }
+          ]
+        },
+        {
           "name": "Create  Inspiration",
           "request": {
             "method": "POST",
