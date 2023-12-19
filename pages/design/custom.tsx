@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon, PlayIcon } from 'lucide-react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -94,6 +94,18 @@ const imagesData = [
     href: 'https://unsplash.com/photos/t9MP5ZyTxlI?q=80&w=500',
     public_id: 'https://images.unsplash.com/photo-1506368670575-2ecb8dd6d86e?auto=format&fit=crop&w=500',
   },
+  {
+    id: 3,
+    format: 'avif',
+    href: 'https://unsplash.com/photos/t9MP5ZyTxlI?q=80&w=500',
+    public_id: 'https://images.unsplash.com/photo-1702653082070-f5c83c643627?auto=format&fit=crop&w=500',
+  },
+  {
+    id: 4,
+    format: 'avif',
+    href: 'https://unsplash.com/photos/t9MP5ZyTxlI?q=80&w=500',
+    public_id: 'https://images.unsplash.com/photo-1702893576128-21feb60299d1?auto=format&fit=crop&w=500',
+  },
 ];
 
 export default function Custom() {
@@ -107,6 +119,17 @@ export default function Custom() {
     const filteredImage = imagesData.filter((image) => image.id == id)[0];
     setImageOpened(filteredImage);
     setOpenDialogUi(true);
+  }
+
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const prevRefThumb = useRef(null);
+  const nextRefThumb = useRef(null);
+  const [openDialogUiThumb, setOpenDialogUiThumb] = useState(false);
+  const [imageOpenedThumb, setImageOpenedThumb] = useState({ id: null, format: '', href: '', public_id: '' });
+  function openImageThumb(id: any) {
+    const filteredImage = imagesData.filter((image) => image.id == id)[0];
+    setImageOpenedThumb(filteredImage);
+    setOpenDialogUiThumb(true);
   }
 
   const prevRefVideo = useRef(null);
@@ -139,6 +162,11 @@ export default function Custom() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#dialog-swiper'>
               DialogSwiper
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#dialog-swiper-thumb'>
+              DialogSwiperThumb
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -499,6 +527,111 @@ export default function Custom() {
             </button>
             <button
               ref={nextRef}
+              className={cn(
+                'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+              )}
+            >
+              <ArrowRightIcon className='h-6 w-6 dark:text-white' />
+            </button>
+          </DialogContent>
+        </Dialog>
+      </Wrapper>
+
+      <Wrapper id='dialog-swiper-thumb' name='DialogSwiperThumb' noClassName noProps noChildren>
+        <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
+          {imagesData.map((image, index) => (
+            <button
+              onClick={() => openImageThumb(image.id)}
+              key={index}
+              className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            >
+              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' />
+            </button>
+          ))}
+        </div>
+
+        <Dialog open={openDialogUiThumb} onOpenChange={setOpenDialogUiThumb}>
+          <DialogContent className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
+            <Swiper
+              thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+              modules={[Navigation, Thumbs]}
+              navigation={{
+                prevEl: prevRefThumb.current,
+                nextEl: nextRefThumb.current,
+              }}
+              onBeforeInit={(swiper) => {
+                // @ts-ignore
+                swiper.params.navigation.prevEl = prevRefThumb.current;
+                // @ts-ignore
+                swiper.params.navigation.nextEl = nextRefThumb.current;
+              }}
+              initialSlide={imageOpenedThumb.id}
+              loop={true}
+              className='w-full py-4'
+            >
+              {imagesData.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className='grid grid-cols-1 gap-x-3 sm:grid-cols-2'>
+                    <div className='relative h-full min-h-[200px] w-full sm:min-h-[350px]'>
+                      <Image
+                        alt='Image'
+                        src={image.public_id}
+                        fill
+                        className='rounded-t-lg object-cover sm:rounded-t-none sm:rounded-tl-lg'
+                      />
+                    </div>
+                    <div className='p-4 sm:pr-8 sm:pt-4'>
+                      <ScrollArea className='h-40 sm:h-[350px]'>
+                        <h3 className='mb-4 text-xl font-semibold'>Esse eu tempor nisi aliquip excepteur.</h3>
+                        <p>
+                          Esse eu tempor nisi aliquip excepteur. Enim irure cillum nostrud aliqua voluptate consequat
+                          labore ea ex laboris occaecat deserunt. Amet culpa nisi adipisicing id ad quis consequat. Sint
+                          consectetur ex occaecat non id mollit duis adipisicing. In veniam commodo minim exercitation
+                          incididunt exercitation aliquip aliqua do pariatur mollit excepteur labore ea. Esse eu tempor
+                          nisi aliquip excepteur.
+                        </p>
+                      </ScrollArea>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              loop={true}
+              spaceBetween={10}
+              slidesPerView={4}
+              watchSlidesProgress={true}
+              modules={[Navigation, Thumbs]}
+              className='swiper-thumbs w-full py-4'
+            >
+              {imagesData.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className='relative h-20 w-full sm:h-24'>
+                    <Image
+                      alt='Image'
+                      src={image.public_id}
+                      fill
+                      className='cursor-pointer rounded object-cover object-center'
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <button
+              ref={prevRefThumb}
+              className={cn(
+                'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
+                'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+              )}
+            >
+              <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
+            </button>
+            <button
+              ref={nextRefThumb}
               className={cn(
                 'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',

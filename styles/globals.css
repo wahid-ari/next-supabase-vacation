@@ -183,3 +183,12 @@ lite-youtube {
 .react-share__ShareButton {
   @apply rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500;
 }
+
+/* Swiper Thumbs */
+.swiper-thumbs .swiper-slide {
+  opacity: 0.4;
+}
+
+.swiper-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
