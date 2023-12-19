@@ -200,7 +200,7 @@ export default function Destinations({ slug, seo }) {
                 'ql-editor !prose !max-w-none !p-0 dark:!prose-invert prose-p:text-justify prose-video:!w-96',
                 'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-center',
                 'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
-                'prose-blockquote:!my-3',
+                '!prose-blue prose-a:!font-normal prose-blockquote:!my-3',
               )}
               dangerouslySetInnerHTML={{ __html: data?.content }}
             />

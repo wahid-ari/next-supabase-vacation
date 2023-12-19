@@ -135,7 +135,7 @@ export default function Inspiration() {
                   {original.title}
                 </p>
                 <div
-                  className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
+                  className='ql-editor !prose !prose-blue !max-w-none !p-0 dark:!prose-invert prose-a:!font-normal'
                   // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
                   dangerouslySetInnerHTML={{ __html: original?.content.replace(/&nbsp;/g, ' ') }}
                 />
