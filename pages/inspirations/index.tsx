@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -43,7 +43,7 @@ export default function Inspirations() {
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
       <div className='pt-4'>
-        <div className='grid grid-cols-1 gap-2 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {data
             ? data?.map((image: any, index: number) => (
                 <button
@@ -97,10 +97,22 @@ export default function Inspirations() {
                         <div className='block max-w-full'>
                           <h3 className='mb-4 text-xl font-semibold'>{image?.title}</h3>
                           <div
-                            className='ql-editor !prose !max-w-none !p-0 dark:!prose-invert'
+                            className='ql-editor !prose !prose-blue mb-6 !max-w-none !p-0 dark:!prose-invert prose-a:!font-normal'
                             // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
                             dangerouslySetInnerHTML={{ __html: image?.content.replace(/&nbsp;/g, ' ') }}
                           />
+                          <a
+                            href={image.url}
+                            target='_blank'
+                            rel='noreferrer'
+                            className={cn(
+                              'flex items-center justify-center gap-2 rounded border px-3 pb-1.5 pt-1 font-medium',
+                              'transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
+                            )}
+                          >
+                            <InstagramIcon className='h-4 w-4' />
+                            Instagram
+                          </a>
                         </div>
                       </ScrollArea>
                     </div>
