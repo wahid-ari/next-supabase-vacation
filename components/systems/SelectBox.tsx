@@ -29,7 +29,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
             {value ? value?.name : placeholder || 'Select'}
           </span>
           <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
-            <ChevronDownIcon className='size-5 text-neutral-500 dark:text-neutral-300' aria-hidden='true' />
+            <ChevronDownIcon className='h-5 w-5 text-neutral-500 dark:text-neutral-300' aria-hidden='true' />
           </span>
         </Listbox.Button>
         <Transition
@@ -67,7 +67,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
                           active ? 'text-white' : 'text-emerald-600',
                         )}
                       >
-                        <CheckIcon className='size-5' aria-hidden='true' />
+                        <CheckIcon className='h-5 w-5' aria-hidden='true' />
                       </span>
                     ) : null}
                   </>

@@ -21,7 +21,7 @@ export function DemoPaymentMethod() {
             className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
             <RadioGroupItem value='paypal' id='paypal' className='sr-only' />
-            <Icons.paypal className='mb-3 size-6' />
+            <Icons.paypal className='mb-3 h-6 w-6' />
             Paypal
           </Label>
           <Label
@@ -29,7 +29,7 @@ export function DemoPaymentMethod() {
             className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
             <RadioGroupItem value='cards' id='cards' className='sr-only' />
-            <Icons.cards className='mb-3 size-6' />
+            <Icons.cards className='mb-3 h-6 w-6' />
             Card
           </Label>
           <Label
@@ -37,7 +37,7 @@ export function DemoPaymentMethod() {
             className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
             <RadioGroupItem value='apple' id='apple' className='sr-only' />
-            <Icons.apple className='mb-3 size-6' />
+            <Icons.apple className='mb-3 h-6 w-6' />
             Apple
           </Label>
         </RadioGroup>

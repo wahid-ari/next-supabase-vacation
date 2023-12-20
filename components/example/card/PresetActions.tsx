@@ -37,7 +37,7 @@ export function PresetActions() {
         <DropdownMenuTrigger asChild>
           <Button variant='secondary' className='w-full'>
             <span className='sr-only'>Actions</span>
-            <MoreHorizontalIcon className='size-4' />
+            <MoreHorizontalIcon className='h-4 w-4' />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>

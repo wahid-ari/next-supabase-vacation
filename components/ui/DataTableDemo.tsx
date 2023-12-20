@@ -205,7 +205,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <Button variant='ghost' className='-ml-4' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
           Email
-          <ArrowUpDown className='ml-2 size-4' />
+          <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
       );
     },
@@ -267,9 +267,9 @@ export const columns: ColumnDef<Payment>[] = [
         <div className='relative text-right font-medium'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant='ghost' title='Open Action' className='size-8 p-0 hover:bg-neutral-200'>
+              <Button variant='ghost' title='Open Action' className='h-8 w-8 p-0 hover:bg-neutral-200'>
                 <span className='sr-only'>Open menu</span>
-                <MoreHorizontal className='size-4' />
+                <MoreHorizontal className='h-4 w-4' />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end'>

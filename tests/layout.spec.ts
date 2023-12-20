@@ -42,7 +42,7 @@ test.describe('Testing NavAccordion Component', () => {
     const navAccordion = page.getByTestId('nav-accordion');
     await expect(navAccordion).toBeVisible();
     await expect(navAccordion).toHaveClass(
-      /group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all/,
+      /group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all/,
     );
     await expect(navAccordion).toHaveText(/Design/);
     const navAccordionLink = page.getByTestId('nav-accordion-link');
@@ -66,7 +66,7 @@ test.describe('Testing NavLink Component', () => {
     const navLink = page.getByTestId('nav-link');
     await expect(navLink).toBeVisible();
     await expect(navLink).toHaveClass(
-      /group flex w-full items-center font-medium justify-start gap-2 rounded px-3 py-1.5 text-sm transition-all/,
+      /group flex w-full items-center justify-start gap-2 rounded px-3 py-1.5 text-sm font-medium transition-all/,
     );
     await expect(navLink).toHaveText(/Layout/);
     await expect(navLink).toHaveAttribute('href', '/design/layout');
@@ -122,15 +122,15 @@ test.describe('Testing Menu Component', () => {
   test('renders a Menu component', async ({ page }) => {
     const menu = page.getByTestId('menu');
     await expect(menu).toBeVisible();
-    await expect(menu).toHaveClass(/inline-flex w-full items-center font-medium justify-center rounded transition-all/);
+    await expect(menu).toHaveClass(/inline-flex w-full items-center justify-center rounded font-medium transition-all/);
     await expect(menu).toHaveText('Menu');
   });
   test('should renders a Menu Item component', async ({ page }) => {
     await page.getByTestId('menu').click();
-    await expect(page.getByText('SettingLogout')).toBeVisible();
-    await expect(page.getByRole('menuitem', { name: 'Logout' })).toBeVisible();
+    await expect(page.getByText('SettingLogin')).toBeVisible();
+    await expect(page.getByRole('menuitem', { name: 'Login' })).toBeVisible();
     await page.getByTestId('menu').click();
-    await expect(page.getByText('SettingLogout')).toBeVisible();
+    await expect(page.getByText('SettingLogin')).toBeVisible();
     await expect(page.getByRole('menuitem', { name: 'Setting' })).toBeVisible();
   });
 });
@@ -140,7 +140,7 @@ test.describe('Testing Navbar Component', () => {
   test('renders a Navbar component', async ({ page }) => {
     const navbar = page.getByTestId('navbar');
     await expect(navbar).toBeVisible();
-    await expect(navbar).toHaveClass(/sticky top-0 z-40 h-11 dark:text-neutral-50 lg:hidden/);
+    await expect(navbar).toHaveClass(/sticky top-0 z-40 h-11 lg:hidden dark:text-neutral-50/);
     await expect(navbar).toHaveText(/MyVacation/);
   });
 });
@@ -150,7 +150,7 @@ test.describe('Testing Layout Component', () => {
   test('renders a Layout component', async ({ page }) => {
     const layout = page.getByTestId('layout');
     await expect(layout).toBeVisible();
-    await expect(layout).toHaveClass(/min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid/);
+    await expect(layout).toHaveClass(/min-h-screen w-full bg-white text-sm lg:grid dark:bg-neutral-900/);
   });
 });
 

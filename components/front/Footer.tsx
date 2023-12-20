@@ -133,19 +133,19 @@ export default function Footer({ className, ...props }: { className?: string; [p
           </span>
           <div className='mt-4 flex space-x-4 sm:mt-0 sm:justify-center'>
             <a href='https://www.instagram.com/' title='Instagram' target='_blank' className={linkIconClassName}>
-              <InstagramIcon className='size-5' />
+              <InstagramIcon className='h-5 w-5' />
               <span className='sr-only'>Instagram page</span>
             </a>
             <a href='https://twitter.com' title='Twitter' target='_blank' className={linkIconClassName}>
-              <TwitterIcon className='size-5' />
+              <TwitterIcon className='h-5 w-5' />
               <span className='sr-only'>Twitter page</span>
             </a>
             <a href='https://github.com' title='GitHub' target='_blank' className={linkIconClassName}>
-              <GithubIcon className='size-5' />
+              <GithubIcon className='h-5 w-5' />
               <span className='sr-only'>GitHub account</span>
             </a>
             <Link href='/rss.xml' title='RSS' className={linkIconClassName}>
-              <RssIcon className='size-5' />
+              <RssIcon className='h-5 w-5' />
               <span className='sr-only'>RSS</span>
             </Link>
           </div>

@@ -36,7 +36,7 @@ export default function Checkbox({
         disabled={disabled}
         type='checkbox'
         className={twMerge(
-          'size-4 rounded border-neutral-300 dark:border-neutral-700',
+          'h-4 w-4 rounded border-neutral-300 dark:border-neutral-700',
           'text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500',
           'focus:ring-2 focus:ring-sky-500 dark:ring-offset-neutral-900 dark:focus:ring-sky-500',
           'disabled:bg-neutral-100 dark:disabled:bg-neutral-800',

@@ -23,7 +23,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
       </label>
       <div className='relative'>
         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2'>
-          <SearchIcon className='size-5 text-neutral-500 dark:text-neutral-400' />
+          <SearchIcon className='h-5 w-5 text-neutral-500 dark:text-neutral-400' />
         </div>
         <input
           onChange={(e) => (query.current = e.target.value)}

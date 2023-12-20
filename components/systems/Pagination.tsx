@@ -17,7 +17,7 @@ type Props = {
 };
 
 const buttonClassname = cn(
-  'flex size-8 items-center justify-center text-neutral-700 dark:text-neutral-100 rounded border dark:border-neutral-700 px-1.5 transition-all',
+  'flex h-8 w-8 items-center justify-center text-neutral-700 dark:text-neutral-100 rounded border dark:border-neutral-700 px-1.5 transition-all',
   'enabled:hover:bg-neutral-200 enabled:hover:text-text-neutral-900 dark:enabled:hover:bg-neutral-800 dark:enabled:hover:text-text-white',
   'disabled:opacity-60 disabled:cursor-not-allowed',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -56,12 +56,12 @@ export default function Pagination({
           title='First'
           className={cn(buttonClassname, 'max-[400px]:hidden')}
         >
-          <ChevronsLeftIcon className='size-5' />
+          <ChevronsLeftIcon className='h-5 w-5' />
         </button>
       )}
       {showPrevNext && (
         <HeadlessPagination.PrevButton aria-label='Prev' title='Prev' className={buttonClassname}>
-          <ChevronLeftIcon className='size-5' />
+          <ChevronLeftIcon className='h-5 w-5' />
         </HeadlessPagination.PrevButton>
       )}
       <nav className='flex flex-wrap'>
@@ -70,14 +70,14 @@ export default function Pagination({
             activeClassName='bg-sky-500 text-white font-semibold focus-visible:ring-sky-400'
             inactiveClassName='text-neutral-800 dark:text-neutral-300 font-medium hover:text-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white focus-visible:ring-sky-500'
             className={
-              'flex size-8 cursor-pointer items-center justify-center rounded transition-all focus-visible:outline-none focus-visible:ring-2'
+              'flex h-8 w-8 cursor-pointer items-center justify-center rounded transition-all focus-visible:outline-none focus-visible:ring-2'
             }
           />
         </ul>
       </nav>
       {showPrevNext && (
         <HeadlessPagination.NextButton aria-label='Next' title='Next' className={buttonClassname}>
-          <ChevronRightIcon className='size-5' />
+          <ChevronRightIcon className='h-5 w-5' />
         </HeadlessPagination.NextButton>
       )}
       {showFirstLast && (
@@ -88,7 +88,7 @@ export default function Pagination({
           title='Last'
           className={cn(buttonClassname, 'max-[400px]:hidden')}
         >
-          <ChevronsRightIcon className='size-5' />
+          <ChevronsRightIcon className='h-5 w-5' />
         </button>
       )}
     </HeadlessPagination>

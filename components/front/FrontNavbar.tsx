@@ -168,7 +168,7 @@ export default function FrontNavbar({
                         isShowMore
                           ? 'rotate-180 transform transition-transform duration-300'
                           : 'transition-transform duration-300'
-                      } size-4`}
+                      } h-4 w-4`}
                     />
                   </Popover.Button>
                   <Transition
@@ -307,7 +307,7 @@ export default function FrontNavbar({
                 )}
               >
                 <span className='sr-only'>Open main menu</span>
-                <MenuIcon className='size-6' aria-hidden='true' />
+                <MenuIcon className='h-6 w-6' aria-hidden='true' />
               </Popover.Button>
             </div>
             {/* End Mobile menu button */}
@@ -351,7 +351,7 @@ export default function FrontNavbar({
                     )}
                   >
                     <span className='sr-only'>Close main menu</span>
-                    <XIcon className='size-5' aria-hidden='true' />
+                    <XIcon className='h-5 w-5' aria-hidden='true' />
                   </Popover.Button>
                 </div>
                 {/* EndCLose Mobile Menu Button  */}
@@ -413,7 +413,7 @@ export default function FrontNavbar({
                               open
                                 ? 'rotate-90 transform transition-transform duration-200'
                                 : 'transition-transform duration-200'
-                            } size-5`}
+                            } h-5 w-5`}
                           />
                         </div>
                       </Menu.Button>

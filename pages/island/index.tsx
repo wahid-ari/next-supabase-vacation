@@ -161,7 +161,7 @@ export default function Island() {
             setOpenDialog((prev) => ({ ...prev, create: true }));
           }}
         >
-          <PlusIcon className='mr-2 size-4' />
+          <PlusIcon className='mr-2 h-4 w-4' />
           New Island
         </Button>
       </div>
@@ -324,7 +324,7 @@ export default function Island() {
                     className='mr-2 px-2'
                     onClick={() => handleShowEditDialog(item.id, item.name, item.image_url)}
                   >
-                    <PencilIcon className='size-4' />
+                    <PencilIcon className='h-4 w-4' />
                   </Button>
                   <Button
                     title={`Delete ${item.name}`}
@@ -333,7 +333,7 @@ export default function Island() {
                     className='px-2'
                     onClick={() => handleShowDeleteDialog(item.id, item.name)}
                   >
-                    <TrashIcon className='size-4' />
+                    <TrashIcon className='h-4 w-4' />
                   </Button>
                 </TableSimple.td>
               </TableSimple.tr>

@@ -111,7 +111,7 @@ export default function Inspirations() {
                               'transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
                             )}
                           >
-                            <InstagramIcon className='size-4' />
+                            <InstagramIcon className='h-4 w-4' />
                             Instagram
                           </a>
                         </div>
@@ -129,7 +129,7 @@ export default function Inspirations() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowLeftIcon className='size-6 dark:text-white' />
+              <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
             </button>
             <button
               ref={nextRef}
@@ -139,7 +139,7 @@ export default function Inspirations() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowRightIcon className='size-6 dark:text-white' />
+              <ArrowRightIcon className='h-6 w-6 dark:text-white' />
             </button>
           </DialogContent>
         </Dialog>

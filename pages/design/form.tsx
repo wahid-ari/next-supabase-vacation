@@ -204,9 +204,9 @@ export default function FormPage() {
     <Layout title='Form - MyVacation' description='Example Form - MyVacation'>
       <div className='relative'>
         <Title>Form</Title>
-        <span className='absolute left-[65px] top-1 flex size-5 animate-bounce items-center justify-center'>
+        <span className='absolute left-[65px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
           <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-          <span className='relative inline-flex size-3 rounded-full bg-sky-500' />
+          <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
         </span>
       </div>
 
@@ -316,7 +316,7 @@ export default function FormPage() {
                             type='button'
                             variant='destructive'
                             size='sm'
-                            className='ml-3 size-7'
+                            className='ml-3 h-7 w-7'
                             onClick={() => remove(index)}
                           >
                             X
@@ -451,7 +451,7 @@ export default function FormPage() {
                           )}
                         >
                           {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
-                          <CalendarIcon className='ml-auto size-4 opacity-50' />
+                          <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
@@ -681,7 +681,7 @@ export default function FormPage() {
                           {field.value
                             ? languages.find((language) => language.value === field.value)?.label
                             : 'Select language'}
-                          <ChevronsUpDown className='ml-2 size-4 shrink-0 opacity-50' />
+                          <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
@@ -700,7 +700,7 @@ export default function FormPage() {
                             >
                               <Check
                                 className={cn(
-                                  'mr-2 size-4',
+                                  'mr-2 h-4 w-4',
                                   language.value === field.value ? 'text-emerald-600 opacity-100' : 'opacity-0',
                                 )}
                               />

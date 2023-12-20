@@ -120,7 +120,7 @@ export default function Videos() {
                       >
                         <div className='flex h-full items-center justify-center'>
                           <svg
-                            className='size-12 rounded group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px]'
+                            className='h-12 w-12 rounded group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 sm:h-14 sm:w-14 md:h-[68px] md:w-[68px]'
                             height='100%'
                             version='1.1'
                             viewBox='0 0 68 48'
@@ -152,7 +152,7 @@ export default function Videos() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowLeftIcon className='size-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
             </button>
             <button
               ref={nextRef}
@@ -162,7 +162,7 @@ export default function Videos() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowRightIcon className='size-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
             </button>
           </div>
         ) : (

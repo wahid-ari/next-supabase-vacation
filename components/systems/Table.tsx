@@ -67,18 +67,18 @@ export default function Table({
                 aria-label='Prev'
                 onClick={prev}
                 disabled={currentPage < 2}
-                className='flex size-8 items-center justify-center !p-0'
+                className='flex h-8 w-8 items-center justify-center !p-0'
               >
-                <ChevronLeftIcon className='size-4' />
+                <ChevronLeftIcon className='h-5 w-5' />
               </Button.secondary>
               <Button.secondary
                 title='Next'
                 aria-label='Next'
                 onClick={next}
                 disabled={currentPage === totalPage}
-                className='flex size-8 items-center justify-center !p-0'
+                className='flex h-8 w-8 items-center justify-center !p-0'
               >
-                <ChevronRightIcon className='size-4' />
+                <ChevronRightIcon className='h-5 w-5' />
               </Button.secondary>
             </div>
           </div>

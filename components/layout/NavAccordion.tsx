@@ -46,7 +46,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
             </div>
             <span>{title}</span>
           </div>
-          <ChevronRightIcon className={`size-5 text-neutral-500 transition-all duration-300 dark:text-neutral-400`} />
+          <ChevronRightIcon className={`h-5 w-5 text-neutral-500 transition-all duration-300 dark:text-neutral-400`} />
         </button>
         <hr className='mx-3 dark:border-neutral-800' />
       </>
@@ -75,7 +75,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
                 <span>{title}</span>
               </div>
               <ChevronRightIcon
-                className={`size-5 text-neutral-500 transition-all duration-300 dark:text-neutral-400 ${
+                className={`h-5 w-5 text-neutral-500 transition-all duration-300 dark:text-neutral-400 ${
                   open ? 'rotate-90 transform transition-transform' : 'transition-transform'
                 }`}
               />

@@ -67,11 +67,11 @@ export function DemoActivityGoal() {
           <Button
             variant='outline'
             size='icon'
-            className='size-8 shrink-0 rounded-full'
+            className='h-8 w-8 shrink-0 rounded-full'
             onClick={() => onClick(-10)}
             disabled={goal <= 200}
           >
-            <Minus className='size-4' />
+            <Minus className='h-4 w-4' />
             <span className='sr-only'>Decrease</span>
           </Button>
           <div className='flex-1 text-center'>
@@ -81,11 +81,11 @@ export function DemoActivityGoal() {
           <Button
             variant='outline'
             size='icon'
-            className='size-8 shrink-0 rounded-full'
+            className='h-8 w-8 shrink-0 rounded-full'
             onClick={() => onClick(10)}
             disabled={goal >= 400}
           >
-            <Plus className='size-4' />
+            <Plus className='h-4 w-4' />
             <span className='sr-only'>Increase</span>
           </Button>
         </div>

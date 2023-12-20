@@ -318,7 +318,7 @@ export default function Destination() {
                         {comboboxValue
                           ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
                           : 'Select Province'}
-                        <ChevronsUpDown className='ml-2 size-4 shrink-0 opacity-50' />
+                        <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent noPortal className='w-64 p-0'>
@@ -342,7 +342,7 @@ export default function Destination() {
                                 >
                                   <Check
                                     className={cn(
-                                      'mr-2 size-4 text-emerald-600',
+                                      'mr-2 h-4 w-4 text-emerald-600',
                                       comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0',
                                     )}
                                   />

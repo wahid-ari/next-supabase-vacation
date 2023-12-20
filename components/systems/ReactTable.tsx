@@ -137,9 +137,9 @@ export const ReactTable = forwardRef(
                         {!column.disableSortBy ? (
                           column.isSorted ? (
                             column.isSortedDesc ? (
-                              <ChevronDownIcon className='size-4 text-neutral-400' />
+                              <ChevronDownIcon className='h-4 w-4 text-neutral-400' />
                             ) : (
-                              <ChevronUpIcon className='size-4 text-neutral-400' />
+                              <ChevronUpIcon className='h-4 w-4 text-neutral-400' />
                             )
                           ) : (
                             <svg
@@ -219,7 +219,7 @@ export const ReactTable = forwardRef(
                   : 'cursor-not-allowed',
               )}
             >
-              <ChevronsLeftIcon className='size-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+              <ChevronsLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
             <button
               onClick={() => previousPage()}
@@ -233,7 +233,7 @@ export const ReactTable = forwardRef(
                   : 'cursor-not-allowed',
               )}
             >
-              <ChevronLeftIcon className='size-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
+              <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
             </button>{' '}
             <span className='mx-2 text-sm font-medium text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white'>
               Page {pageIndex + 1} of {pageOptions.length}
@@ -250,7 +250,7 @@ export const ReactTable = forwardRef(
                   : 'cursor-not-allowed',
               )}
             >
-              <ChevronRightIcon className='size-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+              <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
             <button
               onClick={() => gotoPage(pageCount - 1)}
@@ -264,7 +264,7 @@ export const ReactTable = forwardRef(
                   : 'cursor-not-allowed',
               )}
             >
-              <ChevronsRightIcon className='size-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+              <ChevronsRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
           </div>
 

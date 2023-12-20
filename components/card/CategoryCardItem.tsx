@@ -46,7 +46,7 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
           </>
         ) : (
           <div className='flex h-60 w-full items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
-            <ImageIcon className='size-20 text-neutral-500' />
+            <ImageIcon className='h-20 w-20 text-neutral-500' />
           </div>
         )}
         <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>

@@ -88,7 +88,7 @@ export function ModelSelector({ models = modelsData, types = typesData, ...props
             className='w-full justify-between'
           >
             {selectedModel ? selectedModel.name : 'Select a model...'}
-            <ChevronsUpDown className='ml-2 size-4 shrink-0 opacity-50' />
+            <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
           </Button>
         </PopoverTrigger>
         <PopoverContent align='end' className='w-[250px] p-0'>
@@ -159,7 +159,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       className='aria-selected:text-primary-foreground aria-selected:bg-neutral-200'
     >
       {model.name}
-      <CheckIcon className={cn('ml-auto size-4', isSelected ? 'text-emerald-600 opacity-100' : 'opacity-0')} />
+      <CheckIcon className={cn('ml-auto h-4 w-4', isSelected ? 'text-emerald-600 opacity-100' : 'opacity-0')} />
     </CommandItem>
   );
 }

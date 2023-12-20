@@ -72,7 +72,7 @@ export function DemoChat() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button size='icon' variant='outline' className='ml-auto rounded-full' onClick={() => setOpen(true)}>
-                  <Plus className='size-4' />
+                  <Plus className='h-4 w-4' />
                 </Button>
               </TooltipTrigger>
               <TooltipContent sideOffset={10}>New message</TooltipContent>
@@ -134,7 +134,7 @@ export function DemoChat() {
               onChange={(e) => setMessage(e.target.value)}
             />
             <Button type='submit' size='icon' disabled={message == '' ? true : false}>
-              <Send className='size-4' />
+              <Send className='h-4 w-4' />
               <span className='sr-only'>Send</span>
             </Button>
           </form>
@@ -171,7 +171,7 @@ export function DemoChat() {
                       <p className='text-sm font-medium leading-none'>{user.name}</p>
                       <p className='text-sm text-neutral-400 dark:text-neutral-500'>{user.email}</p>
                     </div>
-                    {selectedUsers.includes(user) ? <Check className='text-primary ml-auto flex size-5' /> : null}
+                    {selectedUsers.includes(user) ? <Check className='text-primary ml-auto flex h-5 w-5' /> : null}
                   </CommandItem>
                 ))}
               </CommandGroup>

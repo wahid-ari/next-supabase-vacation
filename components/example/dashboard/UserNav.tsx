@@ -15,8 +15,8 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='relative size-8 rounded-full'>
-          <Avatar className='size-8'>
+        <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
+          <Avatar className='h-8 w-8'>
             <AvatarImage src='https://github.com/vercel.png' alt='@nextjs' />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>

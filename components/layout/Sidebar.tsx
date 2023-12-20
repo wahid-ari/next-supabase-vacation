@@ -84,7 +84,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             aria-label='Close Menu'
             title='Close Menu'
           >
-            <XIcon className='size-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
+            <XIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
           </button>
           <p className='py-2.5 text-left text-base font-semibold tracking-wide text-neutral-800 dark:text-neutral-100'>
             MyVacation
@@ -164,9 +164,9 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               icon={<LayoutDashboardIcon className='h-[18px] w-[18px]' />}
             >
               Layout
-              <span className='absolute left-24 top-2.5 flex size-5 animate-bounce items-center justify-center'>
+              <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
                 <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-                <span className='relative inline-flex size-3 rounded-full bg-sky-500' />
+                <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
               </span>
             </NavLink>
             <NavLink href='/design/ui' icon={<ContainerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>

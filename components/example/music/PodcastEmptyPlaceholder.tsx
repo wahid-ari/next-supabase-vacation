@@ -22,7 +22,7 @@ export function PodcastEmptyPlaceholder() {
           strokeLinecap='round'
           strokeLinejoin='round'
           strokeWidth='2'
-          className='size-10 text-neutral-600 dark:text-neutral-400'
+          className='h-10 w-10 text-neutral-600 dark:text-neutral-400'
           viewBox='0 0 24 24'
         >
           <circle cx='12' cy='11' r='1' />

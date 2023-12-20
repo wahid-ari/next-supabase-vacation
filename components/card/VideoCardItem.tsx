@@ -46,7 +46,7 @@ export default function VideoCardItem({
       >
         <div className='flex h-full items-center justify-center'>
           <svg
-            className='size-12 rounded group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 sm:h-14 sm:w-14'
+            className='h-12 w-12 rounded group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500 sm:h-14 sm:w-14'
             height='100%'
             version='1.1'
             viewBox='0 0 68 48'

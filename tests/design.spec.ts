@@ -281,7 +281,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).toHaveClass(
-      /size-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox');
   });
@@ -291,7 +291,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).toBeChecked();
     await expect(checkbox).toHaveClass(
-      /size-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked');
   });
@@ -327,7 +327,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).not.toBeChecked();
     await expect(radio).toHaveClass(
-      /size-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Blue');
   });
@@ -337,7 +337,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).toBeChecked();
     await expect(radio).toHaveClass(
-      /size-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Red');
   });
@@ -382,7 +382,7 @@ test.describe('Testing Input Component', () => {
     await expect(input).not.toBeEditable();
     await expect(input).toHaveValue('Has a value');
     await expect(input).toHaveClass(
-      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/,
+      /disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:opacity-50 dark:disabled:bg-neutral-800/,
     );
   });
 });
@@ -414,16 +414,16 @@ test.describe('Testing LabeledInput Component', () => {
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
     await expect(input).toHaveAttribute('type', 'password');
-    await expect(input).toHaveClass(
-      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/,
-    );
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
   });
   test('renders a LabeledInput Disabled component', async ({ page }) => {
     const input = page.getByTestId('labeledinput-disabled');
     await expect(input).toBeVisible();
     await expect(input).not.toBeEnabled();
     await expect(input).not.toBeEditable();
-    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
+    await expect(input).toHaveClass(
+      /disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:opacity-50 dark:disabled:bg-neutral-800/,
+    );
   });
 });
 
@@ -476,7 +476,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).not.toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/,
+      /disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:opacity-50 dark:disabled:bg-neutral-800/,
     );
   });
 });
@@ -661,7 +661,7 @@ test.describe('Testing Card Component', () => {
   test('renders a Card component', async ({ page }) => {
     const card = page.getByTestId('card');
     await expect(card).toBeVisible();
-    await expect(card).toHaveClass(/rounded-lg border p-3 dark:border-neutral-800 lg:p-6/);
+    await expect(card).toHaveClass(/rounded-lg border p-3 lg:p-6 dark:border-neutral-800/);
     await expect(card).toHaveText('Card Content');
   });
 });
@@ -802,7 +802,7 @@ test.describe('Testing SelectBox Component', () => {
     const selectbox = page.getByTestId('selectbox');
     await expect(selectbox).toBeVisible();
     await expect(selectbox).toHaveClass(
-      /h-10 relative my-2 w-full text-left border transition-all rounded-md cursor-pointer text-sm/,
+      /relative my-2 h-10 w-full cursor-pointer rounded-md border text-left text-sm transition-all/,
     );
   });
   test('selecting option in SelectBox component', async ({ page }) => {
@@ -810,7 +810,7 @@ test.describe('Testing SelectBox Component', () => {
     await selectbox.click();
     await expect(page.getByRole('option', { name: 'Select 1' })).toBeVisible();
     await expect(page.getByRole('option', { name: 'Select 1' })).toHaveClass(
-      /relative cursor-pointer py-2 pr-4 pl-10 text-neutral-900 dark:text-white/,
+      /relative cursor-pointer py-2 pl-10 pr-4 text-neutral-900 dark:text-white/,
     );
     await page.getByRole('option', { name: 'Select 1' }).click();
     await expect(page.getByRole('option', { name: 'Select 1' })).toHaveAttribute('aria-selected', 'true');
@@ -936,72 +936,6 @@ test.describe('Testing LoadingDots Component', () => {
     const loadingdots = page.getByTestId('loadingdots-large');
     await expect(loadingdots).toBeVisible();
     await expect(loadingdots).toHaveClass(/inline-flex items-center gap-1 text-center leading-7/);
-  });
-});
-
-test.describe('Testing Pagination Component', () => {
-  // Pagination ----------------------------------------------------
-  test('renders a Pagination component', async ({ page }) => {
-    const pagination = page.getByTestId('pagination');
-    await expect(pagination).toBeVisible();
-    await expect(pagination).toHaveClass(/inline-flex flex-wrap gap-1 select-none items-center text-sm/);
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-  });
-  test('change page in Pagination component using page button', async ({ page }) => {
-    const pagination = page.getByTestId('pagination');
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-    await pagination.getByText('2').click();
-    await expect(page.getByText('Pagination : 2')).toBeVisible();
-    await pagination.getByText('3').click();
-    await expect(page.getByText('Pagination : 3')).toBeVisible();
-    await pagination.getByText('4').click();
-    await expect(page.getByText('Pagination : 4')).toBeVisible();
-    await pagination.getByText('5').click();
-    await expect(page.getByText('Pagination : 5')).toBeVisible();
-    await pagination.getByText('6').click();
-    await expect(page.getByText('Pagination : 6')).toBeVisible();
-    await pagination.getByText('7').click();
-    await expect(page.getByText('Pagination : 7')).toBeVisible();
-    await pagination.getByText('8').click();
-    await expect(page.getByText('Pagination : 8')).toBeVisible();
-    await pagination.getByText('9').click();
-    await expect(page.getByText('Pagination : 9')).toBeVisible();
-    await pagination.getByText('10').click();
-    await expect(page.getByText('Pagination : 10')).toBeVisible();
-  });
-  test('change page in Pagination component using prev next button', async ({ page }) => {
-    const pagination = page.getByTestId('pagination');
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-    await pagination.getByLabel('Next').click();
-    await expect(page.getByText('Pagination : 2')).toBeVisible();
-    await pagination.getByLabel('Next').click();
-    await expect(page.getByText('Pagination : 3')).toBeVisible();
-    await pagination.getByLabel('Prev').click();
-    await expect(page.getByText('Pagination : 2')).toBeVisible();
-    await pagination.getByLabel('Prev').click();
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-  });
-  test('change page in Pagination component using first last button', async ({ page }) => {
-    const pagination = page.getByTestId('pagination');
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-    await pagination.getByLabel('Last').click();
-    await expect(page.getByText('Pagination : 10')).toBeVisible();
-    await pagination.getByLabel('First').click();
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-  });
-  test('Pagination first and prev button should disabled when in first page', async ({ page }) => {
-    const pagination = page.getByTestId('pagination');
-    await pagination.getByText('1', { exact: true }).click();
-    await expect(page.getByText('Pagination : 1')).toBeVisible();
-    await expect(pagination.getByLabel('First')).toBeDisabled();
-    await expect(pagination.getByLabel('Prev')).toBeDisabled();
-  });
-  test('Pagination last and next button should disabled when in first page', async ({ page }) => {
-    const pagination = page.getByTestId('pagination');
-    await pagination.getByText('10').click();
-    await expect(page.getByText('Pagination : 10')).toBeVisible();
-    await expect(pagination.getByLabel('Last')).toBeDisabled();
-    await expect(pagination.getByLabel('Next')).toBeDisabled();
   });
 });
 

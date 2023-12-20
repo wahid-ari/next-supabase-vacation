@@ -29,7 +29,7 @@ export function DateRangePicker({ className }: React.HTMLAttributes<HTMLDivEleme
               !date && 'text-neutral-600 dark:text-neutral-400',
             )}
           >
-            <CalendarIcon className='mr-2 size-4' />
+            <CalendarIcon className='mr-2 h-4 w-4' />
             {date?.from ? (
               date.to ? (
                 <>

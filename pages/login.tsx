@@ -177,9 +177,9 @@ export default function Login() {
                       className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
                     >
                       {showPassword ? (
-                        <EyeIcon className='size-5 text-neutral-600' />
+                        <EyeIcon className='h-5 w-5 text-neutral-600' />
                       ) : (
-                        <EyeOffIcon className='size-5 text-neutral-600' />
+                        <EyeOffIcon className='h-5 w-5 text-neutral-600' />
                       )}
                     </button>
                   </div>

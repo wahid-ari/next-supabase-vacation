@@ -69,14 +69,14 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
             className='ml-2 h-8 px-2 lg:px-3'
           >
             Reset
-            <X className='ml-1 hidden size-4 sm:block' />
+            <X className='ml-1 hidden h-4 w-4 sm:block' />
           </Button>
         )}
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant='outline' size='sm' className='ml-auto h-9 px-2 sm:px-3'>
-            <Settings2 className='mr-2 size-4' />
+            <Settings2 className='mr-2 h-4 w-4' />
             View
           </Button>
         </DropdownMenuTrigger>

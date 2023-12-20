@@ -34,7 +34,7 @@ export default function MusicPage() {
                     </TabsList>
                     <div className='ml-auto'>
                       <Button>
-                        <PlusCircleIcon className='mr-2 size-4' />
+                        <PlusCircleIcon className='mr-2 h-4 w-4' />
                         Add music
                       </Button>
                     </div>
