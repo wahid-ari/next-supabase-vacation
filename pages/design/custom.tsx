@@ -459,7 +459,7 @@ export default function Custom() {
 
       <Wrapper id='dialog-swiper' name='DialogSwiper' noClassName noProps noChildren>
         <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
-          {imagesData.map((image, index) => (
+          {imagesData.slice(0, 3).map((image, index) => (
             <button
               onClick={() => openImage(image.id)}
               key={index}
@@ -488,7 +488,7 @@ export default function Custom() {
               loop={true}
               className='w-full py-4'
             >
-              {imagesData.map((image, index) => (
+              {imagesData.slice(0, 3).map((image, index) => (
                 <SwiperSlide key={index}>
                   <div className='grid grid-cols-1 gap-x-3 sm:grid-cols-2'>
                     <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
@@ -541,12 +541,12 @@ export default function Custom() {
       </Wrapper>
 
       <Wrapper id='dialog-swiper-thumb' name='DialogSwiperThumb' noClassName noProps noChildren>
-        <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {imagesData.map((image, index) => (
             <button
               onClick={() => openImageThumb(image.id)}
               key={index}
-              className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+              className='relative h-48 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
               <Image alt='Image' src={image.public_id} fill className='rounded object-cover' unoptimized />
             </button>

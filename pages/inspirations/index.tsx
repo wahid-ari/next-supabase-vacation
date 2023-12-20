@@ -93,22 +93,25 @@ export default function Inspirations() {
                         unoptimized
                       />
                     </div>
-                    <div className='p-4 pr-1'>
-                      <ScrollArea className='h-40 pr-4 sm:h-[450px] sm:pr-7'>
-                        <div className='block max-w-full'>
-                          <h3 className='mb-4 text-xl font-semibold'>{image?.title}</h3>
-                          <div
-                            className='ql-editor !prose !prose-blue mb-6 !max-w-none !p-0 dark:!prose-invert prose-a:!font-normal'
-                            // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
-                            dangerouslySetInnerHTML={{ __html: image?.content.replace(/&nbsp;/g, ' ') }}
-                          />
+                    <div className='p-4 pb-6 pr-1'>
+                      <ScrollArea className='flex h-40 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
+                        <div className='flex min-h-full flex-col justify-between gap-4'>
+                          <div>
+                            <h3 className='mb-2 p-1 text-xl font-semibold'>{image?.title}</h3>
+                            <div
+                              className='ql-editor !prose !prose-blue !max-w-none !p-1 dark:!prose-invert prose-a:!font-normal'
+                              // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
+                              dangerouslySetInnerHTML={{ __html: image?.content.replace(/&nbsp;/g, ' ') }}
+                            />
+                          </div>
                           <a
                             href={image.url}
                             target='_blank'
                             rel='noreferrer'
                             className={cn(
-                              'flex items-center justify-center gap-2 rounded border px-3 pb-1.5 pt-1 font-medium',
+                              'mx-1 flex items-center justify-center gap-2 rounded border px-3 pb-1.5 pt-1 font-medium',
                               'transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
+                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                             )}
                           >
                             <InstagramIcon className='h-4 w-4' />
