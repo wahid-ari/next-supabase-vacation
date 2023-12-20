@@ -4,7 +4,7 @@ export function RecentSales() {
   return (
     <div className='space-y-8'>
       <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
+        <Avatar className='size-9'>
           <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
           <AvatarFallback>OM</AvatarFallback>
         </Avatar>
@@ -17,7 +17,7 @@ export function RecentSales() {
         </div>
       </div>
       <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
+        <Avatar className='size-9'>
           <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
           <AvatarFallback>JL</AvatarFallback>
         </Avatar>
@@ -30,7 +30,7 @@ export function RecentSales() {
         </div>
       </div>
       <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
+        <Avatar className='size-9'>
           <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
           <AvatarFallback>IN</AvatarFallback>
         </Avatar>
@@ -43,7 +43,7 @@ export function RecentSales() {
         </div>
       </div>
       <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
+        <Avatar className='size-9'>
           <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
           <AvatarFallback>WK</AvatarFallback>
         </Avatar>
@@ -56,7 +56,7 @@ export function RecentSales() {
         </div>
       </div>
       <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
+        <Avatar className='size-9'>
           <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
           <AvatarFallback>SD</AvatarFallback>
         </Avatar>

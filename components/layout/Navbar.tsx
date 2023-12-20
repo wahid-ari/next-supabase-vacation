@@ -15,7 +15,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
     <nav
       {...props}
       className={twMerge(
-        'sticky top-0 z-40 h-11 dark:text-neutral-50 lg:hidden',
+        'sticky top-0 z-40 h-11 lg:hidden dark:text-neutral-50',
         'flex w-full items-center justify-between gap-4 border-b p-3 px-5 dark:border-neutral-800',
         'bg-white/50 dark:bg-neutral-900/30',
         'backdrop-blur-md backdrop-filter',
@@ -30,7 +30,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           title='Menu'
         >
           <MenuIcon
-            className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100'
+            className='size-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100'
             onClick={() => setShowNav(true)}
           />
         </button>
@@ -38,7 +38,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           href='/'
           className={twMerge(
             'rounded text-center text-base font-semibold tracking-wide text-neutral-800 no-underline',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 lg:text-2xl dark:text-neutral-100',
           )}
         >
           MyVacation

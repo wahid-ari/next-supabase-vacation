@@ -66,12 +66,12 @@ export default function Modal({
               <div className='p-5 sm:flex sm:gap-4'>
                 {showIcon ? (
                   isDanger ? (
-                    <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100'>
-                      <AlertTriangleIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
+                    <div className='mx-auto flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100'>
+                      <AlertTriangleIcon className='size-6 text-red-600' aria-hidden='true' />
                     </div>
                   ) : (
-                    <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100'>
-                      <InfoIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
+                    <div className='mx-auto flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100'>
+                      <InfoIcon className='size-6 text-blue-600' aria-hidden='true' />
                     </div>
                   )
                 ) : null}

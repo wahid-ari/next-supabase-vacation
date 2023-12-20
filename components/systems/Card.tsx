@@ -9,7 +9,7 @@ type Props = {
 
 export default function Card({ children, className, ...props }: Props) {
   return (
-    <div {...props} className={twMerge('rounded-lg border p-3 dark:border-neutral-800 lg:p-6', className)}>
+    <div {...props} className={twMerge('rounded-lg border p-3 lg:p-6 dark:border-neutral-800', className)}>
       {children}
     </div>
   );

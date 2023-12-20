@@ -30,7 +30,7 @@ export default function Card({
           {title}
         </p>
       </div>
-      <div className='h-12 w-12 text-neutral-300 transition-all duration-500 group-hover:text-sky-500 dark:text-neutral-700 dark:group-hover:text-sky-600'>
+      <div className='size-12 text-neutral-300 transition-all duration-500 group-hover:text-sky-500 dark:text-neutral-700 dark:group-hover:text-sky-600'>
         {icon}
       </div>
     </Link>

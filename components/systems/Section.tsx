@@ -12,7 +12,7 @@ export default function Section({ children, className, ...props }: Props) {
     <section
       {...props}
       className={twMerge(
-        'my-2 rounded-md border bg-white p-8 py-4 dark:border-neutral-800 dark:bg-[#1F1F1F] lg:py-8',
+        'my-2 rounded-md border bg-white p-8 py-4 lg:py-8 dark:border-neutral-800 dark:bg-[#1F1F1F]',
         className,
       )}
     >

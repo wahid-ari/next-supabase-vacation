@@ -97,7 +97,7 @@ export default function Dashboard() {
             title='Destination'
             link='/destination'
             count={totalDestination.destination}
-            icon={<MountainSnowIcon className='h-12 w-12' />}
+            icon={<MountainSnowIcon className='size-12' />}
             data-testid='destination-count'
           />
         ) : (
@@ -113,7 +113,7 @@ export default function Dashboard() {
             title='Category'
             link='/category'
             count={totalCategory.category}
-            icon={<LayoutListIcon className='h-12 w-12' />}
+            icon={<LayoutListIcon className='size-12' />}
             data-testid='category-count'
           />
         ) : (
@@ -129,7 +129,7 @@ export default function Dashboard() {
             title='Island'
             link='/island'
             count={totalIsland.island}
-            icon={<PalmtreeIcon className='h-12 w-12' />}
+            icon={<PalmtreeIcon className='size-12' />}
             data-testid='island-count'
           />
         ) : (
@@ -145,7 +145,7 @@ export default function Dashboard() {
             title='Province'
             link='/province'
             count={totalProvince.province}
-            icon={<MapPinIcon className='h-12 w-12' />}
+            icon={<MapPinIcon className='size-12' />}
             data-testid='province-count'
           />
         ) : (
@@ -161,7 +161,7 @@ export default function Dashboard() {
             title='Video'
             link='/video'
             count={totalVideo.video}
-            icon={<YoutubeIcon className='h-12 w-12' />}
+            icon={<YoutubeIcon className='size-12' />}
             data-testid='video-count'
           />
         ) : (
@@ -177,7 +177,7 @@ export default function Dashboard() {
             title='Inspiration'
             link='/inspiration'
             count={totalInspiration.inspiration}
-            icon={<TentIcon className='h-12 w-12' />}
+            icon={<TentIcon className='size-12' />}
             data-testid='inspiration-count'
           />
         ) : (
@@ -196,18 +196,18 @@ export default function Dashboard() {
               title='Destination'
               link='/destination'
               count={data.destination}
-              icon={<MountainSnowIcon className='h-12 w-12' />}
+              icon={<MountainSnowIcon className='size-12' />}
             />
             <Card
               title='Category'
               link='/category'
               count={data.category}
-              icon={<LayoutListIcon className='h-12 w-12' />}
+              icon={<LayoutListIcon className='size-12' />}
             />
-            <Card title='Island' link='/island' count={data.island} icon={<PalmtreeIcon className='h-12 w-12' />} />
-            <Card title='Province' link='/province' count={data.province} icon={<MapPinIcon className='h-12 w-12' />} />
-            <Card title='Video' link='/video' count={data.video} icon={<YoutubeIcon className='h-12 w-12' />} />
-            <Card title='Inspiration' link='/inspiration' count={data.inspiration} icon={<TentIcon className='h-12 w-12' />} />
+            <Card title='Island' link='/island' count={data.island} icon={<PalmtreeIcon className='size-12' />} />
+            <Card title='Province' link='/province' count={data.province} icon={<MapPinIcon className='size-12' />} />
+            <Card title='Video' link='/video' count={data.video} icon={<YoutubeIcon className='size-12' />} />
+            <Card title='Inspiration' link='/inspiration' count={data.inspiration} icon={<TentIcon className='size-12' />} />
           </>
         ) : (
           [...Array(6).keys()].map((i) => (
@@ -267,7 +267,7 @@ export default function Dashboard() {
               </div>
             ) : (
               <div className='m-auto w-80 py-3'>
-                <Shimmer className='m-auto h-64 w-64 rounded-full'>
+                <Shimmer className='m-auto size-64 rounded-full'>
                   <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 </Shimmer>
                 <div className='mx-auto mb-3 mt-3 flex w-64 flex-wrap justify-center gap-x-4 gap-y-2'>
@@ -332,7 +332,7 @@ export default function Dashboard() {
               </div>
             ) : (
               <div className='m-auto w-80 py-3'>
-                <Shimmer className='m-auto h-64 w-64 rounded-full'>
+                <Shimmer className='m-auto size-64 rounded-full'>
                   <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 </Shimmer>
                 <div className='mx-auto mb-3 mt-3 flex w-64 flex-wrap justify-center gap-x-4 gap-y-2'>
@@ -409,11 +409,11 @@ export default function Dashboard() {
               <Shimmer className='rounded-xl'>
                 <div className='flex flex-row items-end gap-2 sm:gap-4 md:gap-8 lg:gap-10'>
                   <div className='h-32 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                  <div className='h-16 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='size-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-64 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-72 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-32 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                  <div className='h-16 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  <div className='size-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-64 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-72 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                   <div className='h-64 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>

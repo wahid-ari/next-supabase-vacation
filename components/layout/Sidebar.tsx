@@ -78,13 +78,13 @@ export default function Sidebar({ className, ...props }: { className?: string; [
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className='rounded border p-0.5 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-700 dark:hover:bg-neutral-800 lg:hidden'
+            className='rounded border p-0.5 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 lg:hidden dark:border-neutral-700 dark:hover:bg-neutral-800'
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
             title='Close Menu'
           >
-            <XIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
+            <XIcon className='size-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
           </button>
           <p className='py-2.5 text-left text-base font-semibold tracking-wide text-neutral-800 dark:text-neutral-100'>
             MyVacation
@@ -96,7 +96,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
         <div
           className={twMerge(
-            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 lg:flex-grow',
+            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 lg:flex-grow dark:border-neutral-800',
             'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
           )}
         >
@@ -164,9 +164,9 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               icon={<LayoutDashboardIcon className='h-[18px] w-[18px]' />}
             >
               Layout
-              <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
+              <span className='absolute left-24 top-2.5 flex size-5 animate-bounce items-center justify-center'>
                 <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-                <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
+                <span className='relative inline-flex size-3 rounded-full bg-sky-500' />
               </span>
             </NavLink>
             <NavLink href='/design/ui' icon={<ContainerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
@@ -197,7 +197,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           </NavLink.external>
         </div>
 
-        <hr className='mx-7 mt-2 dark:border-neutral-800 lg:mx-0' />
+        <hr className='mx-7 mt-2 lg:mx-0 dark:border-neutral-800' />
 
         <div className='px-4 py-1.5'>
           {session == null ? (

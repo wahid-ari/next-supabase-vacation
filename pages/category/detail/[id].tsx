@@ -81,7 +81,7 @@ export default function Category() {
                   </div>
                 ) : (
                   <div className='flex h-40 w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-700'>
-                    <ImageIcon className='h-16 w-16 text-neutral-500' />
+                    <ImageIcon className='size-16 text-neutral-500' />
                   </div>
                 )}
                 <p className='mb-2 mt-3 text-lg font-semibold leading-6 text-neutral-700 dark:text-white'>
@@ -173,22 +173,22 @@ export default function Category() {
             head={
               <>
                 <TableSimple.th className='flex items-center gap-1'>
-                  No <ChevronUpIcon className='h-4 w-4 opacity-50' />
+                  No <ChevronUpIcon className='size-4 opacity-50' />
                 </TableSimple.th>
                 <TableSimple.th className='text-left sm:w-[40%] md:w-[45%]'>
                   <div className='flex items-center gap-1'>
-                    Name <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                    Name <ChevronsUpDownIcon className='size-4 opacity-50' />
                   </div>
                 </TableSimple.th>
                 <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
                   <div className='flex items-center gap-1'>
-                    Location <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                    Location <ChevronsUpDownIcon className='size-4 opacity-50' />
                   </div>
                 </TableSimple.th>
                 <TableSimple.th className='sm:w-[30%] md:w-[20%]'>
                   <div className='flex items-center gap-1'>
                     Province
-                    <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                    <ChevronsUpDownIcon className='size-4 opacity-50' />
                   </div>
                 </TableSimple.th>
               </>

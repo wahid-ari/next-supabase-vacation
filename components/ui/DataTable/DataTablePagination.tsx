@@ -19,10 +19,10 @@ export function DataTablePagination<TData>({
   return (
     <div>
       <div className='grid grid-cols-1 gap-x-4 gap-y-2  py-4 sm:grid-cols-2'>
-        <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-left'>
+        <div className='text-center text-[13px] text-neutral-600 sm:text-left dark:text-neutral-300'>
           {showText || ''}
         </div>
-        <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-right'>
+        <div className='text-center text-[13px] text-neutral-600 sm:text-right dark:text-neutral-300'>
           {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected
         </div>
       </div>
@@ -71,22 +71,22 @@ export function DataTablePagination<TData>({
             <Button
               title='First Page'
               variant='outline'
-              className='h-8 w-8 p-0'
+              className='size-8 p-0'
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
               <span className='sr-only'>Go to first page</span>
-              <ChevronsLeft className='h-4 w-4' />
+              <ChevronsLeft className='size-4' />
             </Button>
             <Button
               title='Previous Page'
               variant='outline'
-              className='h-8 w-8 p-0'
+              className='size-8 p-0'
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
               <span className='sr-only'>Go to previous page</span>
-              <ChevronLeftIcon className='h-4 w-4' />
+              <ChevronLeftIcon className='size-4' />
             </Button>
             <div className='flex items-center justify-center text-[13px] font-medium sm:text-sm'>
               Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
@@ -94,22 +94,22 @@ export function DataTablePagination<TData>({
             <Button
               title='Next Page'
               variant='outline'
-              className='h-8 w-8 p-0'
+              className='size-8 p-0'
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
               <span className='sr-only'>Go to next page</span>
-              <ChevronRightIcon className='h-4 w-4' />
+              <ChevronRightIcon className='size-4' />
             </Button>
             <Button
               title='Last Page'
               variant='outline'
-              className='h-8 w-8 p-0'
+              className='size-8 p-0'
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >
               <span className='sr-only'>Go to last page</span>
-              <ChevronsRight className='h-4 w-4' />
+              <ChevronsRight className='size-4' />
             </Button>
           </div>
         </div>

@@ -281,7 +281,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /size-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox');
   });
@@ -291,7 +291,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).toBeChecked();
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /size-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked');
   });
@@ -327,7 +327,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).not.toBeChecked();
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /size-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Blue');
   });
@@ -337,7 +337,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).toBeChecked();
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
+      /size-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/,
     );
     await expect(radioLabel).toContainText('Red');
   });

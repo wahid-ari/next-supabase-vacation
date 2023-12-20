@@ -82,7 +82,7 @@ export default function Register() {
       <>
         <HeadSeo title='Register - MyVacation' description='Register - MyVacation' />
 
-        <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
+        <div className='min-h-screen w-screen text-sm font-medium sm:grid sm:grid-cols-2 dark:bg-white'>
           <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
             <div>
               <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
@@ -177,9 +177,9 @@ export default function Register() {
                       className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
                     >
                       {showPassword ? (
-                        <EyeIcon className='h-5 w-5 text-neutral-600' />
+                        <EyeIcon className='size-5 text-neutral-600' />
                       ) : (
-                        <EyeOffIcon className='h-5 w-5 text-neutral-600' />
+                        <EyeOffIcon className='size-5 text-neutral-600' />
                       )}
                     </button>
                   </div>
@@ -206,9 +206,9 @@ export default function Register() {
                       className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
                     >
                       {showPassword ? (
-                        <EyeIcon className='h-5 w-5 text-neutral-600' />
+                        <EyeIcon className='size-5 text-neutral-600' />
                       ) : (
-                        <EyeOffIcon className='h-5 w-5 text-neutral-600' />
+                        <EyeOffIcon className='size-5 text-neutral-600' />
                       )}
                     </button>
                   </div>

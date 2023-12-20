@@ -38,7 +38,7 @@ export default function ShowMore({ children, className, count = 200, ...props }:
           {showMore ? 'Show Less' : 'Show More'}
           <ChevronDownIcon
             className={twMerge(
-              'h-4 w-4 text-neutral-600 group-hover:text-neutral-700 dark:text-neutral-300 dark:group-hover:text-neutral-200',
+              'size-4 text-neutral-600 group-hover:text-neutral-700 dark:text-neutral-300 dark:group-hover:text-neutral-200',
               showMore ? 'rotate-180 transition-all duration-500' : 'rotate-0 transition-all duration-300',
             )}
           />

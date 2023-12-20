@@ -33,14 +33,14 @@ export default function Example() {
     <Layout title='Layout - MyVacation' description='Example Layout - MyVacation'>
       <div className='relative'>
         <Title>Layout</Title>
-        <span className='absolute left-[85px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
+        <span className='absolute left-[85px] top-1 flex size-5 animate-bounce items-center justify-center'>
           <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-          <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
+          <span className='relative inline-flex size-3 rounded-full bg-sky-500' />
         </span>
       </div>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
-        <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
+        <div className='columns-2 text-sky-600 sm:columns-3 dark:text-sky-500'>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#breadcrumb'>
               Breadcrumb
@@ -109,16 +109,12 @@ export default function Example() {
             data-testid='nav-accordion'
             title='Design'
             routeName='design'
-            icon={<LayoutPanelLeftIcon className='h-4 w-4' />}
+            icon={<LayoutPanelLeftIcon className='size-4' />}
           >
-            <NavLink
-              data-testid='nav-accordion-link'
-              href='/design/component'
-              icon={<LayersIcon className='h-4 w-4' />}
-            >
+            <NavLink data-testid='nav-accordion-link' href='/design/component' icon={<LayersIcon className='size-4' />}>
               Component
             </NavLink>
-            <NavLink href='/design/layout' className='mt-1.5' icon={<LayoutDashboardIcon className='h-4 w-4' />}>
+            <NavLink href='/design/layout' className='mt-1.5' icon={<LayoutDashboardIcon className='size-4' />}>
               Layout
             </NavLink>
           </NavAccordion>
@@ -131,7 +127,7 @@ export default function Example() {
             data-testid='nav-link'
             href='/design/layout'
             className='mt-1.5'
-            icon={<ContainerIcon className='h-4 w-4' />}
+            icon={<ContainerIcon className='size-4' />}
           >
             Layout
           </NavLink>
@@ -143,7 +139,7 @@ export default function Example() {
           <NavLink.external
             data-testid='nav-link-external'
             href='https://github.com'
-            icon={<ExternalLinkIcon className='h-4 w-4' />}
+            icon={<ExternalLinkIcon className='size-4' />}
           >
             External
           </NavLink.external>
@@ -152,7 +148,7 @@ export default function Example() {
 
       <Wrapper id='nav-link-login' name='NavLink.login' props={['href', 'icon']}>
         <div className='w-64'>
-          <NavLink.login data-testid='nav-link-login' href='/login' icon={<LogInIcon className='h-4 w-4' />}>
+          <NavLink.login data-testid='nav-link-login' href='/login' icon={<LogInIcon className='size-4' />}>
             Login
           </NavLink.login>
         </div>
@@ -160,7 +156,7 @@ export default function Example() {
 
       <Wrapper id='nav-link-logout' name='NavLink.logout' props={['href', 'icon']}>
         <div className='w-64'>
-          <NavLink.logout data-testid='nav-link-logout' href='/logout' icon={<LogOutIcon className='h-4 w-4' />}>
+          <NavLink.logout data-testid='nav-link-logout' href='/logout' icon={<LogOutIcon className='size-4' />}>
             Logout
           </NavLink.logout>
         </div>

@@ -72,7 +72,7 @@ export function DemoChat() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button size='icon' variant='outline' className='ml-auto rounded-full' onClick={() => setOpen(true)}>
-                  <Plus className='h-4 w-4' />
+                  <Plus className='size-4' />
                 </Button>
               </TooltipTrigger>
               <TooltipContent sideOffset={10}>New message</TooltipContent>
@@ -134,7 +134,7 @@ export function DemoChat() {
               onChange={(e) => setMessage(e.target.value)}
             />
             <Button type='submit' size='icon' disabled={message == '' ? true : false}>
-              <Send className='h-4 w-4' />
+              <Send className='size-4' />
               <span className='sr-only'>Send</span>
             </Button>
           </form>
@@ -171,13 +171,13 @@ export function DemoChat() {
                       <p className='text-sm font-medium leading-none'>{user.name}</p>
                       <p className='text-sm text-neutral-400 dark:text-neutral-500'>{user.email}</p>
                     </div>
-                    {selectedUsers.includes(user) ? <Check className='text-primary ml-auto flex h-5 w-5' /> : null}
+                    {selectedUsers.includes(user) ? <Check className='text-primary ml-auto flex size-5' /> : null}
                   </CommandItem>
                 ))}
               </CommandGroup>
             </CommandList>
           </Command>
-          <DialogFooter className='flex items-center border-t p-4 dark:border-t-neutral-700 sm:justify-between'>
+          <DialogFooter className='flex items-center border-t p-4 sm:justify-between dark:border-t-neutral-700'>
             {selectedUsers.length > 0 ? (
               <div className='mt-2 flex -space-x-2 overflow-hidden sm:mt-0'>
                 {selectedUsers.map((user) => (

@@ -36,12 +36,12 @@ export function DemoGithub() {
             >
               {starred ? (
                 <>
-                  <StarIcon className='mr-1 h-4 w-4 fill-yellow-500 text-yellow-500' />
+                  <StarIcon className='mr-1 size-4 fill-yellow-500 text-yellow-500' />
                   Starred
                 </>
               ) : (
                 <>
-                  <StarIcon className='mr-1 h-4 w-4' />
+                  <StarIcon className='mr-1 size-4' />
                   Star
                 </>
               )}
@@ -50,7 +50,7 @@ export function DemoGithub() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant='outline' size='sm' className='px-2 shadow-none'>
-                  <ChevronDownIcon className='text-secondary-foreground h-4 w-4' />
+                  <ChevronDownIcon className='text-secondary-foreground size-4' />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align='end' alignOffset={-5} className='w-[200px]' forceMount>
@@ -61,7 +61,7 @@ export function DemoGithub() {
                 <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <PlusIcon className='mr-2 h-4 w-4' /> Create List
+                  <PlusIcon className='mr-2 size-4' /> Create List
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -72,18 +72,18 @@ export function DemoGithub() {
       <CardContent>
         <div className='flex flex-wrap gap-x-4 gap-y-1 text-sm text-neutral-600 dark:text-neutral-400'>
           <div className='flex items-center'>
-            <CircleIcon className='mr-1 h-3 w-3 fill-sky-400 text-sky-400' />
+            <CircleIcon className='mr-1 size-3 fill-sky-400 text-sky-400' />
             TypeScript
           </div>
           <div className='flex items-center'>
             {starred ? (
               <>
-                <StarIcon className='mr-1 h-4 w-4 fill-yellow-500 text-yellow-500' />
+                <StarIcon className='mr-1 size-4 fill-yellow-500 text-yellow-500' />
                 Star
               </>
             ) : (
               <>
-                <StarIcon className='mr-1 h-4 w-4' />
+                <StarIcon className='mr-1 size-4' />
                 Star
               </>
             )}{' '}

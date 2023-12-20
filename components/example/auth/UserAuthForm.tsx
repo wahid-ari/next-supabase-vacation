@@ -43,7 +43,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             />
           </div>
           <Button disabled={isLoading}>
-            {isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
+            {isLoading && <Icons.spinner className='mr-2 size-4 animate-spin' />}
             Sign In with Email
           </Button>
         </div>
@@ -59,11 +59,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         </div>
       </div>
       <Button variant='outline' type='button' disabled={isLoading}>
-        {isLoading ? (
-          <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
-        ) : (
-          <Icons.gitHub className='mr-2 h-4 w-4' />
-        )}{' '}
+        {isLoading ? <Icons.spinner className='mr-2 size-4 animate-spin' /> : <Icons.gitHub className='mr-2 size-4' />}{' '}
         Github
       </Button>
     </div>

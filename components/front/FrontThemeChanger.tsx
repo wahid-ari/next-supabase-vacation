@@ -27,7 +27,7 @@ export default function FrontThemeChanger({
           variant === 'labelled' && 'px-2 py-1',
         )}
       >
-        <SunMoonIcon className='h-5 w-5 text-neutral-700 dark:text-neutral-200' />
+        <SunMoonIcon className='size-5 text-neutral-700 dark:text-neutral-200' />
       </button>
     );
   }
@@ -49,7 +49,7 @@ export default function FrontThemeChanger({
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
-      <div className='relative h-5 w-5'>
+      <div className='relative size-5'>
         <span
           className='absolute inset-0 flex rotate-90 transform items-center justify-center transition duration-500 motion-reduce:duration-0 dark:rotate-0'
           style={{ transformOrigin: '50% 100px' }}

@@ -19,7 +19,7 @@ export default function MusicPage() {
         <div className='bg-background'>
           <div className='grid md:grid-cols-6 xl:grid-cols-5'>
             <Sidebar playlists={playlists} className='hidden md:col-span-2 md:block xl:col-span-1' />
-            <div className='col-span-6 overflow-hidden md:col-span-4 md:border-l dark:md:border-l-neutral-700 xl:col-span-4'>
+            <div className='col-span-6 overflow-hidden md:col-span-4 md:border-l xl:col-span-4 dark:md:border-l-neutral-700'>
               <div className='h-full p-4 md:p-6'>
                 <Tabs defaultValue='music' className='h-full space-y-6'>
                   <div className='space-between flex flex-wrap-reverse items-center gap-3'>
@@ -34,7 +34,7 @@ export default function MusicPage() {
                     </TabsList>
                     <div className='ml-auto'>
                       <Button>
-                        <PlusCircleIcon className='mr-2 h-4 w-4' />
+                        <PlusCircleIcon className='mr-2 size-4' />
                         Add music
                       </Button>
                     </div>

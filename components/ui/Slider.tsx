@@ -20,7 +20,7 @@ const Slider = React.forwardRef<
     <SliderPrimitive.Thumb
       aria-label='slider-thumb'
       className={cn(
-        'block h-5 w-5 rounded-full border-neutral-200 bg-white ring-offset-white focus-visible:ring-sky-500 dark:border-neutral-700 dark:ring-offset-neutral-900',
+        'block size-5 rounded-full border-neutral-200 bg-white ring-offset-white focus-visible:ring-sky-500 dark:border-neutral-700 dark:ring-offset-neutral-900',
         'border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
       )}
     />

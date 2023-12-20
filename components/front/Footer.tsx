@@ -116,9 +116,9 @@ export default function Footer({ className, ...props }: { className?: string; [p
             </div>
           </div>
         </div>
-        <hr className='mb-6 mt-8 border-t dark:border-neutral-800 sm:mx-auto md:mt-6' />
+        <hr className='mb-6 mt-8 border-t sm:mx-auto md:mt-6 dark:border-neutral-800' />
         <div className='sm:flex sm:items-center sm:justify-between'>
-          <span className='text-sm text-neutral-700 dark:text-neutral-300 sm:text-center'>
+          <span className='text-sm text-neutral-700 sm:text-center dark:text-neutral-300'>
             © 2023{' '}
             <Link
               href='/'
@@ -133,19 +133,19 @@ export default function Footer({ className, ...props }: { className?: string; [p
           </span>
           <div className='mt-4 flex space-x-4 sm:mt-0 sm:justify-center'>
             <a href='https://www.instagram.com/' title='Instagram' target='_blank' className={linkIconClassName}>
-              <InstagramIcon className='h-5 w-5' />
+              <InstagramIcon className='size-5' />
               <span className='sr-only'>Instagram page</span>
             </a>
             <a href='https://twitter.com' title='Twitter' target='_blank' className={linkIconClassName}>
-              <TwitterIcon className='h-5 w-5' />
+              <TwitterIcon className='size-5' />
               <span className='sr-only'>Twitter page</span>
             </a>
             <a href='https://github.com' title='GitHub' target='_blank' className={linkIconClassName}>
-              <GithubIcon className='h-5 w-5' />
+              <GithubIcon className='size-5' />
               <span className='sr-only'>GitHub account</span>
             </a>
             <Link href='/rss.xml' title='RSS' className={linkIconClassName}>
-              <RssIcon className='h-5 w-5' />
+              <RssIcon className='size-5' />
               <span className='sr-only'>RSS</span>
             </Link>
           </div>

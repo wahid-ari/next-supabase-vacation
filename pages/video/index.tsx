@@ -264,7 +264,7 @@ export default function Video() {
                 className='mr-2 px-2'
                 onClick={() => handleShowVideoDialog(original.title, original.video_url)}
               >
-                <PlayIcon className='h-4 w-4' />
+                <PlayIcon className='size-4' />
               </Button>
               <Button
                 title={`Edit ${original.title}`}
@@ -280,7 +280,7 @@ export default function Video() {
                   )
                 }
               >
-                <PencilIcon className='h-4 w-4' />
+                <PencilIcon className='size-4' />
               </Button>
               <Button
                 title={`Delete ${original.title}`}
@@ -289,7 +289,7 @@ export default function Video() {
                 className='px-2'
                 onClick={() => handleShowDeleteDialog(original.id, original.title)}
               >
-                <TrashIcon className='h-4 w-4' />
+                <TrashIcon className='size-4' />
               </Button>
             </div>
           );
@@ -323,7 +323,7 @@ export default function Video() {
             setOpenDialog((prev) => ({ ...prev, create: true }));
           }}
         >
-          <PlusIcon className='mr-2 h-4 w-4' />
+          <PlusIcon className='mr-2 size-4' />
           New Video
         </Button>
       </div>
@@ -348,22 +348,22 @@ export default function Video() {
           head={
             <>
               <TableSimple.th className='flex items-center gap-1'>
-                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
+                No <ChevronUpIcon className='size-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='text-left sm:w-[40%] lg:w-[50%] xl:w-[65%]'>
                 <div className='flex items-center gap-1'>
-                  Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Title <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[19%]'>
                 <div className='flex items-center gap-1'>
-                  Province <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Province <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[15%]'>
                 <div className='flex items-center gap-1'>
                   Island
-                  <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th shrink>Action</TableSimple.th>
@@ -447,7 +447,7 @@ export default function Video() {
                       {comboboxValue
                         ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
                         : 'Select Province'}
-                      <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                      <ChevronsUpDown className='ml-2 size-4 shrink-0 opacity-50' />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent noPortal className='w-64 p-0'>
@@ -470,7 +470,7 @@ export default function Video() {
                               >
                                 <Check
                                   className={cn(
-                                    'mr-2 h-4 w-4 text-emerald-600',
+                                    'mr-2 size-4 text-emerald-600',
                                     comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0',
                                   )}
                                 />
@@ -608,7 +608,7 @@ export default function Video() {
                       {comboboxValue
                         ? province?.find((prov: any) => prov.slug === comboboxValue)?.name
                         : 'Select Province'}
-                      <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                      <ChevronsUpDown className='ml-2 size-4 shrink-0 opacity-50' />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent noPortal className='w-64 p-0'>
@@ -631,7 +631,7 @@ export default function Video() {
                               >
                                 <Check
                                   className={cn(
-                                    'mr-2 h-4 w-4 text-emerald-600',
+                                    'mr-2 size-4 text-emerald-600',
                                     comboboxValue === prov.slug ? 'opacity-100' : 'opacity-0',
                                   )}
                                 />

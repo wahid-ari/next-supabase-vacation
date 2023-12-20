@@ -23,7 +23,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
       <div
         {...props}
-        className='min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
+        className='min-h-screen w-full bg-white text-sm lg:grid dark:bg-neutral-900'
         style={{ gridTemplateColumns: 'auto 1fr' }}
       >
         <Sidebar className={`${demo ? '!z-0' : ''}`} />
@@ -45,7 +45,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
           {/* Show on Desktop */}
           <div
             className={twMerge(
-              'hidden items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:flex',
+              'hidden items-center justify-between gap-x-4 border-b px-4 py-3 lg:flex dark:border-neutral-800',
               'sticky top-0 z-40 bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30',
               demo && '!z-0',
             )}

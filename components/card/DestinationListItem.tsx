@@ -22,7 +22,7 @@ export default function DestinationListItem({ href, name, image_url, location, .
         className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500'
       >
         {image_url ? (
-          <div className='relative h-28 w-28 overflow-hidden'>
+          <div className='relative size-28 overflow-hidden'>
             <Image
               alt={name}
               src={image_url}
@@ -36,8 +36,8 @@ export default function DestinationListItem({ href, name, image_url, location, .
             />
           </div>
         ) : (
-          <div className='flex h-28 w-28 items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
-            <ImageIcon className='h-8 w-8 text-neutral-500' />
+          <div className='flex size-28 items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
+            <ImageIcon className='size-8 text-neutral-500' />
           </div>
         )}
       </Link>

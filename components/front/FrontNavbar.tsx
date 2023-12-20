@@ -76,7 +76,7 @@ export default function FrontNavbar({
       {...props}
       as='header'
       className={twMerge(
-        'sticky top-0 z-10 mx-auto max-w-full border-b border-b-neutral-200/70 dark:border-b-neutral-800 2xl:max-w-7xl',
+        'sticky top-0 z-10 mx-auto max-w-full border-b border-b-neutral-200/70 2xl:max-w-7xl dark:border-b-neutral-800',
         transparentNavbar && !scrolled && ' border-none bg-gradient-to-b from-black/50 via-black/30 to-transparent',
         scrolled && 'bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30 ',
         className,
@@ -168,7 +168,7 @@ export default function FrontNavbar({
                         isShowMore
                           ? 'rotate-180 transform transition-transform duration-300'
                           : 'transition-transform duration-300'
-                      } h-4 w-4`}
+                      } size-4`}
                     />
                   </Popover.Button>
                   <Transition
@@ -307,7 +307,7 @@ export default function FrontNavbar({
                 )}
               >
                 <span className='sr-only'>Open main menu</span>
-                <MenuIcon className='h-6 w-6' aria-hidden='true' />
+                <MenuIcon className='size-6' aria-hidden='true' />
               </Popover.Button>
             </div>
             {/* End Mobile menu button */}
@@ -351,7 +351,7 @@ export default function FrontNavbar({
                     )}
                   >
                     <span className='sr-only'>Close main menu</span>
-                    <XIcon className='h-5 w-5' aria-hidden='true' />
+                    <XIcon className='size-5' aria-hidden='true' />
                   </Popover.Button>
                 </div>
                 {/* EndCLose Mobile Menu Button  */}
@@ -413,7 +413,7 @@ export default function FrontNavbar({
                               open
                                 ? 'rotate-90 transform transition-transform duration-200'
                                 : 'transition-transform duration-200'
-                            } h-5 w-5`}
+                            } size-5`}
                           />
                         </div>
                       </Menu.Button>

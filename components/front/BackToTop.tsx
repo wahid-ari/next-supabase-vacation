@@ -44,7 +44,7 @@ export default function BackToTop({ className, ...props }: { className?: string;
             className,
           )}
         >
-          <ChevronUpIcon className='h-5 w-5' />
+          <ChevronUpIcon className='size-5' />
           <span className='pr-1'>Back to Top</span>
         </button>
       </div>

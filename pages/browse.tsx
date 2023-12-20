@@ -297,7 +297,7 @@ export default function Browse() {
             <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Destination
             </h2>
-            <MountainSnowIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
+            <MountainSnowIcon className='size-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
@@ -308,7 +308,7 @@ export default function Browse() {
             <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Category
             </h2>
-            <LayoutListIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
+            <LayoutListIcon className='size-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
@@ -319,7 +319,7 @@ export default function Browse() {
             <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Island
             </h2>
-            <PalmtreeIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
+            <PalmtreeIcon className='size-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
@@ -330,7 +330,7 @@ export default function Browse() {
             <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Province
             </h2>
-            <MapPinIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
+            <MapPinIcon className='size-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
         <Link
@@ -341,7 +341,7 @@ export default function Browse() {
             <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
               Video
             </h2>
-            <YoutubeIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
+            <YoutubeIcon className='size-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
       </div>

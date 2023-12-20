@@ -54,7 +54,7 @@ export default function Wrapper({
             target='_blank'
             rel='noreferrer'
           >
-            <ArrowUpRightIcon className='h-5 w-5' />
+            <ArrowUpRightIcon className='size-5' />
           </a>
         )}
       </Heading>

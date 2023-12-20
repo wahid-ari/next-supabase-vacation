@@ -48,7 +48,7 @@ export default function ImageBanner({
                 className='flex items-center gap-1 rounded text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 {textLink}
-                <ArrowRightIcon className='h-5 w-5 transition-all duration-300 group-hover:translate-x-0.5' />
+                <ArrowRightIcon className='size-5 transition-all duration-300 group-hover:translate-x-0.5' />
               </Link>
             </div>
           </div>

@@ -38,9 +38,9 @@ export function DataTableFilter<TData, TValue>({ column, title, options }: DataT
         <Button
           variant='outline'
           size='sm'
-          className='h-9 border border-dashed border-neutral-300 px-2 dark:border-neutral-600 sm:px-3'
+          className='h-9 border border-dashed border-neutral-300 px-2 sm:px-3 dark:border-neutral-600'
         >
-          <PlusCircleIcon className='mr-2 h-4 w-4' />
+          <PlusCircleIcon className='mr-2 size-4' />
           {title}
           {selectedValues?.size > 0 && (
             <>
@@ -90,16 +90,16 @@ export function DataTableFilter<TData, TValue>({ column, title, options }: DataT
                   >
                     <div
                       className={cn(
-                        'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-neutral-500 dark:border-neutral-500',
+                        'mr-2 flex size-4 items-center justify-center rounded-sm border border-neutral-500 dark:border-neutral-500',
                         isSelected ? 'bg-primary text-primary-foreground' : 'opacity-50 [&_svg]:invisible',
                       )}
                     >
-                      <CheckIcon className={cn('h-4 w-4 text-emerald-600')} />
+                      <CheckIcon className={cn('size-4 text-emerald-600')} />
                     </div>
-                    {option.icon && <option.icon className='mr-2 h-4 w-4 text-neutral-600 dark:text-neutral-400' />}
+                    {option.icon && <option.icon className='mr-2 size-4 text-neutral-600 dark:text-neutral-400' />}
                     <span>{option.label}</span>
                     {facets?.get(option.value) && (
-                      <span className='ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs'>
+                      <span className='ml-auto flex size-4 items-center justify-center font-mono text-xs'>
                         {facets.get(option.value)}
                       </span>
                     )}

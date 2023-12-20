@@ -301,14 +301,14 @@ export default function Ui() {
     <Layout title='UI - MyVacation' description='Example UI - MyVacation'>
       <div className='relative'>
         <Title>UI</Title>
-        <span className='absolute left-[30px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
+        <span className='absolute left-[30px] top-1 flex size-5 animate-bounce items-center justify-center'>
           <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-          <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
+          <span className='relative inline-flex size-3 rounded-full bg-sky-500' />
         </span>
       </div>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
-        <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
+        <div className='columns-2 text-sky-600 sm:columns-3 dark:text-sky-500'>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#accordion'>
               Accordion
@@ -555,25 +555,25 @@ export default function Ui() {
 
       <Wrapper id='alert' name='Alert' props={['variant']} docs='https://ui.shadcn.com/docs/components/alert'>
         <Alert>
-          <Terminal className='h-4 w-4' />
+          <Terminal className='size-4' />
           <AlertTitle>Heads up!</AlertTitle>
           <AlertDescription>You can add components to your app using the cli.</AlertDescription>
         </Alert>
         <br />
         <Alert variant='destructive'>
-          <AlertCircle className='h-4 w-4' />
+          <AlertCircle className='size-4' />
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
         </Alert>
         <br />
         <Alert variant='warning'>
-          <AlertCircle className='h-4 w-4' />
+          <AlertCircle className='size-4' />
           <AlertTitle>Warning</AlertTitle>
           <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
         </Alert>
         <br />
         <Alert variant='success'>
-          <AlertCircle className='h-4 w-4' />
+          <AlertCircle className='size-4' />
           <AlertTitle>Success</AlertTitle>
           <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
         </Alert>
@@ -660,13 +660,13 @@ export default function Ui() {
           <Button variant='ghost'>Ghost</Button>
           <Button variant='link'>Link Variant</Button>
           <Button variant='outline' size='icon' aria-label='button-icon'>
-            <ChevronRight className='h-4 w-4' />
+            <ChevronRight className='size-4' />
           </Button>
           <Button>
-            <Mail className='mr-2 h-4 w-4' /> Login with Email
+            <Mail className='mr-2 size-4' /> Login with Email
           </Button>
           <Button disabled>
-            <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+            <Loader2 className='mr-2 size-4 animate-spin' />
             Please wait
           </Button>
           <Button asChild>
@@ -787,7 +787,7 @@ export default function Ui() {
             <h4 className='text-sm font-semibold'>@peduarte starred 3 repositories</h4>
             <CollapsibleTrigger asChild>
               <Button variant='outline' size='icon' title='Open'>
-                <ChevronsUpDown className='h-4 w-4' />
+                <ChevronsUpDown className='size-4' />
                 <span className='sr-only'>Toggle</span>
               </Button>
             </CollapsibleTrigger>
@@ -822,7 +822,7 @@ export default function Ui() {
               {comboboxValue
                 ? frameworks.find((framework) => framework.value === comboboxValue)?.label
                 : 'Select framework...'}
-              <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+              <ChevronsUpDown className='ml-2 size-4 shrink-0 opacity-50' />
             </Button>
           </PopoverTrigger>
           <PopoverContent className='w-[200px] p-0'>
@@ -841,7 +841,7 @@ export default function Ui() {
                   >
                     <Check
                       className={cn(
-                        'mr-2 h-4 w-4 text-emerald-600',
+                        'mr-2 size-4 text-emerald-600',
                         comboboxValue === framework.value ? 'opacity-100' : 'opacity-0',
                       )}
                     />
@@ -866,14 +866,14 @@ export default function Ui() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading='Suggestions'>
               <CommandItem>
-                <CalendarDays className='mr-2 h-4 w-4' />
+                <CalendarDays className='mr-2 size-4' />
                 <span>Calendar</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading='Settings'>
               <CommandItem>
-                <User className='mr-2 h-4 w-4' />
+                <User className='mr-2 size-4' />
                 <span>Profile</span>
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
@@ -917,7 +917,7 @@ export default function Ui() {
                     runCommand(() => router.push('/design'));
                   }}
                 >
-                  <CalendarDays className='mr-2 h-4 w-4' />
+                  <CalendarDays className='mr-2 size-4' />
                   <span>Design</span>
                 </CommandItem>
                 <CommandItem
@@ -925,24 +925,24 @@ export default function Ui() {
                     runCommand(() => router.push('/design/layout'));
                   }}
                 >
-                  <Smile className='mr-2 h-4 w-4' />
+                  <Smile className='mr-2 size-4' />
                   <span>Layout</span>
                 </CommandItem>
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading='Settings'>
                 <CommandItem>
-                  <User className='mr-2 h-4 w-4' />
+                  <User className='mr-2 size-4' />
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
                 </CommandItem>
                 <CommandItem>
-                  <CreditCard className='mr-2 h-4 w-4' />
+                  <CreditCard className='mr-2 size-4' />
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
                 </CommandItem>
                 <CommandItem>
-                  <Settings className='mr-2 h-4 w-4' />
+                  <Settings className='mr-2 size-4' />
                   <span>Settings</span>
                   <CommandShortcut>⌘S</CommandShortcut>
                 </CommandItem>
@@ -950,15 +950,15 @@ export default function Ui() {
               <CommandSeparator />
               <CommandGroup heading='Theme'>
                 <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
-                  <SunIcon className='mr-2 h-4 w-4' />
+                  <SunIcon className='mr-2 size-4' />
                   Light
                 </CommandItem>
                 <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
-                  <MoonIcon className='mr-2 h-4 w-4' />
+                  <MoonIcon className='mr-2 size-4' />
                   Dark
                 </CommandItem>
                 <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
-                  <LaptopIcon className='mr-2 h-4 w-4' />
+                  <LaptopIcon className='mr-2 size-4' />
                   System
                 </CommandItem>
               </CommandGroup>
@@ -1026,7 +1026,7 @@ export default function Ui() {
               variant={'outline'}
               className={cn('justify-start text-left font-normal', !date && 'text-neutral-600 dark:text-neutral-400')}
             >
-              <CalendarIcon className='mr-2 h-4 w-4' />
+              <CalendarIcon className='mr-2 size-4' />
               {date ? format(date, 'PPP') : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
@@ -1087,12 +1087,12 @@ export default function Ui() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <User className='mr-2 h-4 w-4' />
+                <User className='mr-2 size-4' />
                 <span>Profile</span>
                 <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCard className='mr-2 h-4 w-4' />
+                <CreditCard className='mr-2 size-4' />
                 <span>Billing</span>
                 <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
               </DropdownMenuItem>
@@ -1100,23 +1100,23 @@ export default function Ui() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Users className='mr-2 h-4 w-4' />
+                <Users className='mr-2 size-4' />
                 <span>Team</span>
               </DropdownMenuItem>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <UserPlus className='mr-2 h-4 w-4' />
+                  <UserPlus className='mr-2 size-4' />
                   <span>Invite users</span>
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
                     <DropdownMenuItem>
-                      <Mail className='mr-2 h-4 w-4' />
+                      <Mail className='mr-2 size-4' />
                       <span>Email</span>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
-                      <PlusCircle className='mr-2 h-4 w-4' />
+                      <PlusCircle className='mr-2 size-4' />
                       <span>More...</span>
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
@@ -1125,16 +1125,16 @@ export default function Ui() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Github className='mr-2 h-4 w-4' />
+              <Github className='mr-2 size-4' />
               <span>GitHub</span>
             </DropdownMenuItem>
             <DropdownMenuItem disabled>
-              <Cloud className='mr-2 h-4 w-4' />
+              <Cloud className='mr-2 size-4' />
               <span>API</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <LogOut className='mr-2 h-4 w-4' />
+              <LogOut className='mr-2 size-4' />
               <span>Log out</span>
               <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
             </DropdownMenuItem>
@@ -1198,7 +1198,7 @@ export default function Ui() {
                 <h4 className='text-base font-medium'>@nextjs</h4>
                 <p className='text-sm'>The React Framework – created and maintained by @vercel.</p>
                 <div className='flex items-center pt-2'>
-                  <CalendarDays className='mr-2 h-4 w-4 opacity-70' />{' '}
+                  <CalendarDays className='mr-2 size-4 opacity-70' />{' '}
                   <span className='text-xs text-neutral-500 dark:text-neutral-400'>Joined December 2021</span>
                 </div>
               </div>
@@ -1514,7 +1514,7 @@ export default function Ui() {
 
       <Wrapper id='skeleton' name='Skeleton' docs='https://ui.shadcn.com/docs/components/skeleton' noChildren>
         <div className='flex items-center space-x-4'>
-          <Skeleton className='h-12 w-12 rounded-full' />
+          <Skeleton className='size-12 rounded-full' />
           <div className='space-y-2'>
             <Skeleton className='h-4 w-[250px]' />
             <Skeleton className='h-4 w-[200px]' />
@@ -1707,23 +1707,23 @@ export default function Ui() {
         docs='https://ui.shadcn.com/docs/components/toggle'
       >
         <Toggle pressed={toggleValue} onPressedChange={setToggleValue} aria-label='Toggle italic' title='Toggle italic'>
-          <Bold className='h-4 w-4' />
+          <Bold className='size-4' />
         </Toggle>
         <br />
         <br />
         <Toggle variant='outline' aria-label='Toggle italic' title='Toggle italic'>
-          <Italic className='h-4 w-4' />
+          <Italic className='size-4' />
         </Toggle>
         <br />
         <br />
         <Toggle aria-label='Toggle italic'>
-          <Italic className='mr-2 h-4 w-4' />
+          <Italic className='mr-2 size-4' />
           Italic
         </Toggle>
         <br />
         <br />
         <Toggle size='sm' variant='outline' aria-label='Toggle italic' title='Toggle italic'>
-          <Italic className='h-4 w-4' />
+          <Italic className='size-4' />
         </Toggle>
         <br />
         <br />
@@ -1744,13 +1744,13 @@ export default function Ui() {
           aria-label='Text alignment'
         >
           <ToggleGroupItem value='left' aria-label='Left aligned' title='Left aligned'>
-            <AlignLeftIcon className='h-4 w-4' />
+            <AlignLeftIcon className='size-4' />
           </ToggleGroupItem>
           <ToggleGroupItem value='center' aria-label='Center aligned' title='Center aligned'>
-            <AlignCenterIcon className='h-4 w-4' />
+            <AlignCenterIcon className='size-4' />
           </ToggleGroupItem>
           <ToggleGroupItem value='right' aria-label='Right aligned' title='Right aligned' disabled>
-            <AlignRightIcon className='h-4 w-4' />
+            <AlignRightIcon className='size-4' />
           </ToggleGroupItem>
         </ToggleGroup>
         <br />

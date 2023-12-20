@@ -143,37 +143,37 @@ export default function Log() {
           head={
             <>
               <TableSimple.th className='flex items-center gap-1'>
-                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
+                No <ChevronUpIcon className='size-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th>
                 <div className='flex items-center justify-center gap-1'>
-                  User <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  User <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
                 <div className='flex items-center justify-center gap-1'>
-                  Action <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Action <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
                 <div className='flex items-center justify-center gap-1'>
-                  Table <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Table <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
                 <div className='flex items-center justify-center gap-1'>
-                  Description <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Description <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
                 <div className='flex items-center justify-center gap-1'>
-                  Date <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Date <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th>
                 <div className='flex items-center justify-center gap-1'>
                   Time
-                  <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
             </>

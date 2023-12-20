@@ -79,7 +79,7 @@ export default function Session() {
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Session</Title>
         {/* <Button variant='destructive' onClick={() => setDeleteDialog({ dialog: true, id: null })}>
-          <TrashIcon className='mr-2 h-4 w-4' />
+          <TrashIcon className='mr-2 size-4' />
           Delete All
         </Button> */}
       </div>
@@ -143,7 +143,7 @@ export default function Session() {
                     className='ml-1.5 px-2'
                     onClick={() => setDeleteDialog({ dialog: true, id: item.id })}
                   >
-                    <TrashIcon className='h-4 w-4' />
+                    <TrashIcon className='size-4' />
                   </Button>
                 </TableSimple.td>
               </TableSimple.tr>

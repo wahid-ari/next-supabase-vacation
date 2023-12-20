@@ -34,11 +34,11 @@ export default function Table({
   return (
     <div
       className={twMerge(
-        'w-full rounded border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
+        'w-full rounded border shadow-sm lg:max-w-[calc(100vw_-_17rem)] dark:border-neutral-800',
         className,
       )}
     >
-      <div className='scrollbar-thumb-rounded w-full overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
+      <div className='scrollbar-thumb-rounded w-full overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 lg:max-w-[calc(100vw_-_17rem)] dark:scrollbar-thumb-neutral-800'>
         <table {...props} className='w-full table-auto whitespace-nowrap text-neutral-800 dark:text-neutral-100'>
           <thead>
             <tr className='whitespace-nowrap border-b bg-neutral-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
@@ -67,18 +67,18 @@ export default function Table({
                 aria-label='Prev'
                 onClick={prev}
                 disabled={currentPage < 2}
-                className='flex h-8 w-8 items-center justify-center !p-0'
+                className='flex size-8 items-center justify-center !p-0'
               >
-                <ChevronLeftIcon className='h-4 w-4' />
+                <ChevronLeftIcon className='size-4' />
               </Button.secondary>
               <Button.secondary
                 title='Next'
                 aria-label='Next'
                 onClick={next}
                 disabled={currentPage === totalPage}
-                className='flex h-8 w-8 items-center justify-center !p-0'
+                className='flex size-8 items-center justify-center !p-0'
               >
-                <ChevronRightIcon className='h-4 w-4' />
+                <ChevronRightIcon className='size-4' />
               </Button.secondary>
             </div>
           </div>

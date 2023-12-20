@@ -210,7 +210,7 @@ export default function Province() {
                   handleShowEditDialog(original.id, original.name, original.image_url, original?.vacation_island?.id)
                 }
               >
-                <PencilIcon className='h-4 w-4' />
+                <PencilIcon className='size-4' />
               </Button>
               <Button
                 title={`Delete ${original.name}`}
@@ -219,7 +219,7 @@ export default function Province() {
                 className='px-2'
                 onClick={() => handleShowDeleteDialog(original.id, original.name)}
               >
-                <TrashIcon className='h-4 w-4' />
+                <TrashIcon className='size-4' />
               </Button>
             </div>
           );
@@ -254,7 +254,7 @@ export default function Province() {
             setOpenDialog((prev) => ({ ...prev, create: true }));
           }}
         >
-          <PlusIcon className='mr-2 h-4 w-4' />
+          <PlusIcon className='mr-2 size-4' />
           New Province
         </Button>
       </div>
@@ -279,22 +279,22 @@ export default function Province() {
           head={
             <>
               <TableSimple.th className='flex items-center gap-1'>
-                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
+                No <ChevronUpIcon className='size-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='text-left sm:w-[40%] md:w-[38%]'>
                 <div className='flex items-center gap-1'>
-                  Name <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Name <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] md:w-[28%]'>
                 <div className='flex items-center gap-1'>
-                  Island <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Island <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] md:w-[27%]'>
                 <div className='flex items-center gap-1'>
                   Destination
-                  <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th shrink>Action</TableSimple.th>

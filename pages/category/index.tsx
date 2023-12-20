@@ -165,7 +165,7 @@ export default function Category() {
             setOpenDialog((prev) => ({ ...prev, create: true }));
           }}
         >
-          <PlusIcon className='mr-2 h-4 w-4' />
+          <PlusIcon className='mr-2 size-4' />
           New Category
         </Button>
       </div>
@@ -326,7 +326,7 @@ export default function Category() {
                     className='mr-2 px-2'
                     onClick={() => handleShowEditDialog(item.id, item.name, item.image_url)}
                   >
-                    <PencilIcon className='h-4 w-4' />
+                    <PencilIcon className='size-4' />
                   </Button>
                   <Button
                     title={`Delete ${item.name}`}
@@ -335,7 +335,7 @@ export default function Category() {
                     className='px-2'
                     onClick={() => handleShowDeleteDialog(item.id, item.name)}
                   >
-                    <TrashIcon className='h-4 w-4' />
+                    <TrashIcon className='size-4' />
                   </Button>
                 </TableSimple.td>
               </TableSimple.tr>

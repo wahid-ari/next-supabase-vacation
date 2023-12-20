@@ -31,7 +31,7 @@ export default function FileInput({ className, label, name, value, onChange, ...
           value
         ) : (
           <span className='flex items-center justify-center gap-1'>
-            <PlusIcon className='inline h-4 w-4' /> File
+            <PlusIcon className='inline size-4' /> File
           </span>
         )}
       </Button.secondary>

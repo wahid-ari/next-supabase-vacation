@@ -379,9 +379,9 @@ export default function Example() {
             <div className='relative'>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <ButtonUi variant='ghost' className='h-8 w-8 p-0'>
+                  <ButtonUi variant='ghost' className='size-8 p-0'>
                     <span className='sr-only'>Open menu</span>
-                    <MoreHorizontal className='h-4 w-4' />
+                    <MoreHorizontal className='size-4' />
                   </ButtonUi>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align='end'>
@@ -434,7 +434,7 @@ export default function Example() {
       <Title>Components</Title>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
-        <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
+        <div className='columns-2 text-sky-600 sm:columns-3 dark:text-sky-500'>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#validation-zod'>
               Validation (ZOD)
@@ -1238,7 +1238,7 @@ function dissmissAllToast() {
           <Button data-testid='button-primary'>Primary</Button>
           <Button.success data-testid='button-success'>Success</Button.success>
           <Button.danger data-testid='button-danger' className='flex items-center gap-2'>
-            <ArrowRightIcon className='h-4 w-4' />
+            <ArrowRightIcon className='size-4' />
             Danger
           </Button.danger>
           <Button.secondary data-testid='button-secondary'>Secondary</Button.secondary>
@@ -1252,7 +1252,7 @@ function dissmissAllToast() {
       <Wrapper id='linkbutton' name='LinkButton' variant={['secondary', 'tertary']} props={['href']}>
         <div className='flex flex-wrap items-center gap-2'>
           <LinkButton href='/design#linkbutton' className='flex items-center gap-2' data-testid='link-button'>
-            <ArrowRightIcon className='h-4 w-4' />
+            <ArrowRightIcon className='size-4' />
             Link Button
           </LinkButton>
           <LinkButton.secondary href='/design#linkbutton' data-testid='link-button-secondary'>
@@ -1732,7 +1732,7 @@ function dissmissAllToast() {
           </Shimmer>
 
           <Shimmer className='space-y-5 rounded-2xl'>
-            <div className='h-24 w-24 rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='size-24 rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -1742,11 +1742,11 @@ function dissmissAllToast() {
 
           <Shimmer className='h-8 rounded-2xl' />
 
-          <Shimmer className='h-20 w-20 rounded-full' />
+          <Shimmer className='size-20 rounded-full' />
 
           <Shimmer className='h-20 rounded' />
 
-          <Shimmer className='h-20 w-20 rounded-3xl' />
+          <Shimmer className='size-20 rounded-3xl' />
         </div>
       </Wrapper>
     </Layout>

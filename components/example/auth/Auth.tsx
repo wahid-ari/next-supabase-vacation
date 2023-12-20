@@ -15,7 +15,7 @@ export default function AuthenticationPage() {
       >
         Login
       </Link>
-      <div className='bg-muted relative hidden h-full flex-col p-10 dark:border-r dark:border-r-neutral-700 dark:text-white lg:flex'>
+      <div className='bg-muted relative hidden h-full flex-col p-10 lg:flex dark:border-r dark:border-r-neutral-700 dark:text-white'>
         <div className='absolute inset-0 bg-gradient-to-b from-neutral-100/50 via-neutral-200/50 to-neutral-300 dark:from-neutral-900/50 dark:via-neutral-800/50 dark:to-neutral-700' />
         <div className='relative z-20 flex items-center text-lg font-medium'>
           <svg
@@ -26,7 +26,7 @@ export default function AuthenticationPage() {
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'
-            className='mr-2 h-6 w-6'
+            className='mr-2 size-6'
           >
             <path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' />
           </svg>

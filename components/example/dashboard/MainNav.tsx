@@ -13,7 +13,7 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
       </Link>
       <Link
         href='/design/example#'
-        className='hidden text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white sm:flex'
+        className='hidden text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-900 sm:flex dark:text-neutral-400 dark:hover:text-white'
       >
         Customers
       </Link>

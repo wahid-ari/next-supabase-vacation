@@ -128,7 +128,7 @@ export default function Inspiration() {
                   </div>
                 ) : (
                   <div className='flex h-44 w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-700'>
-                    <ImageIcon className='h-16 w-16 text-neutral-500' />
+                    <ImageIcon className='size-16 text-neutral-500' />
                   </div>
                 )}
                 <p className='mb-2 mt-3 text-lg font-semibold leading-6 text-neutral-700 dark:text-white'>
@@ -158,7 +158,7 @@ export default function Inspiration() {
               rel='noreferrer'
             >
               Open
-              <ExternalLinkIcon className='ml-1 h-4 w-4' />
+              <ExternalLinkIcon className='ml-1 size-4' />
             </a>
           ) : (
             '-'
@@ -183,7 +183,7 @@ export default function Inspiration() {
             <div>
               <Button asChild title={`Edit ${original.title}`} size='sm' className='mr-2 px-2'>
                 <Link href={`/inspiration/edit/${original.id}`}>
-                  <PencilIcon className='h-4 w-4' />
+                  <PencilIcon className='size-4' />
                 </Link>
               </Button>
               <Button
@@ -193,7 +193,7 @@ export default function Inspiration() {
                 className='px-2'
                 onClick={() => handleShowDeleteDialog(original.id, original.title)}
               >
-                <TrashIcon className='h-4 w-4' />
+                <TrashIcon className='size-4' />
               </Button>
             </div>
           );
@@ -223,7 +223,7 @@ export default function Inspiration() {
         <Title>Inspiration</Title>
         <Button asChild variant='success'>
           <Link href='/inspiration/add'>
-            <PlusIcon className='mr-2 h-4 w-4' />
+            <PlusIcon className='mr-2 size-4' />
             New Inspiration
           </Link>
         </Button>
@@ -249,16 +249,16 @@ export default function Inspiration() {
           head={
             <>
               <TableSimple.th className='flex items-center gap-1'>
-                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
+                No <ChevronUpIcon className='size-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='text-left sm:w-[50%] md:w-[45%]'>
                 <div className='flex items-center gap-1'>
-                  Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  Title <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='sm:w-[30%] md:w-[35%]'>
                 <div className='flex items-center gap-1'>
-                  URL <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                  URL <ChevronsUpDownIcon className='size-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th shrink>Action</TableSimple.th>

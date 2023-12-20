@@ -47,7 +47,7 @@ export default function SearchBox({
           />
           <Combobox.Button title='Show options' className='absolute inset-y-0 right-0 flex items-center pr-2'>
             <div className='h-5 border-l pr-2 dark:border-l-neutral-600'></div>
-            <ChevronDownIcon className='h-5 w-5 text-neutral-500 dark:text-neutral-300' aria-hidden='true' />
+            <ChevronDownIcon className='size-5 text-neutral-500 dark:text-neutral-300' aria-hidden='true' />
           </Combobox.Button>
         </div>
         <Transition
@@ -87,7 +87,7 @@ export default function SearchBox({
                             active ? 'text-white' : 'text-emerald-600',
                           )}
                         >
-                          <CheckIcon className='h-5 w-5' aria-hidden='true' />
+                          <CheckIcon className='size-5' aria-hidden='true' />
                         </span>
                       ) : null}
                     </>
