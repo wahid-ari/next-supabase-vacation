@@ -51,7 +51,7 @@ export default function Inspirations() {
                   key={index}
                   className='relative h-56 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
-                  <Image alt={image?.title} src={image?.image_url} fill className='rounded object-cover' />
+                  <Image alt={image?.title} src={image?.image_url} fill className='rounded object-cover' unoptimized />
                 </button>
               ))
             : [...Array(12).keys()].map((i) => (
@@ -90,6 +90,7 @@ export default function Inspirations() {
                         src={image?.image_url}
                         fill
                         className='rounded-t-lg object-cover sm:rounded-l-lg sm:rounded-t-none sm:rounded-tl-lg'
+                        unoptimized
                       />
                     </div>
                     <div className='p-4 pr-1'>

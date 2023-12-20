@@ -465,7 +465,7 @@ export default function Custom() {
               key={index}
               className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
-              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' />
+              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' unoptimized />
             </button>
           ))}
         </div>
@@ -497,6 +497,7 @@ export default function Custom() {
                         src={image.public_id}
                         fill
                         className='rounded-t-lg object-cover sm:rounded-l-lg sm:rounded-t-none sm:rounded-tl-lg'
+                        unoptimized
                       />
                     </div>
                     <div className='p-4 sm:pr-8 sm:pt-4'>
@@ -547,7 +548,7 @@ export default function Custom() {
               key={index}
               className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
-              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' />
+              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' unoptimized />
             </button>
           ))}
         </div>
@@ -580,6 +581,7 @@ export default function Custom() {
                         src={image.public_id}
                         fill
                         className='rounded-t-lg object-cover sm:rounded-t-none sm:rounded-tl-lg'
+                        unoptimized
                       />
                     </div>
                     <div className='p-4 sm:pr-8 sm:pt-4'>
@@ -615,6 +617,7 @@ export default function Custom() {
                       src={image.public_id}
                       fill
                       className='cursor-pointer rounded object-cover object-center'
+                      unoptimized
                     />
                   </div>
                 </SwiperSlide>
