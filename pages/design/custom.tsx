@@ -153,7 +153,7 @@ export default function Custom() {
       <Title>Custom</Title>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
-        <div className='columns-2 text-sky-600 sm:columns-3 dark:text-sky-500'>
+        <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#pagination'>
               Pagination
@@ -266,7 +266,7 @@ export default function Custom() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
             ref={nextRefSlider}
@@ -276,7 +276,7 @@ export default function Custom() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
         </div>
       </Wrapper>
@@ -740,7 +740,7 @@ export default function Custom() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
               ref={nextRefVideo}
@@ -750,7 +750,7 @@ export default function Custom() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
           </div>
         ) : (
@@ -873,7 +873,7 @@ export default function Custom() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
             ref={nextRefVideoHover}
@@ -883,7 +883,7 @@ export default function Custom() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
         </div>
       </Wrapper>
@@ -970,7 +970,7 @@ export default function Custom() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
             ref={nextRefVideoActive}
@@ -980,7 +980,7 @@ export default function Custom() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
-            <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+            <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
         </div>
       </Wrapper>

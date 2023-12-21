@@ -34,11 +34,11 @@ export default function Table({
   return (
     <div
       className={twMerge(
-        'w-full rounded border shadow-sm lg:max-w-[calc(100vw_-_17rem)] dark:border-neutral-800',
+        'w-full rounded border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
         className,
       )}
     >
-      <div className='scrollbar-thumb-rounded w-full overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 lg:max-w-[calc(100vw_-_17rem)] dark:scrollbar-thumb-neutral-800'>
+      <div className='scrollbar-thumb-rounded w-full overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
         <table {...props} className='w-full table-auto whitespace-nowrap text-neutral-800 dark:text-neutral-100'>
           <thead>
             <tr className='whitespace-nowrap border-b bg-neutral-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>

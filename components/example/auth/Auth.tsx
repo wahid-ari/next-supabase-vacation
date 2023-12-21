@@ -15,7 +15,7 @@ export default function AuthenticationPage() {
       >
         Login
       </Link>
-      <div className='bg-muted relative hidden h-full flex-col p-10 lg:flex dark:border-r dark:border-r-neutral-700 dark:text-white'>
+      <div className='bg-muted relative hidden h-full flex-col p-10 dark:border-r dark:border-r-neutral-700 dark:text-white lg:flex'>
         <div className='absolute inset-0 bg-gradient-to-b from-neutral-100/50 via-neutral-200/50 to-neutral-300 dark:from-neutral-900/50 dark:via-neutral-800/50 dark:to-neutral-700' />
         <div className='relative z-20 flex items-center text-lg font-medium'>
           <svg

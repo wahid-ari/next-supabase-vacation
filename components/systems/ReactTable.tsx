@@ -195,7 +195,7 @@ export const ReactTable = forwardRef(
 
         {showInfo ? (
           dataLength > 0 ? (
-            <p className='pl-3 pt-3 text-center text-[13px] text-neutral-600 sm:text-left dark:text-neutral-300'>
+            <p className='pl-3 pt-3 text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-left'>
               {showText}
             </p>
           ) : (

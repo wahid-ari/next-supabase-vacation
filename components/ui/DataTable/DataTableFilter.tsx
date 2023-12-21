@@ -38,7 +38,7 @@ export function DataTableFilter<TData, TValue>({ column, title, options }: DataT
         <Button
           variant='outline'
           size='sm'
-          className='h-9 border border-dashed border-neutral-300 px-2 sm:px-3 dark:border-neutral-600'
+          className='h-9 border border-dashed border-neutral-300 px-2 dark:border-neutral-600 sm:px-3'
         >
           <PlusCircleIcon className='mr-2 h-4 w-4' />
           {title}

@@ -89,7 +89,7 @@ export default function Dialog({
                 )
               ) : null}
               <div className='mt-3 sm:mt-0'>
-                <DialogRadix.Title className='text-center text-lg font-medium text-neutral-800 sm:text-left dark:text-neutral-100'>
+                <DialogRadix.Title className='text-center text-lg font-medium text-neutral-800 dark:text-neutral-100 sm:text-left'>
                   {title}
                 </DialogRadix.Title>
                 <div className='mt-2 text-sm font-normal tracking-wide text-neutral-600 dark:text-neutral-300'>

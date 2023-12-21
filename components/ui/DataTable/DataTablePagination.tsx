@@ -19,10 +19,10 @@ export function DataTablePagination<TData>({
   return (
     <div>
       <div className='grid grid-cols-1 gap-x-4 gap-y-2  py-4 sm:grid-cols-2'>
-        <div className='text-center text-[13px] text-neutral-600 sm:text-left dark:text-neutral-300'>
+        <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-left'>
           {showText || ''}
         </div>
-        <div className='text-center text-[13px] text-neutral-600 sm:text-right dark:text-neutral-300'>
+        <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-right'>
           {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected
         </div>
       </div>

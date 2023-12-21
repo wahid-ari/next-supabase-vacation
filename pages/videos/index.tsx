@@ -153,7 +153,7 @@ export default function Videos() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowLeftIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
               ref={nextRef}
@@ -163,7 +163,7 @@ export default function Videos() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              <ArrowRightIcon className='h-5 w-5 lg:h-6 lg:w-6 dark:text-white' />
+              <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
           </div>
         ) : (

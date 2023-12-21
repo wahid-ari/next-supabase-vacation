@@ -97,7 +97,7 @@ export default function Login() {
       <>
         <HeadSeo title='Login - MyVacation' description='Login - MyVacation' />
 
-        <div className='min-h-screen w-screen text-sm font-medium sm:grid sm:grid-cols-2 dark:bg-white'>
+        <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
           <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
             <div>
               <h1 className='text-4xl font-bold text-white'>MyVacation</h1>

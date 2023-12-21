@@ -55,7 +55,7 @@ export default function Akun({ className, ...props }: Props) {
               leaveFrom='transform opacity-100 scale-100'
               leaveTo='transform opacity-0 scale-95'
             >
-              <Menu.Items className='absolute right-0 z-50 mt-2 w-32 origin-top-right rounded-md border bg-white shadow-md focus:outline-none lg:right-1 dark:border-neutral-800 dark:bg-neutral-900'>
+              <Menu.Items className='absolute right-0 z-50 mt-2 w-32 origin-top-right rounded-md border bg-white shadow-md focus:outline-none dark:border-neutral-800 dark:bg-neutral-900 lg:right-1'>
                 <div className='space-y-1 p-1'>
                   <Menu.Item>
                     {({ active }) => (

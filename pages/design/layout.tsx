@@ -40,7 +40,7 @@ export default function Example() {
       </div>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
-        <div className='columns-2 text-sky-600 sm:columns-3 dark:text-sky-500'>
+        <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#breadcrumb'>
               Breadcrumb

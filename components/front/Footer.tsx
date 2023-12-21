@@ -116,9 +116,9 @@ export default function Footer({ className, ...props }: { className?: string; [p
             </div>
           </div>
         </div>
-        <hr className='mb-6 mt-8 border-t sm:mx-auto md:mt-6 dark:border-neutral-800' />
+        <hr className='mb-6 mt-8 border-t dark:border-neutral-800 sm:mx-auto md:mt-6' />
         <div className='sm:flex sm:items-center sm:justify-between'>
-          <span className='text-sm text-neutral-700 sm:text-center dark:text-neutral-300'>
+          <span className='text-sm text-neutral-700 dark:text-neutral-300 sm:text-center'>
             © 2023{' '}
             <Link
               href='/'

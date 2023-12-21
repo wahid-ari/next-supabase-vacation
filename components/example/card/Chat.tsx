@@ -177,7 +177,7 @@ export function DemoChat() {
               </CommandGroup>
             </CommandList>
           </Command>
-          <DialogFooter className='flex items-center border-t p-4 sm:justify-between dark:border-t-neutral-700'>
+          <DialogFooter className='flex items-center border-t p-4 dark:border-t-neutral-700 sm:justify-between'>
             {selectedUsers.length > 0 ? (
               <div className='mt-2 flex -space-x-2 overflow-hidden sm:mt-0'>
                 {selectedUsers.map((user) => (
