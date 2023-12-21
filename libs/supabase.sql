@@ -102,6 +102,7 @@ create table
     video_url text null,
     island_id bigint null,
     province_id bigint null,
+    hd_quality boolean null,
     constraint vacation_video_pkey primary key (id),
     constraint vacation_video_island_id_fkey foreign key (island_id) references vacation_island (id),
     constraint vacation_video_province_id_fkey foreign key (province_id) references vacation_province (id)

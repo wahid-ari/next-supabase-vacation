@@ -19,6 +19,7 @@ import { cn, youTubeGetID } from '@/libs/utils';
 import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/Command';
 import {
   Dialog,
@@ -54,6 +55,7 @@ export default function Video() {
     id: null,
     title: '',
     video_url: '',
+    hd_quality: false,
     province_id: undefined,
     island_id: undefined,
   });
@@ -80,7 +82,14 @@ export default function Video() {
       });
       if (res.status == 200) {
         setOpenDialog((prev) => ({ ...prev, create: false }));
-        setItem({ id: null, title: '', video_url: '', province_id: undefined, island_id: undefined });
+        setItem({
+          id: null,
+          title: '',
+          video_url: '',
+          hd_quality: false,
+          province_id: undefined,
+          island_id: undefined,
+        });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`);
       }
@@ -112,7 +121,14 @@ export default function Video() {
       const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`, item);
       if (res.status == 201) {
         setOpenDialog((prev) => ({ ...prev, edit: false }));
-        setItem({ id: null, title: '', video_url: '', province_id: undefined, island_id: undefined });
+        setItem({
+          id: null,
+          title: '',
+          video_url: '',
+          hd_quality: false,
+          province_id: undefined,
+          island_id: undefined,
+        });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`);
       }
@@ -144,7 +160,14 @@ export default function Video() {
       const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video?id=${item.id}`);
       if (res.status == 200) {
         setOpenDialog((prev) => ({ ...prev, delete: false }));
-        setItem({ id: null, title: '', video_url: '', province_id: undefined, island_id: undefined });
+        setItem({
+          id: null,
+          title: '',
+          video_url: '',
+          hd_quality: false,
+          province_id: undefined,
+          island_id: undefined,
+        });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`);
       }
@@ -159,10 +182,24 @@ export default function Video() {
     }
   }
 
-  function handleShowEditDialog(id: any, title: any, video_url: any, province_id: any, island_id: any) {
+  function handleShowEditDialog(
+    id: any,
+    title: any,
+    video_url: any,
+    hd_quality: any,
+    province_id: any,
+    island_id: any,
+  ) {
     const findProvinceSlug = province?.find((prov: any) => prov.id === province_id)?.slug;
     setComboboxValue(findProvinceSlug);
-    setItem({ id: id, title: title, video_url: video_url, province_id: province_id, island_id: island_id });
+    setItem({
+      id: id,
+      title: title,
+      video_url: video_url,
+      hd_quality: hd_quality,
+      province_id: province_id,
+      island_id: island_id,
+    });
     setOpenDialog((prev) => ({ ...prev, edit: true }));
   }
 
@@ -199,7 +236,7 @@ export default function Video() {
                 <button
                   onClick={() => handleShowVideoDialog(original.title, original.video_url)}
                   className={twMerge(
-                    'w-40 overflow-hidden text-ellipsis break-all rounded-md text-left font-medium hover:cursor-pointer lg:w-52 xl:w-full',
+                    'w-40 overflow-hidden text-ellipsis break-all rounded-md text-left font-medium hover:cursor-pointer lg:w-32 xl:w-[450px] 2xl:w-full',
                     'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}
                 >
@@ -213,6 +250,16 @@ export default function Video() {
               </HoverCardContent>
             </HoverCard>
           );
+        },
+      },
+      {
+        Header: 'HD',
+        accessor: 'hd_quality',
+        disableSortBy: true,
+        width: 300,
+        Cell: (row: any) => {
+          const { values, original } = row.cell.row;
+          return values?.hd_quality == true ? '✔️' : '❌';
         },
       },
       {
@@ -275,6 +322,7 @@ export default function Video() {
                     original.id,
                     original.title,
                     original.video_url,
+                    original.hd_quality,
                     original?.vacation_province?.id,
                     original?.vacation_island?.id,
                   )
@@ -318,7 +366,7 @@ export default function Video() {
         <Button
           variant='success'
           onClick={() => {
-            setItem({ id: null, title: '', video_url: '', province_id: null, island_id: null });
+            setItem({ id: null, title: '', video_url: '', hd_quality: false, province_id: null, island_id: null });
             setComboboxValue('');
             setOpenDialog((prev) => ({ ...prev, create: true }));
           }}
@@ -427,6 +475,20 @@ export default function Video() {
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
                 placeholder='Video URL'
+                className='sm:col-span-3'
+              />
+            </div>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='hd_quality' className='leading-5 sm:text-right'>
+                HD Video
+              </Label>
+              <Checkbox
+                checked={item.hd_quality}
+                onCheckedChange={(value) => {
+                  setItem((prev) => ({ ...prev, hd_quality: value == true ? true : false }));
+                }}
+                id='hd_quality'
+                aria-label='hd_quality'
                 className='sm:col-span-3'
               />
             </div>
@@ -588,6 +650,20 @@ export default function Video() {
                 value={item.video_url}
                 onChange={(e) => setItem((prev) => ({ ...prev, video_url: e.target.value }))}
                 placeholder='Video URL'
+                className='sm:col-span-3'
+              />
+            </div>
+            <div className='grid grid-cols-1 items-center gap-2 sm:grid-cols-4 sm:gap-4'>
+              <Label htmlFor='hd_quality' className='leading-5 sm:text-right'>
+                HD Video
+              </Label>
+              <Checkbox
+                checked={item.hd_quality}
+                onCheckedChange={(value) => {
+                  setItem((prev) => ({ ...prev, hd_quality: value == true ? true : false }));
+                }}
+                id='hd_quality'
+                aria-label='hd_quality'
                 className='sm:col-span-3'
               />
             </div>

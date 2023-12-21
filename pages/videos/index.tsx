@@ -25,7 +25,8 @@ export default function Videos() {
   // VIDEO SLIDER
   // using useMemo to prevent reshuffled data if doing searching
   const copyData = useMemo(() => (data ? [...data] : []), [data]);
-  const shuffledData = useMemo(() => copyData?.sort(() => 0.5 - Math.random()).slice(0, 5), [copyData]);
+  const filteredData = useMemo(() => copyData.filter((item) => item.hd_quality == true), [copyData]);
+  const shuffledData = useMemo(() => filteredData?.sort(() => 0.5 - Math.random()).slice(0, 5), [filteredData]);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
@@ -102,7 +103,7 @@ export default function Videos() {
                           'w-full scale-110 rounded-md object-cover transition-all duration-500',
                           isActive && 'group-hover:scale-125',
                         )}
-                        src={youTubeGetCoverImage(youTubeGetID(video.video_url))}
+                        src={youTubeGetCoverImage(youTubeGetID(video.video_url), 'maxresdefault')}
                         alt={video.title}
                         fill
                         unoptimized
