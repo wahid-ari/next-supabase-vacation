@@ -403,6 +403,7 @@ export default function Video() {
                   Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
+              <TableSimple.th shrink>HD</TableSimple.th>
               <TableSimple.th className='sm:w-[30%] lg:w-[25%] xl:w-[19%]'>
                 <div className='flex items-center gap-1'>
                   Province <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
@@ -421,6 +422,33 @@ export default function Video() {
           {[...Array(5).keys()].map((e, index) => (
             <TableSimple.tr key={index}>
               <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td className='flex justify-end gap-2'>
+                <Shimmer className='w-8 p-3' />
+                <Shimmer className='w-8 p-3' />
+                <Shimmer className='w-8 p-3' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+          {[...Array(5).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
                 <Shimmer className='p-3' />
               </TableSimple.td>
               <TableSimple.td>
