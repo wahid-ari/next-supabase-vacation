@@ -77,7 +77,7 @@ export default function FrontNavbar({
       as='header'
       className={twMerge(
         'sticky top-0 z-10 mx-auto max-w-full border-b border-b-neutral-200/70 2xl:max-w-7xl dark:border-b-neutral-800',
-        transparentNavbar && !scrolled && ' border-none bg-gradient-to-b from-black/50 via-black/30 to-transparent',
+        transparentNavbar && !scrolled && 'border-none bg-gradient-to-b from-black/50 via-black/30 to-transparent',
         scrolled && 'bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30 ',
         className,
       )}

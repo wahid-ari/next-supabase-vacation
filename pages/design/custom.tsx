@@ -248,22 +248,20 @@ export default function Custom() {
           >
             {destinationData?.map((destination, index) => (
               <SwiperSlide key={index} className='p-0.5'>
-                {({ isActive }) => (
-                  <div className='relative'>
-                    <DestinationCardItem
-                      href={`/design/custom/#slider`}
-                      image_url={destination?.image_url}
-                      name={destination?.name}
-                    />
-                  </div>
-                )}
+                <div className='relative'>
+                  <DestinationCardItem
+                    href={`/design/custom/#slider`}
+                    image_url={destination?.image_url}
+                    name={destination?.name}
+                  />
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
           <button
             ref={prevRefSlider}
             className={cn(
-              'absolute left-0 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%]',
+              'absolute left-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -273,7 +271,7 @@ export default function Custom() {
           <button
             ref={nextRefSlider}
             className={cn(
-              'absolute right-0 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%]',
+              'absolute right-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -737,7 +735,7 @@ export default function Custom() {
             <button
               ref={prevRefVideo}
               className={cn(
-                'absolute left-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+                'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:left-16 lg:p-3',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
@@ -747,7 +745,7 @@ export default function Custom() {
             <button
               ref={nextRefVideo}
               className={cn(
-                'absolute right-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+                'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:right-16 lg:p-3',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
@@ -870,7 +868,7 @@ export default function Custom() {
           <button
             ref={prevRefVideoHover}
             className={cn(
-              'absolute left-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+              'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:left-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -880,7 +878,7 @@ export default function Custom() {
           <button
             ref={nextRefVideoHover}
             className={cn(
-              'absolute right-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+              'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:right-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -967,7 +965,7 @@ export default function Custom() {
           <button
             ref={prevRefVideoActive}
             className={cn(
-              'absolute left-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
+              'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:left-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -977,7 +975,7 @@ export default function Custom() {
           <button
             ref={nextRefVideoActive}
             className={cn(
-              'absolute right-4 top-[42%] z-10 cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
+              'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:right-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
