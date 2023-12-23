@@ -77,6 +77,7 @@ export default function Video() {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`, {
         title: item.title,
         video_url: item.video_url,
+        hd_quality: item.hd_quality,
         province_id: item.province_id,
         island_id: item.island_id,
       });

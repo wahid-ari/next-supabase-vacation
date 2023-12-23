@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 // import { YouTubeEmbed } from '@next/third-parties/google';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -32,6 +33,7 @@ export default function Videos() {
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
   const youtube_url = youTubeGetID(videoPreview?.video_url);
   // VIDEO GRID
+  // Using Load More Button
   const [query, setQuery] = useState('');
   const limit = 9;
   const [page, setPage] = useState(1);
@@ -42,6 +44,13 @@ export default function Videos() {
           item.title.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, '')),
         );
   let lastPage = page >= filtered?.length / limit;
+  // Using Infinite Scroll
+  function loadFunc() {
+    // using timeout to mock loading while fetching data
+    setTimeout(() => {
+      setPage(page + 1);
+    }, 1000);
+  }
 
   if (error) {
     return (
@@ -190,7 +199,7 @@ export default function Videos() {
         />
       </div>
 
-      <div className='mt-8 grid grid-cols-1 gap-6 min-[550px]:grid-cols-2 xl:grid-cols-3'>
+      {/* <div className='mt-8 grid grid-cols-1 gap-6 min-[550px]:grid-cols-2 xl:grid-cols-3'>
         {filtered
           ? filtered?.slice(0, page * limit).map((item: any, index: number) => (
               <div key={index} className='relative'>
@@ -220,7 +229,35 @@ export default function Videos() {
 
       {query !== '' && filtered?.length < 1 && (
         <p className='py-32 text-center'>There are no Video with Title &quot;{query}&quot;</p>
-      )}
+      )} */}
+
+      <InfiniteScroll
+        loadMore={loadFunc}
+        hasMore={!lastPage}
+        loader={<div className='mt-8 flex justify-center'>Loading ...</div>}
+      >
+        <div className='mt-8 grid grid-cols-1 gap-6 min-[550px]:grid-cols-2 xl:grid-cols-3'>
+          {filtered
+            ? filtered?.slice(0, page * limit).map((item: any, index: number) => (
+                <div key={index} className='relative'>
+                  <VideoCardItem
+                    className='scale-150'
+                    title={item?.title}
+                    url={item?.video_url}
+                    onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
+                  />
+                </div>
+              ))
+            : [...Array(12).keys()].map((i) => (
+                <Shimmer key={i}>
+                  <div className='space-y-3'>
+                    <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  </div>
+                </Shimmer>
+              ))}
+        </div>
+      </InfiniteScroll>
 
       {/* Preview Dialog */}
       <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
