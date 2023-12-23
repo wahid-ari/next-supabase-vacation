@@ -52,6 +52,11 @@ export default function Inspirations() {
                   className='relative h-56 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <Image alt={image?.title} src={image?.image_url} fill className='rounded object-cover' unoptimized />
+                  <div className='absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
+                    <div className='flex w-full justify-end p-2'>
+                      <InstagramIcon className='h-5 w-5 text-neutral-200' />
+                    </div>
+                  </div>
                 </button>
               ))
             : [...Array(12).keys()].map((i) => (

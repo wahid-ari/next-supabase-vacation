@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeftIcon, ArrowRightIcon, PlayIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon, PlayIcon } from 'lucide-react';
 import { Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -111,6 +111,9 @@ const imagesData = [
 export default function Custom() {
   const [currentPage, setCurrentPage] = useState(0);
 
+  const prevRefHeader = useRef(null);
+  const nextRefHeader = useRef(null);
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [openDialogUi, setOpenDialogUi] = useState(false);
@@ -214,6 +217,88 @@ export default function Custom() {
               Slider
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#slider-header'>
+              Slider Header
+            </Link>
+          </span>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='slider-header' name='Slider Header' noClassName noProps noChildren>
+        <div className='relative mx-auto w-full lg:max-w-2xl xl:max-w-4xl'>
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              prevEl: prevRefHeader.current,
+              nextEl: nextRefHeader.current,
+            }}
+            onBeforeInit={(swiper) => {
+              // @ts-ignore
+              swiper.params.navigation.prevEl = prevRefHeader.current;
+              // @ts-ignore
+              swiper.params.navigation.nextEl = nextRefHeader.current;
+            }}
+            slidesPerView={1}
+            loop={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+            }}
+          >
+            {destinationData?.map((destination, index) => (
+              <SwiperSlide key={index}>
+                <div className='relative'>
+                  <Link href={`/design/custom/#slider-header`} className='group overflow-hidden'>
+                    <div className='relative h-[50vh] w-full overflow-hidden rounded-md sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]'>
+                      <Image
+                        className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
+                        src={destination.image_url}
+                        alt={destination.name}
+                        fill
+                        unoptimized
+                      />
+                    </div>
+                    <div className='absolute inset-0 rounded-md bg-neutral-950/50'>
+                      <div className='mt-6 flex h-full items-center justify-center'>
+                        <div className='max-w-[80%]'>
+                          <p
+                            className={cn(
+                              'line-clamp-2 p-1 text-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl',
+                              'rounded font-medium text-white group-focus-visible:ring-2 group-focus-visible:ring-sky-500 md:font-semibold',
+                            )}
+                          >
+                            {destination.name}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button
+            ref={prevRefHeader}
+            className={cn(
+              'absolute left-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8',
+              'border-neutral-800 bg-black/40 hover:bg-black/60',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
+          >
+            <ArrowLeftIcon className='h-w-6 h-5 w-5 text-white sm:w-6 md:h-7 md:w-7 lg:h-8 lg:w-8' />
+          </button>
+          <button
+            ref={nextRefHeader}
+            className={cn(
+              'absolute right-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8',
+              'border-neutral-800 bg-black/40 hover:bg-black/60',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
+          >
+            <ArrowRightIcon className='h-w-6 h-5 w-5 text-white sm:w-6 md:h-7 md:w-7 lg:h-8 lg:w-8' />
+          </button>
         </div>
       </Wrapper>
 
@@ -464,6 +549,11 @@ export default function Custom() {
               className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
               <Image alt='Image' src={image.public_id} fill className='rounded object-cover' unoptimized />
+              <div className='absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
+                <div className='flex w-full justify-end p-2'>
+                  <InstagramIcon className='h-5 w-5 text-neutral-200' />
+                </div>
+              </div>
             </button>
           ))}
         </div>
