@@ -247,12 +247,10 @@ export default function FrontNavbar({
                   <Link
                     href='/dashboard'
                     className={twMerge(
-                      'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
-                      'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
+                      'rounded-md px-2 py-0.5 text-[15px] font-medium transition-all duration-200',
+                      'text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                      transparentNavbar &&
-                        !scrolled &&
-                        'border-neutral-300 text-white hover:bg-neutral-800 dark:border-neutral-300 dark:text-white',
+                      transparentNavbar && !scrolled && 'text-white dark:text-white',
                     )}
                     passHref
                   >
@@ -263,7 +261,7 @@ export default function FrontNavbar({
                     href='/login'
                     className={twMerge(
                       'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
-                      'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
+                      'text-neutral-700 dark:text-neutral-200',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       transparentNavbar &&
                         !scrolled &&
@@ -287,9 +285,11 @@ export default function FrontNavbar({
 
               <FrontThemeChanger
                 className={twMerge(
+                  'border-transparent hover:border-transparent dark:border-transparent dark:hover:border-transparent',
                   transparentNavbar &&
                     !scrolled &&
-                    'border-neutral-300 text-white hover:bg-neutral-800 dark:border-neutral-300 dark:text-white',
+                    'border-transparent text-white hover:bg-transparent dark:border-transparent dark:text-white dark:hover:bg-transparent',
+                  scrolled && 'hover:bg-transparent dark:hover:bg-transparent',
                 )}
               />
             </div>
