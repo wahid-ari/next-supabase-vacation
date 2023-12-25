@@ -7,29 +7,37 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
-import { useCategoriesData, useDestinationsData, useInspirationsData } from '@/libs/swr';
-import { cn } from '@/libs/utils';
+import { useCategoriesData, useDestinationsData, useInspirationsData, useVideosData } from '@/libs/swr';
+import { cn, youTubeGetID } from '@/libs/utils';
 
-import { Dialog, DialogContent } from '@/components/ui/Dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 import { Heading } from '@/components/ui/Heading';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
 import CategoryCardItem from '@/components/card/CategoryCardItem';
 import DestinationCardItem from '@/components/card/DestinationCardItem';
 import ImageBanner from '@/components/card/ImageBanner';
+import VideoCardItem from '@/components/card/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 
 export default function Home() {
   const { data, error } = useDestinationsData();
   const { data: categories, error: errorCategories } = useCategoriesData();
+  const { data: videos, error: errorVideos } = useVideosData();
   const { data: inspirations, error: errorInspirations } = useInspirationsData();
-  // using useMemo to prevent reshuffled data if doing searching
+  // using useMemo to prevent reshuffled data
   const copyData = useMemo(() => data?.filter((item: any) => item.image_url != null && item.image_url != ''), [data]);
   const shuffledData = useMemo(() => copyData?.sort(() => 0.5 - Math.random()).slice(0, 5), [copyData]);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  const shuffledDestinationData = useMemo(() => data?.sort(() => 0.5 - Math.random()).slice(0, 10), [data]);
+  const shuffledCategoryData = useMemo(() => categories?.sort(() => 0.5 - Math.random()).slice(0, 8), [categories]);
+  const shuffledInspirationData = useMemo(
+    () => inspirations?.sort(() => 0.5 - Math.random()).slice(0, 10),
+    [inspirations],
+  );
   const prevRefInspiration = useRef(null);
   const nextRefInspiration = useRef(null);
   const [openDialogUi, setOpenDialogUi] = useState(false);
@@ -39,7 +47,13 @@ export default function Home() {
     setOpenDialogUi(true);
   }
 
-  if (error || errorCategories || errorInspirations) {
+  const prevRefVideo = useRef(null);
+  const nextRefVideo = useRef(null);
+  const shuffledVideoData = useMemo(() => videos?.sort(() => 0.5 - Math.random()).slice(0, 9), [videos]);
+  const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
+  const youtube_url = youTubeGetID(videoPreview?.video_url);
+
+  if (error || errorCategories || errorVideos || errorInspirations) {
     return (
       <FrontLayout
         title='Home - MyVacation'
@@ -83,7 +97,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <div className='relative'>
                   <Link href={`/destinations/${destination.slug}`} className='group overflow-hidden'>
-                    <div className='relative h-[50vh] w-full overflow-hidden sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]'>
+                    <div className='relative h-[50vh] w-full overflow-hidden sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-screen'>
                       <Image
                         className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
                         src={destination.image_url}
@@ -133,7 +147,7 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <Shimmer className='h-[50vh] w-full sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]' />
+        <Shimmer className='h-[50vh] w-full sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-screen' />
       )}
 
       <div className='mx-auto max-w-7xl p-4'>
@@ -142,8 +156,8 @@ export default function Home() {
             Destination
           </Heading>
           <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-            {data
-              ? data?.slice(0, 10).map((item: any, index: number) => (
+            {shuffledDestinationData
+              ? shuffledDestinationData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <DestinationCardItem
                       href={`/destinations/${item.slug}`}
@@ -174,8 +188,8 @@ export default function Home() {
             Category
           </Heading>
           <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
-            {categories
-              ? categories?.slice(0, 8).map((item: any, index: number) => (
+            {shuffledCategoryData
+              ? shuffledCategoryData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <CategoryCardItem href={`/categories/${item.slug}`} image_url={item.image_url} name={item.name} />
                   </div>
@@ -200,11 +214,99 @@ export default function Home() {
 
         <section className='my-16'>
           <Heading as='h2' className='mb-6 text-3xl font-semibold'>
+            Video
+          </Heading>
+          {shuffledVideoData ? (
+            <div className='relative'>
+              <Swiper
+                modules={[Navigation]}
+                navigation={{
+                  prevEl: prevRefVideo.current,
+                  nextEl: nextRefVideo.current,
+                }}
+                onBeforeInit={(swiper) => {
+                  // @ts-ignore
+                  swiper.params.navigation.prevEl = prevRefVideo.current;
+                  // @ts-ignore
+                  swiper.params.navigation.nextEl = nextRefVideo.current;
+                }}
+                spaceBetween={24}
+                slidesPerView={3}
+                loop={true}
+                breakpoints={{
+                  400: {
+                    slidesPerView: 1,
+                  },
+                  650: {
+                    slidesPerView: 2,
+                  },
+                  900: {
+                    slidesPerView: 3,
+                  },
+                }}
+              >
+                {shuffledVideoData?.map((item, index) => (
+                  <SwiperSlide key={index} className='p-0.5'>
+                    <div key={index} className='relative'>
+                      <VideoCardItem
+                        className='scale-150'
+                        title={item?.title}
+                        url={item?.video_url}
+                        onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <button
+                ref={prevRefVideo}
+                className={cn(
+                  'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
+                  'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                )}
+              >
+                <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
+              </button>
+              <button
+                ref={nextRefVideo}
+                className={cn(
+                  'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
+                  'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                )}
+              >
+                <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
+              </button>
+            </div>
+          ) : (
+            <div className='mt-8 grid grid-cols-1 gap-6 min-[550px]:grid-cols-2 xl:grid-cols-3'>
+              {[...Array(3).keys()].map((i) => (
+                <Shimmer key={i}>
+                  <div className='space-y-3'>
+                    <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                  </div>
+                </Shimmer>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <ImageBanner
+          text='Curated journey from the best in the industry'
+          href='/inspirations'
+          image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=1000'
+          align='center'
+        />
+
+        <section className='my-16'>
+          <Heading as='h2' className='mb-6 text-3xl font-semibold'>
             Inspiration
           </Heading>
           <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-            {inspirations
-              ? inspirations?.slice(0, 10).map((image: any, index: number) => (
+            {shuffledInspirationData
+              ? shuffledInspirationData?.map((image: any, index: number) => (
                   <button
                     onClick={() => openImage(index)}
                     key={index}
@@ -251,7 +353,7 @@ export default function Home() {
                 loop={true}
                 className='w-full py-4'
               >
-                {inspirations?.slice(0, 10).map((image: any, index: number) => (
+                {shuffledInspirationData?.map((image: any, index: number) => (
                   <SwiperSlide key={index}>
                     <div className='grid grid-cols-1 sm:grid-cols-2'>
                       <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
@@ -317,15 +419,24 @@ export default function Home() {
             </DialogContent>
           </Dialog>
         </section>
-
-        <ImageBanner
-          text='Curated journey from the best in the industry'
-          href='/inspirations'
-          image_url='https://images.unsplash.com/photo-1650509009946-32b00cb21a0a?q=80&w=1000'
-          align='center'
-          className='mb-8'
-        />
       </div>
+
+      {/* Preview Dialog */}
+      <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
+        <DialogContent className='max-w-5xl p-3 md:p-6'>
+          <DialogHeader className='text-left'>
+            <DialogTitle className='pr-8 leading-6'>{videoPreview.title}</DialogTitle>
+          </DialogHeader>
+          {/* <YouTubeEmbed videoid={youtube_url} /> */}
+          <iframe
+            className='h-64 w-full rounded sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]'
+            src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
+            title={videoPreview.title}
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          ></iframe>
+        </DialogContent>
+      </Dialog>
     </FrontLayout>
   );
 }

@@ -346,7 +346,7 @@ export default function Custom() {
           <button
             ref={prevRefSlider}
             className={cn(
-              'absolute left-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
+              'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -356,7 +356,7 @@ export default function Custom() {
           <button
             ref={nextRefSlider}
             className={cn(
-              'absolute right-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
+              'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
