@@ -81,7 +81,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
                   </Link>
                 </li>
                 <li className='mb-2'>
-                  <Link href='/inspiration' className={linkClassName}>
+                  <Link href='/inspirations' className={linkClassName}>
                     Inspiration
                   </Link>
                 </li>

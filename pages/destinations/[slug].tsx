@@ -233,6 +233,7 @@ export default function Destinations({ slug, seo }) {
                     </div>
                   ))}
             </div>
+            {/* TODO add destination maps */}
           </div>
         </div>
       </div>
