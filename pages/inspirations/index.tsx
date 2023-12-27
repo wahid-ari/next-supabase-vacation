@@ -43,7 +43,7 @@ export default function Inspirations() {
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
       <div className='pt-4'>
-        <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {data
             ? data?.map((image: any, index: number) => (
                 <button
@@ -59,7 +59,7 @@ export default function Inspirations() {
                   </div>
                 </button>
               ))
-            : [...Array(12).keys()].map((i) => (
+            : [...Array(15).keys()].map((i) => (
                 <Shimmer key={i}>
                   <div className='space-y-3'>
                     <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
