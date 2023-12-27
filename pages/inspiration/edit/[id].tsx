@@ -53,7 +53,7 @@ export default function Inspiration() {
         url: data?.url,
         content: data?.content,
       });
-      setMarker(data?.latlng);
+      if (data?.latlng != null) setMarker(data?.latlng);
       setDataReady(true);
     }
   }, [data]);
