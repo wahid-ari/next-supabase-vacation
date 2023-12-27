@@ -192,3 +192,8 @@ lite-youtube {
 .swiper-thumbs .swiper-slide-thumb-active {
   opacity: 1;
 }
+
+/* React Leaflet */
+.leaflet-bottom.leaflet-right {
+  display: none;
+}
