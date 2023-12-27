@@ -221,9 +221,9 @@ export default function Destination() {
   }
 
   return (
-    <Layout title='Edit Destination - MyVacation' description='Edit New Destination - MyVacation'>
+    <Layout title={`Edit ${data?.name} - MyVacation`} description={`Edit ${data?.name} - MyVacation`}>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title>Edit Destination</Title>
+        <Title>Edit {data?.name}</Title>
       </div>
 
       {data ? (
