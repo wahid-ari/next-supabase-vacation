@@ -1,24 +1,23 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
 import { useCategoriesData, useDestinationsData, useInspirationsData, useVideosData } from '@/libs/swr';
-import { cn, youTubeGetID } from '@/libs/utils';
+import { cn } from '@/libs/utils';
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 import { Heading } from '@/components/ui/Heading';
-import { ScrollArea } from '@/components/ui/ScrollArea';
 
 import CategoryCardItem from '@/components/card/CategoryCardItem';
 import DestinationCardItem from '@/components/card/DestinationCardItem';
 import ImageBanner from '@/components/card/ImageBanner';
-import VideoCardItem from '@/components/card/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
+import InspirationSection from '@/components/home/InspirationSection';
+import VideoSection from '@/components/home/VideoSection';
 import Shimmer from '@/components/systems/Shimmer';
 
 export default function Home() {
@@ -32,26 +31,8 @@ export default function Home() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const shuffledDestinationData = useMemo(() => data?.sort(() => 0.5 - Math.random()).slice(0, 10), [data]);
+  const shuffledDestinationData = useMemo(() => data?.sort(() => 0.5 - Math.random()).slice(0, 12), [data]);
   const shuffledCategoryData = useMemo(() => categories?.sort(() => 0.5 - Math.random()).slice(0, 8), [categories]);
-  const shuffledInspirationData = useMemo(
-    () => inspirations?.sort(() => 0.5 - Math.random()).slice(0, 10),
-    [inspirations],
-  );
-  const prevRefInspiration = useRef(null);
-  const nextRefInspiration = useRef(null);
-  const [openDialogUi, setOpenDialogUi] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(null);
-  function openImage(index: number) {
-    setActiveSlide(index);
-    setOpenDialogUi(true);
-  }
-
-  const prevRefVideo = useRef(null);
-  const nextRefVideo = useRef(null);
-  const shuffledVideoData = useMemo(() => videos?.sort(() => 0.5 - Math.random()).slice(0, 9), [videos]);
-  const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
-  const youtube_url = youTubeGetID(videoPreview?.video_url);
 
   if (error || errorCategories || errorVideos || errorInspirations) {
     return (
@@ -97,7 +78,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <div className='relative'>
                   <Link href={`/destinations/${destination.slug}`} className='group overflow-hidden'>
-                    <div className='relative h-[50vh] w-full overflow-hidden sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-screen'>
+                    <div className='relative h-[50vh] w-full overflow-hidden sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
                       <Image
                         className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
                         src={destination.image_url}
@@ -106,7 +87,7 @@ export default function Home() {
                         unoptimized
                       />
                     </div>
-                    <div className='absolute inset-0 rounded-md bg-neutral-950/50'>
+                    <div className='absolute inset-0 bg-neutral-950/50'>
                       <div className='mt-6 flex h-full items-center justify-center'>
                         <div className='max-w-[80%]'>
                           <p
@@ -147,15 +128,15 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <Shimmer className='h-[50vh] w-full sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-screen' />
+        <Shimmer className='h-[50vh] w-full sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]' />
       )}
 
-      <div className='mx-auto max-w-7xl p-4'>
+      <div className='mx-auto max-w-7xl px-4'>
         <section className='my-16'>
           <Heading as='h2' className='mb-6 text-3xl font-semibold'>
             Destination
           </Heading>
-          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
             {shuffledDestinationData
               ? shuffledDestinationData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
@@ -166,7 +147,7 @@ export default function Home() {
                     />
                   </div>
                 ))
-              : [...Array(10).keys()].map((i) => (
+              : [...Array(12).keys()].map((i) => (
                   <Shimmer key={i}>
                     <div className='space-y-3'>
                       <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -187,7 +168,7 @@ export default function Home() {
           <Heading as='h2' className='mb-6 text-3xl font-semibold'>
             Category
           </Heading>
-          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-4'>
             {shuffledCategoryData
               ? shuffledCategoryData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
@@ -212,86 +193,7 @@ export default function Home() {
           align='right'
         />
 
-        <section className='my-16'>
-          <Heading as='h2' className='mb-6 text-3xl font-semibold'>
-            Video
-          </Heading>
-          {shuffledVideoData ? (
-            <div className='relative'>
-              <Swiper
-                modules={[Navigation]}
-                navigation={{
-                  prevEl: prevRefVideo.current,
-                  nextEl: nextRefVideo.current,
-                }}
-                onBeforeInit={(swiper) => {
-                  // @ts-ignore
-                  swiper.params.navigation.prevEl = prevRefVideo.current;
-                  // @ts-ignore
-                  swiper.params.navigation.nextEl = nextRefVideo.current;
-                }}
-                spaceBetween={24}
-                slidesPerView={3}
-                loop={true}
-                breakpoints={{
-                  400: {
-                    slidesPerView: 1,
-                  },
-                  650: {
-                    slidesPerView: 2,
-                  },
-                  900: {
-                    slidesPerView: 3,
-                  },
-                }}
-              >
-                {shuffledVideoData?.map((item, index) => (
-                  <SwiperSlide key={index} className='p-0.5'>
-                    <div key={index} className='relative'>
-                      <VideoCardItem
-                        className='scale-150'
-                        title={item?.title}
-                        url={item?.video_url}
-                        onPlay={() => setVideoPreview({ open: true, title: item?.title, video_url: item?.video_url })}
-                      />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <button
-                ref={prevRefVideo}
-                className={cn(
-                  'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
-                  'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                )}
-              >
-                <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
-              </button>
-              <button
-                ref={nextRefVideo}
-                className={cn(
-                  'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
-                  'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                )}
-              >
-                <ArrowRightIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
-              </button>
-            </div>
-          ) : (
-            <div className='mt-8 grid grid-cols-1 gap-6 min-[550px]:grid-cols-2 xl:grid-cols-3'>
-              {[...Array(3).keys()].map((i) => (
-                <Shimmer key={i}>
-                  <div className='space-y-3'>
-                    <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                    <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                  </div>
-                </Shimmer>
-              ))}
-            </div>
-          )}
-        </section>
+        <VideoSection data={videos} />
 
         <ImageBanner
           text='Curated journey from the best in the industry'
@@ -300,143 +202,8 @@ export default function Home() {
           align='center'
         />
 
-        <section className='my-16'>
-          <Heading as='h2' className='mb-6 text-3xl font-semibold'>
-            Inspiration
-          </Heading>
-          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-            {shuffledInspirationData
-              ? shuffledInspirationData?.map((image: any, index: number) => (
-                  <button
-                    onClick={() => openImage(index)}
-                    key={index}
-                    className='relative h-56 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  >
-                    <Image
-                      alt={image?.title}
-                      src={image?.image_url}
-                      fill
-                      className='rounded object-cover'
-                      unoptimized
-                    />
-                    <div className='absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
-                      <div className='flex w-full justify-end p-2'>
-                        <InstagramIcon className='h-5 w-5 text-neutral-200' />
-                      </div>
-                    </div>
-                  </button>
-                ))
-              : [...Array(10).keys()].map((i) => (
-                  <Shimmer key={i}>
-                    <div className='space-y-3'>
-                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                    </div>
-                  </Shimmer>
-                ))}
-          </div>
-
-          <Dialog open={openDialogUi} onOpenChange={setOpenDialogUi}>
-            <DialogContent className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
-              <Swiper
-                modules={[Navigation]}
-                navigation={{
-                  prevEl: prevRefInspiration.current,
-                  nextEl: nextRefInspiration.current,
-                }}
-                onBeforeInit={(swiper) => {
-                  // @ts-ignore
-                  swiper.params.navigation.prevEl = prevRefInspiration.current;
-                  // @ts-ignore
-                  swiper.params.navigation.nextEl = nextRefInspiration.current;
-                }}
-                initialSlide={activeSlide}
-                loop={true}
-                className='w-full py-4'
-              >
-                {shuffledInspirationData?.map((image: any, index: number) => (
-                  <SwiperSlide key={index}>
-                    <div className='grid grid-cols-1 sm:grid-cols-2'>
-                      <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
-                        <Image
-                          alt={image?.title}
-                          src={image?.image_url}
-                          fill
-                          className='rounded-t-lg object-cover sm:rounded-l-lg sm:rounded-t-none sm:rounded-tl-lg'
-                          unoptimized
-                        />
-                      </div>
-                      <div className='p-4 pb-6 pr-1'>
-                        <ScrollArea className='flex h-40 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
-                          <div className='flex min-h-full flex-col justify-between gap-4'>
-                            <div>
-                              <h3 className='mb-2 p-1 text-xl font-semibold'>{image?.title}</h3>
-                              <div
-                                className='ql-editor !prose !prose-blue !max-w-none !p-1 dark:!prose-invert prose-a:!font-normal'
-                                // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
-                                dangerouslySetInnerHTML={{ __html: image?.content?.replace(/&nbsp;/g, ' ') }}
-                              />
-                            </div>
-                            <a
-                              href={image.url}
-                              target='_blank'
-                              rel='noreferrer'
-                              className={cn(
-                                'mx-1 flex items-center justify-center gap-2 rounded border px-3 pb-1.5 pt-1 font-medium',
-                                'transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
-                                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                              )}
-                            >
-                              <InstagramIcon className='h-4 w-4' />
-                              Instagram
-                            </a>
-                          </div>
-                        </ScrollArea>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <button
-                ref={prevRefInspiration}
-                className={cn(
-                  'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
-                  'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                )}
-              >
-                <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
-              </button>
-              <button
-                ref={nextRefInspiration}
-                className={cn(
-                  'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
-                  'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                )}
-              >
-                <ArrowRightIcon className='h-6 w-6 dark:text-white' />
-              </button>
-            </DialogContent>
-          </Dialog>
-        </section>
+        <InspirationSection data={inspirations} />
       </div>
-
-      {/* Preview Dialog */}
-      <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
-        <DialogContent className='max-w-5xl p-3 md:p-6'>
-          <DialogHeader className='text-left'>
-            <DialogTitle className='pr-8 leading-6'>{videoPreview.title}</DialogTitle>
-          </DialogHeader>
-          {/* <YouTubeEmbed videoid={youtube_url} /> */}
-          <iframe
-            className='h-64 w-full rounded sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]'
-            src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
-            title={videoPreview.title}
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowFullScreen
-          ></iframe>
-        </DialogContent>
-      </Dialog>
     </FrontLayout>
   );
 }
