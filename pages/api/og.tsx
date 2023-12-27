@@ -13,6 +13,7 @@ const wrapperClassName = {
   position: 'relative' as 'relative',
 };
 
+// TODO OG Images
 export default async function handler(req: NextApiRequest) {
   try {
     const { searchParams } = new URL(req.url);
