@@ -22,15 +22,6 @@ import Title from '@/components/systems/Title';
 
 // Inspiration.auth = true;
 
-const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
-  ssr: false,
-  loading: () => (
-    <Shimmer>
-      <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-    </Shimmer>
-  ),
-});
-
 export default function Inspiration() {
   const router = useRouter();
   const id = router.query?.id as string;
@@ -95,6 +86,21 @@ export default function Inspiration() {
     }
   }
 
+  const ReactLeaflet = useMemo(
+    () =>
+      dynamic(() => import('@/components/custom/Map'), {
+        ssr: false,
+        loading: () => (
+          <Shimmer>
+            <div className='h-8 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='mt-4 h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+          </Shimmer>
+        ),
+      }),
+    // FIX error use depedency here to fix react leaflet maps not center
+    [dataReady],
+  );
+
   const ReactQuill = useMemo(
     () =>
       dynamic(
@@ -138,9 +144,9 @@ export default function Inspiration() {
   }
 
   return (
-    <Layout title='Edit Inspiration - MyVacation' description='Edit New Inspiration - MyVacation'>
+    <Layout title={`Edit ${data?.title} - MyVacation`} description={`Edit ${data?.title} - MyVacation`}>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title>Edit Inspiration</Title>
+        <Title>Edit {data?.title}</Title>
       </div>
 
       {data ? (
