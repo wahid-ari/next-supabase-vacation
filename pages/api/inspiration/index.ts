@@ -57,6 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 image_url: body.image_url,
                 url: body.url,
                 content: body.content,
+                latlng: body.latlng,
               },
             ])
             .select();
@@ -93,6 +94,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               image_url: body.image_url,
               url: body.url,
               content: body.content,
+              latlng: body.latlng,
             })
             .eq('id', body.id);
           if (error) {
