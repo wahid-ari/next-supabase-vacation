@@ -21,21 +21,31 @@ import Title from '@/components/systems/Title';
 
 // Inspiration.auth = true;
 
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
+
 export default function Inspiration() {
   const router = useRouter();
   const { updateToast, pushToast, dismissToast } = useToast();
-  const [createItem, setCreateItem] = useState({
-    title: '',
-    image_url: '',
-    url: '',
-    content: ``,
-  });
   // const [createItem, setCreateItem] = useState({
-  //   title: 'Inspiration',
-  //   image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
-  //   url: 'https://www.instagram.com/p/CZT8o7mhogG/',
-  //   content: `<p class="ql-align-justify"><strong>Lorem Ipsum</strong> is <a href='https://google.com'>simply</a> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
+  //   title: '',
+  //   image_url: '',
+  //   url: '',
+  //   content: ``,
   // });
+  const [marker, setMarker] = useState([-2.3723687086440504, 113.11523437500001]);
+  const [createItem, setCreateItem] = useState({
+    title: 'Inspiration',
+    image_url: 'https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&q=60&w=500',
+    url: 'https://www.instagram.com/p/CZT8o7mhogG/',
+    content: `<p class="ql-align-justify"><strong>Lorem Ipsum</strong> is <a href='https://google.com'>simply</a> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`,
+  });
 
   async function handleSave(e: any) {
     e.preventDefault();
@@ -44,7 +54,10 @@ export default function Inspiration() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`, {
+        ...createItem,
+        latlng: marker,
+      });
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`);
@@ -185,6 +198,10 @@ export default function Inspiration() {
               )}
             </Tabs.panel>
           </Tabs>
+        </div>
+        <div className='mt-2 space-y-2'>
+          <Label htmlFor='content'>Location</Label>
+          <ReactLeaflet name={createItem.title} marker={marker} setMarker={setMarker} enableEdit />
         </div>
 
         <Button type='submit' variant='success' className='mt-4 w-full'>

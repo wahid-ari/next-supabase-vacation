@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
 import { Navigation } from 'swiper/modules';
@@ -14,6 +15,15 @@ import { ScrollArea } from '@/components/ui/ScrollArea';
 
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
+
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-56 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
 
 export default function Inspirations() {
   const { data, error } = useInspirationsData();
@@ -45,13 +55,19 @@ export default function Inspirations() {
       <div className='pt-4'>
         <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {data
-            ? data?.map((image: any, index: number) => (
+            ? data?.map((inspiration: any, index: number) => (
                 <button
                   onClick={() => openImage(index)}
                   key={index}
                   className='relative h-56 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
-                  <Image alt={image?.title} src={image?.image_url} fill className='rounded object-cover' unoptimized />
+                  <Image
+                    alt={inspiration?.title}
+                    src={inspiration?.image_url}
+                    fill
+                    className='rounded object-cover'
+                    unoptimized
+                  />
                   <div className='absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
                     <div className='flex w-full justify-end p-2'>
                       <InstagramIcon className='h-5 w-5 text-neutral-200' />
@@ -86,13 +102,13 @@ export default function Inspirations() {
               loop={true}
               className='w-full py-4'
             >
-              {data?.map((image: any, index: number) => (
+              {data?.map((inspiration: any, index: number) => (
                 <SwiperSlide key={index}>
                   <div className='grid grid-cols-1 sm:grid-cols-2'>
                     <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
                       <Image
-                        alt={image?.title}
-                        src={image?.image_url}
+                        alt={inspiration?.title}
+                        src={inspiration?.image_url}
                         fill
                         className='rounded-t-lg object-cover sm:rounded-l-lg sm:rounded-t-none sm:rounded-tl-lg'
                         unoptimized
@@ -102,15 +118,15 @@ export default function Inspirations() {
                       <ScrollArea className='flex h-40 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
                         <div className='flex min-h-full flex-col justify-between gap-4'>
                           <div>
-                            <h3 className='mb-2 p-1 text-xl font-semibold'>{image?.title}</h3>
+                            <h3 className='mb-2 p-1 text-xl font-semibold'>{inspiration?.title}</h3>
                             <div
                               className='ql-editor !prose !prose-blue !max-w-none !p-1 dark:!prose-invert prose-a:!font-normal'
                               // TODO Docs https://stackoverflow.com/questions/35810238/how-to-remove-nbsp-by-javascript
-                              dangerouslySetInnerHTML={{ __html: image?.content.replace(/&nbsp;/g, ' ') }}
+                              dangerouslySetInnerHTML={{ __html: inspiration?.content.replace(/&nbsp;/g, ' ') }}
                             />
                           </div>
                           <a
-                            href={image.url}
+                            href={inspiration.url}
                             target='_blank'
                             rel='noreferrer'
                             className={cn(
@@ -122,6 +138,14 @@ export default function Inspirations() {
                             <InstagramIcon className='h-4 w-4' />
                             Instagram
                           </a>
+                          {inspiration.latlng && (
+                            <ReactLeaflet
+                              name={inspiration?.title}
+                              marker={inspiration?.latlng}
+                              className='h-64'
+                              zoom={6}
+                            />
+                          )}
                         </div>
                       </ScrollArea>
                     </div>

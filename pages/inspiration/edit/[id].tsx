@@ -22,6 +22,15 @@ import Title from '@/components/systems/Title';
 
 // Inspiration.auth = true;
 
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
+
 export default function Inspiration() {
   const router = useRouter();
   const id = router.query?.id as string;
@@ -33,6 +42,7 @@ export default function Inspiration() {
     url: '',
     content: ``,
   });
+  const [marker, setMarker] = useState([-2.3723687086440504, 113.11523437500001]);
   const [dataReady, setDataReady] = useState(false);
 
   useEffect(() => {
@@ -43,6 +53,7 @@ export default function Inspiration() {
         url: data?.url,
         content: data?.content,
       });
+      setMarker(data?.latlng);
       setDataReady(true);
     }
   }, [data]);
@@ -54,7 +65,11 @@ export default function Inspiration() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`, { id: id, ...editItem });
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`, {
+        id: id,
+        ...editItem,
+        latlng: marker,
+      });
       if (res.status == 201) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`);
@@ -207,6 +222,10 @@ export default function Inspiration() {
               </Tabs.panel>
             </Tabs>
           </div>
+          <div className='mt-2 space-y-2'>
+            <Label htmlFor='content'>Location</Label>
+            <ReactLeaflet name={editItem.title} marker={marker} setMarker={setMarker} enableEdit />
+          </div>
 
           <Button type='submit' variant='success' className='mt-4 w-full'>
             Save changes
@@ -224,7 +243,11 @@ export default function Inspiration() {
           </div>
           <Shimmer className='mb-4 p-2'>
             <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-            <div className='h-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='h-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+          </Shimmer>
+          <Shimmer className='mb-4 p-2'>
+            <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='h-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
         </>
       )}
