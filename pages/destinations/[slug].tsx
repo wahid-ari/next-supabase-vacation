@@ -72,7 +72,7 @@ export default function Destinations({ slug, seo }) {
     >
       {data ? (
         data?.header_image_url && (
-          <div className='relative mx-auto mb-8 mt-4 h-72 w-full sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px]'>
+          <div className='relative mx-auto mb-8 mt-4 h-72 w-full sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[550px]'>
             <Image
               fill
               alt={data?.name}
@@ -86,7 +86,7 @@ export default function Destinations({ slug, seo }) {
           </div>
         )
       ) : (
-        <Shimmer className='mx-auto mb-8 mt-4 h-72 w-full sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[500px]' />
+        <Shimmer className='mx-auto mb-8 mt-4 h-72 w-full sm:h-96 md:h-[400px] lg:h-[450px] xl:h-[550px]' />
       )}
 
       <div className='mx-auto max-w-7xl p-4 pb-12'>
@@ -210,16 +210,28 @@ export default function Destinations({ slug, seo }) {
           <div className='pt-2 lg:col-span-2'>
             <p className='text-xl font-semibold dark:text-white'>Popular Destinations</p>
             <div className='mt-6 space-y-4'>
-              {fiveDestinationWithImage?.map((item: any, index: number) => (
-                <div key={index} className='relative'>
-                  <DestinationListItem
-                    href={`/destinations/${item.slug}`}
-                    image_url={item.image_url}
-                    name={item.name}
-                    location={item.location}
-                  />
-                </div>
-              ))}
+              {fiveDestinationWithImage
+                ? fiveDestinationWithImage?.map((item: any, index: number) => (
+                    <div key={index} className='relative'>
+                      <DestinationListItem
+                        href={`/destinations/${item.slug}`}
+                        image_url={item.image_url}
+                        name={item.name}
+                        location={item.location}
+                      />
+                    </div>
+                  ))
+                : [...Array(5).keys()].map((i) => (
+                    <div key={i} className='flex items-center gap-3'>
+                      <Shimmer>
+                        <div className='h-20 w-20 rounded bg-neutral-300/70 dark:bg-neutral-700/50' />
+                      </Shimmer>
+                      <div className='space-y-2'>
+                        <Shimmer className='h-5 w-32 p-3' />
+                        <Shimmer className='h-3 w-40 p-3' />
+                      </div>
+                    </div>
+                  ))}
             </div>
           </div>
         </div>
