@@ -92,8 +92,7 @@ export default function Inspiration() {
         ssr: false,
         loading: () => (
           <Shimmer>
-            <div className='h-8 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-            <div className='mt-4 h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
         ),
       }),
@@ -252,7 +251,6 @@ export default function Inspiration() {
             <div className='h-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
           <Shimmer className='mb-4 p-2'>
-            <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='h-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
         </>
