@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -22,6 +23,15 @@ import { Text } from '@/components/ui/Text';
 import DestinationListItem from '@/components/card/DestinationListItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
+
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-56 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
 
 export async function getServerSideProps(context: any) {
   // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
@@ -208,7 +218,15 @@ export default function Destinations({ slug, seo }) {
           {/* MAIN CONTENT */}
           {/* RIGHT CONTENT */}
           <div className='pt-2 lg:col-span-2'>
-            <p className='text-xl font-semibold dark:text-white'>Popular Destinations</p>
+            <p className='mb-6 text-xl font-semibold dark:text-white'>Maps</p>
+            {data?.latlng ? (
+              <ReactLeaflet name={data?.name} marker={data?.latlng} className='h-64' zoom={6} />
+            ) : (
+              <Shimmer>
+                <div className='h-64 rounded bg-neutral-300/70 dark:bg-neutral-700/50' />
+              </Shimmer>
+            )}
+            <p className='mt-6 text-xl font-semibold dark:text-white'>Popular Destinations</p>
             <div className='mt-6 space-y-4'>
               {fiveDestinationWithImage
                 ? fiveDestinationWithImage?.map((item: any, index: number) => (

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -21,6 +22,15 @@ import { Text } from '@/components/ui/Text';
 
 import Layout from '@/components/layout/Layout';
 import Shimmer from '@/components/systems/Shimmer';
+
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-56 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
 
 // Destination.auth = true;
 
@@ -176,6 +186,8 @@ export default function Destination() {
         )}
         dangerouslySetInnerHTML={{ __html: data?.content }}
       />
+
+      {data?.latlng && <ReactLeaflet name={data?.name} marker={data?.latlng} className='mt-8 h-80' zoom={6} />}
     </Layout>
   );
 }

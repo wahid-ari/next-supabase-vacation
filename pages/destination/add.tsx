@@ -20,13 +20,21 @@ import { Label } from '@/components/ui/Label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
-import { Text } from '@/components/ui/Text';
 import { Textarea } from '@/components/ui/Textarea';
 
 import Layout from '@/components/layout/Layout';
 import Shimmer from '@/components/systems/Shimmer';
 import Tabs from '@/components/systems/Tabs';
 import Title from '@/components/systems/Title';
+
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
 
 // Destination.auth = true;
 
@@ -47,6 +55,7 @@ export default function Destination() {
     province_id: undefined,
     island_id: undefined,
   });
+  const [marker, setMarker] = useState([-2.3723687086440504, 113.11523437500001]);
   // const [createItem, setCreateItem] = useState({
   //   name: 'Destination',
   //   location: 'Location',
@@ -99,7 +108,10 @@ export default function Destination() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`, {
+        ...createItem,
+        latlng: marker,
+      });
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`);
@@ -424,6 +436,10 @@ export default function Destination() {
               )}
             </Tabs.panel>
           </Tabs>
+        </div>
+        <div className='mt-2 space-y-2'>
+          <Label htmlFor='content'>Location</Label>
+          <ReactLeaflet name={createItem.name} marker={marker} setMarker={setMarker} enableEdit />
         </div>
 
         <Button type='submit' variant='success' className='mt-4 w-full'>

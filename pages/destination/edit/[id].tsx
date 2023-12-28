@@ -20,7 +20,6 @@ import { Label } from '@/components/ui/Label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
-import { Text } from '@/components/ui/Text';
 import { Textarea } from '@/components/ui/Textarea';
 
 import Layout from '@/components/layout/Layout';
@@ -49,6 +48,7 @@ export default function Destination() {
     province_id: undefined,
     island_id: undefined,
   });
+  const [marker, setMarker] = useState([-2.3723687086440504, 113.11523437500001]);
   const [dataReady, setDataReady] = useState(false);
   const [openCombobox, setOpenCombobox] = useState(false);
   const [comboboxValue, setComboboxValue] = useState('');
@@ -68,6 +68,7 @@ export default function Destination() {
         province_id: data?.vacation_province?.id,
         island_id: data?.vacation_island?.id,
       });
+      if (data?.latlng != null) setMarker(data?.latlng);
       setComboboxValue(data?.vacation_province?.slug);
       setDataReady(true);
     }
@@ -121,7 +122,11 @@ export default function Destination() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`, { id: id, ...editItem });
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`, {
+        id: id,
+        ...editItem,
+        latlng: marker,
+      });
       if (res.status == 201) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`);
@@ -146,6 +151,20 @@ export default function Destination() {
       }
     }
   }
+
+  const ReactLeaflet = useMemo(
+    () =>
+      dynamic(() => import('@/components/custom/Map'), {
+        ssr: false,
+        loading: () => (
+          <Shimmer>
+            <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+          </Shimmer>
+        ),
+      }),
+    // FIX error use depedency here to fix react leaflet maps not center
+    [dataReady],
+  );
 
   const ReactQuill = useMemo(
     () =>
@@ -451,6 +470,10 @@ export default function Destination() {
               </Tabs.panel>
             </Tabs>
           </div>
+          <div className='mt-2 space-y-2'>
+            <Label htmlFor='content'>Location</Label>
+            <ReactLeaflet name={editItem.name} marker={marker} setMarker={setMarker} enableEdit />
+          </div>
 
           <Button type='submit' variant='success' className='mt-4 w-full'>
             Save changes
@@ -484,6 +507,9 @@ export default function Destination() {
           <Shimmer className='mb-4 p-2'>
             <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='h-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+          </Shimmer>
+          <Shimmer className='mb-4 p-2'>
+            <div className='h-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
         </>
       )}

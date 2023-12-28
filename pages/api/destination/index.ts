@@ -89,7 +89,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data: destination } = await supabase
           .from('vacation_destination')
           .select(
-            `id, name, slug, image_url, description, video_url, location, content, header_image_url, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
+            `id, name, slug, image_url, description, video_url, location, content, header_image_url, latlng, vacation_island (id, name, slug), vacation_province (id, name, slug)`,
           )
           .eq(column, param)
           .order('id');
@@ -154,6 +154,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 location: body.location,
                 island_id: body.island_id,
                 province_id: body.province_id,
+                latlng: body.latlng,
               },
             ])
             .select();
@@ -215,6 +216,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               location: body.location,
               island_id: body.island_id,
               province_id: body.province_id,
+              latlng: body.latlng,
             })
             .eq('id', body.id);
           if (error) {
