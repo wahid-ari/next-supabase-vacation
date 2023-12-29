@@ -197,3 +197,12 @@ lite-youtube {
 .leaflet-bottom.leaflet-right {
   display: none;
 }
+
+/* Search Form Leaflet */
+div.leaflet-top.leaflet-left > div.leaflet-geosearch-button > form > input.glass {
+  @apply dark:text-neutral-800;
+}
+/* Search Result Leaflet */
+div.leaflet-top.leaflet-left > div.leaflet-geosearch-button > form > div.results.active {
+  @apply dark:text-neutral-800;
+}

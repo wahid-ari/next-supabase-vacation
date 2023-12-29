@@ -229,7 +229,7 @@ export default function Inspiration() {
           </div>
           <div className='mt-2 space-y-2'>
             <Label htmlFor='content'>Location</Label>
-            <ReactLeaflet name={editItem.title} marker={marker} setMarker={setMarker} enableEdit />
+            <ReactLeaflet name={editItem.title} marker={marker} setMarker={setMarker} enableEdit enableSearch />
           </div>
 
           <Button type='submit' variant='success' className='mt-4 w-full'>

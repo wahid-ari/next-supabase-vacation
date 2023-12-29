@@ -439,7 +439,7 @@ export default function Destination() {
         </div>
         <div className='mt-2 space-y-2'>
           <Label htmlFor='content'>Location</Label>
-          <ReactLeaflet name={createItem.name} marker={marker} setMarker={setMarker} enableEdit />
+          <ReactLeaflet name={createItem.name} marker={marker} setMarker={setMarker} enableEdit enableSearch />
         </div>
 
         <Button type='submit' variant='success' className='mt-4 w-full'>
