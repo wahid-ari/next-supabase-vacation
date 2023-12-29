@@ -1,6 +1,16 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion, useSpring, useTransform } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
+
+function AnimatedNumber({ value }) {
+  let spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
+  let display = useTransform(spring, (current) => Math.round(current).toLocaleString());
+  useEffect(() => {
+    spring.set(value);
+  }, [spring, value]);
+  return <motion.span>{display}</motion.span>;
+}
 
 export default function Card({
   title,
@@ -15,6 +25,11 @@ export default function Card({
   icon?: ReactNode;
   [props: string]: any;
 }) {
+  const [value, setValue] = useState(0);
+  setTimeout(() => {
+    setValue(count);
+  }, 0);
+
   return (
     <Link
       href={link}
@@ -25,7 +40,9 @@ export default function Card({
       )}
     >
       <div>
-        <p className='mb-1 text-xl font-extrabold text-neutral-800 dark:text-neutral-100'>{count}</p>
+        <p className='mb-1 space-x-2 text-xl font-extrabold text-neutral-800 dark:text-neutral-100'>
+          <AnimatedNumber value={value} />
+        </p>
         <p className='text-base font-semibold text-neutral-600 transition-all group-hover:text-sky-500 dark:text-neutral-300'>
           {title}
         </p>
