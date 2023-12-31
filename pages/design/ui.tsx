@@ -35,6 +35,7 @@ import {
   Users,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { toast as toastsonner } from 'sonner';
 
 import { cn } from '@/libs/utils';
 
@@ -472,6 +473,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#slider'>
               Slider
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#sonner'>
+              Sonner (Toast)
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1539,6 +1545,112 @@ export default function Ui() {
         />
         <br />
         <Text>{sliderValue}</Text>
+      </Wrapper>
+
+      <Wrapper id='sonner' name='Sonner' noProps docs='https://ui.shadcn.com/docs/components/sonner'>
+        <div className='flex flex-wrap gap-2'>
+          <Button
+            variant='outline'
+            onClick={() =>
+              toastsonner('Event has been created', {
+                description: 'Sunday, December 03, 2023 at 9:00 AM',
+                action: {
+                  label: 'Undo',
+                  onClick: () => console.log('Undo'),
+                },
+                cancel: {
+                  label: 'Cancel',
+                  onClick: () => console.log('Cancel!'),
+                },
+                onDismiss: (t) => console.log(`Toast with id ${t.id} has been dismissed`),
+                onAutoClose: (t) => console.log(`Toast with id ${t.id} has been closed automatically`),
+              })
+            }
+          >
+            Show Sonner
+          </Button>
+
+          <Button
+            variant='outline'
+            onClick={() =>
+              toastsonner.success('Success', {
+                description: 'Sunday, December 03, 2023 at 9:00 AM',
+                action: {
+                  label: 'Undo',
+                  onClick: () => console.log('Undo'),
+                },
+              })
+            }
+          >
+            Show Sonner Success
+          </Button>
+
+          <Button
+            variant='outline'
+            onClick={() =>
+              toastsonner.info('Info', {
+                description: 'Sunday, December 03, 2023 at 9:00 AM',
+                action: {
+                  label: 'Undo',
+                  onClick: () => console.log('Undo'),
+                },
+              })
+            }
+          >
+            Show Sonner Info
+          </Button>
+
+          <Button
+            variant='outline'
+            onClick={() =>
+              toastsonner.warning('Warning', {
+                description: 'Sunday, December 03, 2023 at 9:00 AM',
+                action: {
+                  label: 'Undo',
+                  onClick: () => console.log('Undo'),
+                },
+              })
+            }
+          >
+            Show Sonner Warning
+          </Button>
+
+          <Button
+            variant='outline'
+            onClick={() =>
+              toastsonner.error('Error', {
+                description: 'Sunday, December 03, 2023 at 9:00 AM',
+                action: {
+                  label: 'Undo',
+                  onClick: () => console.log('Undo'),
+                },
+              })
+            }
+          >
+            Show Sonner Error
+          </Button>
+
+          <Button
+            variant='outline'
+            onClick={() => {
+              const toastId = toastsonner.loading('Loading', {
+                description: 'Process to saving data',
+              });
+              setTimeout(() => {
+                toastsonner.success('Success', {
+                  id: toastId,
+                  description: 'Done saving data',
+                });
+              }, 1000);
+            }}
+          >
+            Show Sonner Promise
+          </Button>
+
+          <Button variant='outline' onClick={() => toastsonner.dismiss()}>
+            Dismiss All
+          </Button>
+        </div>
       </Wrapper>
 
       <Wrapper
