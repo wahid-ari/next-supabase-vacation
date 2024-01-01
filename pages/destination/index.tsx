@@ -3,11 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 import { ChevronsUpDownIcon, ChevronUpIcon, ImageIcon, PencilIcon, PlusIcon, TrashIcon } from 'lucide-react';
+import { toast } from 'sonner';
 import { mutate } from 'swr';
 import { twMerge } from 'tailwind-merge';
 
 import { useDestinationsData } from '@/libs/swr';
-import useToast from '@/hooks/use-hot-toast';
+
+// import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
 import {
@@ -32,31 +34,41 @@ import Title from '@/components/systems/Title';
 
 export default function Destination() {
   const { data, error } = useDestinationsData();
-  const { pushToast, updateToast, dismissToast } = useToast();
+  // const { pushToast, updateToast, dismissToast } = useToast();
   const [openDialog, setOpenDialog] = useState({ create: false, edit: false, delete: false });
   const [item, setItem] = useState({ id: null, name: '', image_url: '', island_id: undefined });
   const [inputDebounceValue, setInputDebounceValue] = useState('');
 
   async function handleDelete() {
-    const toastId = pushToast({
-      message: `Deleting ${item.name}`,
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: `Deleting ${item.name}`,
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading(`Deleting ${item.name}`);
     try {
       const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination?id=${item.id}`);
       if (res.status == 200) {
         setOpenDialog((prev) => ({ ...prev, delete: false }));
         setItem({ id: null, name: '', image_url: '', island_id: null });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`);
       }
     } catch (error) {
       console.error(error);
       const { detail } = error?.response?.data;
       if (detail) {
-        updateToast({ toastId, message: detail, isError: true });
+        // updateToast({ toastId, message: detail, isError: true });
+        toast.error(detail, {
+          id: toastId,
+        });
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }

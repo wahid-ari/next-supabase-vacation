@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import ReactSelect from 'react-select';
+import { toast } from 'sonner';
 import { mutate } from 'swr';
 
 import 'react-quill/dist/quill.snow.css';
@@ -11,7 +12,8 @@ import 'react-quill/dist/quill.bubble.css';
 
 import { useCategoriesData, useIslandsData, useProvincesData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
-import useToast from '@/hooks/use-hot-toast';
+
+// import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/Command';
@@ -43,7 +45,7 @@ export default function Destination() {
   const { data: category, error: errorCategory } = useCategoriesData();
   const { data: province, error: errorProvince } = useProvincesData();
   const { data: island, error: errorIsland } = useIslandsData();
-  const { updateToast, pushToast, dismissToast } = useToast();
+  // const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',
     location: '',
@@ -103,17 +105,21 @@ export default function Destination() {
 
   async function handleSave(e: any) {
     e.preventDefault();
-    const toastId = pushToast({
-      message: 'Creating destination',
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: 'Creating destination',
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading('Creating destination');
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`, {
         ...createItem,
         latlng: marker,
       });
       if (res.status == 200) {
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/destination`);
         router.push('/destination');
       }
@@ -122,16 +128,24 @@ export default function Destination() {
       if (Array.isArray(error?.response?.data?.message)) {
         const errors = [...error?.response?.data?.message].reverse();
         // show all error
-        dismissToast();
+        // dismissToast();
+        toast.dismiss();
         errors.forEach((item: any) => {
-          pushToast({ message: item?.message, isError: true });
+          // pushToast({ message: item?.message, isError: true });
+          toast.error(item?.message);
         });
         // only show one error
         // errors.map((item: any) => {
         //   updateToast({ toastId, message: item?.message, isError: true });
-        // })
+        //   toast.error(item?.message, {
+        //     id: toastId,
+        //   });
+        // });
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
