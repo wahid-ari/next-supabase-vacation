@@ -11,12 +11,14 @@ import {
   PlusIcon,
   TrashIcon,
 } from 'lucide-react';
+import { toast } from 'sonner';
 import { mutate } from 'swr';
 import { twMerge } from 'tailwind-merge';
 
 import { useIslandsData, useProvincesData, useVideosData } from '@/libs/swr';
 import { cn, youTubeGetID } from '@/libs/utils';
-import useToast from '@/hooks/use-hot-toast';
+
+// import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
@@ -49,7 +51,7 @@ export default function Video() {
   const { data: province, error: errorProvince } = useProvincesData();
   const { data: island, error: errorIsland } = useIslandsData();
   const { data, error } = useVideosData();
-  const { pushToast, updateToast, dismissToast } = useToast();
+  // const { pushToast, updateToast, dismissToast } = useToast();
   const [openDialog, setOpenDialog] = useState({ create: false, edit: false, delete: false, preview: false });
   const [item, setItem] = useState({
     id: null,
@@ -69,10 +71,11 @@ export default function Video() {
   const youtube_url = youTubeGetID(videoPreview?.video_url);
 
   async function handleCreate() {
-    const toastId = pushToast({
-      message: `Creating ${item.title}`,
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: `Creating ${item.title}`,
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading(`Creating ${item.title}`);
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`, {
         title: item.title,
@@ -91,7 +94,10 @@ export default function Video() {
           province_id: undefined,
           island_id: undefined,
         });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`);
       }
     } catch (error) {
@@ -99,25 +105,34 @@ export default function Video() {
       if (Array.isArray(error?.response?.data?.message)) {
         const errors = [...error?.response?.data?.message].reverse();
         // show all error
-        dismissToast();
+        // dismissToast();
+        toast.dismiss();
         errors.forEach((item: any) => {
-          pushToast({ message: item?.message, isError: true });
+          // pushToast({ message: item?.message, isError: true });
+          toast.error(item?.message);
         });
         // only show one error
         // errors.map((item: any) => {
         //   updateToast({ toastId, message: item?.message, isError: true });
+        //   toast.error(item?.message, {
+        //     id: toastId,
+        //   });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
 
   async function handleEdit() {
-    const toastId = pushToast({
-      message: 'Updating video',
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: 'Updating video',
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading('Updating video');
     try {
       const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`, item);
       if (res.status == 201) {
@@ -130,7 +145,10 @@ export default function Video() {
           province_id: undefined,
           island_id: undefined,
         });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`);
       }
     } catch (error) {
@@ -138,25 +156,34 @@ export default function Video() {
       if (Array.isArray(error?.response?.data?.message)) {
         const errors = [...error?.response?.data?.message].reverse();
         // show all error
-        dismissToast();
+        // dismissToast();
+        toast.dismiss();
         errors.forEach((item: any) => {
-          pushToast({ message: item?.message, isError: true });
+          // pushToast({ message: item?.message, isError: true });
+          toast.error(item?.message);
         });
         // only show one error
         // errors.map((item: any) => {
         //   updateToast({ toastId, message: item?.message, isError: true });
+        //   toast.error(item?.message, {
+        //     id: toastId,
+        //   });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
 
   async function handleDelete() {
-    const toastId = pushToast({
-      message: `Deleting ${item.title}`,
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: `Deleting ${item.title}`,
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading(`Deleting ${item.title}`);
     try {
       const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video?id=${item.id}`);
       if (res.status == 200) {
@@ -169,16 +196,25 @@ export default function Video() {
           province_id: undefined,
           island_id: undefined,
         });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/video`);
       }
     } catch (error) {
       console.error(error);
       const { detail } = error?.response?.data;
       if (detail) {
-        updateToast({ toastId, message: detail, isError: true });
+        // updateToast({ toastId, message: detail, isError: true });
+        toast.error(detail, {
+          id: toastId,
+        });
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
