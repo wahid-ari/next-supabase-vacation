@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, YoutubeIcon } from 'lucide-react';
+import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, TentIcon, YoutubeIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
@@ -288,7 +288,7 @@ export default function Browse() {
       <Heading h3 className='mt-8 !text-[20px]'>
         Browse
       </Heading>
-      <div className='mt-2 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[700px]:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+      <div className='mt-2 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[700px]:grid-cols-3'>
         <Link
           href='/destinations'
           className='group h-20 rounded-lg border-2 bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-neutral-700'
@@ -342,6 +342,17 @@ export default function Browse() {
               Video
             </h2>
             <YoutubeIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
+          </div>
+        </Link>
+        <Link
+          href='/inspirations'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-red-500 to-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-neutral-700'
+        >
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
+            <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
+              Inspiration
+            </h2>
+            <TentIcon className='h-10 w-10 text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200' />
           </div>
         </Link>
       </div>
