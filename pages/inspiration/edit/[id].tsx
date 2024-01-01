@@ -3,13 +3,15 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { toast } from 'sonner';
 import { mutate } from 'swr';
 
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 
 import { useInspirationData } from '@/libs/swr';
-import useToast from '@/hooks/use-hot-toast';
+
+// import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -26,7 +28,7 @@ export default function Inspiration() {
   const router = useRouter();
   const id = router.query?.id as string;
   const { data, error } = useInspirationData(id);
-  const { updateToast, pushToast, dismissToast } = useToast();
+  // const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     title: '',
     image_url: '',
@@ -51,10 +53,11 @@ export default function Inspiration() {
 
   async function handleEdit(e: any) {
     e.preventDefault();
-    const toastId = pushToast({
-      message: 'Updating inspiration',
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: 'Updating inspiration',
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading('Updating inspiration');
     try {
       const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`, {
         id: id,
@@ -62,7 +65,10 @@ export default function Inspiration() {
         latlng: marker,
       });
       if (res.status == 201) {
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration`);
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/inspiration?id=${id}`);
         router.push('/inspiration');
@@ -72,16 +78,24 @@ export default function Inspiration() {
       if (Array.isArray(error?.response?.data?.message)) {
         const errors = [...error?.response?.data?.message].reverse();
         // show all error
-        dismissToast();
+        // dismissToast();
+        toast.dismiss();
         errors.forEach((item: any) => {
-          pushToast({ message: item?.message, isError: true });
+          // pushToast({ message: item?.message, isError: true });
+          toast.error(item?.message);
         });
         // only show one error
         // errors.map((item: any) => {
         //   updateToast({ toastId, message: item?.message, isError: true });
+        //   toast.error(item?.message, {
+        //     id: toastId,
+        //   });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
