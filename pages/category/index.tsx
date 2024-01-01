@@ -2,10 +2,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import { PencilIcon, PlusIcon, TrashIcon } from 'lucide-react';
+import { toast } from 'sonner';
 import { mutate } from 'swr';
 
 import { useCategoriesData } from '@/libs/swr';
-import useToast from '@/hooks/use-hot-toast';
+
+// import useToast from '@/hooks/use-hot-toast';
 
 import { Button } from '@/components/ui/Button';
 import {
@@ -29,7 +31,7 @@ import Title from '@/components/systems/Title';
 
 export default function Category() {
   const { data, error } = useCategoriesData();
-  const { pushToast, updateToast, dismissToast } = useToast();
+  // const { pushToast, updateToast, dismissToast } = useToast();
   const [openDialog, setOpenDialog] = useState({ create: false, edit: false, delete: false });
   const [item, setItem] = useState({ id: null, name: '', image_url: '' });
   const [inputDebounceValue, setInputDebounceValue] = useState('');
@@ -42,10 +44,11 @@ export default function Category() {
         );
 
   async function handleCreate() {
-    const toastId = pushToast({
-      message: `Creating ${item.name}`,
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: `Creating ${item.name}`,
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading(`Creating ${item.name}`);
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`, {
         name: item.name,
@@ -54,7 +57,10 @@ export default function Category() {
       if (res.status == 200) {
         setOpenDialog((prev) => ({ ...prev, create: false }));
         setItem({ id: null, name: '', image_url: '' });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
       }
     } catch (error) {
@@ -62,31 +68,43 @@ export default function Category() {
       if (Array.isArray(error?.response?.data?.message)) {
         const errors = [...error?.response?.data?.message].reverse();
         // show all error
-        dismissToast();
+        // dismissToast();
+        toast.dismiss();
         errors.forEach((item: any) => {
-          pushToast({ message: item?.message, isError: true });
+          // pushToast({ message: item?.message, isError: true });
+          toast.error(item?.message);
         });
         // only show one error
         // errors.map((item: any) => {
         //   updateToast({ toastId, message: item?.message, isError: true });
+        //   toast.error(item?.message, {
+        //     id: toastId,
+        //   });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
 
   async function handleEdit() {
-    const toastId = pushToast({
-      message: 'Updating category',
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: 'Updating category',
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading('Updating category');
     try {
       const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`, item);
       if (res.status == 201) {
         setOpenDialog((prev) => ({ ...prev, edit: false }));
         setItem({ id: null, name: '', image_url: '' });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
       }
     } catch (error) {
@@ -94,40 +112,58 @@ export default function Category() {
       if (Array.isArray(error?.response?.data?.message)) {
         const errors = [...error?.response?.data?.message].reverse();
         // show all error
-        dismissToast();
+        // dismissToast();
+        toast.dismiss();
         errors.forEach((item: any) => {
-          pushToast({ message: item?.message, isError: true });
+          // pushToast({ message: item?.message, isError: true });
+          toast.error(item?.message);
         });
         // only show one error
         // errors.map((item: any) => {
         //   updateToast({ toastId, message: item?.message, isError: true });
+        //   toast.error(item?.message, {
+        //     id: toastId,
+        //   });
         // })
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
 
   async function handleDelete() {
-    const toastId = pushToast({
-      message: `Deleting ${item.name}`,
-      isLoading: true,
-    });
+    // const toastId = pushToast({
+    //   message: `Deleting ${item.name}`,
+    //   isLoading: true,
+    // });
+    const toastId = toast.loading(`Deleting ${item.name}`);
     try {
       const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category?id=${item.id}`);
       if (res.status == 200) {
         setOpenDialog((prev) => ({ ...prev, delete: false }));
         setItem({ id: null, name: '', image_url: '' });
-        updateToast({ toastId, message: res?.data?.message, isError: false });
+        // updateToast({ toastId, message: res?.data?.message, isError: false });
+        toast.success(res?.data?.message, {
+          id: toastId,
+        });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
       }
     } catch (error) {
       console.error(error);
       const { detail } = error?.response?.data;
       if (detail) {
-        updateToast({ toastId, message: detail, isError: true });
+        // updateToast({ toastId, message: detail, isError: true });
+        toast.error(detail, {
+          id: toastId,
+        });
       } else {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        // updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+        toast.error(error?.response?.data?.message, {
+          id: toastId,
+        });
       }
     }
   }
