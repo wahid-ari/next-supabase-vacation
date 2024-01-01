@@ -16,11 +16,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
         // https://sonner.emilkowal.ski/styling#tailwind-css
         classNames: {
           toast:
-            'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+            'group toast !py-3 group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
           title: 'text-sm',
           description: 'group-[.toast]:text-muted-foreground',
           actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
           cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
+          // error: 'dark:!bg-red-950 dark:!border-red-950 dark:!text-red-500',
+          // closeButton: 'dark:!bg-neutral-700 dark:!text-neutral-200'
         },
       }}
       {...props}

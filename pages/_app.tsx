@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
     <GlobalProvider session={pageProps.session}>
       <div className={inter.className}>
         <UiToaster />
-        <SonnerToaster richColors closeButton position='bottom-right' />
+        <SonnerToaster closeButton={false} visibleToasts={5} offset={'16px'} gap={10} richColors position='top-right' />
         <Toaster
           gutter={4}
           toastOptions={{

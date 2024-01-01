@@ -1549,10 +1549,15 @@ export default function Ui() {
 
       <Wrapper id='sonner' name='Sonner' noProps docs='https://ui.shadcn.com/docs/components/sonner'>
         <div className='flex flex-wrap gap-2'>
+          <Button variant='outline' onClick={() => toastsonner('Event has been created')}>
+            Show Sonner
+          </Button>
+
           <Button
             variant='outline'
             onClick={() =>
               toastsonner('Event has been created', {
+                id: 'toastID',
                 description: 'Sunday, December 03, 2023 at 9:00 AM',
                 action: {
                   label: 'Undo',
@@ -1567,7 +1572,7 @@ export default function Ui() {
               })
             }
           >
-            Show Sonner
+            Show Sonner Conf
           </Button>
 
           <Button
