@@ -30,7 +30,7 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
               height={10}
               unoptimized
             />
-            <div className='relative mt-[2px] h-60 overflow-hidden rounded-md'>
+            <div className='relative mt-[2px] h-56 overflow-hidden rounded-md'>
               <Image
                 className={twMerge(
                   'w-full transform rounded-md object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
