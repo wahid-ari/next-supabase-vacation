@@ -6,14 +6,14 @@ import { compareSearchResult, useSearchHistory } from '@/store/use-search-histor
 import { useSearchData } from '@/libs/swr';
 import { youTubeGetID } from '@/libs/utils';
 
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
+import { Input } from '@/components/ui/Input';
 
 import DestinationCardItem from '@/components/card/DestinationCardItem';
 import VideoCardItem from '@/components/card/VideoCardItem';
 import Layout from '@/components/layout/Layout';
-import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
-import LabeledInput from '@/components/systems/LabeledInput';
 import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
@@ -97,9 +97,9 @@ export default function Search() {
       <Title>Search</Title>
 
       <form className='mt-4' onSubmit={handleSubmit}>
-        <div className='flex items-end gap-2'>
-          <LabeledInput
-            wrapperClassName='w-full sm:max-w-md'
+        <div className='flex items-center gap-2'>
+          <Input
+            className='w-full sm:max-w-md'
             name='search'
             placeholder='Search Destination, Video, Province, Category and Island'
             type='text'
@@ -107,7 +107,7 @@ export default function Search() {
             onChange={(e) => setQuery(e.target.value)}
             required
           />
-          <Button type='submit' value='Submit' className='mb-4 !py-2.5 px-5'>
+          <Button type='submit' value='Submit' className='h-9'>
             Search
           </Button>
         </div>
@@ -117,7 +117,7 @@ export default function Search() {
         <>
           {!data && (
             <>
-              <Text>Searching &#8220;{search}&#8221;...</Text>
+              <Text className='mt-4'>Searching &#8220;{search}&#8221;...</Text>
               <Heading h3 className='mt-6'>
                 Destination
               </Heading>
