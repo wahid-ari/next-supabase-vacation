@@ -84,20 +84,17 @@ export default function Register() {
 
         <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
           <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
-            <div>
-              <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
-            </div>
-            <p className='text-base font-normal text-white'>
+            <h1 className='mb-2 mt-1 text-3xl font-bold text-white'>MyVacation</h1>
+            <p className='mb-2 text-base font-normal text-white'>
               Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
-              magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be
-              enough to embrace the wonders of Indonesia.
+              magnificent city skylines throughout the country.
             </p>
             <p className='font-semibold text-white'>© MyVacation - 2023</p>
           </div>
 
           <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
             <div>
-              <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyVacation</h1>
+              <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
               <br />
               <p className='text-base font-normal text-white'>
                 Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
@@ -108,7 +105,7 @@ export default function Register() {
             <p className='font-semibold text-white'>© MyVacation - 2023</p>
           </div>
 
-          <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
+          <div className='flex w-full items-center justify-center px-8 py-6 md:px-16 md:py-0'>
             <div className='w-full sm:max-w-md'>
               <Image
                 alt='Logo'

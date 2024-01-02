@@ -17,7 +17,7 @@ import LoadingDots from '@/components/systems/LoadingDots';
 export default function Login() {
   const router = useRouter();
   const callbackUrl = router.query.callbackUrl as string;
-  const [form, setForm] = useState({ username: 'develop', password: '' });
+  const [form, setForm] = useState({ username: '', password: '' });
   const formFilled = form.username !== '' && form.password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -99,32 +99,57 @@ export default function Login() {
         <HeadSeo title='Login - MyVacation' description='Login - MyVacation' />
 
         <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
-          <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
-            <div>
-              <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
+          <div className='relative sm:hidden'>
+            <div className='relative h-72 w-auto min-[380px]:h-64'>
+              <Image
+                src='https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=500'
+                alt='Image'
+                className='object-cover object-top'
+                unoptimized
+                fill
+                priority
+              />
             </div>
-            <p className='text-base font-normal text-white'>
-              Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
-              magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be
-              enough to embrace the wonders of Indonesia.
-            </p>
-            <p className='font-semibold text-white'>© MyVacation - 2023</p>
+            <div className='absolute inset-0 bg-black/50 p-8'>
+              <div className='flex h-full flex-col justify-center'>
+                <h1 className='mb-4 text-3xl font-bold text-white'>MyVacation</h1>
+                <p className='mb-4 text-base font-normal text-white'>
+                  Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
+                  magnificent city skylines throughout the country.
+                </p>
+                <p className='font-semibold text-white'>© MyVacation - 2023</p>
+              </div>
+            </div>
           </div>
 
-          <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
-            <div>
-              <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyVacation</h1>
-              <br />
-              <p className='text-base font-normal text-white'>
-                Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
-                magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be
-                enough to embrace the wonders of Indonesia.
-              </p>
+          <div className='relative hidden sm:flex'>
+            <div className='relative h-full w-full'>
+              <Image
+                src='https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=500'
+                alt='Image'
+                className='object-cover object-center'
+                unoptimized
+                fill
+                priority
+              />
             </div>
-            <p className='font-semibold text-white'>© MyVacation - 2023</p>
+            <div className='absolute inset-0 bg-black/50'>
+              <div className='flex h-full flex-col justify-between gap-2 px-8 py-12'>
+                <div className='grow'>
+                  <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
+                  <br />
+                  <p className='text-base font-normal text-white'>
+                    Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the
+                    magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t
+                    be enough to embrace the wonders of Indonesia.
+                  </p>
+                </div>
+                <p className='font-semibold text-white'>© MyVacation - 2023</p>
+              </div>
+            </div>
           </div>
 
-          <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
+          <div className='flex w-full items-center justify-center px-8 py-6 md:px-16 md:py-0'>
             <div className='w-full sm:max-w-md'>
               <Image
                 alt='Logo'
