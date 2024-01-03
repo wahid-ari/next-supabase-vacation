@@ -8,8 +8,11 @@ import { useSession } from 'next-auth/react';
 
 import useToast from '@/hooks/use-hot-toast';
 
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+
 import HeadSeo from '@/components/layout/HeadSeo';
-import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
@@ -122,56 +125,56 @@ export default function Register() {
 
               <form onSubmit={handleRegister}>
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='name'>
+                  <Label htmlFor='name' className='dark:text-neutral-800'>
                     Name
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     type='text'
                     name='name'
-                    placeholder='Username'
+                    placeholder='Name'
+                    className='mt-2 dark:border-neutral-300 dark:bg-white dark:text-neutral-700 dark:focus-visible:ring-offset-white'
                     value={form.name}
                     onChange={handleChange}
-                    className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
                   />
                 </div>
 
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='username'>
+                  <Label htmlFor='username' className='dark:text-neutral-800'>
                     Username
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     type='text'
                     name='username'
                     placeholder='Username'
+                    className='mt-2 dark:border-neutral-300 dark:bg-white dark:text-neutral-700 dark:focus-visible:ring-offset-white'
                     value={form.username}
                     onChange={handleChange}
-                    className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
                   />
                 </div>
 
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='password'>
+                  <Label htmlFor='password' className='dark:text-neutral-800'>
                     Password
-                  </label>
+                  </Label>
                   <div className='relative mb-4 flex items-center'>
-                    <input
+                    <Input
                       type={showPassword ? 'text' : 'password'}
                       name='password'
                       placeholder='Password'
                       value={form.password}
+                      className='mt-2 dark:border-neutral-300 dark:bg-white dark:text-neutral-700 dark:focus-visible:ring-offset-white'
                       onChange={handleChange}
-                      className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                       autoComplete='off'
                       required
                     />
                     <button
                       type='button'
                       onClick={() => setShowPassword(!showPassword)}
-                      className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
+                      className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-2 focus:ring-sky-500'
                     >
                       {showPassword ? (
                         <EyeIcon className='h-5 w-5 text-neutral-600' />
@@ -183,24 +186,24 @@ export default function Register() {
                 </div>
 
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='confirm_password'>
+                  <Label htmlFor='confirm_password' className='dark:text-neutral-800'>
                     Confirm Password
-                  </label>
+                  </Label>
                   <div className='relative mb-4 flex items-center'>
-                    <input
+                    <Input
                       type={showPassword ? 'text' : 'password'}
                       name='confirm_password'
                       placeholder='Confirm Password'
                       value={form.confirm_password}
+                      className='mt-2 dark:border-neutral-300 dark:bg-white dark:text-neutral-700 dark:focus-visible:ring-offset-white'
                       onChange={handleChange}
-                      className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                       autoComplete='off'
                       required
                     />
                     <button
                       type='button'
                       onClick={() => setShowPassword(!showPassword)}
-                      className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
+                      className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-2 focus:ring-sky-500'
                     >
                       {showPassword ? (
                         <EyeIcon className='h-5 w-5 text-neutral-600' />

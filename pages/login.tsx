@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
@@ -8,8 +8,11 @@ import { signIn, useSession } from 'next-auth/react';
 
 import useToast from '@/hooks/use-hot-toast';
 
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+
 import HeadSeo from '@/components/layout/HeadSeo';
-import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
@@ -23,6 +26,16 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
   const { status } = useSession();
+  const images = [
+    'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500',
+    'https://images.unsplash.com/photo-1538964173425-93884d739596?w=500',
+    'https://images.unsplash.com/photo-1504681869696-d977211a5f4c?w=500',
+    'https://images.unsplash.com/photo-1457459686225-c7db79d4e59f?w=500',
+    'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=500',
+    'https://images.unsplash.com/photo-1504941214544-9c1c44559ab4?w=500',
+    'https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=500',
+  ];
+  const random = useMemo(() => images[Math.floor(Math.random() * images.length)], []);
 
   useEffect(() => {
     Router.prefetch('/dashboard');
@@ -101,14 +114,7 @@ export default function Login() {
         <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
           <div className='relative sm:hidden'>
             <div className='relative h-72 w-auto min-[380px]:h-64'>
-              <Image
-                src='https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=500'
-                alt='Image'
-                className='object-cover object-top'
-                unoptimized
-                fill
-                priority
-              />
+              <Image src={random} alt='Image' className='object-cover object-top' unoptimized fill priority />
             </div>
             <div className='absolute inset-0 bg-black/50 p-8'>
               <div className='flex h-full flex-col justify-center'>
@@ -124,16 +130,9 @@ export default function Login() {
 
           <div className='relative hidden sm:flex'>
             <div className='relative h-full w-full'>
-              <Image
-                src='https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=500'
-                alt='Image'
-                className='object-cover object-center'
-                unoptimized
-                fill
-                priority
-              />
+              <Image src={random} alt='Image' className='object-cover object-center' unoptimized fill priority />
             </div>
-            <div className='absolute inset-0 bg-black/50'>
+            <div className='absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90'>
               <div className='flex h-full flex-col justify-between gap-2 px-8 py-12'>
                 <div className='grow'>
                   <h1 className='text-4xl font-bold text-white'>MyVacation</h1>
@@ -166,33 +165,33 @@ export default function Login() {
 
               <form onSubmit={handleSubmit}>
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='username'>
+                  <Label htmlFor='username' className='dark:text-neutral-800'>
                     Username
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     type='text'
                     name='username'
                     placeholder='Username'
+                    className='mt-2 dark:border-neutral-300 dark:bg-white dark:text-neutral-700 dark:focus-visible:ring-offset-white'
                     value={form.username}
                     onChange={handleChange}
-                    className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
                   />
                 </div>
 
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='password'>
+                  <Label htmlFor='password' className='dark:text-neutral-800'>
                     Password
-                  </label>
+                  </Label>
                   <div className='relative mb-4 flex items-center'>
-                    <input
+                    <Input
                       type={showPassword ? 'text' : 'password'}
                       name='password'
                       placeholder='Password'
                       value={form.password}
                       onChange={handleChange}
-                      className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
+                      className='mt-2 dark:border-neutral-300 dark:bg-white dark:text-neutral-700 dark:focus-visible:ring-offset-white'
                       autoComplete='off'
                       required
                     />
@@ -200,7 +199,7 @@ export default function Login() {
                       type='button'
                       aria-label='show password'
                       onClick={() => setShowPassword(!showPassword)}
-                      className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
+                      className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-2 focus:ring-sky-500'
                     >
                       {showPassword ? (
                         <EyeIcon className='h-5 w-5 text-neutral-600' />
