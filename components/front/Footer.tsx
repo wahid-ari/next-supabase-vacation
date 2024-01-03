@@ -13,6 +13,9 @@ const linkIconClassName = twMerge(
 );
 
 export default function Footer({ className, ...props }: { className?: string; [props: string]: any }) {
+  const d = new Date();
+  let year = d.getFullYear();
+
   return (
     <footer {...props} className={twMerge('border-t dark:border-neutral-800', className)}>
       <div className='mx-auto max-w-7xl px-4 pb-6 pt-12'>
@@ -119,7 +122,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
         <hr className='mb-6 mt-8 border-t dark:border-neutral-800 sm:mx-auto md:mt-6' />
         <div className='sm:flex sm:items-center sm:justify-between'>
           <span className='text-sm text-neutral-700 dark:text-neutral-300 sm:text-center'>
-            © 2023{' '}
+            © 2023 - {year}{' '}
             <Link
               href='/'
               className={twMerge(
