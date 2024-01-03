@@ -244,10 +244,15 @@ export default function Custom() {
       <Wrapper
         id='maps'
         name='Maps'
-        props={['name', 'marker', 'setMarker', 'zoom', 'enableEdit', 'enableSearch']}
+        props={['name', 'marker', 'setMarker', 'zoom', 'enableEdit', 'enableSearch', 'autoOpenPopup']}
         noChildren
       >
-        <ReactLeaflet name='Location' marker={[-2.3723687086440504, 113.11523437500001]} className='h-72' />
+        <ReactLeaflet
+          name='Location'
+          marker={[-2.3723687086440504, 113.11523437500001]}
+          className='h-72'
+          autoOpenPopup
+        />
       </Wrapper>
 
       <Wrapper id='slider-header' name='Slider Header' noClassName noProps noChildren>

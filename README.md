@@ -24,6 +24,7 @@ create function to search in table (book_books) using multiple columns (title, i
 https://asset.indonesia.travel/?fileType=images
 https://asset.indonesia.travel/?fileType=videos
 https://www.indonesia.travel/gb/en/destinations
+https://www.indonesia.travel/id/id/home
 https://www.indonesia.travel/gb/en/attractions
 https://www.indonesia.travel/desawisata/id/home
 https://www.indonesia.travel/gb/en/trip-ideas/38-destinations-in-indonesia

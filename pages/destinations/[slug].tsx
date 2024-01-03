@@ -220,13 +220,13 @@ export default function Destinations({ slug, seo }) {
           <div className='pt-2 lg:col-span-2'>
             <p className='mb-6 text-xl font-semibold dark:text-white'>Maps</p>
             {data?.latlng ? (
-              <ReactLeaflet name={data?.name} marker={data?.latlng} className='h-64' zoom={6} />
+              <ReactLeaflet name={data?.name} marker={data?.latlng} className='h-64' zoom={6} autoOpenPopup />
             ) : (
               <Shimmer>
                 <div className='h-64 rounded bg-neutral-300/70 dark:bg-neutral-700/50' />
               </Shimmer>
             )}
-            <p className='mt-6 text-xl font-semibold dark:text-white'>Popular Destinations</p>
+            <p className='mt-10 text-xl font-semibold dark:text-white'>Popular Destinations</p>
             <div className='mt-6 space-y-4'>
               {fiveDestinationWithImage
                 ? fiveDestinationWithImage?.map((item: any, index: number) => (

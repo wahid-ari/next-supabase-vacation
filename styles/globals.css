@@ -197,7 +197,16 @@ lite-youtube {
 .leaflet-bottom.leaflet-right {
   display: none;
 }
-
+/* Maps overlap fixed navbar in front page */
+.leaflet-pane {
+  @apply !z-0;
+}
+.leaflet-marker-pane {
+  @apply !z-[1];
+}
+.leaflet-top {
+  @apply !z-[1];
+}
 /* Search Form Leaflet */
 div.leaflet-top.leaflet-left > div.leaflet-geosearch-button > form > input.glass {
   @apply dark:text-neutral-800;

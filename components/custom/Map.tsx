@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { MapContainer, Marker, Popup, TileLayer, Tooltip, useMap, useMapEvent } from 'react-leaflet';
 
@@ -16,10 +16,30 @@ type Props = {
   setMarker?: Dispatch<SetStateAction<number[]>>;
   enableEdit?: boolean;
   enableSearch?: boolean;
+  autoOpenPopup?: boolean;
   [props: string]: any;
 };
 
-export default function Map({ className, name, marker, setMarker, enableEdit, enableSearch, ...props }: Props) {
+export default function Map({
+  className,
+  name,
+  marker,
+  setMarker,
+  enableEdit,
+  enableSearch,
+  autoOpenPopup,
+  ...props
+}: Props) {
+  const markerRef = useRef(null);
+
+  function whenMapReady() {
+    if (autoOpenPopup) {
+      setTimeout(() => {
+        markerRef.current.openPopup();
+      }, 500);
+    }
+  }
+
   function MapEvent() {
     const map = useMapEvent('click', (e: any) => {
       setMarker([e.latlng.lat, e.latlng.lng]);
@@ -46,6 +66,7 @@ export default function Map({ className, name, marker, setMarker, enableEdit, en
 
   return (
     <MapContainer
+      whenReady={() => whenMapReady()}
       // @ts-ignore
       center={marker}
       zoom={5}
@@ -64,7 +85,7 @@ export default function Map({ className, name, marker, setMarker, enableEdit, en
       />
       {enableEdit && <MapEvent />}
       {enableSearch && <LeafletgeoSearch />}
-      <Marker position={marker}>
+      <Marker position={marker} ref={markerRef}>
         <Tooltip>
           <div className='px-4 text-sm font-medium'>{name || 'Destination'}</div>
         </Tooltip>
