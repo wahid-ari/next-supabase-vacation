@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Input } from '@/components/ui/Input';
 
 import DestinationCardItem from '@/components/card/DestinationCardItem';
+import ImageBanner from '@/components/card/ImageBanner';
 import VideoCardItem from '@/components/card/VideoCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Heading from '@/components/systems/Heading';
@@ -346,7 +347,7 @@ export default function Browse() {
         </Link>
         <Link
           href='/inspirations'
-          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-red-500 to-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-neutral-700'
+          className='group h-20 rounded-lg border-2 bg-gradient-to-br from-lime-500 to-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500 dark:border-neutral-700'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='text-xl font-semibold text-neutral-600 transition-all duration-300 ease-in group-hover:text-white dark:text-neutral-200'>
@@ -356,6 +357,14 @@ export default function Browse() {
           </div>
         </Link>
       </div>
+
+      <ImageBanner
+        className='mt-10'
+        text='Explore the unique culture and heritage in Indonesia'
+        href='/destinations'
+        image_url='https://images.unsplash.com/photo-1560103104-4623c14a473b?q=80&w=1000'
+        align='center'
+      />
 
       {/* Preview Dialog */}
       <Dialog open={videoPreview.open} onOpenChange={() => setVideoPreview((prev) => ({ ...prev, open: false }))}>
