@@ -23,14 +23,14 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
         {image_url ? (
           <>
             <Image
-              className='mx-auto h-[6px] w-[90%] transform rounded-t-3xl object-cover object-top opacity-70'
+              className='mx-auto h-[6px] w-[90%] transform rounded-t-3xl object-cover object-top brightness-[0.5]'
               src={image_url}
               alt={name}
               width={10}
               height={10}
               unoptimized
             />
-            <div className='relative mt-[2px] h-56 overflow-hidden rounded-md'>
+            <div className='relative mt-[2px] h-[245px] overflow-hidden rounded-md'>
               <Image
                 className={twMerge(
                   'w-full transform rounded-md object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
