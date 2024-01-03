@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon, PlayIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, PlayIcon } from 'lucide-react';
 import { Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -16,6 +17,7 @@ import CategoryCardItem from '@/components/card/CategoryCardItem';
 import DestinationCardItem from '@/components/card/DestinationCardItem';
 import DestinationListItem from '@/components/card/DestinationListItem';
 import ImageBanner from '@/components/card/ImageBanner';
+import InspirationCardItem from '@/components/card/InspirationCardItem';
 import VideoCardItem from '@/components/card/VideoCardItem';
 import Layout from '@/components/layout/Layout';
 import Pagination from '@/components/systems/Pagination';
@@ -23,6 +25,15 @@ import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
+
+const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
+  ssr: false,
+  loading: () => (
+    <Shimmer>
+      <div className='h-64 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+    </Shimmer>
+  ),
+});
 
 const destinationData = [
   {
@@ -222,7 +233,21 @@ export default function Custom() {
               Slider Header
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#maps'>
+              Maps
+            </Link>
+          </span>
         </div>
+      </Wrapper>
+
+      <Wrapper
+        id='maps'
+        name='Maps'
+        props={['name', 'marker', 'setMarker', 'zoom', 'enableEdit', 'enableSearch']}
+        noChildren
+      >
+        <ReactLeaflet name='Location' marker={[-2.3723687086440504, 113.11523437500001]} className='h-72' />
       </Wrapper>
 
       <Wrapper id='slider-header' name='Slider Header' noClassName noProps noChildren>
@@ -541,20 +566,14 @@ export default function Custom() {
       </Wrapper>
 
       <Wrapper id='dialog-swiper' name='DialogSwiper' noClassName noProps noChildren>
-        <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
-          {imagesData.slice(0, 3).map((image, index) => (
-            <button
-              onClick={() => openImage(image.id)}
+        <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+          {imagesData.slice(0, 4).map((image, index) => (
+            <InspirationCardItem
               key={index}
-              className='relative h-64 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-            >
-              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' unoptimized />
-              <div className='absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
-                <div className='flex w-full justify-end p-2'>
-                  <InstagramIcon className='h-5 w-5 text-neutral-200' />
-                </div>
-              </div>
-            </button>
+              onClick={() => openImage(image.id)}
+              alt='Image'
+              image_url={image.public_id}
+            />
           ))}
         </div>
 
@@ -576,7 +595,7 @@ export default function Custom() {
               loop={true}
               className='w-full py-4'
             >
-              {imagesData.slice(0, 3).map((image, index) => (
+              {imagesData.slice(0, 4).map((image, index) => (
                 <SwiperSlide key={index}>
                   <div className='grid grid-cols-1 gap-x-3 sm:grid-cols-2'>
                     <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
@@ -631,13 +650,13 @@ export default function Custom() {
       <Wrapper id='dialog-swiper-thumb' name='DialogSwiperThumb' noClassName noProps noChildren>
         <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {imagesData.map((image, index) => (
-            <button
-              onClick={() => openImageThumb(image.id)}
+            <InspirationCardItem
               key={index}
-              className='relative h-48 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-            >
-              <Image alt='Image' src={image.public_id} fill className='rounded object-cover' unoptimized />
-            </button>
+              className='h-44'
+              onClick={() => openImageThumb(image.id)}
+              alt='Image'
+              image_url={image.public_id}
+            />
           ))}
         </div>
 

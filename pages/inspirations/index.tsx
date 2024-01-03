@@ -13,6 +13,7 @@ import { cn } from '@/libs/utils';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
+import InspirationCardItem from '@/components/card/InspirationCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
 import Shimmer from '@/components/systems/Shimmer';
 
@@ -56,24 +57,12 @@ export default function Inspirations() {
         <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {data
             ? data?.map((inspiration: any, index: number) => (
-                <button
-                  onClick={() => openImage(index)}
+                <InspirationCardItem
                   key={index}
-                  className='relative h-56 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                >
-                  <Image
-                    alt={inspiration?.title}
-                    src={inspiration?.image_url}
-                    fill
-                    className='rounded object-cover'
-                    unoptimized
-                  />
-                  <div className='absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
-                    <div className='flex w-full justify-end p-2'>
-                      <InstagramIcon className='h-5 w-5 text-neutral-200' />
-                    </div>
-                  </div>
-                </button>
+                  onClick={() => openImage(index)}
+                  alt={inspiration?.title}
+                  image_url={inspiration?.image_url}
+                />
               ))
             : [...Array(15).keys()].map((i) => (
                 <Shimmer key={i}>

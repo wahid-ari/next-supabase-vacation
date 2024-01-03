@@ -13,6 +13,7 @@ import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { Heading } from '@/components/ui/Heading';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
+import InspirationCardItem from '@/components/card/InspirationCardItem';
 import Shimmer from '@/components/systems/Shimmer';
 
 const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
@@ -44,24 +45,13 @@ export default function InspirationSection({ data }: { data: any }) {
         <div className='mt-2 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {shuffledInspirationData
             ? shuffledInspirationData?.map((inspiration: any, index: number) => (
-                <button
-                  onClick={() => openImage(index)}
+                <InspirationCardItem
                   key={index}
-                  className='relative h-40 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 sm:h-52 xl:h-44'
-                >
-                  <Image
-                    alt={inspiration?.title}
-                    src={inspiration?.image_url}
-                    fill
-                    className='rounded-md object-cover'
-                    unoptimized
-                  />
-                  <div className='absolute inset-0 rounded-md bg-gradient-to-t from-transparent via-transparent to-neutral-950/50'>
-                    <div className='flex w-full justify-end p-2'>
-                      <InstagramIcon className='h-5 w-5 text-neutral-200' />
-                    </div>
-                  </div>
-                </button>
+                  className='h-40'
+                  onClick={() => openImage(index)}
+                  alt={inspiration?.title}
+                  image_url={inspiration?.image_url}
+                />
               ))
             : [...Array(12).keys()].map((i) => (
                 <Shimmer key={i}>
