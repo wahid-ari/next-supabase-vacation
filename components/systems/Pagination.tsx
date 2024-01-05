@@ -67,6 +67,7 @@ export default function Pagination({
       <nav className='flex flex-wrap'>
         <ul className='flex flex-wrap items-center gap-1'>
           <HeadlessPagination.PageButton
+            as={<button />}
             activeClassName='bg-sky-500 text-white font-semibold focus-visible:ring-sky-400'
             inactiveClassName='text-neutral-800 dark:text-neutral-300 font-medium hover:text-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-white focus-visible:ring-sky-500'
             className={
