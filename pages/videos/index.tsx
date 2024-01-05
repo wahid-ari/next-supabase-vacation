@@ -154,6 +154,7 @@ export default function Videos() {
               ))}
             </Swiper>
             <button
+              aria-label='Prev'
               ref={prevRef}
               className={cn(
                 'absolute left-4 top-[42%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
@@ -164,6 +165,7 @@ export default function Videos() {
               <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
+              aria-label='Next'
               ref={nextRef}
               className={cn(
                 'absolute right-4 top-[42%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',

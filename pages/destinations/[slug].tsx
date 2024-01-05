@@ -298,7 +298,7 @@ export default function Destinations({ slug, seo }) {
                 : [...Array(INSPIRATION_TO_SHOW).keys()].map((i) => (
                     <Shimmer key={i}>
                       <div className='space-y-3'>
-                        <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                        <div className='h-16 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50 sm:h-36 lg:h-16'></div>
                       </div>
                     </Shimmer>
                   ))}

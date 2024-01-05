@@ -69,6 +69,7 @@ export default function VideoSection({ data }: { data: any }) {
               ))}
             </Swiper>
             <button
+              aria-label='Prev'
               ref={prevRef}
               className={cn(
                 'absolute left-4 top-1/2 z-[1] -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
@@ -79,6 +80,7 @@ export default function VideoSection({ data }: { data: any }) {
               <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
+              aria-label='Next'
               ref={nextRef}
               className={cn(
                 'absolute right-4 top-1/2 z-[1] -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',

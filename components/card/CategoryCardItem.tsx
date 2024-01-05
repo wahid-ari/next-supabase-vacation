@@ -25,7 +25,7 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
             <Image
               className='mx-auto h-[6px] w-[90%] transform rounded-t-3xl object-cover object-top brightness-[0.5]'
               src={image_url}
-              alt={name}
+              alt={`Shadow Image ${name}`}
               width={10}
               height={10}
               unoptimized
@@ -37,7 +37,7 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
                   isLoading ? 'blur-sm' : 'blur-0',
                 )}
                 src={image_url}
-                alt={name}
+                alt={`Explore ${name} Destination`}
                 fill
                 unoptimized
                 onLoad={() => setLoading(false)}

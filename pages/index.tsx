@@ -82,7 +82,7 @@ export default function Home() {
                       <Image
                         className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
                         src={destination.image_url}
-                        alt={destination.name}
+                        alt={`Visit ${destination.name}`}
                         fill
                         unoptimized
                       />
@@ -107,6 +107,7 @@ export default function Home() {
             ))}
           </Swiper>
           <button
+            aria-label='Prev'
             ref={prevRef}
             className={cn(
               'absolute left-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8',
@@ -117,6 +118,7 @@ export default function Home() {
             <ArrowLeftIcon className='h-w-6 h-5 w-5 text-white sm:w-6 md:h-7 md:w-7 lg:h-8 lg:w-8' />
           </button>
           <button
+            aria-label='Next'
             ref={nextRef}
             className={cn(
               'absolute right-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8',

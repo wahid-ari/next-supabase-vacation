@@ -286,7 +286,7 @@ export default function Browse() {
         </>
       )}
 
-      <Heading h3 className='mt-8 !text-[20px]'>
+      <Heading h2 className='mt-8 !text-[20px]'>
         Browse
       </Heading>
       <div className='mt-2 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[700px]:grid-cols-3'>

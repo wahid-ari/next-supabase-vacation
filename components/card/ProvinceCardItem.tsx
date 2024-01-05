@@ -28,7 +28,7 @@ export default function ProvinceCardItem({ href = '/province', name = 'Province 
                 isLoading ? 'blur-sm' : 'blur-0',
               )}
               src={image_url}
-              alt={name}
+              alt={`Explore Destination in ${name}`}
               fill
               unoptimized
               onLoad={() => setLoading(false)}

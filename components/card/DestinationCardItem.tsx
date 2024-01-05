@@ -33,7 +33,7 @@ export default function DestinationCardItem({
                 isLoading ? 'blur-sm' : 'blur-0',
               )}
               src={image_url}
-              alt={name}
+              alt={`Explore ${name} Destination`}
               fill
               unoptimized
               onLoad={() => setLoading(false)}
