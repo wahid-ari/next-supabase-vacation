@@ -35,7 +35,7 @@ export default function Map({
   function whenMapReady() {
     if (autoOpenPopup) {
       setTimeout(() => {
-        markerRef.current.openPopup();
+        markerRef.current?.openPopup();
       }, 500);
     }
   }
