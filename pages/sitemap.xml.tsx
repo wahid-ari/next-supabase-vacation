@@ -33,6 +33,16 @@ function generateSiteMap(destination: any, category: any, island: any, province:
         <priority>0.80</priority>
       </url>
       <url>
+        <loc>${BASE_URL}/videos</loc>
+        <lastmod>${today.toISOString()}</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
+        <loc>${BASE_URL}/inspirations</loc>
+        <lastmod>${today.toISOString()}</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
         <loc>${BASE_URL}/browse</loc>
         <lastmod>${today.toISOString()}</lastmod>
         <priority>0.80</priority>
