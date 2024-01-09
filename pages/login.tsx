@@ -24,7 +24,6 @@ import ImageE from '@/public/login/image-e.jpg';
 import ImageF from '@/public/login/image-f.jpg';
 import ImageG from '@/public/login/image-g.jpg';
 
-// TODO change login background
 export default function Login() {
   const router = useRouter();
   const callbackUrl = router.query?.callbackUrl as string;

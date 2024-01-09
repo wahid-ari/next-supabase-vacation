@@ -13,7 +13,6 @@ const wrapperClassName = {
   position: 'relative' as 'relative',
 };
 
-// TODO OG Images
 export default async function handler(req: NextApiRequest) {
   try {
     const { searchParams } = new URL(req.url);
@@ -57,7 +56,7 @@ export default async function handler(req: NextApiRequest) {
             <p
               tw='text-3xl font-extrabold ml-2'
               style={{
-                fontWeight: 600,
+                fontWeight: 700,
               }}
             >
               <b>MyVacation</b>
@@ -71,10 +70,10 @@ export default async function handler(req: NextApiRequest) {
               lineHeight: 1.1,
               textShadow: '0 2px 30px #000',
               letterSpacing: -4,
-              backgroundImage: 'linear-gradient(90deg, #fff 40%, #aaa)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
+              // backgroundImage: 'linear-gradient(90deg, #fff 40%, #aaa)',
+              // backgroundClip: 'text',
+              // WebkitBackgroundClip: 'text',
+              color: '#fff',
             }}
           >
             {title}
