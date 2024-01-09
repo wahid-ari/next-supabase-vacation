@@ -16,25 +16,25 @@ import HeadSeo from '@/components/layout/HeadSeo';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
+import ImageA from '@/public/login/image-a.jpg';
+import ImageB from '@/public/login/image-b.jpg';
+import ImageC from '@/public/login/image-c.jpg';
+import ImageD from '@/public/login/image-d.jpg';
+import ImageE from '@/public/login/image-e.jpg';
+import ImageF from '@/public/login/image-f.jpg';
+import ImageG from '@/public/login/image-g.jpg';
+
 // TODO change login background
 export default function Login() {
   const router = useRouter();
-  const callbackUrl = router.query.callbackUrl as string;
+  const callbackUrl = router.query?.callbackUrl as string;
   const [form, setForm] = useState({ username: '', password: '' });
   const formFilled = form.username !== '' && form.password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
   const { status } = useSession();
-  const images = [
-    'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500',
-    'https://images.unsplash.com/photo-1538964173425-93884d739596?w=500',
-    'https://images.unsplash.com/photo-1504681869696-d977211a5f4c?w=500',
-    'https://images.unsplash.com/photo-1457459686225-c7db79d4e59f?w=500',
-    'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=500',
-    'https://images.unsplash.com/photo-1504941214544-9c1c44559ab4?w=500',
-    'https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=500',
-  ];
+  const images = [ImageA, ImageB, ImageC, ImageD, ImageE, ImageF, ImageG];
   const random = useMemo(() => images[Math.floor(Math.random() * images.length)], []);
 
   useEffect(() => {

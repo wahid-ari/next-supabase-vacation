@@ -2,8 +2,8 @@ import { expect, type Page } from '@playwright/test';
 
 export async function login(page: Page) {
   await page.goto('http://localhost:3000/login');
-  await page.getByPlaceholder('Username').fill('develop');
-  await page.getByPlaceholder('Password').fill('password');
+  await page.getByPlaceholder('Username').fill('');
+  await page.getByPlaceholder('Password').fill('');
   await page.getByRole('button', { name: 'Login' }).click();
   await expect(page.getByText('Success Login')).toBeVisible();
   await expect(page).toHaveURL(/dashboard/);
