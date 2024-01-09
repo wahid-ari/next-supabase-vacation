@@ -188,7 +188,6 @@ export default function FrontNavbar({
                       )}
                     >
                       <CustomActiveLink href='/inspirations'>Inspiration</CustomActiveLink>
-                      <CustomActiveLink href='/dashboard'>Dashboard</CustomActiveLink>
                     </Popover.Panel>
                   </Transition>
                 </Popover>
@@ -424,17 +423,6 @@ export default function FrontNavbar({
                               className={cn(mobileLinkClassname, active && 'bg-neutral-100 dark:bg-neutral-800')}
                             >
                               Inspiration
-                            </ActiveLink>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <ActiveLink
-                              activeClassName='!text-sky-500 dark:text-sky-500'
-                              href='/dashboard'
-                              className={cn(mobileLinkClassname, active && 'bg-neutral-100 dark:bg-neutral-800')}
-                            >
-                              Dashboard
                             </ActiveLink>
                           )}
                         </Menu.Item>
