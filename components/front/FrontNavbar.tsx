@@ -272,7 +272,7 @@ export default function FrontNavbar({
               ) : (
                 <div
                   className={cn(
-                    'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                    'rounded-md px-3 py-1 text-sm font-medium transition-all duration-200',
                     'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                   )}
                 >
