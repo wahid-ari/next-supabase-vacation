@@ -30,7 +30,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-// Destination.auth = true;
+Destination.auth = true;
 
 export default function Destination() {
   const { data, error } = useDestinationsData();

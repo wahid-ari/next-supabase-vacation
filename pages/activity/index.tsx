@@ -12,7 +12,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-// Log.auth = true;
+Log.auth = true;
 
 export default function Log() {
   const { data, error } = useLogsData();

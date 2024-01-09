@@ -35,7 +35,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Titles from '@/components/systems/Title';
 
-// Dashboard.auth = true;
+Dashboard.auth = true;
 
 export default function Dashboard() {
   const { theme } = useTheme();

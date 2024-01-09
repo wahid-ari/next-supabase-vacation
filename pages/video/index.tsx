@@ -45,7 +45,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-// Video.auth = true;
+Video.auth = true;
 
 export default function Video() {
   const { data: province, error: errorProvince } = useProvincesData();

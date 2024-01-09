@@ -32,7 +32,7 @@ const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
   ),
 });
 
-// Destination.auth = true;
+Destination.auth = true;
 
 export default function Destination() {
   const router = useRouter();

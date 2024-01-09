@@ -147,7 +147,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[18px] w-[18px]' />}>
+          {/* <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[18px] w-[18px]' />}>
             <NavLink href='/design' icon={<LayersIcon className='h-[18px] w-[18px]' />}>
               Component
             </NavLink>
@@ -182,7 +182,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               Example
               <Badge>New</Badge>
             </NavLink>
-          </NavAccordion>
+          </NavAccordion> */}
 
           <NavLink href='/setting' icon={<SettingsIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Setting

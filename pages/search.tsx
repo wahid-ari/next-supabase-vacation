@@ -18,7 +18,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
-// Search.auth = true;
+Search.auth = true;
 
 export default function Search() {
   const router = useRouter();

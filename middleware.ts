@@ -16,5 +16,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/old/:path*', '/genre/:path*'],
+  matcher: ['/old/:path*', '/province/:path*', '/inspiration/:path*', '/island/:path*'],
 };

@@ -29,7 +29,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import Tabs from '@/components/systems/Tabs';
 import Title from '@/components/systems/Title';
 
-// Destination.auth = true;
+Destination.auth = true;
 
 export default function Destination() {
   const router = useRouter();

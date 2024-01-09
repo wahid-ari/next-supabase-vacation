@@ -27,7 +27,7 @@ import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-// Category.auth = true;
+Category.auth = true;
 
 export default function Category() {
   const { data, error } = useCategoriesData();
