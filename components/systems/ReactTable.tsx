@@ -207,68 +207,6 @@ export const ReactTable = forwardRef(
 
         <div className='grid grid-cols-1 gap-4 pb-5 pt-3 sm:grid-cols-2 sm:p-3'>
           <div className='flex items-center justify-center gap-2 sm:justify-start'>
-            <button
-              onClick={() => gotoPage(0)}
-              disabled={!canPreviousPage}
-              aria-label='First'
-              title='First'
-              className={twMerge(
-                'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
-                canPreviousPage
-                  ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed',
-              )}
-            >
-              <ChevronsLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
-            </button>{' '}
-            <button
-              onClick={() => previousPage()}
-              disabled={!canPreviousPage}
-              aria-label='Prev'
-              title='Prev'
-              className={twMerge(
-                'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
-                canPreviousPage
-                  ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed',
-              )}
-            >
-              <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
-            </button>{' '}
-            <span className='mx-2 text-sm font-medium text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white'>
-              Page {pageIndex + 1} of {pageOptions.length}
-            </span>
-            <button
-              onClick={() => nextPage()}
-              disabled={!canNextPage}
-              aria-label='Next'
-              title='Next'
-              className={twMerge(
-                'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
-                canNextPage
-                  ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed',
-              )}
-            >
-              <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
-            </button>{' '}
-            <button
-              onClick={() => gotoPage(pageCount - 1)}
-              disabled={!canNextPage}
-              aria-label='Last'
-              title='Last'
-              className={twMerge(
-                'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
-                canNextPage
-                  ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-                  : 'cursor-not-allowed',
-              )}
-            >
-              <ChevronsRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
-            </button>{' '}
-          </div>
-
-          <div className='flex items-center justify-center gap-2 sm:justify-end'>
             <span className='text-sm text-neutral-800 dark:text-neutral-200'>Go to page</span>
             <input
               title='Page'
@@ -281,7 +219,7 @@ export const ReactTable = forwardRef(
                 gotoPage(page);
               }}
               className={twMerge(
-                'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
+                'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[5px] text-sm outline-none',
                 'transition-all focus:border-transparent focus:outline-none focus:ring-2 dark:focus:border-transparent',
                 'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
               )}
@@ -295,7 +233,7 @@ export const ReactTable = forwardRef(
               }}
               className={twMerge(
                 'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
-                'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
+                'py-[5px] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
                 'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
               )}
             >
@@ -305,6 +243,64 @@ export const ReactTable = forwardRef(
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className='flex items-center justify-center gap-2 sm:justify-end'>
+            <button
+              onClick={() => gotoPage(0)}
+              disabled={!canPreviousPage}
+              aria-label='First'
+              title='First'
+              className={twMerge(
+                'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
+                'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
+                'disabled:cursor-not-allowed disabled:opacity-60',
+              )}
+            >
+              <ChevronsLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+            </button>{' '}
+            <button
+              onClick={() => previousPage()}
+              disabled={!canPreviousPage}
+              aria-label='Prev'
+              title='Prev'
+              className={twMerge(
+                'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
+                'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
+                'disabled:cursor-not-allowed disabled:opacity-60',
+              )}
+            >
+              <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
+            </button>{' '}
+            <span className='mx-2 text-sm font-medium text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white'>
+              Page {pageIndex + 1} of {pageOptions.length}
+            </span>
+            <button
+              onClick={() => nextPage()}
+              disabled={!canNextPage}
+              aria-label='Next'
+              title='Next'
+              className={twMerge(
+                'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
+                'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
+                'disabled:cursor-not-allowed disabled:opacity-60',
+              )}
+            >
+              <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+            </button>{' '}
+            <button
+              onClick={() => gotoPage(pageCount - 1)}
+              disabled={!canNextPage}
+              aria-label='Last'
+              title='Last'
+              className={twMerge(
+                'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
+                'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
+                'disabled:cursor-not-allowed disabled:opacity-60',
+              )}
+            >
+              <ChevronsRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+            </button>{' '}
           </div>
         </div>
       </div>
