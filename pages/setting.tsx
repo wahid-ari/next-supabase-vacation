@@ -8,7 +8,7 @@ import Layout from '@/components/layout/Layout';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
-// Setting.auth = true;
+Setting.auth = true;
 
 export default function Setting() {
   const { theme, setTheme } = useTheme();
@@ -62,7 +62,7 @@ export default function Setting() {
             0 3px 8px 0 rgba(0,0,0,.15), 
             0 3px 1px 0 rgba(0,0,0,.06)`,
           }}
-          variants={{ light: { x: 0 }, dark: { x: 20 } }}
+          variants={{ light: { x: 1 }, dark: { x: 20 } }}
           // @ts-ignore
           transition={{
             ease: 'easeInOut',
