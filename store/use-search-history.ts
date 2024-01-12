@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
-const searchHistoryAtom = atomWithStorage('search-history', {
+const searchHistoryAtom = atomWithStorage('my-vacation-search-history', {
   destination: [],
   video: [],
 });
