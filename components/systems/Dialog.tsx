@@ -2,7 +2,8 @@ import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 import { Transition } from '@headlessui/react';
 import * as DialogRadix from '@radix-ui/react-dialog';
 import { AlertTriangleIcon, InfoIcon, XIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import Button from '@/components/systems/Button';
 
@@ -62,7 +63,7 @@ export default function Dialog({
           <DialogRadix.Content
             {...props}
             forceMount
-            className={twMerge(
+            className={cn(
               'fixed z-50 w-[90%] max-w-lg rounded-lg',
               'left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]',
               'bg-white dark:bg-neutral-900',
@@ -76,7 +77,7 @@ export default function Dialog({
               <XIcon className='h-4 w-4 text-neutral-500 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400' />
             </DialogRadix.Close>
 
-            <div className={twMerge('p-5', showIcon && 'sm:flex sm:gap-4')}>
+            <div className={cn('p-5', showIcon && 'sm:flex sm:gap-4')}>
               {showIcon ? (
                 isDanger ? (
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0'>

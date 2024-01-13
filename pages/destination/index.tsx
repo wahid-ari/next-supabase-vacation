@@ -5,9 +5,9 @@ import axios from 'axios';
 import { ChevronsUpDownIcon, ChevronUpIcon, ImageIcon, PencilIcon, PlusIcon, TrashIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { mutate } from 'swr';
-import { twMerge } from 'tailwind-merge';
 
 import { useDestinationsData } from '@/libs/swr';
+import { cn } from '@/libs/utils';
 
 // import useToast from '@/hooks/use-hot-toast';
 
@@ -111,7 +111,7 @@ export default function Destination() {
                   // to keep both padding same when scrollbar showed
                   scrollbarGutter: 'stable both-edges',
                 }}
-                className={twMerge(
+                className={cn(
                   'max-h-64 w-auto max-w-xs overflow-auto',
                   'scrollbar-thinner scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700',
                 )}

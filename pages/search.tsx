@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
 import { useSearchData } from '@/libs/swr';
-import { youTubeGetID } from '@/libs/utils';
+import { cn, youTubeGetID } from '@/libs/utils';
 
 import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
@@ -229,7 +228,7 @@ export default function Search() {
                     <button
                       title={`Remove ${item?.name}`}
                       onClick={() => removeDestinationHistory(item.id)}
-                      className={twMerge(
+                      className={cn(
                         'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
@@ -268,7 +267,7 @@ export default function Search() {
                     <button
                       title={`Remove ${item?.title}`}
                       onClick={() => removeVideoHistory(item.id)}
-                      className={twMerge(
+                      className={cn(
                         'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',

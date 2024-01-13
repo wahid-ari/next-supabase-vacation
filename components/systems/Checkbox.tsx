@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/libs/utils';
 
 type Props = {
   label?: string;
@@ -35,7 +35,7 @@ export default function Checkbox({
         defaultChecked={defaultChecked}
         disabled={disabled}
         type='checkbox'
-        className={twMerge(
+        className={cn(
           'h-4 w-4 rounded border-neutral-300 dark:border-neutral-700',
           'text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500',
           'focus:ring-2 focus:ring-sky-500 dark:ring-offset-neutral-900 dark:focus:ring-sky-500',
@@ -47,7 +47,7 @@ export default function Checkbox({
       />
       <label
         htmlFor={name}
-        className={twMerge(
+        className={cn(
           'ml-2 text-sm text-neutral-800 group-hover:cursor-pointer dark:text-neutral-300',
           disabled && 'group-hover:cursor-not-allowed',
         )}

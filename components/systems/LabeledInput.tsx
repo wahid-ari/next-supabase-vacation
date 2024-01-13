@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   wrapperClassName?: string;
@@ -30,7 +31,7 @@ export default function LabeledInput({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className={twMerge('mb-4', type == 'password' && 'relative', wrapperClassName)}>
+    <div className={cn('mb-4', type == 'password' && 'relative', wrapperClassName)}>
       <label className='block text-sm text-neutral-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
@@ -43,7 +44,7 @@ export default function LabeledInput({
         value={value}
         defaultValue={defaultValue}
         onChange={onChange}
-        className={twMerge(
+        className={cn(
           'mt-2 w-full rounded-md border border-neutral-300 px-4 py-[0.6rem] text-sm font-medium outline-none transition-all',
           'bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100',
           'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:focus:border-sky-500 dark:focus:ring-sky-500',

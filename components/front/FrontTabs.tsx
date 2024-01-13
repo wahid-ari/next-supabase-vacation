@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Tab } from '@headlessui/react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   children: ReactNode;
@@ -14,7 +15,7 @@ export default function FrontTabs({ children, className, items, ...props }: Prop
     <Tab.Group>
       <Tab.List
         {...props}
-        className={twMerge(
+        className={cn(
           'flex whitespace-nowrap border-b border-neutral-200 font-medium dark:border-neutral-800',
           className,
         )}
@@ -24,7 +25,7 @@ export default function FrontTabs({ children, className, items, ...props }: Prop
             <Tab
               key={index + 1}
               className={({ selected }) =>
-                twMerge(
+                cn(
                   'w-full py-2 text-[15px] font-medium tracking-wide transition-all sm:text-base',
                   'text-neutral-800 hover:text-neutral-900 dark:text-neutral-200 dark:hover:text-white',
                   'border-b-2 border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -54,7 +55,7 @@ FrontTabs.panel = ({
   return (
     <Tab.Panel
       {...props}
-      className={twMerge(
+      className={cn(
         'rounded-xl py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-0 dark:text-neutral-200',
         className,
       )}

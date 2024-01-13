@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import { twMerge } from 'tailwind-merge';
 
+import { cn } from '@/libs/utils';
 import { useMounted } from '@/hooks/use-mounted';
 
 import Modal from '@/components/systems/Modal';
@@ -28,12 +28,12 @@ export default function Akun({ className, ...props }: Props) {
 
   return (
     <>
-      <Menu as='div' className={twMerge('relative', className)}>
+      <Menu as='div' className={cn('relative', className)}>
         {({ open }) => (
           <>
             <Menu.Button
               {...props}
-              className={twMerge(
+              className={cn(
                 'inline-flex w-full items-center justify-center rounded font-medium transition-all',
                 'text-neutral-600 hover:text-neutral-900',
                 'dark:text-neutral-300 dark:hover:text-neutral-100',
@@ -43,7 +43,7 @@ export default function Akun({ className, ...props }: Props) {
               {(mounted && session?.name) || 'Menu'}
 
               <ChevronDownIcon
-                className={twMerge('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
+                className={cn('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                 aria-hidden='true'
               />
             </Menu.Button>
@@ -61,7 +61,7 @@ export default function Akun({ className, ...props }: Props) {
                     {({ active }) => (
                       <Link
                         href='/setting'
-                        className={twMerge(
+                        className={cn(
                           'flex w-full rounded px-2 py-1.5 text-sm',
                           active
                             ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
@@ -77,7 +77,7 @@ export default function Akun({ className, ...props }: Props) {
                       {({ active }) => (
                         <Link
                           href='/login'
-                          className={twMerge(
+                          className={cn(
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
@@ -93,7 +93,7 @@ export default function Akun({ className, ...props }: Props) {
                       {({ active }) => (
                         <button
                           onClick={() => setOpenModal(true)}
-                          className={twMerge(
+                          className={cn(
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-red-600 transition-all dark:bg-neutral-800 dark:text-red-500'

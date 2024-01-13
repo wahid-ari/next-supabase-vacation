@@ -8,7 +8,8 @@ import {
   ChevronUpIcon,
 } from 'lucide-react';
 import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   columns: any;
@@ -111,7 +112,7 @@ export const ReactTable = forwardRef(
     } data`;
 
     return (
-      <div className={twMerge('w-full rounded border dark:border-neutral-800', className)}>
+      <div className={cn('w-full rounded border dark:border-neutral-800', className)}>
         <div className='scrollbar-thumb-rounded overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
           <table
             {...getTableProps()}
@@ -218,7 +219,7 @@ export const ReactTable = forwardRef(
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 gotoPage(page);
               }}
-              className={twMerge(
+              className={cn(
                 'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[5px] text-sm outline-none',
                 'transition-all focus:border-transparent focus:outline-none focus:ring-2 dark:focus:border-transparent',
                 'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
@@ -231,7 +232,7 @@ export const ReactTable = forwardRef(
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
               }}
-              className={twMerge(
+              className={cn(
                 'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
                 'py-[5px] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
                 'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
@@ -251,7 +252,7 @@ export const ReactTable = forwardRef(
               disabled={!canPreviousPage}
               aria-label='First'
               title='First'
-              className={twMerge(
+              className={cn(
                 'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
                 'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
                 'disabled:cursor-not-allowed disabled:opacity-60',
@@ -264,7 +265,7 @@ export const ReactTable = forwardRef(
               disabled={!canPreviousPage}
               aria-label='Prev'
               title='Prev'
-              className={twMerge(
+              className={cn(
                 'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
                 'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
                 'disabled:cursor-not-allowed disabled:opacity-60',
@@ -280,7 +281,7 @@ export const ReactTable = forwardRef(
               disabled={!canNextPage}
               aria-label='Next'
               title='Next'
-              className={twMerge(
+              className={cn(
                 'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
                 'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
                 'disabled:cursor-not-allowed disabled:opacity-60',
@@ -293,7 +294,7 @@ export const ReactTable = forwardRef(
               disabled={!canNextPage}
               aria-label='Last'
               title='Last'
-              className={twMerge(
+              className={cn(
                 'rounded border border-neutral-300 p-1 transition-all duration-200 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800',
                 'focus:border-sky-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:border-transparent',
                 'disabled:cursor-not-allowed disabled:opacity-60',

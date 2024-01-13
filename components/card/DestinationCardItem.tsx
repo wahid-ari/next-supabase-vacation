@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ImageIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   href: string;
@@ -28,7 +29,7 @@ export default function DestinationCardItem({
         {image_url ? (
           <div className='relative h-64 overflow-hidden'>
             <Image
-              className={twMerge(
+              className={cn(
                 'w-full transform object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
                 isLoading ? 'blur-sm' : 'blur-0',
               )}

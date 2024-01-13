@@ -1,6 +1,7 @@
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   label?: string;
@@ -30,14 +31,14 @@ export default function SearchBox({
       <div className='relative mt-1 pb-1'>
         {label && <Combobox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Combobox.Label>}
         <div
-          className={twMerge(
+          className={cn(
             'relative my-2 w-full cursor-default overflow-hidden rounded-md p-[1px] text-left text-sm',
             'border border-neutral-300 dark:border-neutral-600',
           )}
         >
           <Combobox.Input
             {...props}
-            className={twMerge(
+            className={cn(
               'w-full rounded-md py-2 pl-3 pr-10 text-sm text-neutral-900 dark:bg-neutral-900 dark:text-white',
               'border border-transparent focus:border-sky-500 focus:ring-2 focus:ring-sky-500',
             )}
@@ -68,7 +69,7 @@ export default function SearchBox({
                 <Combobox.Option
                   key={item.id}
                   className={({ active }) =>
-                    twMerge(
+                    cn(
                       'relative cursor-pointer py-2 pl-10 pr-4',
                       active ? 'bg-sky-500 text-white' : 'text-neutral-900 dark:text-white',
                     )
@@ -77,12 +78,12 @@ export default function SearchBox({
                 >
                   {({ selected, active }) => (
                     <>
-                      <span className={twMerge('block truncate', selected ? 'font-medium' : 'font-normal')}>
+                      <span className={cn('block truncate', selected ? 'font-medium' : 'font-normal')}>
                         {item.name}
                       </span>
                       {selected ? (
                         <span
-                          className={twMerge(
+                          className={cn(
                             'absolute inset-y-0 left-0 flex items-center pl-3',
                             active ? 'text-white' : 'text-emerald-600',
                           )}

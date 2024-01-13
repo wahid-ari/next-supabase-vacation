@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   children: ReactNode;
@@ -9,7 +10,7 @@ type Props = {
 
 export default function Label({ children, className, ...props }: Props) {
   return (
-    <label {...props} className={twMerge('block text-neutral-800 dark:text-neutral-300', className)}>
+    <label {...props} className={cn('block text-neutral-800 dark:text-neutral-300', className)}>
       {children}
     </label>
   );

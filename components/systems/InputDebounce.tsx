@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   name?: string;
@@ -55,7 +56,7 @@ export default function InputDebounce({
         value={debounceValue}
         defaultValue={defaultValue}
         onChange={(e) => setDebounceValue(e.target.value)}
-        className={twMerge(
+        className={cn(
           'mt-2 w-full rounded-md border border-neutral-300 px-4 py-[0.6rem] text-sm font-medium outline-none transition-all',
           'bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100',
           'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:focus:border-sky-500 dark:focus:ring-sky-500',

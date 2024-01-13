@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ChevronsUpDownIcon, ChevronUpIcon, ImageIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
 import { useCategoryData } from '@/libs/swr';
+import { cn } from '@/libs/utils';
 import { useDebounce } from '@/hooks/use-debounce';
 
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
@@ -61,7 +61,7 @@ export default function Category() {
                   // to keep both padding same when scrollbar showed
                   scrollbarGutter: 'stable both-edges',
                 }}
-                className={twMerge(
+                className={cn(
                   'max-h-64 w-auto max-w-xs overflow-auto',
                   'scrollbar-thinner scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700',
                 )}

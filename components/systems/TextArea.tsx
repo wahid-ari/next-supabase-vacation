@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/libs/utils';
 
 type Props = {
   label?: string;
@@ -39,7 +39,7 @@ export default function TextArea({
         value={value}
         defaultValue={defaultValue}
         onChange={onChange}
-        className={twMerge(
+        className={cn(
           'mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white',
           'min-h-[80px] border border-neutral-300 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:border-neutral-700',
           'disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:opacity-50 dark:disabled:bg-neutral-800',

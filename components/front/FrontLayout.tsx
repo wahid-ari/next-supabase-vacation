@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import BackToTop from '@/components/front/BackToTop';
 import Footer from '@/components/front/Footer';
@@ -21,7 +22,7 @@ export default function FrontLayout({ children, title, description, transparentN
       <HeadSeo title={title} description={description} />
       <div {...props} className='relative dark:bg-neutral-900'>
         <FrontNavbar transparentNavbar={transparentNavbar} />
-        <main className={twMerge('mx-auto min-h-screen w-full max-w-7xl p-4 pb-10', className)}>{children}</main>
+        <main className={cn('mx-auto min-h-screen w-full max-w-7xl p-4 pb-10', className)}>{children}</main>
         <Footer />
         <BackToTop />
       </div>

@@ -13,7 +13,6 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from 'react-share';
-import { twMerge } from 'tailwind-merge';
 
 import { useDestinationData } from '@/libs/swr';
 import { cn, youTubeGetID } from '@/libs/utils';
@@ -63,7 +62,7 @@ export default function Destination() {
               src={data?.header_image_url}
               unoptimized
               quality={50}
-              className={twMerge('rounded object-cover', isLoading ? 'blur-sm' : 'blur-0')}
+              className={cn('rounded object-cover', isLoading ? 'blur-sm' : 'blur-0')}
               onLoad={() => setLoading(false)}
               priority
             />

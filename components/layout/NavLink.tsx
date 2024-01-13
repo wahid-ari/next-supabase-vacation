@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   children: ReactNode;
@@ -37,7 +38,7 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
         passHref
         {...props}
         href={href}
-        className={twMerge(
+        className={cn(
           'group flex w-full items-center justify-start gap-2 rounded px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
           isHome && 'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500',
           !isHome &&
@@ -58,7 +59,7 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
       passHref
       {...props}
       href={href}
-      className={twMerge(
+      className={cn(
         'group flex w-full items-center justify-start gap-2 rounded px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
         isDetailOrAddRoute
           ? // current route that includes href
@@ -96,7 +97,7 @@ NavLink.external = ({ children, className, href, icon, ...props }: Other) => {
       href={href}
       target='_blank'
       rel='noopener noreferrer'
-      className={twMerge(
+      className={cn(
         'group flex w-full items-center justify-start gap-2 px-3 py-1.5 transition-all',
         'rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300',
         'hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
@@ -118,7 +119,7 @@ NavLink.login = ({ children, className, href, icon, ...props }: Other) => {
       {...props}
       passHref
       href={href}
-      className={twMerge(
+      className={cn(
         'group flex w-full items-center justify-start px-3 py-1.5 transition-all',
         'gap-2 rounded text-sm font-medium hover:bg-emerald-100 dark:hover:bg-neutral-800',
         'text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500',
@@ -138,7 +139,7 @@ NavLink.logout = ({ children, className, href, icon, ...props }: Other) => {
       {...props}
       passHref
       href={href}
-      className={twMerge(
+      className={cn(
         'group flex w-full items-center justify-start px-3 py-1.5 transition-all',
         'gap-2 rounded text-sm font-medium hover:bg-red-100 dark:hover:bg-neutral-800',
         'text-red-500 hover:text-red-600 dark:text-red-600 dark:hover:text-red-500',

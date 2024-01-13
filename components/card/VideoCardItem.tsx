@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { twMerge } from 'tailwind-merge';
 
-import { youTubeGetCoverImage, youTubeGetID } from '@/libs/utils';
+import { cn, youTubeGetCoverImage, youTubeGetID } from '@/libs/utils';
 
 type Props = {
   className?: string;
@@ -26,7 +25,7 @@ export default function VideoCardItem({
   return (
     <div className='group relative h-64 overflow-hidden rounded-md' {...props}>
       <Image
-        className={twMerge(
+        className={cn(
           'w-full rounded-md object-cover brightness-90 transition-all duration-300 group-hover:brightness-100',
           isLoading ? 'blur-sm' : 'blur-0',
           className,
@@ -39,7 +38,7 @@ export default function VideoCardItem({
       />
       <button
         onClick={onPlay}
-        className={twMerge(
+        className={cn(
           'group absolute inset-0 cursor-pointer rounded-md focus-visible:outline-none',
           'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
         )}

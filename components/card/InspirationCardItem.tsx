@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { InstagramIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   className?: string;
@@ -17,7 +18,7 @@ export default function InspirationCardItem({ className, alt = 'Name', image_url
   return (
     <button
       onClick={onClick}
-      className={twMerge(
+      className={cn(
         'relative h-56 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
         className,
       )}
@@ -27,7 +28,7 @@ export default function InspirationCardItem({ className, alt = 'Name', image_url
         alt={alt}
         src={image_url}
         fill
-        className={twMerge('rounded object-cover', isLoading ? 'blur-sm' : 'blur-0')}
+        className={cn('rounded object-cover', isLoading ? 'blur-sm' : 'blur-0')}
         unoptimized
         onLoad={() => setLoading(false)}
       />

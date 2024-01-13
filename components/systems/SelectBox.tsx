@@ -1,6 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   label?: string;
@@ -19,13 +20,13 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
         {label && <Listbox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Listbox.Label>}
         <Listbox.Button
           {...props}
-          className={twMerge(
+          className={cn(
             'relative my-2 h-10 w-full cursor-pointer rounded-md border text-left text-sm transition-all',
             'border-neutral-300 hover:bg-neutral-100 dark:border-neutral-600 dark:hover:bg-neutral-800',
             'focus:ring-2 focus:ring-sky-500 focus-visible:outline-none',
           )}
         >
-          <span className={twMerge('block truncate pl-3', !value ? 'text-neutral-500 dark:text-neutral-500' : '')}>
+          <span className={cn('block truncate pl-3', !value ? 'text-neutral-500 dark:text-neutral-500' : '')}>
             {value ? value?.name : placeholder || 'Select'}
           </span>
           <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -41,7 +42,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
           leaveTo='transform scale-95 opacity-0'
         >
           <Listbox.Options
-            className={twMerge(
+            className={cn(
               'absolute z-10 max-h-40 w-full overflow-auto rounded-md py-1 text-sm shadow-lg',
               'bg-white focus-visible:outline-none dark:bg-neutral-800',
             )}
@@ -50,7 +51,7 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
               <Listbox.Option
                 key={index}
                 className={({ active }) =>
-                  twMerge(
+                  cn(
                     'relative cursor-pointer py-2 pl-10 pr-4 text-neutral-900 dark:text-white',
                     active && 'bg-sky-500 text-white',
                   )
@@ -59,10 +60,10 @@ export default function SelectBox({ label, name, value, placeholder, onChange, o
               >
                 {({ selected, active }) => (
                   <>
-                    <span className={twMerge('block truncate', selected && 'font-medium')}>{option.name}</span>
+                    <span className={cn('block truncate', selected && 'font-medium')}>{option.name}</span>
                     {selected ? (
                       <span
-                        className={twMerge(
+                        className={cn(
                           'absolute inset-y-0 left-0 flex items-center pl-3',
                           active ? 'text-white' : 'text-emerald-600',
                         )}

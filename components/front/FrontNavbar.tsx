@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import { twMerge } from 'tailwind-merge';
 
 import { cn } from '@/libs/utils';
 import { useMounted } from '@/hooks/use-mounted';
@@ -29,7 +28,7 @@ function CustomActiveLink({
       href={href}
       pathname={pathname}
       activeClassName='!text-sky-500 dark:!text-sky-500'
-      className={twMerge(
+      className={cn(
         'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
         'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -41,7 +40,7 @@ function CustomActiveLink({
   );
 }
 
-const mobileLinkClassname = twMerge(
+const mobileLinkClassname = cn(
   'block rounded px-3 py-1.5 text-[15px] font-medium',
   'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -75,7 +74,7 @@ export default function FrontNavbar({
     <Popover
       {...props}
       as='header'
-      className={twMerge(
+      className={cn(
         'sticky top-0 z-10 mx-auto max-w-full border-b border-b-neutral-200/70 dark:border-b-neutral-800 2xl:max-w-7xl',
         transparentNavbar && !scrolled && 'border-none bg-gradient-to-b from-black/50 via-black/30 to-transparent',
         scrolled && 'bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30 ',
@@ -94,7 +93,7 @@ export default function FrontNavbar({
               <div className='flex items-center justify-center font-medium text-neutral-900 md:justify-start'>
                 <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' unoptimized />
                 <span
-                  className={twMerge(
+                  className={cn(
                     'text-xl font-semibold text-neutral-800 dark:text-neutral-100',
                     transparentNavbar && !scrolled && 'text-white dark:text-white',
                   )}
@@ -110,41 +109,41 @@ export default function FrontNavbar({
               <div className='flex items-center lg:space-x-3 min-[1100px]:space-x-5 xl:space-x-7'>
                 <CustomActiveLink
                   href='/'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Home
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/destinations'
                   pathname='/destinations/[slug]'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Destination
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/categories'
                   pathname='/categories/[slug]'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Category
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/videos'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Video
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/provinces'
                   pathname='/provinces/[slug]'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Province
                 </CustomActiveLink>
                 <CustomActiveLink
                   href='/islands'
                   pathname='/islands/[slug]'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Island
                 </CustomActiveLink>
@@ -155,7 +154,7 @@ export default function FrontNavbar({
                   // onMouseLeave={() => setIsShowMore(false)}
                 >
                   <Popover.Button
-                    className={twMerge(
+                    className={cn(
                       'group flex items-center space-x-1 rounded px-1 text-[15px] font-medium transition-all duration-200',
                       ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -194,7 +193,7 @@ export default function FrontNavbar({
 
                 <CustomActiveLink
                   href='/browse'
-                  className={twMerge(transparentNavbar && !scrolled && 'text-white dark:text-white')}
+                  className={cn(transparentNavbar && !scrolled && 'text-white dark:text-white')}
                 >
                   Browse
                 </CustomActiveLink>
@@ -205,7 +204,7 @@ export default function FrontNavbar({
                       <Popover.Button
                         aria-label='Search'
                         title='Search'
-                        className={twMerge(
+                        className={cn(
                           'group flex items-center space-x-2 rounded p-0.5 text-[15px] font-medium transition-all duration-200',
                           ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -225,7 +224,7 @@ export default function FrontNavbar({
                       >
                         <Popover.Panel
                           focus
-                          className={twMerge(
+                          className={cn(
                             'absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded',
                             'border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]',
                           )}
@@ -245,7 +244,7 @@ export default function FrontNavbar({
                 session?.name ? (
                   <Link
                     href='/dashboard'
-                    className={twMerge(
+                    className={cn(
                       'rounded-md px-2 py-0.5 text-[15px] font-medium transition-all duration-200',
                       'text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -258,7 +257,7 @@ export default function FrontNavbar({
                 ) : (
                   <Link
                     href='/login'
-                    className={twMerge(
+                    className={cn(
                       'rounded-md px-2 py-0.5 text-[15px] font-medium transition-all duration-200',
                       'text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -281,7 +280,7 @@ export default function FrontNavbar({
               )}
 
               <FrontThemeChanger
-                className={twMerge(
+                className={cn(
                   'border-transparent hover:border-transparent dark:border-transparent dark:hover:border-transparent',
                   transparentNavbar &&
                     !scrolled &&
@@ -294,7 +293,7 @@ export default function FrontNavbar({
             {/* Mobile menu button */}
             <div className='flex lg:hidden'>
               <Popover.Button
-                className={twMerge(
+                className={cn(
                   'inline-flex items-center justify-center rounded transition-all',
                   'text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-100',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -340,7 +339,7 @@ export default function FrontNavbar({
                 <div className='mr-3 flex items-center gap-2'>
                   <FrontThemeChanger />
                   <Popover.Button
-                    className={twMerge(
+                    className={cn(
                       'p-1 text-neutral-700 transition-all dark:text-neutral-300',
                       'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
                       'hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
@@ -397,7 +396,7 @@ export default function FrontNavbar({
                   {({ open }) => (
                     <>
                       <Menu.Button
-                        className={twMerge(
+                        className={cn(
                           'w-full rounded px-3 py-1.5 text-[15px] font-medium',
                           'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -440,7 +439,7 @@ export default function FrontNavbar({
                 {mounted && (
                   <Link
                     href={`${session?.name ? '/dashboard' : '/login'}`}
-                    className={twMerge(
+                    className={cn(
                       'block rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100',
                       'hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-200 dark:hover:bg-neutral-800',

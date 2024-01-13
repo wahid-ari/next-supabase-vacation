@@ -5,10 +5,10 @@ import { Menu, Transition } from '@headlessui/react';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon, ChevronDownIcon, MoreHorizontal } from 'lucide-react';
 import ReactSelect from 'react-select';
-import { twMerge } from 'tailwind-merge';
 import { z } from 'zod';
 
 import { tabledata } from '@/libs/table-data';
+import { cn } from '@/libs/utils';
 import { validateFormObject } from '@/validations/zod';
 import { useDebounce } from '@/hooks/use-debounce';
 import useToast from '@/hooks/use-hot-toast';
@@ -1016,7 +1016,7 @@ export default function Example() {
           {({ open }) => (
             <>
               <Menu.Button
-                className={twMerge(
+                className={cn(
                   'flex items-center rounded font-medium text-neutral-600 transition-all hover:text-neutral-900',
                   'dark:text-neutral-300 dark:hover:text-neutral-100',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -1024,7 +1024,7 @@ export default function Example() {
               >
                 Menu
                 <ChevronDownIcon
-                  className={twMerge('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
+                  className={cn('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                   aria-hidden='true'
                 />
               </Menu.Button>
@@ -1042,7 +1042,7 @@ export default function Example() {
                       {({ active }) => (
                         <Link
                           href='/setting'
-                          className={twMerge(
+                          className={cn(
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
@@ -1057,7 +1057,7 @@ export default function Example() {
                       {({ active }) => (
                         <Link
                           href='/design/ui'
-                          className={twMerge(
+                          className={cn(
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
@@ -1071,7 +1071,7 @@ export default function Example() {
                     <Menu.Item>
                       {({ active }) => (
                         <button
-                          className={twMerge(
+                          className={cn(
                             'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
@@ -1167,7 +1167,7 @@ function dissmissAllToast() {
             <HoverCard.Content
               side='top'
               data-testid='hovercard-content'
-              className={twMerge(
+              className={cn(
                 'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                 'bg-white p-2.5 !text-[15px] leading-5 text-neutral-700',
                 'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',

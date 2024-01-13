@@ -2,8 +2,8 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Disclosure, Transition } from '@headlessui/react';
 import { ChevronRightIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
+import { cn } from '@/libs/utils';
 import { useMounted } from '@/hooks/use-mounted';
 
 type Props = {
@@ -32,7 +32,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
     return (
       <>
         <button
-          className={twMerge(
+          className={cn(
             'group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
             'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             'dark:text-neutral-300 dark:hover:text-sky-500',
@@ -60,7 +60,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
           <>
             <Disclosure.Button
               {...props}
-              className={twMerge(
+              className={cn(
                 'group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',

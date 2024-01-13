@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/libs/utils';
 
 import s from './LoadingDots.module.css';
 
@@ -10,14 +10,14 @@ type Props = {
 };
 
 export default function LoadingDots({ className, medium, large, ...props }: Props) {
-  const classNames = twMerge(
+  const classNames = cn(
     'h-2 w-2 rounded-full bg-neutral-600 dark:bg-zinc-200',
     medium && 'h-3 w-3',
     large && 'h-4 w-4',
   );
 
   return (
-    <span className={twMerge(s.root, 'inline-flex items-center gap-1 text-center leading-7', className)} {...props}>
+    <span className={cn(s.root, 'inline-flex items-center gap-1 text-center leading-7', className)} {...props}>
       <span className={classNames} />
       <span className={classNames} />
       <span className={classNames} />

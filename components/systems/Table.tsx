@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import Button from '@/components/systems/Button';
 
@@ -33,7 +34,7 @@ export default function Table({
 }: Props) {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'w-full rounded border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
         className,
       )}
@@ -98,7 +99,7 @@ Table.tr = ({ children, className, ...props }: TrProps) => {
   return (
     <tr
       {...props}
-      className={twMerge(
+      className={cn(
         'border-b bg-white text-sm text-neutral-600 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200',
         className,
       )}
@@ -117,7 +118,7 @@ type TdProps = {
 
 Table.td = ({ children, className, shrink, ...props }: TdProps) => {
   return (
-    <td {...props} className={twMerge('p-3', shrink && 'w-1', className)}>
+    <td {...props} className={cn('p-3', shrink && 'w-1', className)}>
       {children}
     </td>
   );
@@ -132,7 +133,7 @@ type ThProps = {
 
 Table.th = ({ children, className, shrink, ...props }: ThProps) => {
   return (
-    <th {...props} className={twMerge('p-3 font-medium', shrink && 'w-1', className)}>
+    <th {...props} className={cn('p-3 font-medium', shrink && 'w-1', className)}>
       {children}
     </th>
   );

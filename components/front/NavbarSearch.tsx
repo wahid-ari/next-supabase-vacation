@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { SearchIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 export default function NavbarSearch({ ...props }: { [props: string]: any }) {
   const query = useRef('');
@@ -29,7 +30,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
           onChange={(e) => (query.current = e.target.value)}
           type='search'
           id='search'
-          className={twMerge(
+          className={cn(
             'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-neutral-900',
             'bg-neutral-50 focus:border-sky-500 focus:ring-sky-500 dark:border-neutral-800 dark:bg-neutral-800',
             'dark:text-white dark:placeholder-neutral-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
@@ -41,7 +42,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
         <button
           type='submit'
           value='Submit'
-          className={twMerge(
+          className={cn(
             'absolute bottom-[5px] right-1 bg-sky-500 text-white hover:bg-sky-600',
             'rounded px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-sky-400',
             'dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-sky-400',

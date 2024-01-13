@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import HeadSeo from '@/components/layout/HeadSeo';
@@ -33,7 +34,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
           {/* Show on Mobile */}
           <div
-            className={twMerge(
+            className={cn(
               'flex items-center justify-between gap-x-4 border-b px-4 py-3 lg:hidden',
               'overflow-x-auto bg-white/95 dark:border-neutral-800 dark:bg-neutral-900/90',
               'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
@@ -44,7 +45,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
           {/* Show on Desktop */}
           <div
-            className={twMerge(
+            className={cn(
               'hidden items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:flex',
               'sticky top-0 z-40 bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30',
               demo && '!z-0',

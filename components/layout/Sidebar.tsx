@@ -28,7 +28,8 @@ import {
   YoutubeIcon,
 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import NavAccordion from '@/components/layout/NavAccordion';
 import NavLink from '@/components/layout/NavLink';
@@ -66,7 +67,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
     <>
       <aside
         {...props}
-        className={twMerge(
+        className={cn(
           'z-50 flex h-full w-screen flex-col flex-nowrap border-r dark:border-neutral-800',
           // 'bg-white dark:bg-neutral-900',
           'bg-white/80 dark:bg-neutral-900/80',
@@ -95,7 +96,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         </div>
 
         <div
-          className={twMerge(
+          className={cn(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 lg:flex-grow',
             'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
           )}
@@ -203,7 +204,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           {session == null ? (
             <Link
               href='/login'
-              className={twMerge(
+              className={cn(
                 'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
                 'rounded text-emerald-600 hover:bg-emerald-100 dark:hover:bg-neutral-800',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
@@ -216,7 +217,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             <button
               data-testid='button-logout'
               onClick={() => setOpenModal(true)}
-              className={twMerge(
+              className={cn(
                 'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
                 'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',

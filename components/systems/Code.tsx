@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { ClipboardCopyIcon, ClipboardPasteIcon } from 'lucide-react';
 import Prism from 'prismjs';
-import { twMerge } from 'tailwind-merge';
 
+import { cn } from '@/libs/utils';
 import { useMounted } from '@/hooks/use-mounted';
 
 type Props = {
@@ -38,7 +38,7 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
   return (
     <>
       <p className='text-sm font-semibold dark:text-white'>Example {name}:</p>
-      <div {...props} className={twMerge('Code relative rounded-md text-sm', className)}>
+      <div {...props} className={cn('Code relative rounded-md text-sm', className)}>
         <button
           title='Copy Code'
           onClick={copyText}

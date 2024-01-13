@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { PlusIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import Button from '@/components/systems/Button';
 
@@ -43,7 +44,7 @@ export default function FileInput({ className, label, name, value, onChange, ...
         name={name}
         value=''
         onChange={onChange}
-        className={twMerge(
+        className={cn(
           'mt-2 hidden h-12 w-full rounded-md bg-white px-4 py-[0.6rem] text-sm font-medium transition-all dark:bg-neutral-900 dark:text-neutral-100',
           'border border-neutral-300 outline-none focus:border-sky-500 dark:border-neutral-800 dark:focus:border-sky-500',
           'ring-neutral-300 focus:ring-1 focus:ring-sky-500 dark:ring-neutral-600 dark:focus:ring-sky-500',

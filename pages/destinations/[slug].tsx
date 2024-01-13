@@ -15,7 +15,6 @@ import {
 } from 'react-share';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { twMerge } from 'tailwind-merge';
 
 import 'swiper/css';
 
@@ -117,7 +116,7 @@ export default function Destinations({ slug, seo }) {
               src={data?.header_image_url}
               unoptimized
               quality={50}
-              className={twMerge('object-cover', isLoading ? 'blur-sm' : 'blur-0')}
+              className={cn('object-cover', isLoading ? 'blur-sm' : 'blur-0')}
               onLoad={() => setLoading(false)}
               priority
             />

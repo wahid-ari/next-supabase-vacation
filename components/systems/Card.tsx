@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   children: ReactNode;
@@ -9,7 +10,7 @@ type Props = {
 
 export default function Card({ children, className, ...props }: Props) {
   return (
-    <div {...props} className={twMerge('rounded-lg border p-3 dark:border-neutral-800 lg:p-6', className)}>
+    <div {...props} className={cn('rounded-lg border p-3 dark:border-neutral-800 lg:p-6', className)}>
       {children}
     </div>
   );

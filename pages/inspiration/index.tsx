@@ -13,9 +13,9 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { mutate } from 'swr';
-import { twMerge } from 'tailwind-merge';
 
 import { useInspirationsData } from '@/libs/swr';
+import { cn } from '@/libs/utils';
 
 // import useToast from '@/hooks/use-hot-toast';
 
@@ -119,7 +119,7 @@ export default function Inspiration() {
                   // to keep both padding same when scrollbar showed
                   scrollbarGutter: 'stable both-edges',
                 }}
-                className={twMerge(
+                className={cn(
                   'max-h-64 w-full max-w-sm overflow-auto',
                   'scrollbar-thinner scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700',
                 )}

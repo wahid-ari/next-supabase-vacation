@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { GithubIcon, InstagramIcon, RssIcon, TwitterIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
-const linkClassName = twMerge(
+import { cn } from '@/libs/utils';
+
+const linkClassName = cn(
   'hover-underline-animation rounded text-[15px] hover:text-neutral-900 px-0.5',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100',
 );
-const linkIconClassName = twMerge(
+const linkIconClassName = cn(
   'rounded text-neutral-700 transition-all duration-200 hover:text-neutral-900',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-white',
 );
@@ -17,14 +18,14 @@ export default function Footer({ className, ...props }: { className?: string; [p
   let year = d.getFullYear();
 
   return (
-    <footer {...props} className={twMerge('border-t dark:border-neutral-800', className)}>
+    <footer {...props} className={cn('border-t dark:border-neutral-800', className)}>
       <div className='mx-auto max-w-7xl px-4 pb-6 pt-12'>
         <div className='gap-16 pb-4 md:flex md:justify-between'>
           <div className='mb-6 md:mb-0 md:w-2/5'>
             {/* web logo  */}
             <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>
               <div
-                className={twMerge(
+                className={cn(
                   'flex items-center rounded font-medium text-neutral-900',
                   'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                 )}
@@ -125,7 +126,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
             © 2023 - {year}{' '}
             <Link
               href='/'
-              className={twMerge(
+              className={cn(
                 'hover-underline-animation rounded transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}

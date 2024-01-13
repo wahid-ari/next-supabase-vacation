@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ImageIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   href: string;
@@ -32,7 +33,7 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
             />
             <div className='relative mt-[2px] h-[245px] overflow-hidden rounded-md'>
               <Image
-                className={twMerge(
+                className={cn(
                   'w-full transform rounded-md object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100',
                   isLoading ? 'blur-sm' : 'blur-0',
                 )}

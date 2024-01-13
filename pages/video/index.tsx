@@ -13,7 +13,6 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { mutate } from 'swr';
-import { twMerge } from 'tailwind-merge';
 
 import { useIslandsData, useProvincesData, useVideosData } from '@/libs/swr';
 import { cn, youTubeGetID } from '@/libs/utils';
@@ -272,7 +271,7 @@ export default function Video() {
               <HoverCardTrigger asChild>
                 <button
                   onClick={() => handleShowVideoDialog(original.title, original.video_url)}
-                  className={twMerge(
+                  className={cn(
                     'w-40 overflow-hidden text-ellipsis break-all rounded-md text-left font-medium hover:cursor-pointer lg:w-32 xl:w-[450px] 2xl:w-full',
                     'transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}

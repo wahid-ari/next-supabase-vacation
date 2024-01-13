@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   children: ReactNode;
@@ -12,7 +13,7 @@ export default function Container({ children, className, small, ...props }: Prop
   return (
     <div
       {...props}
-      className={twMerge(
+      className={cn(
         small ? 'p-2' : 'p-8',
         'relative mb-2 rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]',
         className,
