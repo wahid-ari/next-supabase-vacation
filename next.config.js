@@ -23,14 +23,60 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: [
-      'images.unsplash.com',
-      'www.indonesia.travel',
-      'encrypted-tbn3.gstatic.com',
-      'encrypted-tbn0.gstatic.com',
-      'encrypted-tbn2.gstatic.com',
-      'encrypted-tbn1.gstatic.com',
-      'lh5.googleusercontent.com',
+    // https://nextjs.org/docs/pages/api-reference/components/image#domains
+    // domains: [
+    //   'images.unsplash.com',
+    //   'indonesia.travel',
+    //   'encrypted-tbn0.gstatic.com',
+    //   'encrypted-tbn1.gstatic.com',
+    //   'encrypted-tbn2.gstatic.com',
+    //   'encrypted-tbn3.gstatic.com',
+    //   'lh5.googleusercontent.com',
+    // ],
+    // https://nextjs.org/docs/pages/api-reference/components/image#remotepatterns
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'indonesia.travel',
+        port: '',
+        pathname: '/content/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn1.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn2.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn3.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh5.googleusercontent.com',
+        port: '',
+        pathname: '/p/**',
+      },
     ],
     unoptimized: true,
   },
