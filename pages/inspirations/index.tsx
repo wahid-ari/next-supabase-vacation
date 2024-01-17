@@ -5,7 +5,6 @@ import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 
 import { Navigation } from 'swiper/modules';
 
@@ -78,12 +77,11 @@ export default function Inspirations() {
         <Dialog open={openDialogUi} onOpenChange={setOpenDialogUi}>
           <DialogContent className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
             <Swiper
-              navigation={true}
               modules={[Navigation]}
-              // navigation={{
-              //   prevEl: prevRef.current,
-              //   nextEl: nextRef.current,
-              // }}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
               //   swiper.params.navigation.prevEl = prevRef.current;
