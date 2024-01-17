@@ -2,10 +2,12 @@ import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
-import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
+import 'swiper/css/navigation';
+
+import { Navigation } from 'swiper/modules';
 
 import { useInspirationsData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
@@ -76,11 +78,12 @@ export default function Inspirations() {
         <Dialog open={openDialogUi} onOpenChange={setOpenDialogUi}>
           <DialogContent className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
             <Swiper
+              navigation={true}
               modules={[Navigation]}
-              navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
-              }}
+              // navigation={{
+              //   prevEl: prevRef.current,
+              //   nextEl: nextRef.current,
+              // }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
               //   swiper.params.navigation.prevEl = prevRef.current;
