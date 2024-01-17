@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
@@ -17,6 +17,7 @@ import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
 export default function Register() {
+  const router = useRouter();
   const [form, setForm] = useState({ name: '', username: '', password: '', confirm_password: '' });
   const formFilled = form.name !== '' && form.username !== '' && form.password !== '' && form.confirm_password !== '';
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +46,7 @@ export default function Register() {
           isError: false,
         });
         setTimeout(() => {
-          Router.push('/login');
+          router.push('/login');
         }, 1000);
       }
     } catch (error) {
@@ -77,7 +78,7 @@ export default function Register() {
   }
 
   if (status === 'authenticated') {
-    Router.push('/dashboard');
+    router.push('/dashboard');
   }
 
   if (status === 'unauthenticated') {

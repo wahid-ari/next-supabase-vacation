@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn, useSession } from 'next-auth/react';
@@ -37,7 +37,7 @@ export default function Login() {
   const random = useMemo(() => images[Math.floor(Math.random() * images.length)], []);
 
   useEffect(() => {
-    Router.prefetch('/dashboard');
+    router.prefetch('/dashboard');
   }, []);
 
   const handleChange = (e: any) => {
@@ -102,7 +102,7 @@ export default function Login() {
   }
 
   if (status === 'authenticated') {
-    Router.push('/dashboard');
+    router.push('/dashboard');
   }
 
   if (status === 'unauthenticated') {

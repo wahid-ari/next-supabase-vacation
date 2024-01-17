@@ -50,10 +50,9 @@ type CustomAppProps = AppProps & {
 function MyApp({ Component, pageProps }: CustomAppProps) {
   const router = useRouter();
   // Show progress on All Pages
-  // import Router from 'next/router';
-  // Router.events.on('routeChangeStart', () => NProgress.start());
-  // Router.events.on('routeChangeComplete', () => NProgress.done());
-  // Router.events.on('routeChangeError', () => NProgress.done());
+  // router.events.on('routeChangeStart', () => NProgress.start());
+  // router.events.on('routeChangeComplete', () => NProgress.done());
+  // router.events.on('routeChangeError', () => NProgress.done());
 
   function handleStart(url: string) {
     let splitUrl = url.split('/');
