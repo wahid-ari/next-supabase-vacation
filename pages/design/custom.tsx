@@ -263,11 +263,19 @@ export default function Custom() {
               prevEl: prevRefHeader.current,
               nextEl: nextRefHeader.current,
             }}
-            onBeforeInit={(swiper) => {
+            // onBeforeInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefHeader.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefHeader.current;
+            // }}
+            onInit={(swiper) => {
               // @ts-ignore
               swiper.params.navigation.prevEl = prevRefHeader.current;
               // @ts-ignore
               swiper.params.navigation.nextEl = nextRefHeader.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
             }}
             slidesPerView={1}
             loop={true}
@@ -340,11 +348,19 @@ export default function Custom() {
               prevEl: prevRefSlider.current,
               nextEl: nextRefSlider.current,
             }}
-            onBeforeInit={(swiper) => {
+            // onBeforeInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefSlider.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefSlider.current;
+            // }}
+            onInit={(swiper) => {
               // @ts-ignore
               swiper.params.navigation.prevEl = prevRefSlider.current;
               // @ts-ignore
               swiper.params.navigation.nextEl = nextRefSlider.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
             }}
             spaceBetween={24}
             slidesPerView={3}
@@ -590,11 +606,19 @@ export default function Custom() {
                 prevEl: prevRef.current,
                 nextEl: nextRef.current,
               }}
-              onBeforeInit={(swiper) => {
+              // onBeforeInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRef.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRef.current;
+              // }}
+              onInit={(swiper) => {
                 // @ts-ignore
                 swiper.params.navigation.prevEl = prevRef.current;
                 // @ts-ignore
                 swiper.params.navigation.nextEl = nextRef.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
               }}
               initialSlide={imageOpened.id}
               loop={true}
@@ -674,11 +698,19 @@ export default function Custom() {
                 prevEl: prevRefThumb.current,
                 nextEl: nextRefThumb.current,
               }}
-              onBeforeInit={(swiper) => {
+              // onBeforeInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRefThumb.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRefThumb.current;
+              // }}
+              onInit={(swiper) => {
                 // @ts-ignore
                 swiper.params.navigation.prevEl = prevRefThumb.current;
                 // @ts-ignore
                 swiper.params.navigation.nextEl = nextRefThumb.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
               }}
               initialSlide={imageOpenedThumb.id}
               loop={true}
@@ -769,11 +801,19 @@ export default function Custom() {
                 prevEl: prevRefVideo.current,
                 nextEl: nextRefVideo.current,
               }}
-              onBeforeInit={(swiper) => {
+              // onBeforeInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRefVideo.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRefVideo.current;
+              // }}
+              onInit={(swiper) => {
                 // @ts-ignore
                 swiper.params.navigation.prevEl = prevRefVideo.current;
                 // @ts-ignore
                 swiper.params.navigation.nextEl = nextRefVideo.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
               }}
               spaceBetween={24}
               slidesPerView={3}
@@ -901,11 +941,19 @@ export default function Custom() {
               prevEl: prevRefVideoHover.current,
               nextEl: nextRefVideoHover.current,
             }}
-            onBeforeInit={(swiper) => {
+            // onBeforeInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefVideoHover.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefVideoHover.current;
+            // }}
+            onInit={(swiper) => {
               // @ts-ignore
               swiper.params.navigation.prevEl = prevRefVideoHover.current;
               // @ts-ignore
               swiper.params.navigation.nextEl = nextRefVideoHover.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
             }}
             spaceBetween={24}
             slidesPerView={3}
@@ -1011,11 +1059,19 @@ export default function Custom() {
               prevEl: prevRefVideoActive.current,
               nextEl: nextRefVideoActive.current,
             }}
-            onBeforeInit={(swiper) => {
+            // onBeforeInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefVideoActive.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefVideoActive.current;
+            // }}
+            onInit={(swiper) => {
               // @ts-ignore
               swiper.params.navigation.prevEl = prevRefVideoActive.current;
               // @ts-ignore
               swiper.params.navigation.nextEl = nextRefVideoActive.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
             }}
             spaceBetween={24}
             slidesPerView={3}
