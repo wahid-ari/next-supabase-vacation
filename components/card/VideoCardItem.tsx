@@ -39,7 +39,7 @@ export default function VideoCardItem({
       <button
         onClick={onPlay}
         className={cn(
-          'group absolute inset-0 cursor-pointer rounded-md focus-visible:outline-none',
+          'group absolute inset-0 h-full w-full cursor-pointer rounded-md focus-visible:outline-none',
           'bg-gradient-to-b from-transparent via-transparent to-neutral-950',
         )}
       >
