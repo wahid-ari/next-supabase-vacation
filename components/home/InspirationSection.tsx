@@ -70,11 +70,19 @@ export default function InspirationSection({ data }: { data: any }) {
               prevEl: prevRef.current,
               nextEl: nextRef.current,
             }}
-            onBeforeInit={(swiper) => {
+            // onBeforeInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRef.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRef.current;
+            // }}
+            onInit={(swiper) => {
               // @ts-ignore
               swiper.params.navigation.prevEl = prevRef.current;
               // @ts-ignore
               swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
             }}
             initialSlide={activeSlide}
             loop={true}
