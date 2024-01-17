@@ -32,6 +32,7 @@ module.exports = {
     //   'encrypted-tbn2.gstatic.com',
     //   'encrypted-tbn3.gstatic.com',
     //   'lh5.googleusercontent.com',
+    //   'https://img.youtube.com/vi/',
     // ],
     // https://nextjs.org/docs/pages/api-reference/components/image#remotepatterns
     remotePatterns: [
@@ -76,6 +77,12 @@ module.exports = {
         hostname: 'lh5.googleusercontent.com',
         port: '',
         pathname: '/p/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        port: '',
+        pathname: '/vi/**',
       },
     ],
     unoptimized: true,
