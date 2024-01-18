@@ -2,11 +2,10 @@ import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-
-import { Navigation } from 'swiper/modules';
 
 import { useInspirationsData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
@@ -29,8 +28,13 @@ const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
 
 export default function Inspirations() {
   const { data, error } = useInspirationsData();
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  //Add a state that will force a re-render
+  // const [_, setInit] = useState(false);
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
+  // use the `useState` hook instead of `useRef`
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [openDialogUi, setOpenDialogUi] = useState(false);
   const [activeSlide, setActiveSlide] = useState(null);
   function openImage(index: number) {
@@ -78,24 +82,23 @@ export default function Inspirations() {
           <DialogContent className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
             <Swiper
               modules={[Navigation]}
-              navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
-              }}
+              navigation={{ prevEl, nextEl }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
               //   swiper.params.navigation.prevEl = prevRef.current;
               //   // @ts-ignore
               //   swiper.params.navigation.nextEl = nextRef.current;
               // }}
-              onInit={(swiper) => {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = prevRef.current;
-                // @ts-ignore
-                swiper.params.navigation.nextEl = nextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
+              // onInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRef.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRef.current;
+              //   swiper.navigation.init();
+              //   swiper.navigation.update();
+              // }}
+              /*update state on swiper initialization*/
+              // onInit={() => setInit(true)}
               initialSlide={activeSlide}
               loop={true}
               className='w-full py-4'
@@ -152,7 +155,7 @@ export default function Inspirations() {
               ))}
             </Swiper>
             <button
-              ref={prevRef}
+              ref={(node) => setPrevEl(node)}
               className={cn(
                 'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -162,7 +165,7 @@ export default function Inspirations() {
               <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
             </button>
             <button
-              ref={nextRef}
+              ref={(node) => setNextEl(node)}
               className={cn(
                 'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
