@@ -879,19 +879,17 @@ export default function Video() {
 
       {/* Preview Dialog */}
       <Dialog open={openDialog.preview} onOpenChange={() => setOpenDialog((prev) => ({ ...prev, preview: false }))}>
-        <DialogContent className='sm:max-w-[720px]'>
+        <DialogContent className='max-w-5xl'>
           <DialogHeader className='text-left'>
             <DialogTitle className='pr-4'>{videoPreview.title}</DialogTitle>
           </DialogHeader>
-          <div className='py-4'>
-            <iframe
-              className='h-64 w-full rounded sm:h-72 lg:h-80 xl:h-96'
-              src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
-              title={videoPreview.title}
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-            ></iframe>
-          </div>
+          <iframe
+            className='h-64 w-full rounded sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]'
+            src={`https://www.youtube.com/embed/${youtube_url}?autoplay=1`}
+            title={videoPreview.title}
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          ></iframe>
         </DialogContent>
       </Dialog>
     </Layout>
