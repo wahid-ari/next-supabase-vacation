@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,8 +14,11 @@ import VideoCardItem from '@/components/card/VideoCardItem';
 import Shimmer from '@/components/systems/Shimmer';
 
 export default function VideoSection({ data }: { data: any }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
+  // use the `useState` hook instead of `useRef`
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const shuffledVideoData = useMemo(() => data?.sort(() => 0.5 - Math.random()).slice(0, 9), [data]);
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
   const youtube_url = youTubeGetID(videoPreview?.video_url);
@@ -31,8 +34,10 @@ export default function VideoSection({ data }: { data: any }) {
             <Swiper
               modules={[Navigation]}
               navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
+                prevEl,
+                nextEl,
+                // prevEl: prevRef.current,
+                // nextEl: nextRef.current,
               }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
@@ -40,14 +45,14 @@ export default function VideoSection({ data }: { data: any }) {
               //   // @ts-ignore
               //   swiper.params.navigation.nextEl = nextRef.current;
               // }}
-              onInit={(swiper) => {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = prevRef.current;
-                // @ts-ignore
-                swiper.params.navigation.nextEl = nextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
+              // onInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRef.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRef.current;
+              //   swiper.navigation.init();
+              //   swiper.navigation.update();
+              // }}
               spaceBetween={24}
               slidesPerView={3}
               loop={true}
@@ -78,7 +83,8 @@ export default function VideoSection({ data }: { data: any }) {
             </Swiper>
             <button
               aria-label='Prev'
-              ref={prevRef}
+              // ref={prevRef}
+              ref={(node) => setPrevEl(node)}
               className={cn(
                 'absolute left-4 top-1/2 z-[1] -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -89,7 +95,8 @@ export default function VideoSection({ data }: { data: any }) {
             </button>
             <button
               aria-label='Next'
-              ref={nextRef}
+              // ref={nextRef}
+              ref={(node) => setNextEl(node)}
               className={cn(
                 'absolute right-4 top-1/2 z-[1] -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',

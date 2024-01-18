@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
@@ -28,8 +28,6 @@ const ReactLeaflet = dynamic(() => import('@/components/custom/Map'), {
 
 export default function Inspirations() {
   const { data, error } = useInspirationsData();
-  //Add a state that will force a re-render
-  // const [_, setInit] = useState(false);
   // const prevRef = useRef(null);
   // const nextRef = useRef(null);
   // use the `useState` hook instead of `useRef`
@@ -82,7 +80,12 @@ export default function Inspirations() {
           <DialogContent className='max-w-3xl p-0' closeClassName='z-[60] focus:ring-offset-0'>
             <Swiper
               modules={[Navigation]}
-              navigation={{ prevEl, nextEl }}
+              navigation={{
+                prevEl,
+                nextEl,
+                // prevEl: prevRef.current,
+                // nextEl: nextRef.current,
+              }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
               //   swiper.params.navigation.prevEl = prevRef.current;
@@ -97,8 +100,6 @@ export default function Inspirations() {
               //   swiper.navigation.init();
               //   swiper.navigation.update();
               // }}
-              /*update state on swiper initialization*/
-              // onInit={() => setInit(true)}
               initialSlide={activeSlide}
               loop={true}
               className='w-full py-4'
@@ -155,6 +156,8 @@ export default function Inspirations() {
               ))}
             </Swiper>
             <button
+              aria-label='Prev'
+              // ref={prevRef}
               ref={(node) => setPrevEl(node)}
               className={cn(
                 'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
@@ -165,6 +168,8 @@ export default function Inspirations() {
               <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
             </button>
             <button
+              aria-label='Next'
+              // ref={nextRef}
               ref={(node) => setNextEl(node)}
               className={cn(
                 'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',

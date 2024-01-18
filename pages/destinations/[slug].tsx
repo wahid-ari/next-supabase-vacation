@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -78,8 +78,11 @@ export default function Destinations({ slug, seo }) {
   // Travel Inspirations
   const INSPIRATION_TO_SHOW = 9;
   const { data: inspiration, error: errorInspiration } = useInspirationsData();
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
+  // use the `useState` hook instead of `useRef`
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   // using useMemo to prevent reshuffled data if page refreshed, if slug change, refresh the random data
   const shuffledInspirationData = useMemo(
     () => inspiration?.sort(() => 0.5 - Math.random()).slice(0, INSPIRATION_TO_SHOW),
@@ -312,8 +315,10 @@ export default function Destinations({ slug, seo }) {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
+              prevEl,
+              nextEl,
+              // prevEl: prevRef.current,
+              // nextEl: nextRef.current,
             }}
             // onBeforeInit={(swiper) => {
             //   // @ts-ignore
@@ -321,14 +326,14 @@ export default function Destinations({ slug, seo }) {
             //   // @ts-ignore
             //   swiper.params.navigation.nextEl = nextRef.current;
             // }}
-            onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            // onInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRef.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRef.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
             initialSlide={activeSlide}
             loop={true}
             className='w-full py-4'
@@ -385,7 +390,9 @@ export default function Destinations({ slug, seo }) {
             ))}
           </Swiper>
           <button
-            ref={prevRef}
+            aria-label='Prev'
+            // ref={prevRef}
+            ref={(node) => setPrevEl(node)}
             className={cn(
               'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -395,7 +402,9 @@ export default function Destinations({ slug, seo }) {
             <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
           </button>
           <button
-            ref={nextRef}
+            aria-label='Next'
+            // ref={nextRef}
+            ref={(node) => setNextEl(node)}
             className={cn(
               'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',

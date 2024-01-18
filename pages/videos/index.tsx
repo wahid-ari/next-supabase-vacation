@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import InfiniteScroll from 'react-infinite-scroller';
@@ -27,8 +27,11 @@ export default function Videos() {
   const copyData = useMemo(() => (data ? [...data] : []), [data]);
   const filteredData = useMemo(() => copyData.filter((item) => item.hd_quality == true), [copyData]);
   const shuffledData = useMemo(() => filteredData?.sort(() => 0.5 - Math.random()).slice(0, 5), [filteredData]);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
+  // use the `useState` hook instead of `useRef`
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
   const youtube_url = youTubeGetID(videoPreview?.video_url);
   // VIDEO GRID
@@ -73,15 +76,25 @@ export default function Videos() {
             <Swiper
               modules={[Navigation]}
               navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
+                prevEl,
+                nextEl,
+                // prevEl: prevRef.current,
+                // nextEl: nextRef.current,
               }}
-              onBeforeInit={(swiper) => {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = prevRef.current;
-                // @ts-ignore
-                swiper.params.navigation.nextEl = nextRef.current;
-              }}
+              // onBeforeInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRef.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRef.current;
+              // }}
+              // onInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRef.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRef.current;
+              //   swiper.navigation.init();
+              //   swiper.navigation.update();
+              // }}
               spaceBetween={24}
               slidesPerView={3}
               centeredSlides={true}
@@ -155,7 +168,8 @@ export default function Videos() {
             </Swiper>
             <button
               aria-label='Prev'
-              ref={prevRef}
+              // ref={prevRef}
+              ref={(node) => setPrevEl(node)}
               className={cn(
                 'absolute left-4 top-[42%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:left-16 lg:p-3',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -166,7 +180,8 @@ export default function Videos() {
             </button>
             <button
               aria-label='Next'
-              ref={nextRef}
+              // ref={nextRef}
+              ref={(node) => setNextEl(node)}
               className={cn(
                 'absolute right-4 top-[42%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:right-16 lg:p-3',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',

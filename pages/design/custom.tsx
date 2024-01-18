@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -121,12 +121,16 @@ const imagesData = [
 
 export default function Custom() {
   const [currentPage, setCurrentPage] = useState(0);
+  // TODO: Docs https://github.com/nolimits4web/swiper/issues/3855#issuecomment-982499163
+  // const prevRefHeader = useRef(null);
+  // const nextRefHeader = useRef(null);
+  const [prevHeader, setPrevHeader] = useState<HTMLElement | null>(null);
+  const [nextHeader, setNextHeader] = useState<HTMLElement | null>(null);
 
-  const prevRefHeader = useRef(null);
-  const nextRefHeader = useRef(null);
-
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
+  const [prev, setPrev] = useState<HTMLElement | null>(null);
+  const [next, setNext] = useState<HTMLElement | null>(null);
   const [openDialogUi, setOpenDialogUi] = useState(false);
   const [imageOpened, setImageOpened] = useState({ id: null, format: '', href: '', public_id: '' });
   function openImage(id: any) {
@@ -136,8 +140,10 @@ export default function Custom() {
   }
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const prevRefThumb = useRef(null);
-  const nextRefThumb = useRef(null);
+  // const prevRefThumb = useRef(null);
+  // const nextRefThumb = useRef(null);
+  const [prevThumb, setPrevThumb] = useState<HTMLElement | null>(null);
+  const [nextThumb, setNextThumb] = useState<HTMLElement | null>(null);
   const [openDialogUiThumb, setOpenDialogUiThumb] = useState(false);
   const [imageOpenedThumb, setImageOpenedThumb] = useState({ id: null, format: '', href: '', public_id: '' });
   function openImageThumb(id: any) {
@@ -146,19 +152,27 @@ export default function Custom() {
     setOpenDialogUiThumb(true);
   }
 
-  const prevRefVideo = useRef(null);
-  const nextRefVideo = useRef(null);
+  // const prevRefVideo = useRef(null);
+  // const nextRefVideo = useRef(null);
+  const [prevVideo, setPrevVideo] = useState<HTMLElement | null>(null);
+  const [nextVideo, setNextVideo] = useState<HTMLElement | null>(null);
   const [videoPreview, setVideoPreview] = useState({ open: false, title: '', video_url: '' });
   const youtube_url = youTubeGetID(videoPreview?.video_url);
 
-  const prevRefVideoActive = useRef(null);
-  const nextRefVideoActive = useRef(null);
+  // const prevRefVideoActive = useRef(null);
+  // const nextRefVideoActive = useRef(null);
+  const [prevVideoActive, setPrevVideoActive] = useState<HTMLElement | null>(null);
+  const [nextVideoActive, setNextVideoActive] = useState<HTMLElement | null>(null);
 
-  const prevRefVideoHover = useRef(null);
-  const nextRefVideoHover = useRef(null);
+  // const prevRefVideoHover = useRef(null);
+  // const nextRefVideoHover = useRef(null);
+  const [prevVideoHover, setPrevVideoHover] = useState<HTMLElement | null>(null);
+  const [nextVideoHover, setNextVideoHover] = useState<HTMLElement | null>(null);
 
-  const prevRefSlider = useRef(null);
-  const nextRefSlider = useRef(null);
+  // const prevRefSlider = useRef(null);
+  // const nextRefSlider = useRef(null);
+  const [prevSlider, setPrevSlider] = useState<HTMLElement | null>(null);
+  const [nextSlider, setNextSlider] = useState<HTMLElement | null>(null);
 
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
@@ -260,8 +274,10 @@ export default function Custom() {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRefHeader.current,
-              nextEl: nextRefHeader.current,
+              prevEl: prevHeader,
+              nextEl: nextHeader,
+              // prevEl: prevRefHeader.current,
+              // nextEl: nextRefHeader.current,
             }}
             // onBeforeInit={(swiper) => {
             //   // @ts-ignore
@@ -269,14 +285,14 @@ export default function Custom() {
             //   // @ts-ignore
             //   swiper.params.navigation.nextEl = nextRefHeader.current;
             // }}
-            onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRefHeader.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRefHeader.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            // onInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefHeader.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefHeader.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
             slidesPerView={1}
             loop={true}
             breakpoints={{
@@ -318,7 +334,9 @@ export default function Custom() {
             ))}
           </Swiper>
           <button
-            ref={prevRefHeader}
+            aria-label='Prev'
+            // ref={prevRefHeader}
+            ref={(node) => setPrevHeader(node)}
             className={cn(
               'absolute left-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8',
               'border-neutral-800 bg-black/40 hover:bg-black/60',
@@ -328,7 +346,9 @@ export default function Custom() {
             <ArrowLeftIcon className='h-w-6 h-5 w-5 text-white sm:w-6 md:h-7 md:w-7 lg:h-8 lg:w-8' />
           </button>
           <button
-            ref={nextRefHeader}
+            aria-label='Next'
+            // ref={nextRefHeader}
+            ref={(node) => setNextHeader(node)}
             className={cn(
               'absolute right-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8',
               'border-neutral-800 bg-black/40 hover:bg-black/60',
@@ -345,8 +365,10 @@ export default function Custom() {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRefSlider.current,
-              nextEl: nextRefSlider.current,
+              prevEl: prevSlider,
+              nextEl: nextSlider,
+              // prevEl: prevRefSlider.current,
+              // nextEl: nextRefSlider.current,
             }}
             // onBeforeInit={(swiper) => {
             //   // @ts-ignore
@@ -354,14 +376,14 @@ export default function Custom() {
             //   // @ts-ignore
             //   swiper.params.navigation.nextEl = nextRefSlider.current;
             // }}
-            onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRefSlider.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRefSlider.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            // onInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefSlider.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefSlider.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
             spaceBetween={24}
             slidesPerView={3}
             loop={true}
@@ -390,7 +412,8 @@ export default function Custom() {
             ))}
           </Swiper>
           <button
-            ref={prevRefSlider}
+            // ref={prevRefSlider}
+            ref={(node) => setPrevSlider(node)}
             className={cn(
               'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -400,7 +423,8 @@ export default function Custom() {
             <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
-            ref={nextRefSlider}
+            // ref={nextRefSlider}
+            ref={(node) => setNextSlider(node)}
             className={cn(
               'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -603,8 +627,10 @@ export default function Custom() {
             <Swiper
               modules={[Navigation]}
               navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
+                prevEl: prev,
+                nextEl: next,
+                // prevEl: prevRef.current,
+                // nextEl: nextRef.current,
               }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
@@ -612,14 +638,14 @@ export default function Custom() {
               //   // @ts-ignore
               //   swiper.params.navigation.nextEl = nextRef.current;
               // }}
-              onInit={(swiper) => {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = prevRef.current;
-                // @ts-ignore
-                swiper.params.navigation.nextEl = nextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
+              // onInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRef.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRef.current;
+              //   swiper.navigation.init();
+              //   swiper.navigation.update();
+              // }}
               initialSlide={imageOpened.id}
               loop={true}
               className='w-full py-4'
@@ -653,7 +679,8 @@ export default function Custom() {
               ))}
             </Swiper>
             <button
-              ref={prevRef}
+              // ref={prevRef}
+              ref={(node) => setPrev(node)}
               className={cn(
                 'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -663,7 +690,8 @@ export default function Custom() {
               <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
             </button>
             <button
-              ref={nextRef}
+              // ref={nextRef}
+              ref={(node) => setNext(node)}
               className={cn(
                 'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -695,8 +723,10 @@ export default function Custom() {
               thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
               modules={[Navigation, Thumbs]}
               navigation={{
-                prevEl: prevRefThumb.current,
-                nextEl: nextRefThumb.current,
+                prevEl: prevThumb,
+                nextEl: nextThumb,
+                // prevEl: prevRefThumb.current,
+                // nextEl: nextRefThumb.current,
               }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
@@ -704,14 +734,14 @@ export default function Custom() {
               //   // @ts-ignore
               //   swiper.params.navigation.nextEl = nextRefThumb.current;
               // }}
-              onInit={(swiper) => {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = prevRefThumb.current;
-                // @ts-ignore
-                swiper.params.navigation.nextEl = nextRefThumb.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
+              // onInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRefThumb.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRefThumb.current;
+              //   swiper.navigation.init();
+              //   swiper.navigation.update();
+              // }}
               initialSlide={imageOpenedThumb.id}
               loop={true}
               className='w-full py-4'
@@ -768,7 +798,8 @@ export default function Custom() {
               ))}
             </Swiper>
             <button
-              ref={prevRefThumb}
+              // ref={prevRefThumb}
+              ref={(node) => setPrevThumb(node)}
               className={cn(
                 'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -778,7 +809,8 @@ export default function Custom() {
               <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
             </button>
             <button
-              ref={nextRefThumb}
+              // ref={nextRefThumb}
+              ref={(node) => setNextThumb(node)}
               className={cn(
                 'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -798,8 +830,10 @@ export default function Custom() {
             <Swiper
               modules={[Navigation]}
               navigation={{
-                prevEl: prevRefVideo.current,
-                nextEl: nextRefVideo.current,
+                prevEl: prevVideo,
+                nextEl: nextVideo,
+                // prevEl: prevRefVideo.current,
+                // nextEl: nextRefVideo.current,
               }}
               // onBeforeInit={(swiper) => {
               //   // @ts-ignore
@@ -807,14 +841,14 @@ export default function Custom() {
               //   // @ts-ignore
               //   swiper.params.navigation.nextEl = nextRefVideo.current;
               // }}
-              onInit={(swiper) => {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = prevRefVideo.current;
-                // @ts-ignore
-                swiper.params.navigation.nextEl = nextRefVideo.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
+              // onInit={(swiper) => {
+              //   // @ts-ignore
+              //   swiper.params.navigation.prevEl = prevRefVideo.current;
+              //   // @ts-ignore
+              //   swiper.params.navigation.nextEl = nextRefVideo.current;
+              //   swiper.navigation.init();
+              //   swiper.navigation.update();
+              // }}
               spaceBetween={24}
               slidesPerView={3}
               centeredSlides={true}
@@ -887,7 +921,8 @@ export default function Custom() {
               ))}
             </Swiper>
             <button
-              ref={prevRefVideo}
+              // ref={prevRefVideo}
+              ref={(node) => setPrevVideo(node)}
               className={cn(
                 'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:left-16 lg:p-3',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -897,7 +932,8 @@ export default function Custom() {
               <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
             </button>
             <button
-              ref={nextRefVideo}
+              // ref={nextRefVideo}
+              ref={(node) => setNextVideo(node)}
               className={cn(
                 'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:right-16 lg:p-3',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -938,8 +974,10 @@ export default function Custom() {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRefVideoHover.current,
-              nextEl: nextRefVideoHover.current,
+              prevEl: prevVideoHover,
+              nextEl: nextVideoHover,
+              // prevEl: prevRefVideoHover.current,
+              // nextEl: nextRefVideoHover.current,
             }}
             // onBeforeInit={(swiper) => {
             //   // @ts-ignore
@@ -947,14 +985,14 @@ export default function Custom() {
             //   // @ts-ignore
             //   swiper.params.navigation.nextEl = nextRefVideoHover.current;
             // }}
-            onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRefVideoHover.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRefVideoHover.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            // onInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefVideoHover.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefVideoHover.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
             spaceBetween={24}
             slidesPerView={3}
             centeredSlides={true}
@@ -1028,7 +1066,8 @@ export default function Custom() {
             ))}
           </Swiper>
           <button
-            ref={prevRefVideoHover}
+            // ref={prevRefVideoHover}
+            ref={(node) => setPrevVideoHover(node)}
             className={cn(
               'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:left-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -1038,7 +1077,8 @@ export default function Custom() {
             <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
-            ref={nextRefVideoHover}
+            // ref={nextRefVideoHover}
+            ref={(node) => setNextVideoHover(node)}
             className={cn(
               'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:right-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -1056,8 +1096,10 @@ export default function Custom() {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRefVideoActive.current,
-              nextEl: nextRefVideoActive.current,
+              prevEl: prevVideoActive,
+              nextEl: nextVideoActive,
+              // prevEl: prevRefVideoActive.current,
+              // nextEl: nextRefVideoActive.current,
             }}
             // onBeforeInit={(swiper) => {
             //   // @ts-ignore
@@ -1065,14 +1107,14 @@ export default function Custom() {
             //   // @ts-ignore
             //   swiper.params.navigation.nextEl = nextRefVideoActive.current;
             // }}
-            onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRefVideoActive.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRefVideoActive.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            // onInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRefVideoActive.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRefVideoActive.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
             spaceBetween={24}
             slidesPerView={3}
             centeredSlides={true}
@@ -1133,7 +1175,8 @@ export default function Custom() {
             ))}
           </Swiper>
           <button
-            ref={prevRefVideoActive}
+            // ref={prevRefVideoActive}
+            ref={(node) => setPrevVideoActive(node)}
             className={cn(
               'absolute left-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:left-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
@@ -1143,7 +1186,8 @@ export default function Custom() {
             <ArrowLeftIcon className='h-5 w-5 dark:text-white lg:h-6 lg:w-6' />
           </button>
           <button
-            ref={nextRefVideoActive}
+            // ref={nextRefVideoActive}
+            ref={(node) => setNextVideoActive(node)}
             className={cn(
               'absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-2 shadow-lg transition-all lg:right-16 lg:p-3',
               'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',

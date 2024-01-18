@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
@@ -28,8 +28,11 @@ export default function Home() {
   // using useMemo to prevent reshuffled data
   const copyData = useMemo(() => data?.filter((item: any) => item.image_url != null && item.image_url != ''), [data]);
   const shuffledData = useMemo(() => copyData?.sort(() => 0.5 - Math.random()).slice(0, 5), [copyData]);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
+  // use the `useState` hook instead of `useRef`
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
   const shuffledDestinationData = useMemo(() => data?.sort(() => 0.5 - Math.random()).slice(0, 12), [data]);
   const shuffledCategoryData = useMemo(() => categories?.sort(() => 0.5 - Math.random()).slice(0, 8), [categories]);
@@ -57,8 +60,10 @@ export default function Home() {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
+              prevEl,
+              nextEl,
+              // prevEl: prevRef.current,
+              // nextEl: nextRef.current,
             }}
             // onBeforeInit={(swiper) => {
             //   // @ts-ignore
@@ -66,14 +71,14 @@ export default function Home() {
             //   // @ts-ignore
             //   swiper.params.navigation.nextEl = nextRef.current;
             // }}
-            onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            // onInit={(swiper) => {
+            //   // @ts-ignore
+            //   swiper.params.navigation.prevEl = prevRef.current;
+            //   // @ts-ignore
+            //   swiper.params.navigation.nextEl = nextRef.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
             slidesPerView={1}
             loop={true}
             breakpoints={{
@@ -116,7 +121,8 @@ export default function Home() {
           </Swiper>
           <button
             aria-label='Prev'
-            ref={prevRef}
+            // ref={prevRef}
+            ref={(node) => setPrevEl(node)}
             className={cn(
               'absolute left-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8',
               'border-neutral-800 bg-black/40 hover:bg-black/60',
@@ -127,7 +133,8 @@ export default function Home() {
           </button>
           <button
             aria-label='Next'
-            ref={nextRef}
+            // ref={nextRef}
+            ref={(node) => setNextEl(node)}
             className={cn(
               'absolute right-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8',
               'border-neutral-800 bg-black/40 hover:bg-black/60',
