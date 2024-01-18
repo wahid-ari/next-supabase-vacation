@@ -15,8 +15,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
       toastOptions={{
         // https://sonner.emilkowal.ski/styling#tailwind-css
         classNames: {
+          // https://github.com/shadcn-ui/ui/issues/2401#issuecomment-1891091664
           toast:
-            'group toast !py-3 group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+            'group toast !py-3 group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:pointer-events-auto',
           title: 'text-sm',
           description: 'group-[.toast]:text-muted-foreground',
           actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
