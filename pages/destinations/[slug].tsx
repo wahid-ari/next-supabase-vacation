@@ -342,7 +342,7 @@ export default function Destinations({ slug, seo }) {
             {shuffledInspirationData?.map((inspiration: any, index: number) => (
               <SwiperSlide key={index}>
                 <div className='grid grid-cols-1 sm:grid-cols-2'>
-                  <div className='relative h-full min-h-[300px] w-full sm:min-h-[450px]'>
+                  <div className='relative h-full min-h-[200px] w-full sm:min-h-[450px]'>
                     <Image
                       alt={inspiration?.title}
                       src={inspiration?.image_url}
@@ -352,7 +352,7 @@ export default function Destinations({ slug, seo }) {
                     />
                   </div>
                   <div className='p-4 pb-6 pr-1'>
-                    <ScrollArea className='flex h-40 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
+                    <ScrollArea className='flex h-64 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
                       <div className='flex min-h-full flex-col justify-between gap-4'>
                         <div>
                           <h3 className='mb-2 p-1 text-xl font-semibold'>{inspiration?.title}</h3>
@@ -379,7 +379,7 @@ export default function Destinations({ slug, seo }) {
                           <ReactLeaflet
                             name={inspiration?.title}
                             marker={inspiration?.latlng}
-                            className='h-64'
+                            className='h-44 sm:h-56 md:h-64'
                             zoom={6}
                           />
                         )}
