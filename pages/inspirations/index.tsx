@@ -120,7 +120,7 @@ export default function Inspirations() {
                       />
                     </div>
                     <div className='p-4 pb-6 pr-1'>
-                      <ScrollArea className='flex h-64 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
+                      <ScrollArea className='flex h-72 flex-col justify-between pr-4 sm:h-[450px] sm:pr-7'>
                         <div className='flex min-h-full flex-col justify-between gap-4'>
                           <div>
                             <h3 className='mb-2 p-1 text-xl font-semibold'>{inspiration?.title}</h3>
@@ -147,7 +147,7 @@ export default function Inspirations() {
                             <ReactLeaflet
                               name={inspiration?.title}
                               marker={inspiration?.latlng}
-                              className='h-44 sm:h-56 md:h-64'
+                              className='h-44 sm:h-56'
                               zoom={6}
                             />
                           )}
@@ -168,7 +168,7 @@ export default function Inspirations() {
               // ref={prevRef}
               ref={(node) => setPrevEl(node)}
               className={cn(
-                'absolute left-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
+                'absolute left-4 top-[17%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-left-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
@@ -180,7 +180,7 @@ export default function Inspirations() {
               // ref={nextRef}
               ref={(node) => setNextEl(node)}
               className={cn(
-                'absolute right-4 top-[30%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
+                'absolute right-4 top-[17%] z-[70] cursor-pointer rounded-full p-2 shadow-lg transition-all sm:top-[45%] lg:-right-16',
                 'border bg-neutral-100 hover:bg-neutral-200 dark:border-neutral-800 dark:bg-black/60 dark:hover:bg-black/90',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
