@@ -8,4 +8,4 @@ Allow: /
 Allow: /api/og/*
 
 # Sitemap
-Sitemap: https://next-supabase-vacation.vercel.app/sitemap.xml
+Sitemap: https://my-vacation.vercel.app/sitemap.xml
