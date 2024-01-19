@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon, MapIcon } from 'lucide-react';
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -18,11 +19,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
-import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
-
 import { useDestinationData, useDestinationsData, useInspirationsData } from '@/libs/swr';
 import { cn, youTubeGetID } from '@/libs/utils';
 
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Text } from '@/components/ui/Text';
@@ -81,6 +81,7 @@ export default function Destinations({ slug, seo }) {
   // const prevRef = useRef(null);
   // const nextRef = useRef(null);
   // use the `useState` hook instead of `useRef`
+  const [showMap, setShowMap] = useState<boolean>(false);
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   // using useMemo to prevent reshuffled data if page refreshed, if slug change, refresh the random data
@@ -374,13 +375,18 @@ export default function Destinations({ slug, seo }) {
                           <InstagramIcon className='h-4 w-4' />
                           Instagram
                         </a>
-                        {inspiration.latlng && (
+                        {inspiration.latlng && showMap && (
                           <ReactLeaflet
                             name={inspiration?.title}
                             marker={inspiration?.latlng}
                             className='h-64'
                             zoom={6}
                           />
+                        )}
+                        {inspiration.latlng && (
+                          <Button onClick={() => setShowMap(!showMap)} variant='outline' className='mx-1 text-[15px]'>
+                            <MapIcon className='mr-2 h-4 w-4' /> {showMap ? 'Hide' : 'Show'} Maps
+                          </Button>
                         )}
                       </div>
                     </ScrollArea>

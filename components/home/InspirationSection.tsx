@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon, MapIcon } from 'lucide-react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -9,6 +9,7 @@ import 'swiper/css';
 
 import { cn } from '@/libs/utils';
 
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { Heading } from '@/components/ui/Heading';
 import { ScrollArea } from '@/components/ui/ScrollArea';
@@ -29,6 +30,7 @@ export default function InspirationSection({ data }: { data: any }) {
   // const prevRef = useRef(null);
   // const nextRef = useRef(null);
   // use the `useState` hook instead of `useRef`
+  const [showMap, setShowMap] = useState<boolean>(false);
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const shuffledInspirationData = useMemo(() => data?.sort(() => 0.5 - Math.random()).slice(0, 12), [data]);
@@ -129,13 +131,18 @@ export default function InspirationSection({ data }: { data: any }) {
                           <InstagramIcon className='h-4 w-4' />
                           Instagram
                         </a>
-                        {inspiration.latlng && (
+                        {inspiration.latlng && showMap && (
                           <ReactLeaflet
                             name={inspiration?.title}
                             marker={inspiration?.latlng}
                             className='h-64'
                             zoom={6}
                           />
+                        )}
+                        {inspiration.latlng && (
+                          <Button onClick={() => setShowMap(!showMap)} variant='outline' className='mx-1 text-[15px]'>
+                            <MapIcon className='mr-2 h-4 w-4' /> {showMap ? 'Hide' : 'Show'} Maps
+                          </Button>
                         )}
                       </div>
                     </ScrollArea>

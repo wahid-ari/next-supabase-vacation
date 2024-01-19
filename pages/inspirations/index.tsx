@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon, MapIcon } from 'lucide-react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -10,6 +10,7 @@ import 'swiper/css';
 import { useInspirationsData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
 
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
@@ -31,6 +32,7 @@ export default function Inspirations() {
   // const prevRef = useRef(null);
   // const nextRef = useRef(null);
   // use the `useState` hook instead of `useRef`
+  const [showMap, setShowMap] = useState<boolean>(false);
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [openDialogUi, setOpenDialogUi] = useState(false);
@@ -57,10 +59,11 @@ export default function Inspirations() {
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
       <div className='pt-4'>
-        <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+        <div className='mt-2 grid grid-cols-2 gap-6 min-[500px]:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
           {data
             ? data?.map((inspiration: any, index: number) => (
                 <InspirationCardItem
+                  className='h-36 sm:h-44 md:h-52 lg:h-56'
                   key={index}
                   onClick={() => openImage(index)}
                   alt={inspiration?.title}
@@ -70,7 +73,7 @@ export default function Inspirations() {
             : [...Array(15).keys()].map((i) => (
                 <Shimmer key={i}>
                   <div className='space-y-3'>
-                    <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                    <div className='h-32 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50 sm:h-40 md:h-48 lg:h-52'></div>
                   </div>
                 </Shimmer>
               ))}
@@ -140,13 +143,18 @@ export default function Inspirations() {
                             <InstagramIcon className='h-4 w-4' />
                             Instagram
                           </a>
-                          {inspiration.latlng && (
+                          {inspiration.latlng && showMap && (
                             <ReactLeaflet
                               name={inspiration?.title}
                               marker={inspiration?.latlng}
                               className='h-64'
                               zoom={6}
                             />
+                          )}
+                          {inspiration.latlng && (
+                            <Button onClick={() => setShowMap(!showMap)} variant='outline' className='mx-1 text-[15px]'>
+                              <MapIcon className='mr-2 h-4 w-4' /> {showMap ? 'Hide' : 'Show'} Maps
+                            </Button>
                           )}
                         </div>
                       </ScrollArea>
