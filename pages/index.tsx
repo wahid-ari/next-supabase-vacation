@@ -91,7 +91,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <div className='relative'>
                   <Link href={`/destinations/${destination.slug}`} className='group overflow-hidden'>
-                    <div className='relative h-[50vh] w-full overflow-hidden min-[480px]:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
+                    <div className='relative h-[50vh] w-full overflow-hidden min-[380px]:h-[40vh] min-[480px]:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
                       <Image
                         className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
                         src={destination.image_url}
@@ -125,7 +125,7 @@ export default function Home() {
             ref={(node) => setPrevEl(node)}
             className={cn(
               'absolute left-2 top-[52%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8 md:top-1/2',
-              'border-neutral-800 bg-black/40 hover:bg-black/60',
+              'border-neutral-800 bg-black/60 hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
@@ -137,7 +137,7 @@ export default function Home() {
             ref={(node) => setNextEl(node)}
             className={cn(
               'absolute right-2 top-[52%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8 md:top-1/2',
-              'border-neutral-800 bg-black/40 hover:bg-black/60',
+              'border-neutral-800 bg-black/60 hover:bg-black/90',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >
