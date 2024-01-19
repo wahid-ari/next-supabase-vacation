@@ -54,10 +54,10 @@ export default function VideoSection({ data }: { data: any }) {
               //   swiper.navigation.update();
               // }}
               spaceBetween={24}
-              slidesPerView={3}
+              slidesPerView={1}
               loop={true}
               breakpoints={{
-                400: {
+                300: {
                   slidesPerView: 1,
                 },
                 650: {
