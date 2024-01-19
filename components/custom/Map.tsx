@@ -17,6 +17,7 @@ type Props = {
   enableEdit?: boolean;
   enableSearch?: boolean;
   autoOpenPopup?: boolean;
+  dragging?: boolean;
   [props: string]: any;
 };
 
@@ -28,6 +29,7 @@ export default function Map({
   enableEdit,
   enableSearch,
   autoOpenPopup,
+  dragging = true,
   ...props
 }: Props) {
   const markerRef = useRef(null);
@@ -76,6 +78,7 @@ export default function Map({
       fadeAnimation={true}
       markerZoomAnimation={true}
       closePopupOnClick={true}
+      dragging={dragging}
       {...props}
     >
       <TileLayer

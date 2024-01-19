@@ -258,7 +258,7 @@ export default function Custom() {
       <Wrapper
         id='maps'
         name='Maps'
-        props={['name', 'marker', 'setMarker', 'zoom', 'enableEdit', 'enableSearch', 'autoOpenPopup']}
+        props={['name', 'marker', 'setMarker', 'zoom', 'enableEdit', 'enableSearch', 'autoOpenPopup', 'dragging']}
         noChildren
       >
         <ReactLeaflet
