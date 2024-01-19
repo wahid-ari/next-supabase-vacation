@@ -91,7 +91,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <div className='relative'>
                   <Link href={`/destinations/${destination.slug}`} className='group overflow-hidden'>
-                    <div className='relative h-[50vh] w-full overflow-hidden sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
+                    <div className='relative h-[50vh] w-full overflow-hidden min-[480px]:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
                       <Image
                         className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
                         src={destination.image_url}
@@ -124,7 +124,7 @@ export default function Home() {
             // ref={prevRef}
             ref={(node) => setPrevEl(node)}
             className={cn(
-              'absolute left-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8',
+              'absolute left-2 top-[52%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:left-8 md:top-1/2',
               'border-neutral-800 bg-black/40 hover:bg-black/60',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -136,7 +136,7 @@ export default function Home() {
             // ref={nextRef}
             ref={(node) => setNextEl(node)}
             className={cn(
-              'absolute right-2 top-1/2 z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8',
+              'absolute right-2 top-[52%] z-[1] cursor-pointer rounded-full p-2 shadow-lg transition-all md:right-8 md:top-1/2',
               'border-neutral-800 bg-black/40 hover:bg-black/60',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -153,11 +153,12 @@ export default function Home() {
           <Heading as='h2' className='mb-6 text-3xl font-semibold'>
             Destination
           </Heading>
-          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+          <div className='mt-2 grid grid-cols-1 gap-6 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
             {shuffledDestinationData
               ? shuffledDestinationData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <DestinationCardItem
+                      className='h-56 sm:h-64'
                       href={`/destinations/${item.slug}`}
                       image_url={item.image_url}
                       name={item.name}
@@ -167,7 +168,7 @@ export default function Home() {
               : [...Array(12).keys()].map((i) => (
                   <Shimmer key={i}>
                     <div className='space-y-3'>
-                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                      <div className='h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50 sm:h-48'></div>
                       <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                     </div>
                   </Shimmer>
