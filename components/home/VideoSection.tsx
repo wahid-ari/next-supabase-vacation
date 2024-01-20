@@ -27,7 +27,10 @@ export default function VideoSection({ data }: { data: any }) {
   return (
     <>
       <section className='my-16'>
-        <Link href='/videos' className='text-3xl font-semibold tracking-tight'>
+        <Link
+          href='/videos'
+          className='rounded text-3xl font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        >
           Video
         </Link>
         {shuffledVideoData ? (

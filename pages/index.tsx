@@ -148,7 +148,10 @@ export default function Home() {
 
       <div className='mx-auto max-w-7xl px-4'>
         <section className='my-16'>
-          <Link href='/destinations' className='text-3xl font-semibold tracking-tight'>
+          <Link
+            href='/destinations'
+            className='rounded text-3xl font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+          >
             Destination
           </Link>
           <div className='mt-8 grid grid-cols-1 gap-6 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
@@ -181,7 +184,10 @@ export default function Home() {
         />
 
         <section className='my-16'>
-          <Link href='/categories' className='text-3xl font-semibold tracking-tight'>
+          <Link
+            href='/categories'
+            className='rounded text-3xl font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+          >
             Category
           </Link>
           <div className='mt-8 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-4'>

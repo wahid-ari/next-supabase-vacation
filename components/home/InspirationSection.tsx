@@ -45,7 +45,10 @@ export default function InspirationSection({ data }: { data: any }) {
   return (
     <>
       <section className='my-16'>
-        <Link href='/inspirations' className='text-3xl font-semibold tracking-tight'>
+        <Link
+          href='/inspirations'
+          className='rounded text-3xl font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        >
           Inspiration
         </Link>
         <div className='mt-8 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
