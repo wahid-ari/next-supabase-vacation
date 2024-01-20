@@ -26,23 +26,18 @@ function buildRFC822Date(dateString: string) {
 
 function generateSiteMap(destination: any) {
   return `<?xml version="1.0" encoding="UTF-8" ?>
-    <rss xmlns:blogChannel="${BASE_URL}/destinations" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     
     <channel>
+      <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
       <title>My Vacation</title>
-      <link>${BASE_URL}/destination</link>
+      <link>${BASE_URL}</link>
       <description>Explore all Destination in My Vacation</description>
       <language>en-us</language>
       <generator>My Vacation</generator>
       <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
       <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
       <ttl>40</ttl>
-      <image>
-      <title>My Vacation</title>
-      <url>${BASE_URL}/icon.svg</url>
-      <link>${BASE_URL}/icon.svg</link>
-      </image>
       <copyright>Copyright © 2023 My Vacation</copyright>
       ${destination
         .map((item: any) => {
