@@ -91,7 +91,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <div className='relative'>
                   <Link href={`/destinations/${destination.slug}`} className='group overflow-hidden'>
-                    <div className='relative h-[50vh] w-full overflow-hidden min-[380px]:h-[40vh] min-[480px]:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
+                    <div className='relative h-[50vh] w-full overflow-hidden min-[380px]:h-[40vh] min-[450px]:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]'>
                       <Image
                         className='w-full transform object-cover object-center transition-all duration-500 group-hover:scale-105'
                         src={destination.image_url}
@@ -145,7 +145,7 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <Shimmer className='h-[50vh] w-full sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]' />
+        <Shimmer className='h-[50vh] w-full min-[380px]:h-[40vh] min-[450px]:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[105vh] 2xl:h-[90vh]' />
       )}
 
       <div className='mx-auto max-w-7xl px-4'>

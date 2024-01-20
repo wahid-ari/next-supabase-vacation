@@ -1,4 +1,9 @@
+import { useState } from 'react';
+
 import { useProvincesData } from '@/libs/swr';
+
+import { Heading } from '@/components/ui/Heading';
+import { InputDebounce } from '@/components/ui/InputDebounce';
 
 import ProvinceCardItem from '@/components/card/ProvinceCardItem';
 import FrontLayout from '@/components/front/FrontLayout';
@@ -6,6 +11,15 @@ import Shimmer from '@/components/systems/Shimmer';
 
 export default function Provinces() {
   const { data, error } = useProvincesData();
+  const [query, setQuery] = useState('');
+  const filtered =
+    query === ''
+      ? data
+      : data?.filter((item: any) =>
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, '')),
+        );
+
+  console.log(data);
 
   if (error) {
     return (
@@ -23,10 +37,25 @@ export default function Provinces() {
       title='Province - MyVacation'
       description='Enjoy the untouched beaches, mountains, lakes, and many more pleasing destinations as well as the magnificent city skylines throughout the country. And when you decide to see them all, a visit won’t be enough to embrace the wonders of Indonesia.'
     >
-      <div className='pt-4'>
+      <div className='mt-4 flex flex-wrap items-center justify-between gap-3'>
+        <Heading as='h1' variant='h3' className='font-medium'>
+          Province
+        </Heading>
+        <InputDebounce
+          id='search'
+          name='search'
+          placeholder='Search Province'
+          className='max-w-xs'
+          debounce={500}
+          value={query}
+          onChange={(value) => setQuery(value)}
+        />
+      </div>
+
+      <div className='pt-6'>
         <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
-          {data
-            ? data?.map((item: any, index: number) => (
+          {filtered
+            ? filtered?.map((item: any, index: number) => (
                 <div key={index} className='relative'>
                   <ProvinceCardItem
                     href={`/provinces/${item.slug}`}

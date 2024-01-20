@@ -54,7 +54,7 @@ export default function Islands({ slug, seo }) {
       title={`${seo ? seo?.name + ' - MyVacation' : 'Island Detail - MyVacation'}`}
       description={`${seo ? seo?.description : 'View Detail Island - MyVacation'}`}
     >
-      <div className='mt-4 flex items-center justify-between gap-3'>
+      <div className='mt-4 flex flex-wrap items-center justify-between gap-3'>
         <Heading as='h1' variant='h3' className='font-medium'>
           {seo ? seo?.name : 'Island Detail'}
         </Heading>

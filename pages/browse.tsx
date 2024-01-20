@@ -118,11 +118,11 @@ export default function Browse() {
               <Heading h3 className='mt-6'>
                 Destination
               </Heading>
-              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
                 {[...Array(4).keys()].map((i) => (
                   <Shimmer key={i}>
                     <div className='space-y-3'>
-                      <div className='h-48 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                      <div className='h-40 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50 sm:h-48'></div>
                       <div className='h-4 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                     </div>
                   </Shimmer>
@@ -155,10 +155,11 @@ export default function Browse() {
               <Heading h2 className='my-6 !text-[19px]'>
                 Destination
               </Heading>
-              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
                 {data?.destination?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
                     <DestinationCardItem
+                      className='h-56 sm:h-64'
                       href={`/destinations/${item.slug}`}
                       image_url={item.image_url}
                       name={item.name}
@@ -217,10 +218,11 @@ export default function Browse() {
                       Clear Destination
                     </button>
                   </div>
-                  <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+                  <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
                     {searchHistory.destination?.map((item: any, index: number) => (
                       <div key={index} className='relative'>
                         <DestinationCardItem
+                          className='h-56 sm:h-64'
                           href={`/destinations/${item.slug}`}
                           image_url={item.image_url}
                           name={item.name}
