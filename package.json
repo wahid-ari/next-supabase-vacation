@@ -82,6 +82,7 @@
     "react-hot-toast": "^2.4.1",
     "react-infinite-scroller": "^1.2.6",
     "react-leaflet": "^4.2.1",
+    "react-lite-youtube-embed": "^2.4.0",
     "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
     "react-share": "^4.4.1",

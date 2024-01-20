@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ArrowLeftIcon, ArrowRightIcon, InstagramIcon, MapIcon } from 'lucide-react';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -17,6 +18,7 @@ import {
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import 'swiper/css';
 
 import { useDestinationData, useDestinationsData, useInspirationsData } from '@/libs/swr';
@@ -227,19 +229,26 @@ export default function Destinations({ slug, seo }) {
             </table>
 
             {data?.video_url && (
-              <iframe
-                className='mx-auto my-8 h-64 w-full rounded sm:h-72 sm:w-5/6 md:w-4/6 lg:h-80 xl:h-96'
-                src={`https://www.youtube.com/embed/${youTubeGetID(data?.video_url)}`}
-                title={data?.name}
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              />
+              // <iframe
+              //   className='mx-auto my-8 h-64 w-full rounded sm:h-72 sm:w-5/6 md:w-4/6 lg:h-80 xl:h-96'
+              //   src={`https://www.youtube.com/embed/${youTubeGetID(data?.video_url)}`}
+              //   title={data?.name}
+              //   allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              //   allowFullScreen
+              // />
+              <div className='mx-auto my-8 aspect-video w-full rounded sm:w-5/6'>
+                <LiteYouTubeEmbed
+                  id={youTubeGetID(data?.video_url)}
+                  title={data?.name}
+                  wrapperClass='yt-lite rounded'
+                />
+              </div>
             )}
 
             <div
               className={cn(
                 'ql-editor !prose !max-w-none !p-0 dark:!prose-invert prose-p:text-justify prose-video:!w-96',
-                'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-center',
+                'prose-img:mx-auto prose-img:h-64 prose-img:rounded prose-img:object-cover prose-img:object-center',
                 'prose-img:w-full prose-img:!max-w-2xl prose-img:sm:h-72 prose-img:md:h-96',
                 '!prose-blue prose-a:!font-normal prose-blockquote:!my-3',
               )}
