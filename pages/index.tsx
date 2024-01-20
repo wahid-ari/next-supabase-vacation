@@ -10,8 +10,6 @@ import 'swiper/css';
 import { useCategoriesData, useDestinationsData, useInspirationsData, useVideosData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
 
-import { Heading } from '@/components/ui/Heading';
-
 import CategoryCardItem from '@/components/card/CategoryCardItem';
 import DestinationCardItem from '@/components/card/DestinationCardItem';
 import ImageBanner from '@/components/card/ImageBanner';
@@ -150,10 +148,10 @@ export default function Home() {
 
       <div className='mx-auto max-w-7xl px-4'>
         <section className='my-16'>
-          <Heading as='h2' className='mb-6 text-3xl font-semibold'>
+          <Link href='/destinations' className='text-3xl font-semibold tracking-tight'>
             Destination
-          </Heading>
-          <div className='mt-2 grid grid-cols-1 gap-6 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
+          </Link>
+          <div className='mt-8 grid grid-cols-1 gap-6 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'>
             {shuffledDestinationData
               ? shuffledDestinationData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>
@@ -183,10 +181,10 @@ export default function Home() {
         />
 
         <section className='my-16'>
-          <Heading as='h2' className='mb-6 text-3xl font-semibold'>
+          <Link href='/categories' className='text-3xl font-semibold tracking-tight'>
             Category
-          </Heading>
-          <div className='mt-2 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-4'>
+          </Link>
+          <div className='mt-8 grid grid-cols-1 gap-6 min-[450px]:grid-cols-2 md:grid-cols-4'>
             {shuffledCategoryData
               ? shuffledCategoryData?.map((item: any, index: number) => (
                   <div key={index} className='relative'>

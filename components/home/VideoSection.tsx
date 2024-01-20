@@ -5,10 +5,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
+import Link from 'next/link';
+
 import { cn, youTubeGetID } from '@/libs/utils';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
-import { Heading } from '@/components/ui/Heading';
 
 import VideoCardItem from '@/components/card/VideoCardItem';
 import Shimmer from '@/components/systems/Shimmer';
@@ -26,11 +27,11 @@ export default function VideoSection({ data }: { data: any }) {
   return (
     <>
       <section className='my-16'>
-        <Heading as='h2' className='mb-6 text-3xl font-semibold'>
+        <Link href='/videos' className='text-3xl font-semibold tracking-tight'>
           Video
-        </Heading>
+        </Link>
         {shuffledVideoData ? (
-          <div className='relative'>
+          <div className='relative mt-6'>
             <Swiper
               modules={[Navigation]}
               navigation={{

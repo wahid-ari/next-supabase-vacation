@@ -7,11 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
+import Link from 'next/link';
+
 import { cn } from '@/libs/utils';
 
 import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent } from '@/components/ui/Dialog';
-import { Heading } from '@/components/ui/Heading';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 
 import InspirationCardItem from '@/components/card/InspirationCardItem';
@@ -44,10 +45,10 @@ export default function InspirationSection({ data }: { data: any }) {
   return (
     <>
       <section className='my-16'>
-        <Heading as='h2' className='mb-6 text-3xl font-semibold'>
+        <Link href='/inspirations' className='text-3xl font-semibold tracking-tight'>
           Inspiration
-        </Heading>
-        <div className='mt-2 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
+        </Link>
+        <div className='mt-8 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {shuffledInspirationData
             ? shuffledInspirationData?.map((inspiration: any, index: number) => (
                 <InspirationCardItem
