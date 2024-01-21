@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { LayoutListIcon, MapPinIcon, MountainSnowIcon, PalmtreeIcon, TentIcon, YoutubeIcon } from 'lucide-react';
+import {
+  LayoutListIcon,
+  MapPinIcon,
+  MountainSnowIcon,
+  PalmtreeIcon,
+  TentIcon,
+  Trash2Icon,
+  YoutubeIcon,
+} from 'lucide-react';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
 import { useSearchData } from '@/libs/swr';
@@ -231,12 +239,12 @@ export default function Browse() {
                           title={`Remove ${item?.name}`}
                           onClick={() => removeDestinationHistory(item.id)}
                           className={cn(
-                            'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
+                            'absolute right-2 top-2 rounded p-1 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
                           )}
                         >
-                          X
+                          <Trash2Icon className='h-[17px] w-[17px]' />
                         </button>
                       </div>
                     ))}
@@ -270,12 +278,12 @@ export default function Browse() {
                           title={`Remove ${item?.title}`}
                           onClick={() => removeVideoHistory(item.id)}
                           className={cn(
-                            'absolute -right-1.5 -top-1.5 rounded-full px-2 py-1 text-xs font-medium',
+                            'absolute right-2 top-2 rounded p-1 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1',
                           )}
                         >
-                          X
+                          <Trash2Icon className='h-[17px] w-[17px]' />
                         </button>
                       </div>
                     ))}
