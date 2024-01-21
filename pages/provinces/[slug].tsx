@@ -62,7 +62,7 @@ export default function Provinces({ slug, seo }) {
           id='search'
           name='search'
           placeholder='Search Destination'
-          className='max-w-xs'
+          className='sm:max-w-xs'
           debounce={500}
           value={query}
           onChange={(value) => setQuery(value)}

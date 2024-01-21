@@ -45,7 +45,7 @@ export default function Provinces() {
           id='search'
           name='search'
           placeholder='Search Province'
-          className='max-w-xs'
+          className='sm:max-w-xs'
           debounce={500}
           value={query}
           onChange={(value) => setQuery(value)}

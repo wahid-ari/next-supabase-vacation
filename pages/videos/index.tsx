@@ -200,7 +200,7 @@ export default function Videos() {
         )}
       </div>
 
-      <div className='mt-8 flex items-center justify-between gap-3'>
+      <div className='mt-8 flex flex-wrap items-center justify-between gap-3'>
         <Heading as='h1' variant='h3' className='font-medium'>
           Video
         </Heading>
@@ -208,7 +208,7 @@ export default function Videos() {
           id='search'
           name='search'
           placeholder='Search Video'
-          className='max-w-xs'
+          className='min-[460px]:max-w-xs'
           debounce={500}
           value={query}
           onChange={(value) => setQuery(value)}
