@@ -1,6 +1,14 @@
 import useSWR from 'swr';
 
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export async function fetcher(url: string) {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`An error has occured: ${res.status}`);
+  }
+  const data = await res.json();
+  return data;
+  // return res.json();
+}
 
 export const API_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}/api`;
 
@@ -52,11 +60,15 @@ export function useTotalInspirationData() {
 
 // Destination
 export function useDestinationsData(params?: string) {
-  const { data, error, isLoading } = useSWR(`${API_URL}/destination?${params}`, fetcher, { refreshInterval: 1000 });
+  const { data, error, isLoading } = useSWR(
+    params ? `${API_URL}/destination?${params}` : `${API_URL}/destination`,
+    fetcher,
+    { refreshInterval: 1000 },
+  );
   return { data, error, isLoading };
 }
 
-export function useDestinationData(id: string, slug?: boolean) {
+export function useDestinationData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/destination?slug=${slug}` : `${API_URL}/destination?id=${id}`,
     fetcher,
@@ -71,7 +83,7 @@ export function useVideosData() {
   return { data, error, isLoading };
 }
 
-export function useVideoData(id: string, slug?: boolean) {
+export function useVideoData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/video?slug=${slug}` : `${API_URL}/video?id=${id}`,
     fetcher,
@@ -86,7 +98,7 @@ export function useIslandsData() {
   return { data, error, isLoading };
 }
 
-export function useIslandData(id: string, slug?: boolean) {
+export function useIslandData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/island?slug=${slug}` : `${API_URL}/island?id=${id}`,
     fetcher,
@@ -101,7 +113,7 @@ export function useCategoriesData() {
   return { data, error, isLoading };
 }
 
-export function useCategoryData(id: string, slug?: boolean) {
+export function useCategoryData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/category?slug=${slug}` : `${API_URL}/category?id=${id}`,
     fetcher,
@@ -124,7 +136,7 @@ export function useProvincesData() {
   return { data, error, isLoading };
 }
 
-export function useProvinceData(id: string, slug?: boolean) {
+export function useProvinceData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/province?slug=${slug}` : `${API_URL}/province?id=${id}`,
     fetcher,
