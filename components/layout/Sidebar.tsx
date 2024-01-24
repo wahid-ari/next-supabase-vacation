@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useShowNav } from 'context/GlobalContext';
 import {
   ComputerIcon,
   ContainerIcon,
@@ -29,6 +28,7 @@ import {
 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 
+import { useShowNav } from '@/context/GlobalContext';
 import { cn } from '@/libs/utils';
 
 import NavAccordion from '@/components/layout/NavAccordion';

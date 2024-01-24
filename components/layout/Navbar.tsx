@@ -1,15 +1,14 @@
-import { useContext } from 'react';
 import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
 
-import { GlobalContext } from '@/context/GlobalContext';
+import { useShowNav } from '@/context/GlobalContext';
 import { cn } from '@/libs/utils';
 
 import Menu from '@/components/layout/Menu';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 
 export default function Navbar({ className, ...props }: { className?: string; [props: string]: any }) {
-  const { setShowNav } = useContext(GlobalContext);
+  const { setShowNav } = useShowNav();
 
   return (
     <nav
