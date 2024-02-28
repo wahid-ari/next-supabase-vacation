@@ -137,6 +137,7 @@ export default function Log() {
           keyword={inputDebounceValue}
           showInfo
           filteredLength={filteredLength}
+          sortByDesc={true}
         />
       ) : (
         <TableSimple
