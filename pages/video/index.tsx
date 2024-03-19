@@ -3,6 +3,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import {
   Check,
+  CheckIcon,
   ChevronsUpDown,
   ChevronsUpDownIcon,
   ChevronUpIcon,
@@ -10,6 +11,7 @@ import {
   PlayIcon,
   PlusIcon,
   TrashIcon,
+  XIcon,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { mutate } from 'swr';
@@ -295,7 +297,11 @@ export default function Video() {
         width: 300,
         Cell: (row: any) => {
           const { values, original } = row.cell.row;
-          return values?.hd_quality == true ? '✔️' : '❌';
+          return values?.hd_quality == true ? (
+            <CheckIcon className='h-5 w-5 text-emerald-600 dark:text-emerald-500' />
+          ) : (
+            <XIcon className='h-5 w-5 text-red-600 dark:text-red-500' />
+          );
         },
       },
       {
