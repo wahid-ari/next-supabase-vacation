@@ -42,6 +42,7 @@ export default function CategoryCardItem({ href = '/categories', name = 'Categor
                 fill
                 unoptimized
                 onLoad={() => setLoading(false)}
+                priority={false}
               />
             </div>
           </>
